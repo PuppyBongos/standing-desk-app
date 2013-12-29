@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IdlePauseTime</key>
+	<integer>5</integer>
+	<key>SitStateInterval</key>
+	<integer>15</integer>
+	<key>StandStateInterval</key>
+	<integer>15</integer>
+	<key>StandAlert</key>
+	<dict>
+		<key>IsMute</key>
+		<false/>
+		<key>Volume</key>
+		<real>0.5</real>
+		<key>SoundFile</key>
+		<string>Sound.wav</string>
+	</dict>
+	<key>SitAlert</key>
+	<dict>
+		<key>IsMute</key>
+		<false/>
+		<key>Volume</key>
+		<integer>1</integer>
+		<key>SoundFile</key>
+		<string>Sound.wav</string>
+	</dict>
+</dict>
+</plist>

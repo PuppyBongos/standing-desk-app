@@ -18,9 +18,10 @@
 		27F1D9D9186174B10087FC3A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F1D9B8186174B10087FC3A /* Cocoa.framework */; };
 		27F1D9E1186174B10087FC3A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27F1D9DF186174B10087FC3A /* InfoPlist.strings */; };
 		27F1D9E3186174B10087FC3A /* Standing_Desk_AppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F1D9E2186174B10087FC3A /* Standing_Desk_AppTests.m */; };
-		553F9586186F9E2200BD36BB /* icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 553F9585186F9E2200BD36BB /* icon.jpg */; };
 		553F9589186F9FF300BD36BB /* SDAAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 553F9588186F9FF300BD36BB /* SDAAppController.m */; };
 		553F958C186FA0B800BD36BB /* SDAAppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 553F958B186FA0B800BD36BB /* SDAAppSettings.m */; };
+		553F958F186FA19D00BD36BB /* SDAAlertSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 553F958E186FA19D00BD36BB /* SDAAlertSetting.m */; };
+		553F9591186FD3B700BD36BB /* sda_config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 553F9590186FD3B700BD36BB /* sda_config.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,11 +54,13 @@
 		27F1D9DE186174B10087FC3A /* Standing Desk AppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Standing Desk AppTests-Info.plist"; sourceTree = "<group>"; };
 		27F1D9E0186174B10087FC3A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		27F1D9E2186174B10087FC3A /* Standing_Desk_AppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Standing_Desk_AppTests.m; sourceTree = "<group>"; };
-		553F9585186F9E2200BD36BB /* icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = icon.jpg; sourceTree = "<group>"; };
 		553F9587186F9FF300BD36BB /* SDAAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAAppController.h; sourceTree = "<group>"; };
 		553F9588186F9FF300BD36BB /* SDAAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDAAppController.m; sourceTree = "<group>"; };
 		553F958A186FA0B800BD36BB /* SDAAppSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAAppSettings.h; sourceTree = "<group>"; };
 		553F958B186FA0B800BD36BB /* SDAAppSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDAAppSettings.m; sourceTree = "<group>"; };
+		553F958D186FA19D00BD36BB /* SDAAlertSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAAlertSetting.h; sourceTree = "<group>"; };
+		553F958E186FA19D00BD36BB /* SDAAlertSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDAAlertSetting.m; sourceTree = "<group>"; };
+		553F9590186FD3B700BD36BB /* sda_config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sda_config.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +135,9 @@
 				553F9588186F9FF300BD36BB /* SDAAppController.m */,
 				553F958A186FA0B800BD36BB /* SDAAppSettings.h */,
 				553F958B186FA0B800BD36BB /* SDAAppSettings.m */,
+				553F958D186FA19D00BD36BB /* SDAAlertSetting.h */,
+				553F958E186FA19D00BD36BB /* SDAAlertSetting.m */,
+				553F9590186FD3B700BD36BB /* sda_config.plist */,
 			);
 			path = "Standing Desk App";
 			sourceTree = "<group>";
@@ -139,7 +145,6 @@
 		27F1D9BF186174B10087FC3A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				553F9585186F9E2200BD36BB /* icon.jpg */,
 				27F1D9C0186174B10087FC3A /* Standing Desk App-Info.plist */,
 				27F1D9C1186174B10087FC3A /* InfoPlist.strings */,
 				27F1D9C4186174B10087FC3A /* main.m */,
@@ -245,10 +250,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				27F1D9C3186174B10087FC3A /* InfoPlist.strings in Resources */,
-				553F9586186F9E2200BD36BB /* icon.jpg in Resources */,
 				27F1D9D1186174B10087FC3A /* Images.xcassets in Resources */,
 				27F1D9C9186174B10087FC3A /* Credits.rtf in Resources */,
 				27F1D9CF186174B10087FC3A /* MainMenu.xib in Resources */,
+				553F9591186FD3B700BD36BB /* sda_config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				553F958F186FA19D00BD36BB /* SDAAlertSetting.m in Sources */,
 				27F1D9C5186174B10087FC3A /* main.m in Sources */,
 				553F958C186FA0B800BD36BB /* SDAAppSettings.m in Sources */,
 				553F9589186F9FF300BD36BB /* SDAAppController.m in Sources */,
