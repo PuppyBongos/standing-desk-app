@@ -22,13 +22,19 @@
     if(self) {
         self.sittingSettings = [[SDAAlertSetting alloc]init];
         self.standingSettings = [[SDAAlertSetting alloc]init];
-        
-        self.sittingInterval = SDA_DEFAULT_SIT_INTERVAL;
-        self.standingInterval = SDA_DEFAULT_STAND_INTERVAL;
-        self.idlePauseTime = SDA_DEFAULT_IDLE_TIME;
     }
     
     return self;
+}
+
++(SDAAppSettings*)defaultSettings {
+    SDAAppSettings* settings = [[SDAAppSettings alloc]init];
+    
+    settings.sittingInterval = SDA_DEFAULT_SIT_INTERVAL;
+    settings.standingInterval = SDA_DEFAULT_STAND_INTERVAL;
+    settings.idlePauseTime = SDA_DEFAULT_IDLE_TIME;
+    
+    return settings;
 }
 
 -(NSDictionary*) toDictionary {
@@ -63,7 +69,7 @@
                                    format:&plistFormat
                                    errorDescription:&error];
     
-    SDAAppSettings* settings = [[SDAAppSettings alloc]init];
+    SDAAppSettings* settings = [SDAAppSettings defaultSettings];
     if(plistContents) {
         settings.standingSettings = [SDAAlertSetting settingFromDictionary:
                                  [plistContents objectForKey:@"StandAlert"]];
@@ -80,7 +86,7 @@
                                objectForKey:@"IdlePauseTime"] intValue];
         
     } else {
-        NSLog(@"SDAAppSettings: Could not open file: %@.", error);
+        NSLog(@"SDAAppSettings: Could not open file: %@.", error);        
     }
     return settings;
 }

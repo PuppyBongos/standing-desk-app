@@ -42,4 +42,7 @@
 
 /* Load settings from the specified file path */
 +(SDAAppSettings*)settingsFromFile:(NSString*)filePath;
+
+/* Create default instance of app settings */
++(SDAAppSettings*)defaultSettings;
 @end

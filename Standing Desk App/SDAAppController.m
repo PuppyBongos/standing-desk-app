@@ -15,10 +15,8 @@
     self = [super init];
     if(self) {
         
-        // By default, attempt to load the settings configuration file
-        // from the disk.
-        self.settings = nil;
-        [self loadSettings];
+        // Start with empty settings
+        self.settings = [SDAAppSettings defaultSettings];
     }
     return self;
 }
