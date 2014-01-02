@@ -8,6 +8,7 @@
 
 #import "SDAAppDelegate.h"
 #import "SDAAppController.h"
+#import "SystemSounds.h"
 
 @implementation SDAAppDelegate
 
@@ -28,19 +29,27 @@ NSString *appName;
   [statusItem setHighlightMode:YES];
   [statusItem setToolTip:appName];
 
+  /* Load alert comboboxes with system sounds */
+  [_prefWindowSitAlertComboBox addItemsWithObjectValues:[NSSound systemSounds]];
+  [_prefWindowStandAlertComboBox addItemsWithObjectValues:[NSSound systemSounds]];
+
   [_prefWindow setDelegate:self];
 
 }
+
+- (IBAction)onSitAlertComboBoxChange:(id)sender {
+  [[NSSound soundNamed:[sender stringValue]] play];
+}
+- (IBAction)onStandAlertComboBoxChange:(id)sender {
+  [[NSSound soundNamed:[sender stringValue]] play];
+}
+
 - (IBAction)onMenuSnooze:(id)sender {
   NSLog(@"Snooze menu item activated!");
 }
 - (IBAction)onMenuSkip:(id)sender {
   NSLog(@"Skip menu item activated!");
 }
-- (IBAction)onMenuPrefs:(id)sender {
-  NSLog(@"Preferences menu item activated!");
-}
-
 - (IBAction)onMenuQuit:(id)sender {
   NSLog(@"%@ quit", appName);
   [[NSApplication sharedApplication] terminate:self];
