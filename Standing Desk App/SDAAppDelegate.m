@@ -34,12 +34,21 @@ NSString *appName;
   [_prefWindowStandAlertComboBox addItemsWithObjectValues:[NSSound systemSounds]];
 
   [_prefWindow setDelegate:self];
+}
 
+- (void)windowDidBecomeKey:(NSNotification *)notification
+{
+  NSLog(@"Preferences window activated");
+  [_prefWindowStandTime setStringValue:[self stringSecToMin:appController.settings.standingInterval]];
+}
+
+-(NSString*)stringSecToMin:(int)seconds {
+  return [NSString stringWithFormat:@"%d", seconds / 60];
 }
 
 // Preferences->General
 - (IBAction)onStandTimeComboBoxChange:(id)sender {
-  appController.settings.standingInterval = _prefWindowStandTime.integerValue;
+  appController.settings.standingInterval = (_prefWindowStandTime.integerValue * 60);
 }
 - (IBAction)onSitTimeComboBoxChange:(id)sender {
   appController.settings.sittingInterval = _prefWindowSitTime.integerValue;
@@ -74,14 +83,24 @@ NSString *appName;
 }
 
 // Preferences Buttons
-- (IBAction)onPrefCancel:(id)sender {
+- (IBAction)onPrefGeneralCancel:(id)sender {
   [appController loadSettings];
   [_prefWindow performClose:self];
 }
-- (IBAction)onPrefSave:(id)sender {
+- (IBAction)onPrefGeneralSave:(id)sender {
   [appController saveSettings];
   [_prefWindow performClose:self];
 }
+
+- (IBAction)onPrefAlertsCancel:(id)sender {
+  [appController loadSettings];
+  [_prefWindow performClose:self];
+}
+- (IBAction)onPrefAlertsSave:(id)sender {
+  [appController saveSettings];
+  [_prefWindow performClose:self];
+}
+
 
 // Main Menu
 - (IBAction)onMenuSnooze:(id)sender {

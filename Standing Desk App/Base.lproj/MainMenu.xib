@@ -55,7 +55,7 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="General" identifier="1" id="aOY-2h-lJo">
-                                <view key="view" ambiguous="YES" id="6nP-Vf-iX1">
+                                <view key="view" id="6nP-Vf-iX1">
                                     <rect key="frame" x="10" y="33" width="487" height="339"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -151,8 +151,11 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zDW-DK-scl">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="systemBold"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="onPrefGeneralSave:" target="494" id="UAI-Rh-E8l"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n8w-wA-Pwg">
                                             <rect key="frame" x="313" y="59" width="82" height="32"/>
@@ -165,7 +168,7 @@ Gw
 </string>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="onPrefCancel:" target="494" id="FkY-w8-GcH"/>
+                                                <action selector="onPrefGeneralCancel:" target="494" id="0rF-x8-whQ"/>
                                             </connections>
                                         </button>
                                         <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dDB-sb-iDJ">
@@ -236,7 +239,7 @@ Gw
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Alerts" identifier="2" id="W2h-1r-XMY">
-                                <view key="view" id="Pjd-BB-gBS">
+                                <view key="view" ambiguous="YES" id="Pjd-BB-gBS">
                                     <rect key="frame" x="10" y="33" width="487" height="339"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -285,7 +288,7 @@ Gw
                                         <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YPN-u4-Xh1">
                                             <rect key="frame" x="280" y="242" width="21" height="96"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <sliderCell key="cell" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="left" sliderType="linear" id="zr5-9y-wud"/>
+                                            <sliderCell key="cell" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="right" sliderType="linear" id="zr5-9y-wud"/>
                                             <connections>
                                                 <action selector="onSitAlertVolumeChange:" target="494" id="m8c-z8-kGF"/>
                                             </connections>
@@ -293,7 +296,7 @@ Gw
                                         <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CIK-Yp-pWm">
                                             <rect key="frame" x="280" y="128" width="21" height="96"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <sliderCell key="cell" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="left" sliderType="linear" id="8WN-Ov-kNE"/>
+                                            <sliderCell key="cell" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="right" sliderType="linear" id="8WN-Ov-kNE"/>
                                             <connections>
                                                 <action selector="onStandAlertVolumeChange:" target="494" id="X0T-BE-dFM"/>
                                             </connections>
@@ -339,14 +342,14 @@ Gw
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BGG-xg-bzz">
-                                            <rect key="frame" x="395" y="59" width="69" height="32"/>
+                                            <rect key="frame" x="396" y="60" width="69" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nls-Hx-HAl">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="systemBold"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="onPrefSave:" target="494" id="Htj-Bv-yJe"/>
+                                                <action selector="onPrefAlertsSave:" target="494" id="l7W-qh-PUF"/>
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Uv-P0-CDl">
@@ -360,7 +363,7 @@ Gw
 </string>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="onPrefCancel:" target="494" id="awf-OA-ZBv"/>
+                                                <action selector="onPrefAlertsCancel:" target="494" id="MGc-zZ-fJi"/>
                                             </connections>
                                         </button>
                                     </subviews>
