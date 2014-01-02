@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27652E241875208C00BD3DC5 /* icon16.png in Resources */ = {isa = PBXBuildFile; fileRef = 27652E231875208C00BD3DC5 /* icon16.png */; };
 		27F1D9B9186174B10087FC3A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F1D9B8186174B10087FC3A /* Cocoa.framework */; };
 		27F1D9C3186174B10087FC3A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27F1D9C1186174B10087FC3A /* InfoPlist.strings */; };
 		27F1D9C5186174B10087FC3A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F1D9C4186174B10087FC3A /* main.m */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27652E231875208C00BD3DC5 /* icon16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon16.png; sourceTree = "<group>"; };
 		27F1D9B5186174B10087FC3A /* Standing Desk App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Standing Desk App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27F1D9B8186174B10087FC3A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		27F1D9BB186174B10087FC3A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -126,6 +128,7 @@
 		27F1D9BE186174B10087FC3A /* Standing Desk App */ = {
 			isa = PBXGroup;
 			children = (
+				27652E231875208C00BD3DC5 /* icon16.png */,
 				27F1D9CA186174B10087FC3A /* SDAAppDelegate.h */,
 				27F1D9CB186174B10087FC3A /* SDAAppDelegate.m */,
 				27F1D9CD186174B10087FC3A /* MainMenu.xib */,
@@ -250,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27F1D9C3186174B10087FC3A /* InfoPlist.strings in Resources */,
+				27652E241875208C00BD3DC5 /* icon16.png in Resources */,
 				27F1D9D1186174B10087FC3A /* Images.xcassets in Resources */,
 				27F1D9C9186174B10087FC3A /* Credits.rtf in Resources */,
 				27F1D9CF186174B10087FC3A /* MainMenu.xib in Resources */,
