@@ -17,7 +17,6 @@ NSString *appName;
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
   appName = NSBundle.mainBundle.infoDictionary  [@"CFBundleName"];
-
   appController = [[SDAAppController alloc]init];
   [appController loadSettings];
 
@@ -27,7 +26,6 @@ NSString *appName;
   [statusItem setMenu:_statusMenu];
   [statusItem setImage:[NSImage imageNamed:@"icon16.png"]];
   [statusItem setHighlightMode:YES];
-
   [statusItem setToolTip:appName];
 
   [_prefWindow setDelegate:self];
