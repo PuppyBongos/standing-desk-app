@@ -20,10 +20,10 @@
 @property (weak) IBOutlet NSComboBox *prefWindowPauseTime;
 @property (weak) IBOutlet NSButton *prefWindowCancelBtn;
 @property (weak) IBOutlet NSButton *prefWindowSaveBtn;
-@property (weak) IBOutlet NSView *prefWindowSitAlertFile;
+@property (weak) IBOutlet NSComboBox *prefWindowSitAlertComboBox;
 @property (weak) IBOutlet NSSlider *prefWindowSitVolume;
 @property (weak) IBOutlet NSButton *prefWindowSitVolumeMute;
-@property (weak) IBOutlet NSComboBox *prefWindowStandAlertFile;
+@property (weak) IBOutlet NSComboBox *prefWindowStandAlertComboBox;
 @property (weak) IBOutlet NSSlider *prefWindowStandVolume;
 @property (weak) IBOutlet NSButton *prefWindowStandVolumeMute;
 

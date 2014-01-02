@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		27652E241875208C00BD3DC5 /* icon16.png in Resources */ = {isa = PBXBuildFile; fileRef = 27652E231875208C00BD3DC5 /* icon16.png */; };
+		27652E6D187548C600BD3DC5 /* SystemSounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 27652E6C187548C600BD3DC5 /* SystemSounds.m */; };
 		27F1D9B9186174B10087FC3A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F1D9B8186174B10087FC3A /* Cocoa.framework */; };
 		27F1D9C3186174B10087FC3A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27F1D9C1186174B10087FC3A /* InfoPlist.strings */; };
 		27F1D9C5186174B10087FC3A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F1D9C4186174B10087FC3A /* main.m */; };
@@ -37,6 +38,8 @@
 
 /* Begin PBXFileReference section */
 		27652E231875208C00BD3DC5 /* icon16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon16.png; sourceTree = "<group>"; };
+		27652E6B187548C600BD3DC5 /* SystemSounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemSounds.h; sourceTree = "<group>"; };
+		27652E6C187548C600BD3DC5 /* SystemSounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemSounds.m; sourceTree = "<group>"; };
 		27F1D9B5186174B10087FC3A /* Standing Desk App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Standing Desk App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27F1D9B8186174B10087FC3A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		27F1D9BB186174B10087FC3A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -131,6 +134,8 @@
 				27652E231875208C00BD3DC5 /* icon16.png */,
 				27F1D9CA186174B10087FC3A /* SDAAppDelegate.h */,
 				27F1D9CB186174B10087FC3A /* SDAAppDelegate.m */,
+				27652E6B187548C600BD3DC5 /* SystemSounds.h */,
+				27652E6C187548C600BD3DC5 /* SystemSounds.m */,
 				27F1D9CD186174B10087FC3A /* MainMenu.xib */,
 				27F1D9D0186174B10087FC3A /* Images.xcassets */,
 				27F1D9BF186174B10087FC3A /* Supporting Files */,
@@ -276,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27652E6D187548C600BD3DC5 /* SystemSounds.m in Sources */,
 				553F958F186FA19D00BD36BB /* SDAAlertSetting.m in Sources */,
 				27F1D9C5186174B10087FC3A /* main.m in Sources */,
 				553F958C186FA0B800BD36BB /* SDAAppSettings.m in Sources */,
