@@ -12,9 +12,12 @@
 @implementation SDAAppDelegate
 
 SDAAppController* appController;
+NSString *appName;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+  appName = NSBundle.mainBundle.infoDictionary  [@"CFBundleName"];
+
   appController = [[SDAAppController alloc]init];
   [appController loadSettings];
 
@@ -24,10 +27,28 @@ SDAAppController* appController;
   [statusItem setMenu:_statusMenu];
   [statusItem setImage:[NSImage imageNamed:@"icon16.png"]];
   [statusItem setHighlightMode:YES];
-  [statusItem setToolTip:@"Standing Desk App"];
 
-  [prefWindow setDelegate:self];
+  [statusItem setToolTip:appName];
 
+  [_prefWindow setDelegate:self];
+
+}
+- (IBAction)onMenuSnooze:(id)sender {
+  NSLog(@"Snooze menu item activated!");
+}
+- (IBAction)onMenuSkip:(id)sender {
+  NSLog(@"Skip menu item activated!");
+}
+- (IBAction)onMenuPrefs:(id)sender {
+  NSLog(@"Preferences menu item activated!");
+}
+
+- (IBAction)onMenuQuit:(id)sender {
+  NSLog(@"%@ quit", appName);
+  [[NSApplication sharedApplication] terminate:self];
+}
+- (IBAction)onPrefCancel:(id)sender {
+  [_prefWindow performClose:self];
 }
 
 @end
