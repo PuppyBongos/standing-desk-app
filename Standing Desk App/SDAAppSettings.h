@@ -12,6 +12,7 @@
 #define SDA_DEFAULT_STAND_INTERVAL  30
 #define SDA_DEFAULT_SIT_INTERVAL    30
 #define SDA_DEFAULT_IDLE_TIME       10
+#define SDA_DEFAULT_SNOOZE_TIME      5
 
 /*
     Represents application user configuration settings for
@@ -30,6 +31,9 @@
 
 /* Amount of time to allow machine idling prior to pausing timer. */
 @property int idlePauseTime;
+
+/* Amount of time to add to a timer if a user chooses to snooze during a state. */
+@property int snoozeTime;
 
 /* Settings for Stand Alerts */
 @property (strong) SDAAlertSetting* standingSettings;
