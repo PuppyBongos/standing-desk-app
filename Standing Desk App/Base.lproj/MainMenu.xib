@@ -12,6 +12,34 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application"/>
+        <menu title="Main Menu" id="BiC-t7-sFC">
+            <items>
+                <menuItem title="Snooze" id="qJP-eb-RWy">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="onMenuSnooze:" target="494" id="o9o-yV-yGb"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Skip" id="1YL-ho-WMI">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="onMenuSkip:" target="494" id="wJy-vA-Q5C"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Preferences..." id="Ut9-Ag-hcn">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="makeKeyAndOrderFront:" target="371" id="Jif-F9-Qds"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="yfR-U1-H45"/>
+                <menuItem title="Quit" keyEquivalent="q" id="QMk-XI-lMF">
+                    <connections>
+                        <action selector="onMenuQuit:" target="494" id="HSH-a6-k64"/>
+                    </connections>
+                </menuItem>
+            </items>
+        </menu>
         <window title="Preferences Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" appearanceType="lightContent" animationBehavior="default" id="371">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -371,33 +399,5 @@ Gw
             </connections>
         </customObject>
         <customObject id="420" customClass="NSFontManager"/>
-        <menu title="Main Menu" id="BiC-t7-sFC">
-            <items>
-                <menuItem title="Snooze" id="qJP-eb-RWy">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="onMenuSnooze:" target="494" id="o9o-yV-yGb"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Skip" id="1YL-ho-WMI">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="onMenuSkip:" target="494" id="wJy-vA-Q5C"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Preferences..." id="Ut9-Ag-hcn">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="makeKeyAndOrderFront:" target="371" id="Jif-F9-Qds"/>
-                    </connections>
-                </menuItem>
-                <menuItem isSeparatorItem="YES" id="yfR-U1-H45"/>
-                <menuItem title="Quit" keyEquivalent="q" id="QMk-XI-lMF">
-                    <connections>
-                        <action selector="onMenuQuit:" target="494" id="HSH-a6-k64"/>
-                    </connections>
-                </menuItem>
-            </items>
-        </menu>
     </objects>
 </document>
