@@ -37,13 +37,53 @@ NSString *appName;
 
 }
 
+// Preferences->General
+- (IBAction)onStandTimeComboBoxChange:(id)sender {
+  appController.settings.standingInterval = _prefWindowStandTime.integerValue;
+}
+- (IBAction)onSitTimeComboBoxChange:(id)sender {
+  appController.settings.sittingInterval = _prefWindowSitTime.integerValue;
+}
+- (IBAction)onIdleTimeComboBoxChange:(id)sender {
+  appController.settings.idlePauseTime = _prefWindowIdleTime.integerValue;
+}
+- (IBAction)onSnoozeTimeComboBoxChange:(id)sender {
+  appController.settings.snoozeTime = _prefWindowSnoozeTime.integerValue;
+}
+
+// Preferences->Alerts
 - (IBAction)onSitAlertComboBoxChange:(id)sender {
   [[NSSound soundNamed:[sender stringValue]] play];
+  appController.settings.sittingSettings.soundFile = [sender stringValue];
+}
+- (IBAction)onSitAlertVolumeChange:(id)sender {
+  appController.settings.sittingSettings.volume = [sender floatValue];
+}
+- (IBAction)onSitAlertMuteChange:(id)sender {
+  appController.settings.sittingSettings.isMute = [sender boolValue];
 }
 - (IBAction)onStandAlertComboBoxChange:(id)sender {
   [[NSSound soundNamed:[sender stringValue]] play];
+  appController.settings.standingSettings.soundFile = [sender stringValue];
+}
+- (IBAction)onStandAlertVolumeChange:(id)sender {
+  appController.settings.standingSettings.volume = [sender floatValue];
+}
+- (IBAction)onStandAlertMuteChange:(id)sender {
+  appController.settings.standingSettings.isMute = [sender boolValue];
 }
 
+// Preferences Buttons
+- (IBAction)onPrefCancel:(id)sender {
+  [appController loadSettings];
+  [_prefWindow performClose:self];
+}
+- (IBAction)onPrefSave:(id)sender {
+  [appController saveSettings];
+  [_prefWindow performClose:self];
+}
+
+// Main Menu
 - (IBAction)onMenuSnooze:(id)sender {
   NSLog(@"Snooze menu item activated!");
 }
@@ -53,9 +93,6 @@ NSString *appName;
 - (IBAction)onMenuQuit:(id)sender {
   NSLog(@"%@ quit", appName);
   [[NSApplication sharedApplication] terminate:self];
-}
-- (IBAction)onPrefCancel:(id)sender {
-  [_prefWindow performClose:self];
 }
 
 @end

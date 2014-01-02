@@ -48,6 +48,9 @@
                                                     <string>120</string>
                                                 </objectValues>
                                             </comboBoxCell>
+                                            <connections>
+                                                <action selector="onStandTimeComboBoxChange:" target="494" id="b8C-J4-zbr"/>
+                                            </connections>
                                         </comboBox>
                                         <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ntd-S2-Ozl">
                                             <rect key="frame" x="123" y="251" width="99" height="26"/>
@@ -66,6 +69,9 @@
                                                     <string>120</string>
                                                 </objectValues>
                                             </comboBoxCell>
+                                            <connections>
+                                                <action selector="onSitTimeComboBoxChange:" target="494" id="DaW-9h-vdg"/>
+                                            </connections>
                                         </comboBox>
                                         <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HwS-Il-yRU">
                                             <rect key="frame" x="123" y="208" width="99" height="26"/>
@@ -81,6 +87,9 @@
                                                     <string>20</string>
                                                 </objectValues>
                                             </comboBoxCell>
+                                            <connections>
+                                                <action selector="onIdleTimeComboBoxChange:" target="494" id="LNd-tA-83Z"/>
+                                            </connections>
                                         </comboBox>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WYd-dC-dMo">
                                             <rect key="frame" x="15" y="301" width="62" height="17"/>
@@ -155,6 +164,9 @@ Gw
                                                     <string>5</string>
                                                 </objectValues>
                                             </comboBoxCell>
+                                            <connections>
+                                                <action selector="onSnoozeTimeComboBoxChange:" target="494" id="n8V-XG-JGq"/>
+                                            </connections>
                                         </comboBox>
                                         <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uLb-Lh-J2R">
                                             <rect key="frame" x="230" y="301" width="69" height="17"/>
@@ -245,12 +257,18 @@ Gw
                                         <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YPN-u4-Xh1">
                                             <rect key="frame" x="280" y="242" width="21" height="96"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <sliderCell key="cell" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="right" sliderType="linear" id="zr5-9y-wud"/>
+                                            <sliderCell key="cell" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="left" sliderType="linear" id="zr5-9y-wud"/>
+                                            <connections>
+                                                <action selector="onSitAlertVolumeChange:" target="494" id="m8c-z8-kGF"/>
+                                            </connections>
                                         </slider>
                                         <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CIK-Yp-pWm">
                                             <rect key="frame" x="280" y="128" width="21" height="96"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <sliderCell key="cell" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="right" sliderType="linear" id="8WN-Ov-kNE"/>
+                                            <sliderCell key="cell" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="left" sliderType="linear" id="8WN-Ov-kNE"/>
+                                            <connections>
+                                                <action selector="onStandAlertVolumeChange:" target="494" id="X0T-BE-dFM"/>
+                                            </connections>
                                         </slider>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ptu-Ua-HNB">
                                             <rect key="frame" x="305" y="243" width="54" height="18"/>
@@ -259,6 +277,9 @@ Gw
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="onSitAlertMuteChange:" target="494" id="QaP-QB-OzZ"/>
+                                            </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fkl-gg-rVa">
                                             <rect key="frame" x="305" y="129" width="54" height="18"/>
@@ -267,6 +288,9 @@ Gw
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="onStandAlertMuteChange:" target="494" id="s3T-mt-4BD"/>
+                                            </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qv3-0c-QzK">
                                             <rect key="frame" x="305" y="313" width="52" height="17"/>
@@ -293,6 +317,9 @@ Gw
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="systemBold"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="onPrefSave:" target="494" id="Htj-Bv-yJe"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Uv-P0-CDl">
                                             <rect key="frame" x="313" y="59" width="82" height="32"/>
@@ -321,7 +348,7 @@ Gw
                 <outlet property="prefMenuItem" destination="Ut9-Ag-hcn" id="Ptp-9S-efr"/>
                 <outlet property="prefWindow" destination="371" id="9Ow-fG-qRV"/>
                 <outlet property="prefWindowCancelBtn" destination="n8w-wA-Pwg" id="ZQt-Lq-A6X"/>
-                <outlet property="prefWindowPauseTime" destination="HwS-Il-yRU" id="SiL-rd-TQ1"/>
+                <outlet property="prefWindowIdleTime" destination="HwS-Il-yRU" id="cQo-u9-otq"/>
                 <outlet property="prefWindowSaveBtn" destination="N0M-WZ-c4w" id="Myf-NX-RVD"/>
                 <outlet property="prefWindowSitAlert" destination="Pjd-BB-gBS" id="fR1-9p-7YW"/>
                 <outlet property="prefWindowSitAlertComboBox" destination="VPe-WK-mA8" id="Voe-YA-xmM"/>
@@ -329,6 +356,7 @@ Gw
                 <outlet property="prefWindowSitTime" destination="ntd-S2-Ozl" id="h85-76-NDR"/>
                 <outlet property="prefWindowSitVolume" destination="YPN-u4-Xh1" id="3Qb-rF-lTR"/>
                 <outlet property="prefWindowSitVolumeMute" destination="Ptu-Ua-HNB" id="6l2-P1-yvB"/>
+                <outlet property="prefWindowSnoozeTime" destination="7Vy-R5-gAr" id="q8i-s3-oZY"/>
                 <outlet property="prefWindowStandAlert" destination="VL3-3b-yWG" id="FUN-HH-Y9I"/>
                 <outlet property="prefWindowStandAlertComboBox" destination="VL3-3b-yWG" id="DcK-kL-aWB"/>
                 <outlet property="prefWindowStandAlertFile" destination="VL3-3b-yWG" id="G27-aW-k49"/>

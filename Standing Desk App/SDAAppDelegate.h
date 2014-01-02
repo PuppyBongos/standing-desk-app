@@ -14,23 +14,31 @@
   NSStatusItem* statusItem;
 }
 
+// Main Program Menu Bar
+@property (weak) IBOutlet NSMenu *statusMenu;
+@property (weak) IBOutlet NSMenuItem *snoozeMenuItem;
+@property (weak) IBOutlet NSMenuItem *skipMenuItem;
+@property (weak) IBOutlet NSMenuItem *prefMenuItem;
+@property (weak) IBOutlet NSMenuItem *quitMenuItem;
+
+// Preferences Window
 @property (assign) IBOutlet NSWindow *prefWindow;
+
+// Preferences->General tab
 @property (weak) IBOutlet NSComboBox *prefWindowStandTime;
 @property (weak) IBOutlet NSComboBox *prefWindowSitTime;
-@property (weak) IBOutlet NSComboBox *prefWindowPauseTime;
+@property (weak) IBOutlet NSComboBox *prefWindowIdleTime;
+@property (weak) IBOutlet NSComboBox *prefWindowSnoozeTime;
+
 @property (weak) IBOutlet NSButton *prefWindowCancelBtn;
 @property (weak) IBOutlet NSButton *prefWindowSaveBtn;
+
+// Preferences->Alerts tab
 @property (weak) IBOutlet NSComboBox *prefWindowSitAlertComboBox;
 @property (weak) IBOutlet NSSlider *prefWindowSitVolume;
 @property (weak) IBOutlet NSButton *prefWindowSitVolumeMute;
 @property (weak) IBOutlet NSComboBox *prefWindowStandAlertComboBox;
 @property (weak) IBOutlet NSSlider *prefWindowStandVolume;
 @property (weak) IBOutlet NSButton *prefWindowStandVolumeMute;
-
-@property (weak) IBOutlet NSMenu *statusMenu;
-@property (weak) IBOutlet NSMenuItem *snoozeMenuItem;
-@property (weak) IBOutlet NSMenuItem *skipMenuItem;
-@property (weak) IBOutlet NSMenuItem *prefMenuItem;
-@property (weak) IBOutlet NSMenuItem *quitMenuItem;
 
 @end
