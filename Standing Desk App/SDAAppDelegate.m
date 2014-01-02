@@ -37,10 +37,6 @@ NSString *appName;
 - (IBAction)onMenuSkip:(id)sender {
   NSLog(@"Skip menu item activated!");
 }
-- (IBAction)onMenuPrefs:(id)sender {
-  NSLog(@"Preferences menu item activated!");
-}
-
 - (IBAction)onMenuQuit:(id)sender {
   NSLog(@"%@ quit", appName);
   [[NSApplication sharedApplication] terminate:self];
