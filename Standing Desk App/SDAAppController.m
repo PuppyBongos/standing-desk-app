@@ -8,8 +8,15 @@
 
 #import "SDAAppController.h"
 
+#define SDA_TIMER_INTERVAL      1.0
+
 @implementation SDAAppController
+
 @synthesize settings;
+@synthesize delegate;
+@synthesize currentActionState = _actionState;
+@synthesize currentStatus = _currentStatus;
+@synthesize currentTimeLeft = _currentTimeLeft;
 
 -(id)init {
     self = [super init];
@@ -17,6 +24,13 @@
         
         // Start with empty settings
         self.settings = [SDAAppSettings defaultSettings];
+        
+        _actionState = SDAActionStateNone;
+        _currentTimeLeft = 0;
+        
+        self.delegate = nil;
+        
+        [NSTimer scheduledTimerWithTimeInterval:SDA_TIMER_INTERVAL target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
     }
     return self;
 }
@@ -59,5 +73,110 @@
     if(error) {
         NSLog(@"SDAAppController: Settings failed to save. %@", error);
     }
+}
+
+// Fires every second
+-(void)updateTime {
+    
+    if(_currentStatus != SDAStatusRunning)
+        return;
+    
+    // Decrement time if there is time to be taken
+    if(_currentTimeLeft > 0) {
+        _currentTimeLeft -= SDA_TIMER_INTERVAL;
+    }
+    
+    // Check if we've crossed the time threshold and
+    // we're not already running
+    if(_currentTimeLeft <= 0) {
+        _currentStatus = SDAStatusWaiting;
+        
+        // Only fire event once.
+        [self onStatusIntervalElapsed];
+    }
+    
+    NSLog(@"%@", [self stringFromTimeLeft]);
+}
+
+-(void)onStatusIntervalElapsed {
+    
+    NSLog(@"Firing event: actionPeriodDidComplete");
+    // Ensure that whoever subscribes to this also conforms to it
+    if([self.delegate conformsToProtocol:@protocol(SDAApplicationDelegate)]) {
+
+        // Fire the event to any listeners
+        [self.delegate actionPeriodDidComplete:self actionState:_actionState];
+    }
+}
+
+-(void)scheduleSit {
+    _actionState = SDAActionStateSitting;
+    _currentTimeLeft = settings.sittingInterval;
+    
+    _currentStatus = SDAStatusRunning;
+    NSLog(@"Setting state to: SITTING for %d seconds", settings.sittingInterval);
+}
+
+-(void)scheduleStand {
+    _actionState = SDAActionStateStanding;
+    _currentTimeLeft = settings.standingInterval;
+    
+    _currentStatus = SDAStatusRunning;
+    NSLog(@"Setting state to: STANDING for %d seconds", settings.standingInterval);
+}
+
+-(void)snooze {
+    _currentTimeLeft += settings.snoozeTime;
+    _currentStatus = SDAStatusRunning;
+    
+    NSLog(@"Snoozing: Adding %d seconds", settings.snoozeTime);
+}
+
+-(void)skipToNext {
+    
+    NSLog(@"SKIPPING ...");
+    if(_currentStatus == SDAStatusWaiting) {
+        // Period has ended, app is waiting for user response
+        // User has pressed 'sKip'
+        
+        // Assume user wants to skip the next event, so in essence,
+        // repeat the current event
+        if(_actionState == SDAActionStateSitting) {
+            [self scheduleSit];
+        } else {
+            [self scheduleStand];
+        }
+    }
+    else if(_currentStatus == SDAStatusRunning) {
+        // Assume user wants to skip to the next event if
+        // timer is already running
+        // So, switch to opposite action state
+        if(_actionState == SDAActionStateSitting) {
+            [self scheduleStand];
+        } else {
+            [self scheduleSit];
+        }
+    }
+}
+
+-(void)pauseTimer {
+    if(_currentStatus == SDAStatusRunning)
+        _currentStatus = SDAStatusPaused;
+    
+    NSLog(@"Pausing Timer");
+}
+
+-(void)resumeTimer {
+    if((_currentStatus == SDAStatusPaused) && _currentTimeLeft > 0)
+        _currentStatus = SDAStatusRunning;
+    
+    NSLog(@"Resuming Timer");
+}
+
+-(NSString*)stringFromTimeLeft {
+    NSUInteger seconds = (NSUInteger)round(_currentTimeLeft);
+    NSString *string = [NSString stringWithFormat:@"%02u:%02u:%02u",
+                        (seconds / 3600), (seconds / 60) % 60, (seconds % 60)];
+    return string;
 }
 @end
