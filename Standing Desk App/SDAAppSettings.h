@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "SDAAlertSetting.h"
 
-#define SDA_DEFAULT_STAND_INTERVAL  30
-#define SDA_DEFAULT_SIT_INTERVAL    30
-#define SDA_DEFAULT_IDLE_TIME       10
-#define SDA_DEFAULT_SNOOZE_TIME      5
+#define SDA_DEFAULT_STAND_INTERVAL  1800 // 30 minutes
+#define SDA_DEFAULT_SIT_INTERVAL    1800 // 30 minutes
+#define SDA_DEFAULT_IDLE_TIME       600  // 10 minutes
+#define SDA_DEFAULT_SNOOZE_TIME     300  // 5 minutes
 
 /*
     Represents application user configuration settings for
@@ -23,16 +23,16 @@
 /* Default state of the application: (Standing/Sitting) */
 @property (copy) NSString* defaultState;
 
-/* Time, in minutes, of standing state */
+/* Time, in seconds, of standing state */
 @property int standingInterval;
 
-/* Time, in sittings, of sitting state */
+/* Time, in seconds, of sitting state */
 @property int sittingInterval;
 
-/* Amount of time to allow machine idling prior to pausing timer. */
+/* Amount of time, in seconds, to allow machine idling prior to pausing timer. */
 @property int idlePauseTime;
 
-/* Amount of time to add to a timer if a user chooses to snooze during a state. */
+/* Amount of time, in seconds, to add to a timer if a user chooses to snooze during a state. */
 @property int snoozeTime;
 
 /* Settings for Stand Alerts */
