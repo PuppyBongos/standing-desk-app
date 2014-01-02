@@ -15,8 +15,19 @@ SDAAppController* appController;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    appController = [[SDAAppController alloc]init];
-    [appController loadSettings];
+  appController = [[SDAAppController alloc]init];
+  [appController loadSettings];
+
+  [_statusMenu setAutoenablesItems:NO];
+
+  statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+  [statusItem setMenu:_statusMenu];
+  [statusItem setImage:[NSImage imageNamed:@"icon16.png"]];
+  [statusItem setHighlightMode:YES];
+  [statusItem setToolTip:@"Standing Desk App"];
+
+  [prefWindow setDelegate:self];
+
 }
 
 @end
