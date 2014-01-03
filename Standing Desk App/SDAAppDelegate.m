@@ -40,6 +40,9 @@ NSString *appName;
 {
   NSLog(@"Preferences window activated");
   [_prefWindowStandTime setStringValue:[self stringSecToMin:appController.settings.standingInterval]];
+  [_prefWindowSitTime setStringValue:[self stringSecToMin:appController.settings.sittingInterval]];
+  [_prefWindowIdleTime setStringValue:[self stringSecToMin:appController.settings.idlePauseTime]];
+  [_prefWindowSnoozeTime setStringValue:[self stringSecToMin:appController.settings.snoozeTime]];
 }
 
 -(NSString*)stringSecToMin:(int)seconds {
