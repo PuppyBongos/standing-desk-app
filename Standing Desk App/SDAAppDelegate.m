@@ -15,6 +15,13 @@
 SDAAppController* appController;
 NSString *appName;
 
+-(NSString*)stringSecToMin:(int)seconds {
+  return [NSString stringWithFormat:@"%d", seconds / 60];
+}
+-(int)intMinToSec:(int)minutes {
+  return minutes * 60;
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
   appName = NSBundle.mainBundle.infoDictionary  [@"CFBundleName"];
@@ -38,29 +45,25 @@ NSString *appName;
 
 - (void)windowDidBecomeKey:(NSNotification *)notification
 {
-  NSLog(@"Preferences window activated");
+  //NSLog(@"Preferences window became key");
   [_prefWindowStandTime setStringValue:[self stringSecToMin:appController.settings.standingInterval]];
   [_prefWindowSitTime setStringValue:[self stringSecToMin:appController.settings.sittingInterval]];
   [_prefWindowIdleTime setStringValue:[self stringSecToMin:appController.settings.idlePauseTime]];
   [_prefWindowSnoozeTime setStringValue:[self stringSecToMin:appController.settings.snoozeTime]];
 }
 
--(NSString*)stringSecToMin:(int)seconds {
-  return [NSString stringWithFormat:@"%d", seconds / 60];
-}
-
 // Preferences->General
 - (IBAction)onStandTimeComboBoxChange:(id)sender {
-  appController.settings.standingInterval = (_prefWindowStandTime.integerValue * 60);
+  appController.settings.standingInterval = [self intMinToSec:_prefWindowStandTime.integerValue];
 }
 - (IBAction)onSitTimeComboBoxChange:(id)sender {
-  appController.settings.sittingInterval = _prefWindowSitTime.integerValue;
+  appController.settings.sittingInterval = [self intMinToSec:_prefWindowSitTime.integerValue];
 }
 - (IBAction)onIdleTimeComboBoxChange:(id)sender {
-  appController.settings.idlePauseTime = _prefWindowIdleTime.integerValue;
+  appController.settings.idlePauseTime = [self intMinToSec:_prefWindowIdleTime.integerValue];
 }
 - (IBAction)onSnoozeTimeComboBoxChange:(id)sender {
-  appController.settings.snoozeTime = _prefWindowSnoozeTime.integerValue;
+  appController.settings.snoozeTime = [self intMinToSec:_prefWindowSnoozeTime.integerValue];
 }
 
 // Preferences->Alerts
@@ -103,7 +106,6 @@ NSString *appName;
   [appController saveSettings];
   [_prefWindow performClose:self];
 }
-
 
 // Main Menu
 - (IBAction)onMenuSnooze:(id)sender {

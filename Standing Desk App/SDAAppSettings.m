@@ -34,7 +34,6 @@
     settings.sittingInterval = SDA_DEFAULT_SIT_INTERVAL;
     settings.standingInterval = SDA_DEFAULT_STAND_INTERVAL;
     settings.idlePauseTime = SDA_DEFAULT_IDLE_TIME;
-    
     settings.snoozeTime = SDA_DEFAULT_SNOOZE_TIME;
     
     return settings;
@@ -50,7 +49,6 @@
              forKey:@"StandStateInterval"];
     [dict setValue:[NSNumber numberWithInt:idlePauseTime]
              forKey:@"IdlePauseTime"];
-    
     [dict setValue:[NSNumber numberWithInt:snoozeTime]
             forKey:@"SnoozeTime"];
     
