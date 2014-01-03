@@ -46,10 +46,15 @@ NSString *appName;
 - (void)windowDidBecomeKey:(NSNotification *)notification
 {
   //NSLog(@"Preferences window became key");
+  // Preferences->General
   [_prefWindowStandTime setStringValue:[self stringSecToMin:appController.settings.standingInterval]];
   [_prefWindowSitTime setStringValue:[self stringSecToMin:appController.settings.sittingInterval]];
   [_prefWindowIdleTime setStringValue:[self stringSecToMin:appController.settings.idlePauseTime]];
   [_prefWindowSnoozeTime setStringValue:[self stringSecToMin:appController.settings.snoozeTime]];
+
+  // Preferences->Alerts
+  [_prefWindowSitAlertComboBox setStringValue:appController.settings.sittingSettings.soundFile];
+  [_prefWindowStandAlertComboBox setStringValue:appController.settings.standingSettings.soundFile];
 }
 
 // Preferences->General
