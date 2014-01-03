@@ -55,7 +55,7 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="General" identifier="1" id="aOY-2h-lJo">
-                                <view key="view" ambiguous="YES" id="6nP-Vf-iX1">
+                                <view key="view" id="6nP-Vf-iX1">
                                     <rect key="frame" x="10" y="33" width="487" height="339"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -239,7 +239,7 @@ Gw
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Alerts" identifier="2" id="W2h-1r-XMY">
-                                <view key="view" id="Pjd-BB-gBS">
+                                <view key="view" ambiguous="YES" id="Pjd-BB-gBS">
                                     <rect key="frame" x="10" y="33" width="487" height="339"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -288,7 +288,7 @@ Gw
                                         <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YPN-u4-Xh1">
                                             <rect key="frame" x="280" y="242" width="21" height="96"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <sliderCell key="cell" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="right" sliderType="linear" id="zr5-9y-wud"/>
+                                            <sliderCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="right" sliderType="linear" id="zr5-9y-wud"/>
                                             <connections>
                                                 <action selector="onSitAlertVolumeChange:" target="494" id="m8c-z8-kGF"/>
                                             </connections>

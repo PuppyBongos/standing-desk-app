@@ -54,7 +54,11 @@ NSString *appName;
 
   // Preferences->Alerts
   [_prefWindowSitAlertComboBox setStringValue:appController.settings.sittingSettings.soundFile];
+  [_prefWindowSitVolume setFloatValue:appController.settings.sittingSettings.volume];
+  _prefWindowSitVolumeMute.state = appController.settings.sittingSettings.isMute ? NSOnState : NSOffState;
   [_prefWindowStandAlertComboBox setStringValue:appController.settings.standingSettings.soundFile];
+  [_prefWindowStandVolume setFloatValue:appController.settings.standingSettings.volume];
+  _prefWindowStandVolumeMute.state = appController.settings.standingSettings.isMute ? NSOnState : NSOffState;
 }
 
 // Preferences->General
@@ -80,7 +84,7 @@ NSString *appName;
   appController.settings.sittingSettings.volume = [sender floatValue];
 }
 - (IBAction)onSitAlertMuteChange:(id)sender {
-  appController.settings.sittingSettings.isMute = [sender boolValue];
+  appController.settings.sittingSettings.isMute = [sender state] == NSOnState;
 }
 - (IBAction)onStandAlertComboBoxChange:(id)sender {
   [[NSSound soundNamed:[sender stringValue]] play];
@@ -90,7 +94,7 @@ NSString *appName;
   appController.settings.standingSettings.volume = [sender floatValue];
 }
 - (IBAction)onStandAlertMuteChange:(id)sender {
-  appController.settings.standingSettings.isMute = [sender boolValue];
+  appController.settings.standingSettings.isMute = [sender state] == NSOnState;
 }
 
 // Preferences Buttons
