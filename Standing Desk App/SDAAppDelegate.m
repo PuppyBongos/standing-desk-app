@@ -27,7 +27,7 @@ NSString *appName;
   /* set up main menu */
   statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
   [statusItem setMenu:_statusMenu];
-  [statusItem setImage:[NSImage imageNamed:@"logo64x64.png"]];
+  [statusItem setImage:[NSImage imageNamed:SITTING_MENU_ICON]];
   [statusItem setHighlightMode:YES];
   [statusItem setToolTip:appName];
   [_statusMenu setAutoenablesItems:NO];
@@ -161,9 +161,11 @@ NSString *appName;
   switch (appController.currentActionState) {
     case SDAActionStateSitting:
       self.actionMenuItem.title = SITTING_ACTION_TEXT;
+      [statusItem setImage:[NSImage imageNamed:SITTING_MENU_ICON]];
       break;
     case SDAActionStateStanding:
       self.actionMenuItem.title = STANDING_ACTION_TEXT;
+      [statusItem setImage:[NSImage imageNamed:STANDING_MENU_ICON]];
       break;
     case SDAActionStateNone:
       self.actionMenuItem.title = ERROR_STATUS_TEXT;
