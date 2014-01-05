@@ -27,15 +27,20 @@ NSString *appName;
   appName = NSBundle.mainBundle.infoDictionary  [@"CFBundleName"];
   appController = [[SDAAppController alloc]init];
   [appController loadSettings];
-    [appController scheduleSit];
+  [appController setDelegate:self];
+  [appController scheduleSit];
 
-  [_statusMenu setAutoenablesItems:NO];
-
+  /* set up main menu */
   statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
   [statusItem setMenu:_statusMenu];
-  [statusItem setImage:[NSImage imageNamed:@"icon16.png"]];
+  [statusItem setImage:[NSImage imageNamed:@"logo64x64.png"]];
   [statusItem setHighlightMode:YES];
   [statusItem setToolTip:appName];
+  [_statusMenu setAutoenablesItems:NO];
+
+  [_actionMenuItem setEnabled:false];
+  [self updateActionMenuItem];
+  [_timerMenuItem setEnabled:false];
 
   /* Load alert comboboxes with system sounds */
   [_prefWindowSitAlertComboBox addItemsWithObjectValues:[NSSound systemSounds]];
@@ -44,9 +49,16 @@ NSString *appName;
   [_prefWindow setDelegate:self];
 }
 
+- (void)actionPeriodDidComplete:(SDAAppController *)sender actionState:(SDAActionState)status {
+  [self updateActionMenuItem];
+}
+
+- (void)runningTickDidOccur:(SDAAppController *)sender {
+  [self updateTimerMenuItem];
+}
+
 - (void)windowDidBecomeKey:(NSNotification *)notification
 {
-  //NSLog(@"Preferences window became key");
   // Preferences->General
   [_prefWindowStandTime setStringValue:[self stringSecToMin:appController.settings.standingInterval]];
   [_prefWindowSitTime setStringValue:[self stringSecToMin:appController.settings.sittingInterval]];
@@ -129,4 +141,11 @@ NSString *appName;
   [[NSApplication sharedApplication] terminate:self];
 }
 
+// Private methods
+- (void)updateActionMenuItem {
+  self.actionMenuItem.title = appController.currentActionState == SDAActionStateStanding ? STANDING_ACTION_TEXT : SITTING_ACTION_TEXT;
+}
+- (void)updateTimerMenuItem {
+  self.timerMenuItem.title = appController.stringFromTimeLeft;
+}
 @end

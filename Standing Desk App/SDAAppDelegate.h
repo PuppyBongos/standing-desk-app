@@ -7,8 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "SDAAppController.h"
 
-@interface SDAAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate>
+#define STANDING_ACTION_TEXT @"Standing"
+#define SITTING_ACTION_TEXT @"Sitting"
+
+@interface SDAAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate, SDAApplicationDelegate>
 
 {
   NSStatusItem* statusItem;
@@ -16,6 +20,9 @@
 
 // Main Program Menu Bar
 @property (weak) IBOutlet NSMenu *statusMenu;
+
+@property (weak) IBOutlet NSMenuItem *actionMenuItem;
+@property (weak) IBOutlet NSMenuItem *timerMenuItem;
 @property (weak) IBOutlet NSMenuItem *snoozeMenuItem;
 @property (weak) IBOutlet NSMenuItem *skipMenuItem;
 @property (weak) IBOutlet NSMenuItem *prefMenuItem;
@@ -40,5 +47,8 @@
 @property (weak) IBOutlet NSComboBox *prefWindowStandAlertComboBox;
 @property (weak) IBOutlet NSSlider *prefWindowStandVolume;
 @property (weak) IBOutlet NSButton *prefWindowStandVolumeMute;
+
+- (void)updateActionMenuItem;
+- (void)updateTimerMenuItem;
 
 @end
