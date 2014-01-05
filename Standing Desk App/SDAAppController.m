@@ -31,7 +31,10 @@
         
         self.delegate = nil;
         
-        [NSTimer scheduledTimerWithTimeInterval:SDA_TIMER_INTERVAL target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
+        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:SDA_TIMER_INTERVAL target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
+        
+        // Add the timer to the main loop to avoid situations where the timer updates cease due to threading issues with UI components.
+        [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     }
     return self;
 }
