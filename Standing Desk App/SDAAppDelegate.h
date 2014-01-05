@@ -11,8 +11,10 @@
 
 #define STANDING_ACTION_TEXT @"Standing"
 #define SITTING_ACTION_TEXT @"Sitting"
+#define PAUSED_ACTION_TEXT @"Paused"
+#define ERROR_STATUS_TEXT @"Error"
 
-@interface SDAAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate, SDAApplicationDelegate>
+@interface SDAAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate, SDAApplicationDelegate, NSUserNotificationCenterDelegate>
 
 {
   NSStatusItem* statusItem;
@@ -23,6 +25,7 @@
 
 @property (weak) IBOutlet NSMenuItem *actionMenuItem;
 @property (weak) IBOutlet NSMenuItem *timerMenuItem;
+@property (weak) IBOutlet NSMenuItem *pauseMenuItem;
 @property (weak) IBOutlet NSMenuItem *snoozeMenuItem;
 @property (weak) IBOutlet NSMenuItem *skipMenuItem;
 @property (weak) IBOutlet NSMenuItem *prefMenuItem;

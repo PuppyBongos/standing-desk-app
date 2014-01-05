@@ -51,6 +51,13 @@ NSString *appName;
 
 - (void)actionPeriodDidComplete:(SDAAppController *)sender actionState:(SDAActionState)status {
   [self updateActionMenuItem];
+  if (appController.currentActionState == SDAActionStateStanding) {
+    [appController scheduleSit];
+  }
+  else {
+    [appController scheduleStand];
+  }
+
 }
 
 - (void)runningTickDidOccur:(SDAAppController *)sender {
@@ -130,11 +137,24 @@ NSString *appName;
 }
 
 // Main Menu
+- (IBAction)onMenuPause:(id)sender {
+  if (appController.currentStatus == SDAStatusRunning) {
+    [appController pauseTimer];
+    [self updateActionMenuItem];
+    [sender setTitle:@"Resume"];
+  }
+  else if (appController.currentStatus == SDAStatusPaused) {
+    [appController resumeTimer];
+    [self updateActionMenuItem];
+    [sender setTitle:@"Pause"];
+  }
+}
 - (IBAction)onMenuSnooze:(id)sender {
-  NSLog(@"Snooze menu item activated!");
+  [appController snooze];
 }
 - (IBAction)onMenuSkip:(id)sender {
-  NSLog(@"Skip menu item activated!");
+  [appController skipToNext];
+  [self updateActionMenuItem];
 }
 - (IBAction)onMenuQuit:(id)sender {
   NSLog(@"%@ quit", appName);
@@ -143,7 +163,24 @@ NSString *appName;
 
 // Private methods
 - (void)updateActionMenuItem {
-  self.actionMenuItem.title = appController.currentActionState == SDAActionStateStanding ? STANDING_ACTION_TEXT : SITTING_ACTION_TEXT;
+  switch (appController.currentActionState) {
+    case SDAActionStateSitting:
+      self.actionMenuItem.title = SITTING_ACTION_TEXT;
+      break;
+    case SDAActionStateStanding:
+      self.actionMenuItem.title = STANDING_ACTION_TEXT;
+      break;
+    case SDAActionStateNone:
+      self.actionMenuItem.title = ERROR_STATUS_TEXT;
+      break;
+    default:
+      self.actionMenuItem.title = @"";
+      break;
+  }
+  if (appController.currentStatus == SDAStatusPaused)
+  {
+    self.actionMenuItem.title = PAUSED_ACTION_TEXT;
+  }
 }
 - (void)updateTimerMenuItem {
   self.timerMenuItem.title = appController.stringFromTimeLeft;
