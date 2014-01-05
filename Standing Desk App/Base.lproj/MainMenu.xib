@@ -76,7 +76,7 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="General" identifier="1" id="aOY-2h-lJo">
-                                <view key="view" ambiguous="YES" id="6nP-Vf-iX1">
+                                <view key="view" id="6nP-Vf-iX1">
                                     <rect key="frame" x="10" y="33" width="487" height="339"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -260,7 +260,7 @@ Gw
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Alerts" identifier="2" id="W2h-1r-XMY">
-                                <view key="view" id="Pjd-BB-gBS">
+                                <view key="view" ambiguous="YES" id="Pjd-BB-gBS">
                                     <rect key="frame" x="10" y="33" width="487" height="339"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -322,28 +322,6 @@ Gw
                                                 <action selector="onStandAlertVolumeChange:" target="494" id="X0T-BE-dFM"/>
                                             </connections>
                                         </slider>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ptu-Ua-HNB">
-                                            <rect key="frame" x="305" y="243" width="54" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="check" title="Mute" bezelStyle="regularSquare" imagePosition="left" inset="2" id="sAc-1V-aHI">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="onSitAlertMuteChange:" target="494" id="QaP-QB-OzZ"/>
-                                            </connections>
-                                        </button>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fkl-gg-rVa">
-                                            <rect key="frame" x="305" y="129" width="54" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="check" title="Mute" bezelStyle="regularSquare" imagePosition="left" inset="2" id="cHE-ff-iGR">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="onStandAlertMuteChange:" target="494" id="s3T-mt-4BD"/>
-                                            </connections>
-                                        </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qv3-0c-QzK">
                                             <rect key="frame" x="305" y="313" width="52" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -409,7 +387,6 @@ Gw
                 <outlet property="prefWindowSitAlertFile" destination="VPe-WK-mA8" id="cGD-Ju-GyW"/>
                 <outlet property="prefWindowSitTime" destination="ntd-S2-Ozl" id="h85-76-NDR"/>
                 <outlet property="prefWindowSitVolume" destination="YPN-u4-Xh1" id="3Qb-rF-lTR"/>
-                <outlet property="prefWindowSitVolumeMute" destination="Ptu-Ua-HNB" id="6l2-P1-yvB"/>
                 <outlet property="prefWindowSnoozeTime" destination="7Vy-R5-gAr" id="q8i-s3-oZY"/>
                 <outlet property="prefWindowStandAlert" destination="VL3-3b-yWG" id="FUN-HH-Y9I"/>
                 <outlet property="prefWindowStandAlertComboBox" destination="VL3-3b-yWG" id="DcK-kL-aWB"/>
@@ -417,7 +394,6 @@ Gw
                 <outlet property="prefWindowStandMins" destination="GXO-jE-keb" id="3Wt-SP-bQK"/>
                 <outlet property="prefWindowStandTime" destination="GXO-jE-keb" id="cL9-AP-a7b"/>
                 <outlet property="prefWindowStandVolume" destination="CIK-Yp-pWm" id="5qC-y7-a7s"/>
-                <outlet property="prefWindowStandVolumeMute" destination="fkl-gg-rVa" id="feW-9z-TuE"/>
                 <outlet property="quitMenuItem" destination="QMk-XI-lMF" id="KR9-wQ-tQG"/>
                 <outlet property="skipMenuItem" destination="1YL-ho-WMI" id="jUS-WZ-aMD"/>
                 <outlet property="snoozeMenuItem" destination="qJP-eb-RWy" id="MNb-Cy-HLf"/>

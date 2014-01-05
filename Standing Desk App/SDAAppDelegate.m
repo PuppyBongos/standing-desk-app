@@ -38,7 +38,9 @@ NSString *appName;
 
   /* Load alert comboboxes with system sounds */
   [_prefWindowSitAlertComboBox addItemsWithObjectValues:[NSSound systemSounds]];
+  [_prefWindowSitAlertComboBox insertItemWithObjectValue:@"" atIndex:0];
   [_prefWindowStandAlertComboBox addItemsWithObjectValues:[NSSound systemSounds]];
+  [_prefWindowStandAlertComboBox insertItemWithObjectValue:@"" atIndex:0];
 
   [_prefWindow setDelegate:self];
 }
@@ -70,10 +72,8 @@ NSString *appName;
   // Preferences->Alerts
   [_prefWindowSitAlertComboBox setStringValue:appController.settings.sittingSettings.soundFile];
   [_prefWindowSitVolume setFloatValue:appController.settings.sittingSettings.volume];
-  _prefWindowSitVolumeMute.state = appController.settings.sittingSettings.isMute ? NSOnState : NSOffState;
   [_prefWindowStandAlertComboBox setStringValue:appController.settings.standingSettings.soundFile];
   [_prefWindowStandVolume setFloatValue:appController.settings.standingSettings.volume];
-  _prefWindowStandVolumeMute.state = appController.settings.standingSettings.isMute ? NSOnState : NSOffState;
 }
 
 #pragma mark - Preferences->General
@@ -98,18 +98,12 @@ NSString *appName;
 - (IBAction)onSitAlertVolumeChange:(id)sender {
   appController.settings.sittingSettings.volume = [sender floatValue];
 }
-- (IBAction)onSitAlertMuteChange:(id)sender {
-  appController.settings.sittingSettings.isMute = [sender state] == NSOnState;
-}
 - (IBAction)onStandAlertComboBoxChange:(id)sender {
   [[NSSound soundNamed:[sender stringValue]] play];
   appController.settings.standingSettings.soundFile = [sender stringValue];
 }
 - (IBAction)onStandAlertVolumeChange:(id)sender {
   appController.settings.standingSettings.volume = [sender floatValue];
-}
-- (IBAction)onStandAlertMuteChange:(id)sender {
-  appController.settings.standingSettings.isMute = [sender state] == NSOnState;
 }
 
 #pragma mark - Preferences->Buttons

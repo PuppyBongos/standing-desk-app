@@ -10,14 +10,12 @@
 
 @implementation SDAAlertSetting
 @synthesize soundFile;
-@synthesize isMute;
 @synthesize volume;
 
 -(id)init {
     self = [super init];
     if(self) {
         self.soundFile = @"";
-        self.isMute = SDA_ALERT_DEFAULT_MUTE;
         self.volume = SDA_ALERT_DEFAULT_VOLUME;
     }
     return self;
@@ -27,7 +25,6 @@
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
     [dictionary setValue:soundFile forKey:@"SoundFile"];
-    [dictionary setValue:[NSNumber numberWithBool:isMute] forKey:@"IsMute"];
     [dictionary setValue:[NSNumber numberWithFloat:volume] forKey:@"Volume"];
     return dictionary;
 }
@@ -40,7 +37,6 @@
     
     SDAAlertSetting* setting = [[SDAAlertSetting alloc]init];
     setting.soundFile = [dict valueForKey:@"SoundFile"];
-    setting.isMute = [[dict valueForKey:@"IsMute"] boolValue];
     setting.volume = [[dict valueForKey:@"Volume"] floatValue];
     return setting;
 }

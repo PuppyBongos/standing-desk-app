@@ -46,9 +46,7 @@
 #pragma mark - Preferences->Alerts tab
 @property (weak) IBOutlet NSComboBox *prefWindowSitAlertComboBox;
 @property (weak) IBOutlet NSSlider *prefWindowSitVolume;
-@property (weak) IBOutlet NSButton *prefWindowSitVolumeMute;
 @property (weak) IBOutlet NSComboBox *prefWindowStandAlertComboBox;
 @property (weak) IBOutlet NSSlider *prefWindowStandVolume;
-@property (weak) IBOutlet NSButton *prefWindowStandVolumeMute;
 
 @end

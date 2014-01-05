@@ -24,9 +24,6 @@ alert is muted or not.
 /* Volume of the sound to play */
 @property float volume;
 
-/* Indices when the mute */
-@property BOOL isMute;
-
 /* Transforms this instance to a dictionary of SDAAlertSetting values */
 -(NSDictionary*) toDictionary;
 
