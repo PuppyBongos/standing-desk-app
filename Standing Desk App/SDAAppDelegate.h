@@ -16,6 +16,9 @@
 
 // Main Program Menu Bar
 @property (weak) IBOutlet NSMenu *statusMenu;
+
+@property (weak) IBOutlet NSMenuItem *actionMenuItem;
+@property (weak) IBOutlet NSMenuItem *timerMenuItem;
 @property (weak) IBOutlet NSMenuItem *snoozeMenuItem;
 @property (weak) IBOutlet NSMenuItem *skipMenuItem;
 @property (weak) IBOutlet NSMenuItem *prefMenuItem;

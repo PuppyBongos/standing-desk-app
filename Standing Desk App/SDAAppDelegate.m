@@ -28,13 +28,13 @@ NSString *appName;
   appController = [[SDAAppController alloc]init];
   [appController loadSettings];
 
-  [_statusMenu setAutoenablesItems:NO];
-
+  /* set up main menu */
   statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
   [statusItem setMenu:_statusMenu];
-  [statusItem setImage:[NSImage imageNamed:@"icon16.png"]];
+  [statusItem setImage:[NSImage imageNamed:@"logo64x64.png"]];
   [statusItem setHighlightMode:YES];
   [statusItem setToolTip:appName];
+  [_statusMenu setAutoenablesItems:NO];
 
   /* Load alert comboboxes with system sounds */
   [_prefWindowSitAlertComboBox addItemsWithObjectValues:[NSSound systemSounds]];
@@ -42,6 +42,8 @@ NSString *appName;
 
   [_prefWindow setDelegate:self];
 }
+
+
 
 - (void)windowDidBecomeKey:(NSNotification *)notification
 {
