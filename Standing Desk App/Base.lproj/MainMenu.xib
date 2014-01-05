@@ -26,14 +26,21 @@
                         <action selector="onMenuSkip:" target="494" id="wJy-vA-Q5C"/>
                     </connections>
                 </menuItem>
+                <menuItem isSeparatorItem="YES" id="T0e-Np-JO0"/>
+                <menuItem title="About..." id="OeG-m5-NzR">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="orderFrontStandardAboutPanel:" target="-2" id="ieh-uk-hXe"/>
+                    </connections>
+                </menuItem>
                 <menuItem title="Preferences..." id="Ut9-Ag-hcn">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="makeKeyAndOrderFront:" target="371" id="Jif-F9-Qds"/>
                     </connections>
                 </menuItem>
-                <menuItem isSeparatorItem="YES" id="yfR-U1-H45"/>
-                <menuItem title="Quit" keyEquivalent="q" id="QMk-XI-lMF">
+                <menuItem title="Quit" id="QMk-XI-lMF">
+                    <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="onMenuQuit:" target="494" id="HSH-a6-k64"/>
                     </connections>
@@ -55,7 +62,7 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="General" identifier="1" id="aOY-2h-lJo">
-                                <view key="view" id="6nP-Vf-iX1">
+                                <view key="view" ambiguous="YES" id="6nP-Vf-iX1">
                                     <rect key="frame" x="10" y="33" width="487" height="339"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -239,7 +246,7 @@ Gw
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Alerts" identifier="2" id="W2h-1r-XMY">
-                                <view key="view" ambiguous="YES" id="Pjd-BB-gBS">
+                                <view key="view" id="Pjd-BB-gBS">
                                     <rect key="frame" x="10" y="33" width="487" height="339"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -288,7 +295,7 @@ Gw
                                         <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YPN-u4-Xh1">
                                             <rect key="frame" x="280" y="242" width="21" height="96"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <sliderCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="right" sliderType="linear" id="zr5-9y-wud"/>
+                                            <sliderCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="left" sliderType="linear" id="zr5-9y-wud"/>
                                             <connections>
                                                 <action selector="onSitAlertVolumeChange:" target="494" id="m8c-z8-kGF"/>
                                             </connections>
@@ -296,7 +303,7 @@ Gw
                                         <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CIK-Yp-pWm">
                                             <rect key="frame" x="280" y="128" width="21" height="96"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <sliderCell key="cell" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="right" sliderType="linear" id="8WN-Ov-kNE"/>
+                                            <sliderCell key="cell" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="left" sliderType="linear" id="8WN-Ov-kNE"/>
                                             <connections>
                                                 <action selector="onStandAlertVolumeChange:" target="494" id="X0T-BE-dFM"/>
                                             </connections>
