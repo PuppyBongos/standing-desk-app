@@ -27,6 +27,7 @@
         
         _actionState = SDAActionStateNone;
         _currentTimeLeft = 0;
+        _lastUpdateTime = 0;
         
         self.delegate = nil;
         
@@ -78,12 +79,21 @@
 // Fires every second
 -(void)updateTime {
     
-    if(_currentStatus != SDAStatusRunning)
+    if(_currentStatus != SDAStatusRunning) {
+        
+        // if we're not running, make sure time is still
+        // moving
+        _lastUpdateTime = [self now];
         return;
+    }
+    
+    // Find out how much time has occurred since last fire
+    NSTimeInterval now = [self now];
+    NSTimeInterval timeDelta = now - _lastUpdateTime;
     
     // Decrement time if there is time to be taken
     if(_currentTimeLeft > 0) {
-        _currentTimeLeft -= SDA_TIMER_INTERVAL;
+        _currentTimeLeft -= timeDelta;
     }
     
     // Forward each tick upwards
@@ -97,6 +107,8 @@
         // Only fire event once.
         [self fireStatusIntervalElapsed];
     }
+    
+    _lastUpdateTime = now;
     
     NSLog(@"%@", [self stringFromTimeLeft]);
 }
@@ -123,6 +135,7 @@
 -(void)scheduleSit {
     _actionState = SDAActionStateSitting;
     _currentTimeLeft = settings.sittingInterval;
+    _lastUpdateTime = [self now];
     
     _currentStatus = SDAStatusRunning;
     NSLog(@"Setting state to: SITTING for %d seconds", settings.sittingInterval);
@@ -131,6 +144,7 @@
 -(void)scheduleStand {
     _actionState = SDAActionStateStanding;
     _currentTimeLeft = settings.standingInterval;
+    _lastUpdateTime = [self now];
     
     _currentStatus = SDAStatusRunning;
     NSLog(@"Setting state to: STANDING for %d seconds", settings.standingInterval);
@@ -182,6 +196,10 @@
         _currentStatus = SDAStatusRunning;
     
     NSLog(@"Resuming Timer");
+}
+
+-(NSTimeInterval) now {
+   return [[NSDate dateWithTimeIntervalSinceNow:0] timeIntervalSinceReferenceDate];
 }
 
 -(NSString*)stringFromTimeLeft {

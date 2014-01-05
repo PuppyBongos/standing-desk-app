@@ -45,6 +45,7 @@ enum SDAActionState {
     
     // State time amount between time intervals
     NSTimeInterval _currentTimeLeft;
+    NSTimeInterval _lastUpdateTime;
     
     SDAActionState _actionState;
     SDAStatus _currentStatus;
