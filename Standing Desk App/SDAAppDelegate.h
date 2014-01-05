@@ -20,7 +20,7 @@
   NSStatusItem* statusItem;
 }
 
-// Main Program Menu Bar
+#pragma mark - Main Program Menu Bar
 @property (weak) IBOutlet NSMenu *statusMenu;
 
 @property (weak) IBOutlet NSMenuItem *actionMenuItem;
@@ -31,10 +31,10 @@
 @property (weak) IBOutlet NSMenuItem *prefMenuItem;
 @property (weak) IBOutlet NSMenuItem *quitMenuItem;
 
-// Preferences Window
+#pragma mark - Preferences Window
 @property (assign) IBOutlet NSWindow *prefWindow;
 
-// Preferences->General tab
+#pragma mark - Preferences->General tab
 @property (weak) IBOutlet NSComboBox *prefWindowStandTime;
 @property (weak) IBOutlet NSComboBox *prefWindowSitTime;
 @property (weak) IBOutlet NSComboBox *prefWindowIdleTime;
@@ -43,15 +43,12 @@
 @property (weak) IBOutlet NSButton *prefWindowCancelBtn;
 @property (weak) IBOutlet NSButton *prefWindowSaveBtn;
 
-// Preferences->Alerts tab
+#pragma mark - Preferences->Alerts tab
 @property (weak) IBOutlet NSComboBox *prefWindowSitAlertComboBox;
 @property (weak) IBOutlet NSSlider *prefWindowSitVolume;
 @property (weak) IBOutlet NSButton *prefWindowSitVolumeMute;
 @property (weak) IBOutlet NSComboBox *prefWindowStandAlertComboBox;
 @property (weak) IBOutlet NSSlider *prefWindowStandVolume;
 @property (weak) IBOutlet NSButton *prefWindowStandVolumeMute;
-
-- (void)updateActionMenuItem;
-- (void)updateTimerMenuItem;
 
 @end

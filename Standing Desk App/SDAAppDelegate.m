@@ -15,13 +15,7 @@
 SDAAppController* appController;
 NSString *appName;
 
--(NSString*)stringSecToMin:(int)seconds {
-  return [NSString stringWithFormat:@"%d", seconds / 60];
-}
--(int)intMinToSec:(int)minutes {
-  return minutes * 60;
-}
-
+#pragma mark - Event Handlers
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
   appName = NSBundle.mainBundle.infoDictionary  [@"CFBundleName"];
@@ -81,7 +75,7 @@ NSString *appName;
   _prefWindowStandVolumeMute.state = appController.settings.standingSettings.isMute ? NSOnState : NSOffState;
 }
 
-// Preferences->General
+#pragma mark - Preferences->General
 - (IBAction)onStandTimeComboBoxChange:(id)sender {
   appController.settings.standingInterval = [self intMinToSec:_prefWindowStandTime.integerValue];
 }
@@ -95,7 +89,7 @@ NSString *appName;
   appController.settings.snoozeTime = [self intMinToSec:_prefWindowSnoozeTime.integerValue];
 }
 
-// Preferences->Alerts
+#pragma mark - Preferences->Alerts
 - (IBAction)onSitAlertComboBoxChange:(id)sender {
   [[NSSound soundNamed:[sender stringValue]] play];
   appController.settings.sittingSettings.soundFile = [sender stringValue];
@@ -117,7 +111,7 @@ NSString *appName;
   appController.settings.standingSettings.isMute = [sender state] == NSOnState;
 }
 
-// Preferences Buttons
+#pragma mark - Preferences->Buttons
 - (IBAction)onPrefGeneralCancel:(id)sender {
   [appController loadSettings];
   [_prefWindow performClose:self];
@@ -136,7 +130,7 @@ NSString *appName;
   [_prefWindow performClose:self];
 }
 
-// Main Menu
+#pragma mark - Menu Items
 - (IBAction)onMenuPause:(id)sender {
   if (appController.currentStatus == SDAStatusRunning) {
     [appController pauseTimer];
@@ -161,7 +155,13 @@ NSString *appName;
   [[NSApplication sharedApplication] terminate:self];
 }
 
-// Private methods
+#pragma mark - Menu Item private methods
+- (NSString*)stringSecToMin:(int)seconds {
+  return [NSString stringWithFormat:@"%d", seconds / 60];
+}
+- (int)intMinToSec:(int)minutes {
+  return minutes * 60;
+}
 - (void)updateActionMenuItem {
   switch (appController.currentActionState) {
     case SDAActionStateSitting:
@@ -185,4 +185,5 @@ NSString *appName;
 - (void)updateTimerMenuItem {
   self.timerMenuItem.title = appController.stringFromTimeLeft;
 }
+
 @end
