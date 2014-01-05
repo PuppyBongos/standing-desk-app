@@ -86,19 +86,30 @@
         _currentTimeLeft -= SDA_TIMER_INTERVAL;
     }
     
+    // Forward each tick upwards
+    [self fireTickOccurred];
+    
     // Check if we've crossed the time threshold and
     // we're not already running
     if(_currentTimeLeft <= 0) {
         _currentStatus = SDAStatusWaiting;
         
         // Only fire event once.
-        [self onStatusIntervalElapsed];
+        [self fireStatusIntervalElapsed];
     }
     
     NSLog(@"%@", [self stringFromTimeLeft]);
 }
 
--(void)onStatusIntervalElapsed {
+-(void)fireTickOccurred {
+    if([self.delegate conformsToProtocol:@protocol(SDAApplicationDelegate)]) {
+        
+        // Fire the event to any listeners
+        [self.delegate runningTickDidOccur:self];
+    }
+}
+
+-(void)fireStatusIntervalElapsed {
     
     NSLog(@"Firing event: actionPeriodDidComplete");
     // Ensure that whoever subscribes to this also conforms to it

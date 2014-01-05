@@ -23,12 +23,19 @@ enum SDAActionState {
     SDAActionStateSitting   = 2
 } typedef SDAActionState;
 
+@class SDAAppController;
+
 #pragma mark - SDAApplicationDelegate
 @protocol SDAApplicationDelegate <NSObject>
 
+@optional
+/* Occurs at every tick of an active
+   running period. */
+-(void)runningTickDidOccur:(SDAAppController*)sender;
+
 @required
 /* Occurs when the interval for an action state (sitting or standing) has elapsed. */
--(void)actionPeriodDidComplete:(id)sender actionState:(SDAActionState)status;
+-(void)actionPeriodDidComplete:(SDAAppController*)sender actionState:(SDAActionState)status;
 
 @end
 
