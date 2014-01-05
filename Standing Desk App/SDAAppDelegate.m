@@ -19,10 +19,15 @@ NSString *appName;
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
   appName = NSBundle.mainBundle.infoDictionary  [@"CFBundleName"];
+
+    // Create our brain
   appController = [[SDAAppController alloc]init];
   [appController loadSettings];
   [appController setDelegate:self];
   [appController scheduleSit];
+    
+    // Hook into the user notification center
+    [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:(id<NSUserNotificationCenterDelegate>)self];
 
   /* set up main menu */
   statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
@@ -46,7 +51,7 @@ NSString *appName;
 }
 
 - (void)actionPeriodDidComplete:(SDAAppController *)sender actionState:(SDAActionState)status {
-  [self playSounds];
+  [self sendUserNotification];
   [self updateActionMenuItem];
   if (appController.currentActionState == SDAActionStateStanding) {
     [appController scheduleSit];
@@ -54,7 +59,6 @@ NSString *appName;
   else {
     [appController scheduleStand];
   }
-
 }
 
 - (void)runningTickDidOccur:(SDAAppController *)sender {
@@ -151,9 +155,17 @@ NSString *appName;
 }
 
 #pragma mark - Menu Item private methods
+/** 
+ * Convenience method that converts seconds to minutes 
+ * as a string to place into UI text fields.
+ */
 - (NSString*)stringSecToMin:(int)seconds {
   return [NSString stringWithFormat:@"%d", seconds / 60];
 }
+
+/**
+ * Converts minutes to seconds.
+ */
 - (int)intMinToSec:(int)minutes {
   return minutes * 60;
 }
@@ -182,6 +194,10 @@ NSString *appName;
 - (void)updateTimerMenuItem {
   self.timerMenuItem.title = appController.stringFromTimeLeft;
 }
+
+/**
+ *  Plays a sound for the current action state.
+ */
 - (void)playSounds {
   switch (appController.currentActionState) {
     case SDAActionStateSitting:
@@ -193,6 +209,43 @@ NSString *appName;
     default:
       break;
   }
+}
+
+/** 
+ * Sends a notification alert to the OSX Notification indicating the current status and action a user should take.
+ */
+-(void)sendUserNotification {
+    
+    
+    NSString *messageFormat = @"Okay, begin %@!";
+    NSString *action = nil;
+    NSString *iconName = nil;
+    NSString *soundName = nil;
+    
+    switch (appController.currentActionState) {
+        case SDAActionStateSitting:
+            action = SITTING_ACTION_TEXT;
+            iconName = SITTING_MENU_ICON;
+            soundName = appController.settings.sittingSettings.soundFile;
+            break;
+        case SDAActionStateStanding:
+            action = STANDING_ACTION_TEXT;
+            iconName = STANDING_MENU_ICON;
+            soundName = appController.settings.standingSettings.soundFile;
+            break;
+        default:
+            // If this is an unexpected state, do not
+            // send any message
+            return;
+    }
+    
+    NSUserNotification *alert = [[NSUserNotification alloc]init];
+    alert.title = @"Time to switch it up!";
+    alert.subtitle = [NSString stringWithFormat:messageFormat, action];
+    alert.soundName = soundName;
+    alert.contentImage = [NSImage imageNamed:iconName];
+    
+    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:alert];
 }
 
 @end

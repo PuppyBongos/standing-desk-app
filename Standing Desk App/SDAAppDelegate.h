@@ -16,7 +16,7 @@
 #define PAUSED_ACTION_TEXT @"Paused"
 #define ERROR_STATUS_TEXT @"Error"
 
-@interface SDAAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate, SDAApplicationDelegate, NSUserNotificationCenterDelegate>
+@interface SDAAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate, SDAApplicationDelegate>
 
 {
   NSStatusItem* statusItem;
