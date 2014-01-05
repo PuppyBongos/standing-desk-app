@@ -14,10 +14,10 @@
         <customObject id="-3" userLabel="Application"/>
         <menu title="Main Menu" id="BiC-t7-sFC">
             <items>
-                <menuItem title="ACTION" id="0aW-wa-CrI">
+                <menuItem title="Sitting" id="0aW-wa-CrI">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem title="TIMER" id="Hhb-0G-k7c">
+                <menuItem title="00:00:00" id="Hhb-0G-k7c">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="VfK-f9-Nuh"/>
