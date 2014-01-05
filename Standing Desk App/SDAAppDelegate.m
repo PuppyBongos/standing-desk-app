@@ -44,6 +44,7 @@ NSString *appName;
 }
 
 - (void)actionPeriodDidComplete:(SDAAppController *)sender actionState:(SDAActionState)status {
+  [self playSounds];
   [self updateActionMenuItem];
   if (appController.currentActionState == SDAActionStateStanding) {
     [appController scheduleSit];
@@ -184,6 +185,18 @@ NSString *appName;
 }
 - (void)updateTimerMenuItem {
   self.timerMenuItem.title = appController.stringFromTimeLeft;
+}
+- (void)playSounds {
+  switch (appController.currentActionState) {
+    case SDAActionStateSitting:
+      [[NSSound soundNamed:appController.settings.sittingSettings.soundFile] play];
+      break;
+    case SDAActionStateStanding:
+      [[NSSound soundNamed:appController.settings.standingSettings.soundFile] play];
+      break;
+    default:
+      break;
+  }
 }
 
 @end
