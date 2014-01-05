@@ -15,14 +15,14 @@
 		<key>Volume</key>
 		<real>0.5</real>
 		<key>SoundFile</key>
-		<string>Sound.wav</string>
+		<string></string>
 	</dict>
 	<key>SitAlert</key>
 	<dict>
 		<key>Volume</key>
 		<integer>1</integer>
 		<key>SoundFile</key>
-		<string>Sound.wav</string>
+		<string></string>
 	</dict>
 </dict>
 </plist>
