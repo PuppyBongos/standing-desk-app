@@ -27,6 +27,7 @@ NSString *appName;
   appName = NSBundle.mainBundle.infoDictionary  [@"CFBundleName"];
   appController = [[SDAAppController alloc]init];
   [appController loadSettings];
+    [appController scheduleSit];
 
   [_statusMenu setAutoenablesItems:NO];
 
