@@ -69,6 +69,11 @@ NSSound *standSound;
 
 - (void)windowDidBecomeKey:(NSNotification *)notification
 {
+  // Preferences Buttons
+//  [_prefWindowCancelBtn setBezelStyle:NSRoundedBezelStyle];
+//  [_prefWindow setDefaultButtonCell:[_prefWindowCancelBtn cell]];
+//  [_prefWindowSaveBtn setBezelStyle:NSRoundedBezelStyle];
+
   // Preferences->General
   [_prefWindowStandTime setStringValue:[self stringSecToMin:appController.settings.standingInterval]];
   [_prefWindowSitTime setStringValue:[self stringSecToMin:appController.settings.sittingInterval]];
@@ -123,20 +128,11 @@ NSSound *standSound;
 }
 
 #pragma mark - Preferences->Buttons
-- (IBAction)onPrefGeneralCancel:(id)sender {
+- (IBAction)onPrefCancel:(id)sender {
   [appController loadSettings];
   [_prefWindow performClose:self];
 }
-- (IBAction)onPrefGeneralSave:(id)sender {
-  [appController saveSettings];
-  [_prefWindow performClose:self];
-}
-
-- (IBAction)onPrefAlertsCancel:(id)sender {
-  [appController loadSettings];
-  [_prefWindow performClose:self];
-}
-- (IBAction)onPrefAlertsSave:(id)sender {
+- (IBAction)onPrefSave:(id)sender {
   [appController saveSettings];
   [_prefWindow performClose:self];
 }

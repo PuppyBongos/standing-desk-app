@@ -35,15 +35,14 @@
 
 #pragma mark - Preferences Window
 @property (assign) IBOutlet NSWindow *prefWindow;
+@property (weak) IBOutlet NSButton *prefWindowCancelBtn;
+@property (weak) IBOutlet NSButton *prefWindowSaveBtn;
 
 #pragma mark - Preferences->General tab
 @property (weak) IBOutlet NSComboBox *prefWindowStandTime;
 @property (weak) IBOutlet NSComboBox *prefWindowSitTime;
 @property (weak) IBOutlet NSComboBox *prefWindowIdleTime;
 @property (weak) IBOutlet NSComboBox *prefWindowSnoozeTime;
-
-@property (weak) IBOutlet NSButton *prefWindowCancelBtn;
-@property (weak) IBOutlet NSButton *prefWindowSaveBtn;
 
 #pragma mark - Preferences->Alerts tab
 @property (weak) IBOutlet NSComboBox *prefWindowSitAlertComboBox;
