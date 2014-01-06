@@ -14,6 +14,8 @@
 
 SDAAppController* appController;
 NSString *appName;
+NSSound *sitSound;
+NSSound *standSound;
 
 #pragma mark - Event Handlers
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -96,18 +98,28 @@ NSString *appName;
 
 #pragma mark - Preferences->Alerts
 - (IBAction)onSitAlertComboBoxChange:(id)sender {
-  [[NSSound soundNamed:[sender stringValue]] play];
   appController.settings.sittingSettings.soundFile = [sender stringValue];
+  sitSound = [NSSound soundNamed:[_prefWindowSitAlertComboBox stringValue]];
+  [sitSound setVolume:appController.settings.sittingSettings.volume];
+  [sitSound play];
 }
 - (IBAction)onSitAlertVolumeChange:(id)sender {
   appController.settings.sittingSettings.volume = [sender floatValue];
+  sitSound = [NSSound soundNamed:[_prefWindowSitAlertComboBox stringValue]];
+  [sitSound setVolume:appController.settings.sittingSettings.volume];
+  [sitSound play];
 }
 - (IBAction)onStandAlertComboBoxChange:(id)sender {
-  [[NSSound soundNamed:[sender stringValue]] play];
   appController.settings.standingSettings.soundFile = [sender stringValue];
+  standSound = [NSSound soundNamed:[_prefWindowStandAlertComboBox stringValue]];
+  [standSound setVolume:appController.settings.standingSettings.volume];
+  [standSound play];
 }
 - (IBAction)onStandAlertVolumeChange:(id)sender {
   appController.settings.standingSettings.volume = [sender floatValue];
+  standSound = [NSSound soundNamed:[_prefWindowStandAlertComboBox stringValue]];
+  [standSound setVolume:appController.settings.standingSettings.volume];
+  [standSound play];
 }
 
 #pragma mark - Preferences->Buttons
@@ -199,12 +211,18 @@ NSString *appName;
  *  Plays a sound for the current action state.
  */
 - (void)playSounds {
+  NSSound *sitSound = [NSSound soundNamed:appController.settings.sittingSettings.soundFile];
+  NSSound *standSound = [NSSound soundNamed:appController.settings.standingSettings.soundFile];
+
+  [sitSound setVolume:appController.settings.sittingSettings.volume];
+  [standSound setVolume:appController.settings.standingSettings.volume];
+
   switch (appController.currentActionState) {
     case SDAActionStateSitting:
-      [[NSSound soundNamed:appController.settings.sittingSettings.soundFile] play];
+      [sitSound play];
       break;
     case SDAActionStateStanding:
-      [[NSSound soundNamed:appController.settings.standingSettings.soundFile] play];
+      [standSound play];
       break;
     default:
       break;
