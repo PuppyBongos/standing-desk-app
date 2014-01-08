@@ -168,11 +168,16 @@ NSSound *standSound;
 }
 
 /**
- * Converts minutes to seconds.
+ * Convenience method that converts minutes to seconds
+ * to add to app settings.
  */
 - (int)intMinToSec:(int)minutes {
   return minutes * 60;
 }
+
+/**
+ * Updates the main menu status and timer
+ */
 - (void)updateActionMenuItem {
   switch (appController.currentActionState) {
     case SDAActionStateSitting:
