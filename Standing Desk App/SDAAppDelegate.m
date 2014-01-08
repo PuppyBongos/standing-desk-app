@@ -104,21 +104,27 @@ NSSound *standSound;
 - (IBAction)onSitAlertComboBoxChange:(id)sender {
   sitSound = [NSSound soundNamed:[_prefWindowSitAlertComboBox stringValue]];
   [sitSound setVolume:appController.settings.sittingSettings.volume];
+  [sitSound stop];
   [sitSound play];
 }
 - (IBAction)onSitAlertVolumeChange:(id)sender {
   sitSound = [NSSound soundNamed:[_prefWindowSitAlertComboBox stringValue]];
+  appController.settings.sittingSettings.volume = [_prefWindowSitVolume floatValue];
   [sitSound setVolume:appController.settings.sittingSettings.volume];
+  [sitSound stop];
   [sitSound play];
 }
 - (IBAction)onStandAlertComboBoxChange:(id)sender {
   standSound = [NSSound soundNamed:[_prefWindowStandAlertComboBox stringValue]];
   [standSound setVolume:appController.settings.standingSettings.volume];
+  [standSound stop];
   [standSound play];
 }
 - (IBAction)onStandAlertVolumeChange:(id)sender {
   standSound = [NSSound soundNamed:[_prefWindowStandAlertComboBox stringValue]];
+  appController.settings.standingSettings.volume = [_prefWindowStandVolume floatValue];
   [standSound setVolume:appController.settings.standingSettings.volume];
+  [standSound stop];
   [standSound play];
 }
 
