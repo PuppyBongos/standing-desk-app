@@ -25,6 +25,8 @@
 		553F958C186FA0B800BD36BB /* SDAAppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 553F958B186FA0B800BD36BB /* SDAAppSettings.m */; };
 		553F958F186FA19D00BD36BB /* SDAAlertSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 553F958E186FA19D00BD36BB /* SDAAlertSetting.m */; };
 		553F9591186FD3B700BD36BB /* sda_config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 553F9590186FD3B700BD36BB /* sda_config.plist */; };
+		55A149D5187DF18800EFA8A3 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55A149D4187DF18800EFA8A3 /* IOKit.framework */; };
+		55A149D8187DF1AC00EFA8A3 /* SDAIdleDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A149D7187DF1AC00EFA8A3 /* SDAIdleDetector.m */; };
 		55B5A957187A067500C7CDCD /* SDAAppDelegate+Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B5A956187A067500C7CDCD /* SDAAppDelegate+Notifications.m */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +71,9 @@
 		553F958D186FA19D00BD36BB /* SDAAlertSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAAlertSetting.h; sourceTree = "<group>"; };
 		553F958E186FA19D00BD36BB /* SDAAlertSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDAAlertSetting.m; sourceTree = "<group>"; };
 		553F9590186FD3B700BD36BB /* sda_config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sda_config.plist; sourceTree = "<group>"; };
+		55A149D4187DF18800EFA8A3 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		55A149D6187DF1AC00EFA8A3 /* SDAIdleDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAIdleDetector.h; sourceTree = "<group>"; };
+		55A149D7187DF1AC00EFA8A3 /* SDAIdleDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDAIdleDetector.m; sourceTree = "<group>"; };
 		55B5A955187A067500C7CDCD /* SDAAppDelegate+Notifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDAAppDelegate+Notifications.h"; sourceTree = "<group>"; };
 		55B5A956187A067500C7CDCD /* SDAAppDelegate+Notifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDAAppDelegate+Notifications.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55A149D5187DF18800EFA8A3 /* IOKit.framework in Frameworks */,
 				27F1D9B9186174B10087FC3A /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,6 +124,7 @@
 		27F1D9B7186174B10087FC3A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				55A149D4187DF18800EFA8A3 /* IOKit.framework */,
 				27F1D9B8186174B10087FC3A /* Cocoa.framework */,
 				27F1D9D7186174B10087FC3A /* XCTest.framework */,
 				27F1D9BA186174B10087FC3A /* Other Frameworks */,
@@ -153,6 +160,8 @@
 				553F958D186FA19D00BD36BB /* SDAAlertSetting.h */,
 				553F958E186FA19D00BD36BB /* SDAAlertSetting.m */,
 				553F9590186FD3B700BD36BB /* sda_config.plist */,
+				55A149D6187DF1AC00EFA8A3 /* SDAIdleDetector.h */,
+				55A149D7187DF1AC00EFA8A3 /* SDAIdleDetector.m */,
 			);
 			path = "Standing Desk App";
 			sourceTree = "<group>";
@@ -302,6 +311,7 @@
 				553F958F186FA19D00BD36BB /* SDAAlertSetting.m in Sources */,
 				55B5A957187A067500C7CDCD /* SDAAppDelegate+Notifications.m in Sources */,
 				27F1D9C5186174B10087FC3A /* main.m in Sources */,
+				55A149D8187DF1AC00EFA8A3 /* SDAIdleDetector.m in Sources */,
 				553F958C186FA0B800BD36BB /* SDAAppSettings.m in Sources */,
 				553F9589186F9FF300BD36BB /* SDAAppController.m in Sources */,
 				27F1D9CC186174B10087FC3A /* SDAAppDelegate.m in Sources */,

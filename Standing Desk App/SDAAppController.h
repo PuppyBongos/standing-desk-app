@@ -29,12 +29,25 @@ enum SDAActionState {
 @protocol SDAApplicationDelegate <NSObject>
 
 @optional
-/* Occurs at every tick of an active
-   running period. */
+/**
+  * Occurs at every tick of an active running period. 
+ */
 -(void)runningTickDidOccur:(SDAAppController*)sender;
 
+/** 
+  *   Occurs when the system has been idle longer than the user Idle setting timeout threshold. 
+ */
+-(void)appDidPauseForIdle:(SDAAppController*)sender;
+
+/**
+ *   Occurs when the user has awaken the system during the application's idle state.
+ */
+-(void)appDidResumeFromIdle:(SDAAppController*)sender;
+
 @required
-/* Occurs when the interval for an action state (sitting or standing) has elapsed. */
+/**
+  * Occurs when the interval for an action state (sitting or standing) has elapsed.
+ */
 -(void)actionPeriodDidComplete:(SDAAppController*)sender actionState:(SDAActionState)status;
 
 @end
@@ -51,40 +64,75 @@ enum SDAActionState {
     SDAStatus _currentStatus;
 }
 
+#pragma mark - Properties
+
+/** Gets the current action state (standing/sitting) of the app
+ */
 @property (readonly) SDAActionState currentActionState;
 
+/**
+ * Gets the current status (running/waiting/idle) of the app
+ */
 @property (readonly) SDAStatus currentStatus;
 
-/* Settings for the Standing Desk App  */
+/**
+ * Sets or gets the settings for the Standing Desk App
+ */
 @property (strong) SDAAppSettings* settings;
 
+/**
+  * Gets the amount of time left until the next sit/stand event.
+ */
 @property (readonly) NSTimeInterval currentTimeLeft;
 
+/**
+ * Sets or gets the delegate subscribing to this controller's events.
+ */
 @property (strong) id<SDAApplicationDelegate> delegate;
 
-/* Saves the current settings to disk */
+#pragma mark - Operations
+/**
+ * Saves the current settings to disk 
+ */
 -(void)saveSettings;
 
-/* Reloads the settings from disk */
+/**
+ * Reloads the settings from disk
+ */
 -(void)loadSettings;
 
-/* Starts a period of sitting */
+/**
+ * Starts a period of sitting 
+ */
 -(void)scheduleSit;
 
-/* Starts a period of standing */
+/**
+ * Starts a period of standing
+ */
 -(void)scheduleStand;
 
-/* Adds a snooze period to the current period's time and resumes the current action period. */
+/**
+  * Adds a snooze period to the current period's time and resumes the current action period. 
+ */
 -(void)snooze;
 
-/* Skips to the next period state if running, or repeats the state if the controller is waiting. */
+/**
+  * Skips to the next period state if running, or repeats the state if the controller is waiting. 
+ */
 -(void)skipToNext;
 
-/* Suspends the timer period countdown */
+/** 
+  * Suspends the timer period countdown 
+ */
 -(void)pauseTimer;
 
-/* Resumes the timer period countdown, if any time is left. */
+/**
+  * Resumes the timer period countdown, if any time is left. 
+ */
 -(void)resumeTimer;
 
+/**
+ * Returns a formatted string of the amount of time left til the next stand/sit event.
+ */
 -(NSString*)stringFromTimeLeft;
 @end

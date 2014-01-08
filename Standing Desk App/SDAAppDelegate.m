@@ -67,6 +67,14 @@ NSSound *standSound;
   [self updateTimerMenuItem];
 }
 
+-(void)appDidPauseForIdle:(SDAAppController *)sender {
+    // Actions to occur when system idle threshold is met
+}
+
+-(void)appDidResumeFromIdle:(SDAAppController *)sender {
+    // Actions to occur when user breaks system idle state
+}
+
 - (void)windowDidBecomeKey:(NSNotification *)notification
 {
   // Preferences Buttons
