@@ -74,6 +74,8 @@ NSSound *standSound;
 //  [_prefWindow setDefaultButtonCell:[_prefWindowCancelBtn cell]];
 //  [_prefWindowSaveBtn setBezelStyle:NSRoundedBezelStyle];
 
+  NSLog(@"pref window active and at level: %ld", (long)[_prefWindow level]);
+
   // Preferences->General
   [_prefWindowStandTime setStringValue:[self stringSecToMin:appController.settings.standingInterval]];
   [_prefWindowSitTime setStringValue:[self stringSecToMin:appController.settings.sittingInterval]];
