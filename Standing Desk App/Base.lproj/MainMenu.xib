@@ -70,7 +70,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="480" height="316"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <tabView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NgU-pb-nfT">
+                    <tabView fixedFrame="YES" initialItem="aOY-2h-lJo" translatesAutoresizingMaskIntoConstraints="NO" id="NgU-pb-nfT">
                         <rect key="frame" x="-8" y="31" width="496" height="279"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <font key="font" metaFont="system"/>
@@ -235,7 +235,7 @@
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Alerts" identifier="2" id="W2h-1r-XMY">
-                                <view key="view" ambiguous="YES" id="Pjd-BB-gBS">
+                                <view key="view" id="Pjd-BB-gBS">
                                     <rect key="frame" x="10" y="33" width="476" height="233"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -318,6 +318,25 @@
                                     </subviews>
                                 </view>
                             </tabViewItem>
+                            <tabViewItem label="Login" identifier="3" id="sXO-JD-Qxv">
+                                <view key="view" ambiguous="YES" id="Fbe-Hj-e88">
+                                    <rect key="frame" x="10" y="33" width="476" height="233"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button appearanceType="lightContent" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uU-1q-tKB">
+                                            <rect key="frame" x="120" y="114" width="236" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Start Standing Desk App at Login?" bezelStyle="regularSquare" imagePosition="left" inset="2" id="C72-k8-p95">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="onLoginToggleChange:" target="494" id="wfT-nb-HN3"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </view>
+                            </tabViewItem>
                         </tabViewItems>
                     </tabView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N0M-WZ-c4w">
@@ -357,6 +376,7 @@ DQ
                 <outlet property="prefWindow" destination="371" id="9Ow-fG-qRV"/>
                 <outlet property="prefWindowCancelBtn" destination="n8w-wA-Pwg" id="ZQt-Lq-A6X"/>
                 <outlet property="prefWindowIdleTime" destination="HwS-Il-yRU" id="cQo-u9-otq"/>
+                <outlet property="prefWindowLoginToggle" destination="4uU-1q-tKB" id="tgP-0R-PdZ"/>
                 <outlet property="prefWindowSaveBtn" destination="N0M-WZ-c4w" id="Myf-NX-RVD"/>
                 <outlet property="prefWindowSitAlert" destination="Pjd-BB-gBS" id="fR1-9p-7YW"/>
                 <outlet property="prefWindowSitAlertComboBox" destination="VPe-WK-mA8" id="Voe-YA-xmM"/>

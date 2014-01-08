@@ -50,4 +50,10 @@
 @property (weak) IBOutlet NSComboBox *prefWindowStandAlertComboBox;
 @property (weak) IBOutlet NSSlider *prefWindowStandVolume;
 
+#pragma mark - Preferences->Login tab
+@property (weak) IBOutlet NSButton *prefWindowLoginToggle;
+
+- (void)addAppAsLoginItem;
+- (void)deleteAppFromLoginItem;
+
 @end

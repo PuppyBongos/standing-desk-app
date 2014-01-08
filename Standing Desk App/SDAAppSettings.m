@@ -16,6 +16,7 @@
 @synthesize standingInterval;
 @synthesize idlePauseTime;
 @synthesize snoozeTime;
+@synthesize isLoginItem;
 
 -(id)init {
     self = [super init];
@@ -35,7 +36,8 @@
     settings.standingInterval = SDA_DEFAULT_STAND_INTERVAL;
     settings.idlePauseTime = SDA_DEFAULT_IDLE_TIME;
     settings.snoozeTime = SDA_DEFAULT_SNOOZE_TIME;
-    
+    settings.isLoginItem = false;
+
     return settings;
 }
 
@@ -51,7 +53,9 @@
              forKey:@"IdlePauseTime"];
     [dict setValue:[NSNumber numberWithInt:snoozeTime]
             forKey:@"SnoozeTime"];
-    
+    [dict setValue:[NSNumber numberWithBool:isLoginItem]
+            forKey:@"LoginItemStatus"];
+
     // Serialize the internal structures
     [dict setValue:[self.sittingSettings toDictionary] forKey:@"SitAlert"];
     [dict setValue:[self.standingSettings toDictionary] forKey:@"StandAlert"];
@@ -90,7 +94,9 @@
                                objectForKey:@"IdlePauseTime"] intValue];
         
         settings.snoozeTime = [[plistContents objectForKey:@"SnoozeTime"] intValue];
-        
+
+        settings.isLoginItem = [[plistContents objectForKey:@"LoginItemStatus"] boolValue];
+
     } else {
         NSLog(@"SDAAppSettings: Could not open file: %@.", error);        
     }

@@ -35,6 +35,9 @@
 /* Amount of time, in seconds, to add to a timer if a user chooses to snooze during a state. */
 @property int snoozeTime;
 
+/* Whether the app should register itself as a Login Item for the current user. */
+@property bool isLoginItem;
+
 /* Settings for Stand Alerts */
 @property (strong) SDAAlertSetting* standingSettings;
 

@@ -85,6 +85,9 @@ NSSound *standSound;
   [_prefWindowSitVolume setFloatValue:appController.settings.sittingSettings.volume];
   [_prefWindowStandAlertComboBox setStringValue:appController.settings.standingSettings.soundFile];
   [_prefWindowStandVolume setFloatValue:appController.settings.standingSettings.volume];
+
+  // Preferences->Login
+  _prefWindowLoginToggle.state = appController.settings.isLoginItem ? NSOnState : NSOffState;
 }
 
 #pragma mark - Preferences->General
@@ -126,6 +129,11 @@ NSSound *standSound;
   [standSound setVolume:appController.settings.standingSettings.volume];
   [standSound stop];
   [standSound play];
+}
+
+#pragma mark - Preferences->Login
+- (IBAction)onLoginToggleChange:(id)sender {
+
 }
 
 #pragma mark - Preferences->Buttons
@@ -224,6 +232,15 @@ NSSound *standSound;
   appController.settings.sittingSettings.volume = [_prefWindowSitVolume floatValue];
   appController.settings.standingSettings.soundFile = [_prefWindowStandAlertComboBox stringValue];
   appController.settings.standingSettings.volume = [_prefWindowStandVolume floatValue];
+
+  if ([_prefWindowLoginToggle state] == NSOnState)
+  {
+    appController.settings.isLoginItem = true;
+    [self addAppAsLoginItem];
+  } else if ([_prefWindowLoginToggle state] == NSOffState) {
+    appController.settings.isLoginItem = false;
+    [self deleteAppFromLoginItem];
+  }
 }
 
 /**
@@ -285,4 +302,63 @@ NSSound *standSound;
     [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:alert];
 }
 
+/**
+ *  Adds and removes app from current user's
+    Login Items depending on app setting checkbox
+ */
+-(void)addAppAsLoginItem {
+	NSString * appPath = [[NSBundle mainBundle] bundlePath];
+
+	// This will retrieve the path for the application
+	// For example, /Applications/test.app
+	CFURLRef url = (__bridge CFURLRef)[NSURL fileURLWithPath:appPath];
+
+	// Create a reference to the shared file list.
+  // We are adding it to the current user only.
+  // If we want to add it all users, use
+  // kLSSharedFileListGlobalLoginItems instead of
+  //kLSSharedFileListSessionLoginItems
+	LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL,
+                                                          kLSSharedFileListSessionLoginItems, NULL);
+	if (loginItems) {
+		//Insert an item to the list.
+		LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(loginItems,
+                                                                 kLSSharedFileListItemLast, NULL, NULL,
+                                                                 url, NULL, NULL);
+		if (item){
+			CFRelease(item);
+    }
+	}
+
+	CFRelease(loginItems);
+}
+-(void)deleteAppFromLoginItem {
+	NSString * appPath = [[NSBundle mainBundle] bundlePath];
+
+	// This will retrieve the path for the application
+	// For example, /Applications/test.app
+	CFURLRef url = (CFURLRef)CFBridgingRetain([NSURL fileURLWithPath:appPath]);
+
+	// Create a reference to the shared file list.
+	LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL,
+                                                          kLSSharedFileListSessionLoginItems, NULL);
+
+	if (loginItems) {
+		UInt32 seedValue;
+		//Retrieve the list of Login Items and cast them to
+		// a NSArray so that it will be easier to iterate.
+		NSArray  *loginItemsArray = (NSArray *)CFBridgingRelease(LSSharedFileListCopySnapshot(loginItems, &seedValue));
+		for(int i = 0; i< [loginItemsArray count]; i++){
+			LSSharedFileListItemRef itemRef = (LSSharedFileListItemRef)CFBridgingRetain([loginItemsArray
+                                                                  objectAtIndex:i]);
+			//Resolve the item with URL
+			if (LSSharedFileListItemResolve(itemRef, 0, (CFURLRef*) &url, NULL) == noErr) {
+				NSString * urlPath = [(NSURL*)CFBridgingRelease(url) path];
+				if ([urlPath compare:appPath] == NSOrderedSame){
+					LSSharedFileListItemRemove(loginItems,itemRef);
+				}
+			}
+		}
+	}
+}
 @end
