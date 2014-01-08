@@ -89,39 +89,34 @@ NSSound *standSound;
 
 #pragma mark - Preferences->General
 - (IBAction)onStandTimeComboBoxChange:(id)sender {
-  appController.settings.standingInterval = [self intMinToSec:_prefWindowStandTime.integerValue];
+
 }
 - (IBAction)onSitTimeComboBoxChange:(id)sender {
-  appController.settings.sittingInterval = [self intMinToSec:_prefWindowSitTime.integerValue];
+
 }
 - (IBAction)onIdleTimeComboBoxChange:(id)sender {
-  appController.settings.idlePauseTime = [self intMinToSec:_prefWindowIdleTime.integerValue];
+
 }
 - (IBAction)onSnoozeTimeComboBoxChange:(id)sender {
-  appController.settings.snoozeTime = [self intMinToSec:_prefWindowSnoozeTime.integerValue];
-}
+  }
 
 #pragma mark - Preferences->Alerts
 - (IBAction)onSitAlertComboBoxChange:(id)sender {
-  appController.settings.sittingSettings.soundFile = [sender stringValue];
   sitSound = [NSSound soundNamed:[_prefWindowSitAlertComboBox stringValue]];
   [sitSound setVolume:appController.settings.sittingSettings.volume];
   [sitSound play];
 }
 - (IBAction)onSitAlertVolumeChange:(id)sender {
-  appController.settings.sittingSettings.volume = [sender floatValue];
   sitSound = [NSSound soundNamed:[_prefWindowSitAlertComboBox stringValue]];
   [sitSound setVolume:appController.settings.sittingSettings.volume];
   [sitSound play];
 }
 - (IBAction)onStandAlertComboBoxChange:(id)sender {
-  appController.settings.standingSettings.soundFile = [sender stringValue];
   standSound = [NSSound soundNamed:[_prefWindowStandAlertComboBox stringValue]];
   [standSound setVolume:appController.settings.standingSettings.volume];
   [standSound play];
 }
 - (IBAction)onStandAlertVolumeChange:(id)sender {
-  appController.settings.standingSettings.volume = [sender floatValue];
   standSound = [NSSound soundNamed:[_prefWindowStandAlertComboBox stringValue]];
   [standSound setVolume:appController.settings.standingSettings.volume];
   [standSound play];
@@ -133,6 +128,7 @@ NSSound *standSound;
   [_prefWindow performClose:self];
 }
 - (IBAction)onPrefSave:(id)sender {
+  [self saveUIToAppSettings];
   [appController saveSettings];
   [_prefWindow performClose:self];
 }
@@ -201,6 +197,22 @@ NSSound *standSound;
 }
 - (void)updateTimerMenuItem {
   self.timerMenuItem.title = appController.stringFromTimeLeft;
+}
+
+/**
+ *  Saves UI preference values to
+    local appsettings values
+ */
+- (void)saveUIToAppSettings {
+  appController.settings.standingInterval = [self intMinToSec:_prefWindowStandTime.integerValue];
+  appController.settings.sittingInterval = [self intMinToSec:_prefWindowSitTime.integerValue];
+  appController.settings.idlePauseTime = [self intMinToSec:_prefWindowIdleTime.integerValue];
+  appController.settings.snoozeTime = [self intMinToSec:_prefWindowSnoozeTime.integerValue];
+
+  appController.settings.sittingSettings.soundFile = [_prefWindowSitAlertComboBox stringValue];
+  appController.settings.sittingSettings.volume = [_prefWindowSitVolume floatValue];
+  appController.settings.standingSettings.soundFile = [_prefWindowStandAlertComboBox stringValue];
+  appController.settings.standingSettings.volume = [_prefWindowStandVolume floatValue];
 }
 
 /**
