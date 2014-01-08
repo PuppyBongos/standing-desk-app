@@ -74,8 +74,6 @@ NSSound *standSound;
 //  [_prefWindow setDefaultButtonCell:[_prefWindowCancelBtn cell]];
 //  [_prefWindowSaveBtn setBezelStyle:NSRoundedBezelStyle];
 
-  NSLog(@"pref window active and at level: %ld", (long)[_prefWindow level]);
-
   // Preferences->General
   [_prefWindowStandTime setStringValue:[self stringSecToMin:appController.settings.standingInterval]];
   [_prefWindowSitTime setStringValue:[self stringSecToMin:appController.settings.sittingInterval]];
@@ -168,6 +166,10 @@ NSSound *standSound;
 - (IBAction)onMenuSkip:(id)sender {
   [appController skipToNext];
   [self updateActionMenuItem];
+}
+- (IBAction)onMenuPref:(id)sender {
+  [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+  [_prefWindow makeKeyAndOrderFront:sender];
 }
 - (IBAction)onMenuQuit:(id)sender {
   NSLog(@"%@ quit", appName);
