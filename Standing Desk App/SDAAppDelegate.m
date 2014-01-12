@@ -80,7 +80,8 @@ NSSound *standSound;
     // Actions to occur when system idle threshold is met
 }
 
-- (void)appDidResumeFromIdle:(SDAAppController *)sender {
+-(void)appDidResumeFromIdle:(SDAAppController *)sender {
+    
     // Actions to occur when user breaks system idle state
     NSString *action = nil;
     if(appController.currentActionState == SDAActionStateSitting) {
@@ -100,7 +101,18 @@ NSSound *standSound;
     }
 }
 
-- (void)windowDidBecomeKey:(NSNotification *)notification {
+- (void)windowDidBecomeKey:(NSNotification *)notification
+{
+    // Preferences Buttons
+    // Meant to force 'Save' button to behave as
+    // default. Fixed in xib.
+    /*
+    [_prefWindowSaveBtn setBezelStyle:NSRoundedBezelStyle];
+    [_prefWindow setDefaultButtonCell:[_prefWindowSaveBtn cell]];
+    [_prefWindowSaveBtn setKeyEquivalent:@"\r"];
+    [_prefWindowSaveBtn setNeedsDisplay:YES];
+   */
+    
   // Preferences->General
   [_prefWindowStandTime setStringValue:[self stringSecToMin:appController.settings.standingInterval]];
   [_prefWindowSitTime setStringValue:[self stringSecToMin:appController.settings.sittingInterval]];
