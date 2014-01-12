@@ -61,22 +61,22 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="Standing Desk App Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" appearanceType="lightContent" animationBehavior="default" id="371">
+        <window title="Standing Desk App Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" appearanceType="aqua" animationBehavior="default" id="371">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="480" height="316"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1600" height="878"/>
             <view key="contentView" id="372">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="316"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <tabView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NgU-pb-nfT">
+                    <tabView appearanceType="lightContent" fixedFrame="YES" initialItem="aOY-2h-lJo" translatesAutoresizingMaskIntoConstraints="NO" id="NgU-pb-nfT">
                         <rect key="frame" x="-8" y="31" width="496" height="279"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="General" identifier="1" id="aOY-2h-lJo">
-                                <view key="view" id="6nP-Vf-iX1">
+                                <view key="view" ambiguous="YES" id="6nP-Vf-iX1">
                                     <rect key="frame" x="10" y="33" width="476" height="233"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -246,7 +246,7 @@
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Alerts" identifier="2" id="W2h-1r-XMY">
-                                <view key="view" ambiguous="YES" id="Pjd-BB-gBS">
+                                <view key="view" id="Pjd-BB-gBS">
                                     <rect key="frame" x="10" y="33" width="476" height="233"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -295,7 +295,7 @@
                                         <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YPN-u4-Xh1">
                                             <rect key="frame" x="280" y="132" width="21" height="96"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <sliderCell key="cell" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="left" sliderType="linear" id="zr5-9y-wud"/>
+                                            <sliderCell key="cell" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="right" sliderType="linear" id="zr5-9y-wud"/>
                                             <connections>
                                                 <action selector="onSitAlertVolumeChange:" target="494" id="m8c-z8-kGF"/>
                                             </connections>
@@ -303,7 +303,7 @@
                                         <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CIK-Yp-pWm">
                                             <rect key="frame" x="280" y="18" width="21" height="96"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <sliderCell key="cell" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="left" sliderType="linear" id="8WN-Ov-kNE"/>
+                                            <sliderCell key="cell" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="right" sliderType="linear" id="8WN-Ov-kNE"/>
                                             <connections>
                                                 <action selector="onStandAlertVolumeChange:" target="494" id="X0T-BE-dFM"/>
                                             </connections>
@@ -331,21 +331,24 @@
                             </tabViewItem>
                         </tabViewItems>
                     </tabView>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N0M-WZ-c4w">
-                        <rect key="frame" x="397" y="3" width="69" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zDW-DK-scl">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="systemBold"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="onPrefSave:" target="494" id="IKB-BI-bSz"/>
-                        </connections>
-                    </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n8w-wA-Pwg">
-                        <rect key="frame" x="315" y="3" width="82" height="32"/>
+                        <rect key="frame" x="324" y="3" width="74" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Oi7-7p-gRH">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="onPrefCancel:" target="494" id="dhJ-eu-mcB"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N0M-WZ-c4w">
+                        <rect key="frame" x="409" y="3" width="57" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zDW-DK-scl">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                             <string key="keyEquivalent" base64-UTF8="YES">
@@ -353,7 +356,7 @@ DQ
 </string>
                         </buttonCell>
                         <connections>
-                            <action selector="onPrefCancel:" target="494" id="dhJ-eu-mcB"/>
+                            <action selector="onPrefSave:" target="494" id="IKB-BI-bSz"/>
                         </connections>
                     </button>
                 </subviews>
