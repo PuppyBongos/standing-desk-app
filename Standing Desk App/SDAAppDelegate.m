@@ -82,10 +82,22 @@ NSSound *standSound;
 
 - (void)appDidResumeFromIdle:(SDAAppController *)sender {
     // Actions to occur when user breaks system idle state
-  [self sendNotificationWithTitle:@"Welcome back!"
-                              msg:@"We missed you. Don't ever leave us... ever..."
-   soundFile:nil
-   iconFile:nil];
+    NSString *action = nil;
+    if(appController.currentActionState == SDAActionStateSitting) {
+        action = SITTING_ACTION_TEXT;
+    } else if (appController.currentActionState == SDAActionStateStanding) {
+        action = STANDING_ACTION_TEXT;
+    }
+    
+    if(action) {
+        
+        NSString *msg = [NSString stringWithFormat:RESUME_TEXT_FORMAT,
+                         action];
+        [self sendNotificationWithTitle:RESUME_TEXT_TITLE
+                                    msg:msg
+                              soundFile:nil
+                               iconFile:nil];
+    }
 }
 
 - (void)windowDidBecomeKey:(NSNotification *)notification {
@@ -298,8 +310,6 @@ NSSound *standSound;
  */
 -(void)sendSitStandNotification {
 
-    
-    NSString *messageFormat = @"Okay, begin %@!";
     NSString *action = nil;
     NSString *iconName = nil;
     NSString *soundName = nil;
@@ -307,12 +317,12 @@ NSSound *standSound;
     switch (appController.currentActionState) {
         case SDAActionStateSitting:
             action = SITTING_ACTION_TEXT;
-            iconName = SITTING_MENU_ICON;
+            iconName = SITTING_NOTIFICATION_ICON;
             soundName = appController.settings.sittingSettings.soundFile;
             break;
         case SDAActionStateStanding:
             action = STANDING_ACTION_TEXT;
-            iconName = STANDING_MENU_ICON;
+            iconName = STANDING_NOTIFICATION_ICON;
             soundName = appController.settings.standingSettings.soundFile;
             break;
         default:
@@ -321,7 +331,7 @@ NSSound *standSound;
             return;
     }
 
-  [self sendNotificationWithTitle:@"Time to switch it up" msg:[NSString stringWithFormat:messageFormat, action] soundFile:soundName iconFile:iconName];
+  [self sendNotificationWithTitle:NOTIFY_USER_TITLE msg:[NSString stringWithFormat:NOTIFY_USER_FORMAT, action] soundFile:soundName iconFile:iconName];
 }
 
 -(void)sendNotificationWithTitle:(NSString*)title msg:(NSString*)msg soundFile:(NSString*)soundFile iconFile:(NSString*)iconName {
