@@ -9,6 +9,8 @@
 #import "SDAAppSettings.h"
 
 @implementation SDAAppSettings
+@synthesize isFirstTimeRunning;
+
 @synthesize sittingSettings;
 @synthesize standingSettings;
 
@@ -32,6 +34,7 @@
 +(SDAAppSettings*)defaultSettings {
     SDAAppSettings* settings = [[SDAAppSettings alloc]init];
     
+    settings.isFirstTimeRunning = SDA_DEFAULT_FIRST_TIME;
     settings.sittingInterval = SDA_DEFAULT_SIT_INTERVAL;
     settings.standingInterval = SDA_DEFAULT_STAND_INTERVAL;
     settings.idlePauseTime = SDA_DEFAULT_IDLE_TIME;
@@ -45,6 +48,7 @@
     NSMutableDictionary* dict = [NSMutableDictionary dictionary];
     
     // Create properties list
+    [dict setValue:[NSNumber numberWithBool:isFirstTimeRunning] forKey:@"FirstTimeRunning"];
     [dict setValue:[NSNumber numberWithInt:sittingInterval]
              forKey:@"SitStateInterval"];
     [dict setValue:[NSNumber numberWithInt:standingInterval]
@@ -79,6 +83,9 @@
     
     SDAAppSettings* settings = [SDAAppSettings defaultSettings];
     if(plistContents) {
+        
+        settings.isFirstTimeRunning = [[plistContents objectForKey:@"FirstTimeRunning"] boolValue];
+        
         settings.standingSettings = [SDAAlertSetting settingFromDictionary:
                                  [plistContents objectForKey:@"StandAlert"]];
         settings.sittingSettings = [SDAAlertSetting settingFromDictionary:

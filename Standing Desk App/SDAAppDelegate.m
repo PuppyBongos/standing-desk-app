@@ -50,6 +50,9 @@ NSSound *standSound;
   [_prefWindowStandAlertComboBox insertItemWithObjectValue:@"" atIndex:0];
 
   [_prefWindow setDelegate:self];
+  
+    // Perform first-time actions, if necessary
+  [self checkIfFirstTime];
 }
 
 - (void)actionPeriodDidComplete:(SDAAppController *)sender actionState:(SDAActionState)status {
@@ -180,8 +183,7 @@ NSSound *standSound;
   [self updateActionMenuItem];
 }
 - (IBAction)onMenuPref:(id)sender {
-  [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
-  [_prefWindow makeKeyAndOrderFront:sender];
+    [self openPrefsWindow];
 }
 - (IBAction)onMenuQuit:(id)sender {
   NSLog(@"%@ quit", appName);
@@ -189,6 +191,16 @@ NSSound *standSound;
 }
 
 #pragma mark - Menu Item private methods
+
+/**
+ * Opens the Preferences window over all other windows.
+ */
+-(void)openPrefsWindow {
+    
+    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+    [_prefWindow makeKeyAndOrderFront:self];
+}
+
 /** 
  * Convenience method that converts seconds to minutes 
  * as a string to place into UI text fields.
@@ -380,5 +392,21 @@ NSSound *standSound;
 			}
 		}
 	}
+}
+
+/** Checks to see if the application has been run before. If not,
+ opens the preferences window to allow user to set initial settings. */
+-(void)checkIfFirstTime {
+    
+    if(appController.settings.isFirstTimeRunning) {
+        appController.settings.isFirstTimeRunning = NO;
+        
+        // Okay to save settings, this should be called first, and only once ever.
+        [appController saveSettings];
+        
+        // Then bring up the preferences window to allow the
+        // user to modify initial states
+        [self openPrefsWindow];
+    }
 }
 @end
