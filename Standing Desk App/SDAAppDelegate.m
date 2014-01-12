@@ -170,11 +170,6 @@ NSSound *standSound;
   [standSound play];
 }
 
-#pragma mark - Preferences->Login
-- (IBAction)onLoginToggleChange:(id)sender {
-
-}
-
 #pragma mark - Preferences->Buttons
 - (IBAction)onPrefCancel:(id)sender {
   [appController loadSettings];
