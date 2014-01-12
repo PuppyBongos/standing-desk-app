@@ -325,12 +325,12 @@ NSSound *standSound;
     switch (appController.currentActionState) {
         case SDAActionStateSitting:
             action = SITTING_ACTION_TEXT;
-            iconName = SITTING_MENU_ICON;
+            iconName = SITTING_NOTIFICATION_ICON;
             soundName = appController.settings.sittingSettings.soundFile;
             break;
         case SDAActionStateStanding:
             action = STANDING_ACTION_TEXT;
-            iconName = STANDING_MENU_ICON;
+            iconName = STANDING_NOTIFICATION_ICON;
             soundName = appController.settings.standingSettings.soundFile;
             break;
         default:
