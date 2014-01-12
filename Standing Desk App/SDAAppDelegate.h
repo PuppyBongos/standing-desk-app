@@ -10,9 +10,9 @@
 #import "SDAAppController.h"
 
 #define STANDING_ACTION_TEXT @"Standing"
-#define STANDING_MENU_ICON @"logo_standing.png"
+#define STANDING_MENU_ICON @"icon_standing.png"
 #define SITTING_ACTION_TEXT @"Sitting"
-#define SITTING_MENU_ICON @"logo_sitting.png"
+#define SITTING_MENU_ICON @"icon_sitting.png"
 #define PAUSED_ACTION_TEXT @"Paused"
 #define ERROR_STATUS_TEXT @"Error"
 
