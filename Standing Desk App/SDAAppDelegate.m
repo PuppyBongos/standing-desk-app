@@ -56,14 +56,16 @@ NSSound *standSound;
 }
 
 - (void)actionPeriodDidComplete:(SDAAppController *)sender actionState:(SDAActionState)status {
-  [self sendSitStandNotification];
-  [self updateActionMenuItem];
+  
   if (appController.currentActionState == SDAActionStateStanding) {
     [appController scheduleSit];
   }
   else {
     [appController scheduleStand];
   }
+    
+    [self updateActionMenuItem];
+    [self sendSitStandNotification];
 }
 
 - (void)runningTickDidOccur:(SDAAppController *)sender {
