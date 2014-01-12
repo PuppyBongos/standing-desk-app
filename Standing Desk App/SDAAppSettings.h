@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SDAAlertSetting.h"
 
+#define SDA_DEFAULT_FIRST_TIME      YES
 #define SDA_DEFAULT_STAND_INTERVAL  1800 // 30 minutes
 #define SDA_DEFAULT_SIT_INTERVAL    1800 // 30 minutes
 #define SDA_DEFAULT_IDLE_TIME       600  // 10 minutes
@@ -19,6 +20,9 @@
  Standing Desk App.
 */
 @interface SDAAppSettings : NSObject
+
+/** Indicator that the application is currently set in an initial state and never before run. */
+@property BOOL isFirstTimeRunning;
 
 /* Default state of the application: (Standing/Sitting) */
 @property (copy) NSString* defaultState;
