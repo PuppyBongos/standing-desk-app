@@ -53,7 +53,7 @@ NSSound *standSound;
 }
 
 - (void)actionPeriodDidComplete:(SDAAppController *)sender actionState:(SDAActionState)status {
-  [self sendUserNotification];
+  [self sendSitStandNotification];
   [self updateActionMenuItem];
   if (appController.currentActionState == SDAActionStateStanding) {
     [appController scheduleSit];
@@ -73,6 +73,10 @@ NSSound *standSound;
 
 -(void)appDidResumeFromIdle:(SDAAppController *)sender {
     // Actions to occur when user breaks system idle state
+  [self sendNotificationWithTitle:@"Welcome back!"
+                              msg:@"We missed you. Don't ever leave us... ever..."
+   soundFile:nil
+   iconFile:nil];
 }
 
 - (void)windowDidBecomeKey:(NSNotification *)notification
@@ -280,8 +284,8 @@ NSSound *standSound;
 /** 
  * Sends a notification alert to the OSX Notification indicating the current status and action a user should take.
  */
--(void)sendUserNotification {
-    
+-(void)sendSitStandNotification {
+
     
     NSString *messageFormat = @"Okay, begin %@!";
     NSString *action = nil;
@@ -304,14 +308,18 @@ NSSound *standSound;
             // send any message
             return;
     }
-    
-    NSUserNotification *alert = [[NSUserNotification alloc]init];
-    alert.title = @"Time to switch it up!";
-    alert.subtitle = [NSString stringWithFormat:messageFormat, action];
-    alert.soundName = soundName;
-    alert.contentImage = [NSImage imageNamed:iconName];
-    
-    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:alert];
+
+  [self sendNotificationWithTitle:@"Time to switch it up" msg:[NSString stringWithFormat:messageFormat, action] soundFile:soundName iconFile:iconName];
+}
+
+-(void)sendNotificationWithTitle:(NSString*)title msg:(NSString*)msg soundFile:(NSString*)soundFile iconFile:(NSString*)iconName {
+  NSUserNotification *alert = [[NSUserNotification alloc]init];
+  alert.title = title;
+  alert.subtitle = msg;
+  alert.soundName = soundFile;
+  alert.contentImage = [NSImage imageNamed:iconName];
+  [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:alert];
+
 }
 
 /**
