@@ -146,14 +146,16 @@
     
     bool isIdle = idleTime >= settings.idlePauseTime;
     if(!isIdle && _currentStatus == SDAStatusIdle) {
-        // Resume timer.
         
+        // Resume timer.
         _currentStatus = SDAStatusRunning;
+        [self fireResumeFromIdleEvent];
     }
     else if(isIdle && _currentStatus == SDAStatusRunning) {
         
         // Place it in a idle-paused state
         _currentStatus = SDAStatusIdle;
+        [self firePauseForIdleEvent];
     }
 }
 
