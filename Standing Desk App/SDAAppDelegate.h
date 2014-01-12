@@ -16,6 +16,12 @@
 #define PAUSED_ACTION_TEXT @"Paused"
 #define ERROR_STATUS_TEXT @"Error"
 
+#define RESUME_TEXT_TITLE  @"Welcome back!"
+#define RESUME_TEXT_FORMAT @"Let's continue %@."
+
+#define NOTIFY_USER_TITLE   @"Great job!"
+#define NOTIFY_USER_FORMAT  @"Okay, time to switch it up. Begin %@."
+
 @interface SDAAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate, SDAApplicationDelegate>
 
 {

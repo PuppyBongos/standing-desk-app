@@ -77,20 +77,38 @@ NSSound *standSound;
 }
 
 -(void)appDidResumeFromIdle:(SDAAppController *)sender {
+    
     // Actions to occur when user breaks system idle state
-  [self sendNotificationWithTitle:@"Welcome back!"
-                              msg:@"We missed you. Don't ever leave us... ever..."
-   soundFile:nil
-   iconFile:nil];
+    NSString *action = nil;
+    if(appController.currentActionState == SDAActionStateSitting) {
+        action = SITTING_ACTION_TEXT;
+    } else if (appController.currentActionState == SDAActionStateStanding) {
+        action = STANDING_ACTION_TEXT;
+    }
+    
+    if(action) {
+        
+        NSString *msg = [NSString stringWithFormat:RESUME_TEXT_FORMAT,
+                         action];
+        [self sendNotificationWithTitle:RESUME_TEXT_TITLE
+                                    msg:msg
+                              soundFile:nil
+                               iconFile:nil];
+    }
 }
 
 - (void)windowDidBecomeKey:(NSNotification *)notification
 {
-  // Preferences Buttons
-//  [_prefWindowCancelBtn setBezelStyle:NSRoundedBezelStyle];
-//  [_prefWindow setDefaultButtonCell:[_prefWindowCancelBtn cell]];
-//  [_prefWindowSaveBtn setBezelStyle:NSRoundedBezelStyle];
-
+    // Preferences Buttons
+    // Meant to force 'Save' button to behave as
+    // default. Fixed in xib.
+    /*
+    [_prefWindowSaveBtn setBezelStyle:NSRoundedBezelStyle];
+    [_prefWindow setDefaultButtonCell:[_prefWindowSaveBtn cell]];
+    [_prefWindowSaveBtn setKeyEquivalent:@"\r"];
+    [_prefWindowSaveBtn setNeedsDisplay:YES];
+   */
+    
   // Preferences->General
   [_prefWindowStandTime setStringValue:[self stringSecToMin:appController.settings.standingInterval]];
   [_prefWindowSitTime setStringValue:[self stringSecToMin:appController.settings.sittingInterval]];
@@ -300,8 +318,6 @@ NSSound *standSound;
  */
 -(void)sendSitStandNotification {
 
-    
-    NSString *messageFormat = @"Okay, begin %@!";
     NSString *action = nil;
     NSString *iconName = nil;
     NSString *soundName = nil;
@@ -323,7 +339,7 @@ NSSound *standSound;
             return;
     }
 
-  [self sendNotificationWithTitle:@"Time to switch it up" msg:[NSString stringWithFormat:messageFormat, action] soundFile:soundName iconFile:iconName];
+  [self sendNotificationWithTitle:NOTIFY_USER_TITLE msg:[NSString stringWithFormat:NOTIFY_USER_FORMAT, action] soundFile:soundName iconFile:iconName];
 }
 
 -(void)sendNotificationWithTitle:(NSString*)title msg:(NSString*)msg soundFile:(NSString*)soundFile iconFile:(NSString*)iconName {
