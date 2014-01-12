@@ -112,21 +112,8 @@ NSSound *standSound;
     [_prefWindowSaveBtn setKeyEquivalent:@"\r"];
     [_prefWindowSaveBtn setNeedsDisplay:YES];
    */
-    
-  // Preferences->General
-  [_prefWindowStandTime setStringValue:[self stringSecToMin:appController.settings.standingInterval]];
-  [_prefWindowSitTime setStringValue:[self stringSecToMin:appController.settings.sittingInterval]];
-  [_prefWindowIdleTime setStringValue:[self stringSecToMin:appController.settings.idlePauseTime]];
-  [_prefWindowSnoozeTime setStringValue:[self stringSecToMin:appController.settings.snoozeTime]];
 
-  // Preferences->Alerts
-  [_prefWindowSitAlertComboBox setStringValue:appController.settings.sittingSettings.soundFile];
-  [_prefWindowSitVolume setFloatValue:appController.settings.sittingSettings.volume];
-  [_prefWindowStandAlertComboBox setStringValue:appController.settings.standingSettings.soundFile];
-  [_prefWindowStandVolume setFloatValue:appController.settings.standingSettings.volume];
-
-  // Preferences->Login
-  _prefWindowLoginToggle.state = appController.settings.isLoginItem ? NSOnState : NSOffState;
+  [self loadAppSettingsToUI];
 }
 
 #pragma mark - Preferences->General
@@ -263,6 +250,27 @@ NSSound *standSound;
 }
 - (void)updateTimerMenuItem {
   self.timerMenuItem.title = appController.stringFromTimeLeft;
+}
+
+/** Load local appsettings values
+    into UI preference values
+ */
+- (void)loadAppSettingsToUI {
+  // Preferences->General
+  [_prefWindowStandTime setStringValue:[self stringSecToMin:appController.settings.standingInterval]];
+  [_prefWindowSitTime setStringValue:[self stringSecToMin:appController.settings.sittingInterval]];
+  [_prefWindowIdleTime setStringValue:[self stringSecToMin:appController.settings.idlePauseTime]];
+  [_prefWindowSnoozeTime setStringValue:[self stringSecToMin:appController.settings.snoozeTime]];
+
+  // Preferences->Alerts
+  [_prefWindowSitAlertComboBox setStringValue:appController.settings.sittingSettings.soundFile];
+  [_prefWindowSitVolume setFloatValue:appController.settings.sittingSettings.volume];
+  [_prefWindowStandAlertComboBox setStringValue:appController.settings.standingSettings.soundFile];
+  [_prefWindowStandVolume setFloatValue:appController.settings.standingSettings.volume];
+
+  // Preferences->Login
+  _prefWindowLoginToggle.state = appController.settings.isLoginItem ? NSOnState : NSOffState;
+
 }
 
 /**
