@@ -18,8 +18,7 @@ NSSound *sitSound;
 NSSound *standSound;
 
 #pragma mark - Event Handlers
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
   appName = NSBundle.mainBundle.infoDictionary  [@"CFBundleName"];
 
     // Create our brain
@@ -50,7 +49,12 @@ NSSound *standSound;
   [_prefWindowStandAlertComboBox insertItemWithObjectValue:@"" atIndex:0];
 
   [_prefWindow setDelegate:self];
-  
+
+  // Preferences Buttons
+  [_prefWindowCancelBtn setBezelStyle:NSRoundedBezelStyle];
+  [_prefWindow setDefaultButtonCell:[_prefWindowSaveBtn cell]];
+  [_prefWindowSaveBtn setBezelStyle:NSRoundedBezelStyle];
+
     // Perform first-time actions, if necessary
   [self checkIfFirstTime];
 }
@@ -72,11 +76,11 @@ NSSound *standSound;
   [self updateTimerMenuItem];
 }
 
--(void)appDidPauseForIdle:(SDAAppController *)sender {
+- (void)appDidPauseForIdle:(SDAAppController *)sender {
     // Actions to occur when system idle threshold is met
 }
 
--(void)appDidResumeFromIdle:(SDAAppController *)sender {
+- (void)appDidResumeFromIdle:(SDAAppController *)sender {
     // Actions to occur when user breaks system idle state
   [self sendNotificationWithTitle:@"Welcome back!"
                               msg:@"We missed you. Don't ever leave us... ever..."
@@ -84,13 +88,7 @@ NSSound *standSound;
    iconFile:nil];
 }
 
-- (void)windowDidBecomeKey:(NSNotification *)notification
-{
-  // Preferences Buttons
-//  [_prefWindowCancelBtn setBezelStyle:NSRoundedBezelStyle];
-//  [_prefWindow setDefaultButtonCell:[_prefWindowCancelBtn cell]];
-//  [_prefWindowSaveBtn setBezelStyle:NSRoundedBezelStyle];
-
+- (void)windowDidBecomeKey:(NSNotification *)notification {
   // Preferences->General
   [_prefWindowStandTime setStringValue:[self stringSecToMin:appController.settings.standingInterval]];
   [_prefWindowSitTime setStringValue:[self stringSecToMin:appController.settings.sittingInterval]];
