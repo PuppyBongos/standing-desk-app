@@ -42,11 +42,15 @@ NSSound *standSound;
   [self updateActionMenuItem];
   [_timerMenuItem setEnabled:false];
 
-  /* Load alert comboboxes with system sounds */
-  [_prefWindowSitAlertComboBox addItemsWithObjectValues:[NSSound systemSounds]];
-  [_prefWindowSitAlertComboBox insertItemWithObjectValue:@"" atIndex:0];
-  [_prefWindowStandAlertComboBox addItemsWithObjectValues:[NSSound systemSounds]];
-  [_prefWindowStandAlertComboBox insertItemWithObjectValue:@"" atIndex:0];
+  /* Load alert popups with system sounds */
+  [_prefWindowSitAlertSystemSoundPopUp addItemsWithTitles:[NSSound systemSounds]];
+  [_prefWindowSitAlertSystemSoundPopUp insertItemWithTitle:@"" atIndex:0];
+  [_prefWindowStandAlertSystemSoundPopUp addItemsWithTitles:[NSSound systemSounds]];
+  [_prefWindowStandAlertSystemSoundPopUp insertItemWithTitle:@"" atIndex:0];
+
+  /* disable custom sound textfields */
+  [_prefWindowStandAlertCustomSoundTextField setEnabled:false];
+  [_prefWindowSitAlertCustomSoundTextField setEnabled:false];
 
   [_prefWindow setDelegate:self];
 
@@ -54,6 +58,8 @@ NSSound *standSound;
   [_prefWindowCancelBtn setBezelStyle:NSRoundedBezelStyle];
   [_prefWindow setDefaultButtonCell:[_prefWindowSaveBtn cell]];
   [_prefWindowSaveBtn setBezelStyle:NSRoundedBezelStyle];
+
+  [self loadAppSettingsToUI];
 
     // Perform first-time actions, if necessary
   [self checkIfFirstTime];
@@ -112,8 +118,6 @@ NSSound *standSound;
     [_prefWindowSaveBtn setKeyEquivalent:@"\r"];
     [_prefWindowSaveBtn setNeedsDisplay:YES];
    */
-
-  [self loadAppSettingsToUI];
 }
 
 #pragma mark - Preferences->General
@@ -130,31 +134,58 @@ NSSound *standSound;
   }
 
 #pragma mark - Preferences->Alerts
-- (IBAction)onSitAlertComboBoxChange:(id)sender {
-  sitSound = [NSSound soundNamed:[_prefWindowSitAlertComboBox stringValue]];
-  [sitSound setVolume:appController.settings.sittingSettings.volume];
-  [sitSound stop];
-  [sitSound play];
-}
-- (IBAction)onSitAlertVolumeChange:(id)sender {
-  sitSound = [NSSound soundNamed:[_prefWindowSitAlertComboBox stringValue]];
-  appController.settings.sittingSettings.volume = [_prefWindowSitVolume floatValue];
-  [sitSound setVolume:appController.settings.sittingSettings.volume];
-  [sitSound stop];
-  [sitSound play];
-}
-- (IBAction)onStandAlertComboBoxChange:(id)sender {
-  standSound = [NSSound soundNamed:[_prefWindowStandAlertComboBox stringValue]];
+// Stand
+- (IBAction)onStandAlertSystemSoundPopUpChange:(id)sender {
+  NSString* newAudioFilePath = [[_prefWindowStandAlertSystemSoundPopUp selectedItem] title];
+  standSound = [self updateSoundFile:newAudioFilePath isLocal:true];
+  appController.settings.standingSettings.soundFile = newAudioFilePath;
+  [_prefWindowStandAlertCustomSoundTextField setStringValue:@""];
+
   [standSound setVolume:appController.settings.standingSettings.volume];
   [standSound stop];
   [standSound play];
 }
+- (IBAction)onStandAlertCustomSoundBrowseBtnClick:(id)sender {
+  id newAudioFilePath = [self getAudioFilePathFromDialog];
+  if(newAudioFilePath) {
+    standSound = [self updateSoundFile:newAudioFilePath isLocal:false];
+    appController.settings.standingSettings.soundFile = newAudioFilePath;
+    [self updateField:self.prefWindowStandAlertCustomSoundTextField withPath:newAudioFilePath];
+    [_prefWindowStandAlertSystemSoundPopUp selectItemAtIndex:0];
+  }
+}
 - (IBAction)onStandAlertVolumeChange:(id)sender {
-  standSound = [NSSound soundNamed:[_prefWindowStandAlertComboBox stringValue]];
   appController.settings.standingSettings.volume = [_prefWindowStandVolume floatValue];
   [standSound setVolume:appController.settings.standingSettings.volume];
   [standSound stop];
   [standSound play];
+}
+
+// Sit
+- (IBAction)onSitAlertSystemSoundPopUpChange:(id)sender {
+  NSString* newAudioFilePath = [[_prefWindowSitAlertSystemSoundPopUp selectedItem] title];
+  sitSound = [self updateSoundFile:newAudioFilePath isLocal:true];
+  appController.settings.sittingSettings.soundFile = newAudioFilePath;
+  [_prefWindowSitAlertCustomSoundTextField setStringValue:@""];
+
+  [sitSound setVolume:appController.settings.sittingSettings.volume];
+  [sitSound stop];
+  [sitSound play];
+}
+- (IBAction)onSitAlertCustomSoundBrowseBtnClick:(id)sender {
+  id newAudioFilePath = [self getAudioFilePathFromDialog];
+  if (newAudioFilePath) {
+    sitSound = [self updateSoundFile:newAudioFilePath isLocal:false];
+    appController.settings.sittingSettings.soundFile = newAudioFilePath;
+    [self updateField:self.prefWindowSitAlertCustomSoundTextField withPath:newAudioFilePath];
+    [_prefWindowSitAlertSystemSoundPopUp selectItemAtIndex:0];
+  }
+}
+- (IBAction)onSitAlertVolumeChange:(id)sender {
+  appController.settings.sittingSettings.volume = [_prefWindowSitVolume floatValue];
+  [sitSound setVolume:appController.settings.sittingSettings.volume];
+  [sitSound stop];
+  [sitSound play];
 }
 
 #pragma mark - Preferences->Buttons
@@ -197,35 +228,26 @@ NSSound *standSound;
 }
 
 #pragma mark - Menu Item private methods
-
-/**
- * Opens the Preferences window over all other windows.
- */
+/* Opens the Preferences window over all other windows. */
 -(void)openPrefsWindow {
     
     [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
     [_prefWindow makeKeyAndOrderFront:self];
 }
 
-/** 
- * Convenience method that converts seconds to minutes 
- * as a string to place into UI text fields.
- */
+/* Convenience method that converts seconds to minutes
+   as a string to place into UI text fields. */
 - (NSString*)stringSecToMin:(int)seconds {
   return [NSString stringWithFormat:@"%d", seconds / 60];
 }
 
-/**
- * Convenience method that converts minutes to seconds
- * to add to app settings.
- */
+/* Convenience method that converts minutes to seconds
+   to add to app settings. */
 - (int)intMinToSec:(int)minutes {
   return minutes * 60;
 }
 
-/**
- * Updates the main menu status and timer
- */
+/* Updates the main menu status and timer */
 - (void)updateActionMenuItem {
   switch (appController.currentActionState) {
     case SDAActionStateSitting:
@@ -252,42 +274,54 @@ NSSound *standSound;
   self.timerMenuItem.title = appController.stringFromTimeLeft;
 }
 
-/** Load local appsettings values
-    into UI preference values
- */
+/* Load local appsettings values
+   into UI preference values */
 - (void)loadAppSettingsToUI {
   // Preferences->General
   [_prefWindowStandTime setStringValue:[self stringSecToMin:appController.settings.standingInterval]];
   [_prefWindowSitTime setStringValue:[self stringSecToMin:appController.settings.sittingInterval]];
   [_prefWindowIdleTime setStringValue:[self stringSecToMin:appController.settings.idlePauseTime]];
   [_prefWindowSnoozeTime setStringValue:[self stringSecToMin:appController.settings.snoozeTime]];
-
-  // Preferences->Alerts
-  [_prefWindowSitAlertComboBox setStringValue:appController.settings.sittingSettings.soundFile];
-  [_prefWindowSitVolume setFloatValue:appController.settings.sittingSettings.volume];
-  [_prefWindowStandAlertComboBox setStringValue:appController.settings.standingSettings.soundFile];
-  [_prefWindowStandVolume setFloatValue:appController.settings.standingSettings.volume];
-
-  // Preferences->Login
   _prefWindowLoginToggle.state = appController.settings.isLoginItem ? NSOnState : NSOffState;
 
+  // Preferences->Alerts
+  // Stand
+  id standSoundFilePath = appController.settings.standingSettings.soundFile;
+  NSArray* standSoundFileComps = [standSoundFilePath pathComponents];
+  if (standSoundFileComps.count > 1) { // custom sound
+    [self updateField:_prefWindowStandAlertCustomSoundTextField withPath:standSoundFilePath];
+    [_prefWindowStandAlertSystemSoundPopUp selectItemAtIndex:0];
+    standSound = [self updateSoundFile:standSoundFilePath isLocal:false];
+  } else if (standSoundFileComps.count == 1) { //system sound
+    [_prefWindowStandAlertSystemSoundPopUp selectItemWithTitle:standSoundFilePath];
+    [self updateField:self.prefWindowStandAlertCustomSoundTextField withPath:@""];
+    standSound = [self updateSoundFile:standSoundFilePath isLocal:true];
+  }
+  [_prefWindowStandVolume setFloatValue:appController.settings.standingSettings.volume];
+
+  // Sit
+  NSString* sitSoundFilePath = appController.settings.sittingSettings.soundFile;
+  NSArray* sitSoundFileComps = [sitSoundFilePath pathComponents];
+  if (sitSoundFileComps.count > 1) { // custom sound
+    [self updateField:_prefWindowSitAlertCustomSoundTextField withPath:sitSoundFilePath];
+    [_prefWindowSitAlertSystemSoundPopUp selectItemAtIndex:0];
+    sitSound = [self updateSoundFile:sitSoundFilePath isLocal:false];
+  } else if (sitSoundFileComps.count == 1) { // system sound
+    [_prefWindowSitAlertSystemSoundPopUp selectItemWithTitle:sitSoundFilePath];
+    [self updateField:self.prefWindowSitAlertCustomSoundTextField withPath:@""];
+    sitSound = [self updateSoundFile:sitSoundFilePath isLocal:true];
+  }
+  [_prefWindowSitVolume setFloatValue:appController.settings.sittingSettings.volume];
 }
 
-/**
- *  Saves UI preference values to
-    local appsettings values
- */
+/* Saves UI preference values to
+   local appsettings values */
 - (void)saveUIToAppSettings {
+  // Preferences->General
   appController.settings.standingInterval = [self intMinToSec:_prefWindowStandTime.integerValue];
   appController.settings.sittingInterval = [self intMinToSec:_prefWindowSitTime.integerValue];
   appController.settings.idlePauseTime = [self intMinToSec:_prefWindowIdleTime.integerValue];
   appController.settings.snoozeTime = [self intMinToSec:_prefWindowSnoozeTime.integerValue];
-
-  appController.settings.sittingSettings.soundFile = [_prefWindowSitAlertComboBox stringValue];
-  appController.settings.sittingSettings.volume = [_prefWindowSitVolume floatValue];
-  appController.settings.standingSettings.soundFile = [_prefWindowStandAlertComboBox stringValue];
-  appController.settings.standingSettings.volume = [_prefWindowStandVolume floatValue];
-
   if ([_prefWindowLoginToggle state] == NSOnState)
   {
     appController.settings.isLoginItem = true;
@@ -296,14 +330,33 @@ NSSound *standSound;
     appController.settings.isLoginItem = false;
     [self deleteAppFromLoginItem];
   }
+
+  // Preferences->Alerts
+  //// Stand
+  if (![[_prefWindowStandAlertCustomSoundTextField stringValue] isEqualToString:@""])
+  {
+    appController.settings.standingSettings.soundFile = [_prefWindowStandAlertCustomSoundTextField stringValue];
+  } else {
+    appController.settings.standingSettings.soundFile = [[_prefWindowStandAlertSystemSoundPopUp selectedItem] title];
+  }
+  appController.settings.standingSettings.volume = [_prefWindowStandVolume floatValue];
+
+  //// Sit
+  if (![[_prefWindowSitAlertCustomSoundTextField stringValue] isEqualToString:@""])
+  {
+    appController.settings.sittingSettings.soundFile = [_prefWindowSitAlertCustomSoundTextField stringValue];
+  } else {
+    appController.settings.sittingSettings.soundFile = [[_prefWindowSitAlertSystemSoundPopUp selectedItem] title];
+  }
+  appController.settings.sittingSettings.volume = [_prefWindowSitVolume floatValue];
 }
 
 /**
  *  Plays a sound for the current action state.
  */
 - (void)playSounds {
-  NSSound *sitSound = [NSSound soundNamed:appController.settings.sittingSettings.soundFile];
-  NSSound *standSound = [NSSound soundNamed:appController.settings.standingSettings.soundFile];
+  //NSSound *sitSound = [NSSound soundNamed:appController.settings.sittingSettings.soundFile];
+  //NSSound *standSound = [NSSound soundNamed:appController.settings.standingSettings.soundFile];
 
   [sitSound setVolume:appController.settings.sittingSettings.volume];
   [standSound setVolume:appController.settings.standingSettings.volume];
@@ -434,4 +487,54 @@ NSSound *standSound;
         [self openPrefsWindow];
     }
 }
+
+#pragma mark - Audio-Grabbing Methods
+-(NSURL*)getAudioFilePathFromDialog {
+  NSInteger result;
+  NSOpenPanel *oPanel = [NSOpenPanel openPanel];
+  NSArray *filesToOpen;
+  NSURL *theNewFilePath;
+  NSMutableArray *fileTypes = [NSMutableArray arrayWithArray:[NSSound soundUnfilteredTypes]];
+
+  [oPanel setAllowsMultipleSelection:NO];
+  [oPanel setDirectoryURL:[NSURL URLWithString:NSHomeDirectory()]];
+  oPanel.allowedFileTypes = fileTypes;
+
+  result = [oPanel runModal];
+
+  if (result == NSOKButton) {
+    filesToOpen = [oPanel URLs];
+    theNewFilePath = [filesToOpen objectAtIndex:0];
+    return theNewFilePath;
+  } else {
+    theNewFilePath = nil;
+    return theNewFilePath;
+  };
+}
+
+-(NSSound*)updateSoundFile:(NSString*)audioFilePath isLocal:(bool)isLocal {
+  NSSound* audioFile;
+  if (audioFilePath) {
+    if (isLocal) {
+      audioFile = [NSSound soundNamed:audioFilePath];
+    } else {
+      if([audioFilePath isKindOfClass:[NSURL class]]) {
+        audioFile = [[NSSound alloc] initWithContentsOfURL:(NSURL*) audioFilePath byReference:YES];
+      } else {
+        if(audioFilePath.length > 0) {
+          audioFile = [[NSSound alloc] initWithContentsOfFile:audioFilePath byReference:YES];
+        }
+      }
+    }
+    return audioFile;
+  } else {
+    NSLog(@"audioFilePath is nil or blank");
+    return nil;
+  }
+}
+
+-(void)updateField:(NSTextField*)textField withPath:(NSString*)path {
+  [textField setStringValue:path];
+}
+
 @end

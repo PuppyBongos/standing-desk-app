@@ -55,9 +55,15 @@
 @property (weak) IBOutlet NSComboBox *prefWindowSnoozeTime;
 
 #pragma mark - Preferences->Alerts tab
-@property (weak) IBOutlet NSComboBox *prefWindowSitAlertComboBox;
+@property (weak) IBOutlet NSPopUpButton *prefWindowSitAlertSystemSoundPopUp;
+@property (weak) IBOutlet NSTextField *prefWindowSitAlertCustomSoundTextField;
+@property (weak) IBOutlet NSButton *prefWindowSitAlertCustomSoundBrowseBtn;
 @property (weak) IBOutlet NSSlider *prefWindowSitVolume;
-@property (weak) IBOutlet NSComboBox *prefWindowStandAlertComboBox;
+
+
+@property (weak) IBOutlet NSPopUpButton *prefWindowStandAlertSystemSoundPopUp;
+@property (weak) IBOutlet NSTextField *prefWindowStandAlertCustomSoundTextField;
+@property (weak) IBOutlet NSButton *prefWindowStandAlertCustomSoundBrowseBtn;
 @property (weak) IBOutlet NSSlider *prefWindowStandVolume;
 
 #pragma mark - Preferences->Login tab
