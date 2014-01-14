@@ -69,6 +69,7 @@ NSSound *standSound;
   }
     
     [self updateActionMenuItem];
+    [self updateTimerMenuItem];
     [self sendSitStandNotification];
 }
 

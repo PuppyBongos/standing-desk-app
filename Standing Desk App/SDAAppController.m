@@ -132,8 +132,9 @@
 }
 
 -(NSString*)stringFromTimeLeft {
-    NSUInteger seconds = (NSUInteger)round(_currentTimeLeft);
-    NSString *string = [NSString stringWithFormat:@"%02lu:%02lu:%02lu",
+    NSInteger seconds = (NSInteger)round(_currentTimeLeft >= 0 ? _currentTimeLeft : 0);
+    
+    NSString *string = [NSString stringWithFormat:@"%02ld:%02ld:%02ld",
                         (seconds / 3600), (seconds / 60) % 60, (seconds % 60)];
     return string;
 }
