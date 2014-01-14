@@ -218,6 +218,8 @@ NSSound *standSound;
 }
 - (IBAction)onMenuSkip:(id)sender {
   [appController skipToNext];
+  [self playSounds];
+  [self sendSitStandNotification];
   [self updateActionMenuItem];
 }
 - (IBAction)onMenuPref:(id)sender {
