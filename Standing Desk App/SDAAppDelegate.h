@@ -21,10 +21,10 @@
 #define ERROR_STATUS_TEXT @"Error"
 
 #define RESUME_TEXT_TITLE  @"Welcome back!"
-#define RESUME_TEXT_FORMAT @"Let's continue %@."
+#define RESUME_TEXT_FORMAT @"Continuing %@."
 
-#define NOTIFY_USER_TITLE   @"Alright!"
-#define NOTIFY_USER_FORMAT  @"Let's switch it up. Begin %@."
+#define NOTIFY_USER_TITLE   @"%@!"
+#define NOTIFY_USER_FORMAT  @"Time to start %@."
 
 @interface SDAAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate, SDAApplicationDelegate>
 
