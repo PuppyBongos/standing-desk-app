@@ -83,7 +83,7 @@ NSSound *standSound;
     // Actions to occur when system idle threshold is met
 }
 
--(void)appDidResumeFromIdle:(SDAAppController *)sender {
+- (void)appDidResumeFromIdle:(SDAAppController *)sender {
     
     // Actions to occur when user breaks system idle state
     NSString *action = nil;
@@ -206,7 +206,7 @@ NSSound *standSound;
 
 #pragma mark - Menu Item private methods
 /* Opens the Preferences window over all other windows. */
--(void)openPrefsWindow {
+- (void)openPrefsWindow {
     
     [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
     [_prefWindow makeKeyAndOrderFront:self];
@@ -327,7 +327,7 @@ NSSound *standSound;
 /** 
  * Sends a notification alert to the OSX Notification indicating the current status and action a user should take.
  */
--(void)sendSitStandNotification {
+- (void)sendSitStandNotification {
 
     NSString *action = nil;
     NSString *iconName = nil;
@@ -353,7 +353,7 @@ NSSound *standSound;
   [self sendNotificationWithTitle:[NSString stringWithFormat:NOTIFY_USER_TITLE, action] msg:[NSString stringWithFormat:NOTIFY_USER_FORMAT, [action lowercaseString]] soundFile:soundName iconFile:iconName];
 }
 
--(void)sendNotificationWithTitle:(NSString*)title msg:(NSString*)msg soundFile:(NSString*)soundFile iconFile:(NSString*)iconName {
+- (void)sendNotificationWithTitle:(NSString*)title msg:(NSString*)msg soundFile:(NSString*)soundFile iconFile:(NSString*)iconName {
   NSUserNotification *alert = [[NSUserNotification alloc]init];
   alert.title = title;
   alert.subtitle = msg;
@@ -367,7 +367,7 @@ NSSound *standSound;
  *  Adds and removes app from current user's
     Login Items depending on app setting checkbox
  */
--(void)addAppAsLoginItem {
+- (void)addAppAsLoginItem {
 	NSString * appPath = [[NSBundle mainBundle] bundlePath];
 
 	// This will retrieve the path for the application
@@ -393,7 +393,7 @@ NSSound *standSound;
 
 	CFRelease(loginItems);
 }
--(void)deleteAppFromLoginItem {
+- (void)deleteAppFromLoginItem {
 	NSString * appPath = [[NSBundle mainBundle] bundlePath];
 
 	// This will retrieve the path for the application
@@ -425,7 +425,7 @@ NSSound *standSound;
 
 /** Checks to see if the application has been run before. If not,
  opens the preferences window to allow user to set initial settings. */
--(void)checkIfFirstTime {
+- (void)checkIfFirstTime {
     
     if(appController.settings.isFirstTimeRunning) {
         appController.settings.isFirstTimeRunning = NO;
@@ -439,7 +439,7 @@ NSSound *standSound;
     }
 }
 
--(NSSound*)updateSoundFile:(NSString*)audioFilePath {
+- (NSSound*)updateSoundFile:(NSString*)audioFilePath {
   NSSound* audioFile;
   if (audioFilePath) {
     audioFile = [NSSound soundNamed:audioFilePath];
