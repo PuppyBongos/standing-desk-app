@@ -7,26 +7,26 @@
 	<key>LoginItemStatus</key>
 	<false/>
 	<key>SnoozeTime</key>
-	<integer>300</integer>
+	<integer>540</integer>
 	<key>IdlePauseTime</key>
-	<integer>600</integer>
+	<integer>300</integer>
 	<key>SitStateInterval</key>
-	<integer>900</integer>
+	<integer>3600</integer>
 	<key>StandStateInterval</key>
-	<integer>900</integer>
+	<integer>1800</integer>
 	<key>StandAlert</key>
 	<dict>
 		<key>Volume</key>
-		<real>0.5</real>
+		<integer>1</integer>
 		<key>SoundFile</key>
-		<string></string>
+		<string>Hero</string>
 	</dict>
 	<key>SitAlert</key>
 	<dict>
 		<key>Volume</key>
 		<integer>1</integer>
 		<key>SoundFile</key>
-		<string></string>
+		<string>Submarine</string>
 	</dict>
 </dict>
 </plist>

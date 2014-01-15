@@ -118,17 +118,14 @@ NSSound *standSound;
 }
 
 #pragma mark - Preferences->General
-- (IBAction)onStandTimeComboBoxChange:(id)sender {
-
+- (IBAction)onStandTimeTextFieldChange:(id)sender {
 }
-- (IBAction)onSitTimeComboBoxChange:(id)sender {
-
+- (IBAction)onSitTimeTextFieldChange:(id)sender {
 }
-- (IBAction)onIdleTimeComboBoxChange:(id)sender {
-
+- (IBAction)onIdleTimeTextFieldChange:(id)sender {
 }
-- (IBAction)onSnoozeTimeComboBoxChange:(id)sender {
-  }
+- (IBAction)onSnoozeTimeTextFieldChange:(id)sender {
+}
 
 #pragma mark - Preferences->Alerts
 // Stand

@@ -49,10 +49,10 @@
 @property (weak) IBOutlet NSButton *prefWindowSaveBtn;
 
 #pragma mark - Preferences->General tab
-@property (weak) IBOutlet NSComboBox *prefWindowStandTime;
-@property (weak) IBOutlet NSComboBox *prefWindowSitTime;
-@property (weak) IBOutlet NSComboBox *prefWindowIdleTime;
-@property (weak) IBOutlet NSComboBox *prefWindowSnoozeTime;
+@property (weak) IBOutlet NSTextField *prefWindowStandTime;
+@property (weak) IBOutlet NSTextField *prefWindowSitTime;
+@property (weak) IBOutlet NSTextField *prefWindowIdleTime;
+@property (weak) IBOutlet NSTextField *prefWindowSnoozeTime;
 
 #pragma mark - Preferences->Alerts tab
 @property (weak) IBOutlet NSPopUpButton *prefWindowSitAlertSystemSoundPopUp;
