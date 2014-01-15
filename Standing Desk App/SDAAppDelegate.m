@@ -48,10 +48,6 @@ NSSound *standSound;
   [_prefWindowStandAlertSystemSoundPopUp addItemsWithTitles:[NSSound systemSounds]];
   [_prefWindowStandAlertSystemSoundPopUp insertItemWithTitle:@"" atIndex:0];
 
-  /* disable custom sound textfields */
-  [_prefWindowStandAlertCustomSoundTextField setEnabled:false];
-  [_prefWindowSitAlertCustomSoundTextField setEnabled:false];
-
   [_prefWindow setDelegate:self];
 
   // Preferences Buttons
@@ -138,22 +134,11 @@ NSSound *standSound;
 // Stand
 - (IBAction)onStandAlertSystemSoundPopUpChange:(id)sender {
   NSString* newAudioFilePath = [[_prefWindowStandAlertSystemSoundPopUp selectedItem] title];
-  standSound = [self updateSoundFile:newAudioFilePath isLocal:true];
+  standSound = [self updateSoundFile:newAudioFilePath];
   appController.settings.standingSettings.soundFile = newAudioFilePath;
-  [_prefWindowStandAlertCustomSoundTextField setStringValue:@""];
-
   [standSound setVolume:appController.settings.standingSettings.volume];
   [standSound stop];
   [standSound play];
-}
-- (IBAction)onStandAlertCustomSoundBrowseBtnClick:(id)sender {
-  id newAudioFilePath = [self getAudioFilePathFromDialog];
-  if(newAudioFilePath) {
-    standSound = [self updateSoundFile:newAudioFilePath isLocal:false];
-    appController.settings.standingSettings.soundFile = newAudioFilePath;
-    [self updateField:self.prefWindowStandAlertCustomSoundTextField withPath:newAudioFilePath];
-    [_prefWindowStandAlertSystemSoundPopUp selectItemAtIndex:0];
-  }
 }
 - (IBAction)onStandAlertVolumeChange:(id)sender {
   appController.settings.standingSettings.volume = [_prefWindowStandVolume floatValue];
@@ -165,22 +150,11 @@ NSSound *standSound;
 // Sit
 - (IBAction)onSitAlertSystemSoundPopUpChange:(id)sender {
   NSString* newAudioFilePath = [[_prefWindowSitAlertSystemSoundPopUp selectedItem] title];
-  sitSound = [self updateSoundFile:newAudioFilePath isLocal:true];
+  sitSound = [self updateSoundFile:newAudioFilePath];
   appController.settings.sittingSettings.soundFile = newAudioFilePath;
-  [_prefWindowSitAlertCustomSoundTextField setStringValue:@""];
-
   [sitSound setVolume:appController.settings.sittingSettings.volume];
   [sitSound stop];
   [sitSound play];
-}
-- (IBAction)onSitAlertCustomSoundBrowseBtnClick:(id)sender {
-  id newAudioFilePath = [self getAudioFilePathFromDialog];
-  if (newAudioFilePath) {
-    sitSound = [self updateSoundFile:newAudioFilePath isLocal:false];
-    appController.settings.sittingSettings.soundFile = newAudioFilePath;
-    [self updateField:self.prefWindowSitAlertCustomSoundTextField withPath:newAudioFilePath];
-    [_prefWindowSitAlertSystemSoundPopUp selectItemAtIndex:0];
-  }
 }
 - (IBAction)onSitAlertVolumeChange:(id)sender {
   appController.settings.sittingSettings.volume = [_prefWindowSitVolume floatValue];
@@ -289,31 +263,15 @@ NSSound *standSound;
 
   // Preferences->Alerts
   // Stand
-  id standSoundFilePath = appController.settings.standingSettings.soundFile;
-  NSArray* standSoundFileComps = [standSoundFilePath pathComponents];
-  if (standSoundFileComps.count > 1) { // custom sound
-    [self updateField:_prefWindowStandAlertCustomSoundTextField withPath:standSoundFilePath];
-    [_prefWindowStandAlertSystemSoundPopUp selectItemAtIndex:0];
-    standSound = [self updateSoundFile:standSoundFilePath isLocal:false];
-  } else if (standSoundFileComps.count == 1) { //system sound
-    [_prefWindowStandAlertSystemSoundPopUp selectItemWithTitle:standSoundFilePath];
-    [self updateField:self.prefWindowStandAlertCustomSoundTextField withPath:@""];
-    standSound = [self updateSoundFile:standSoundFilePath isLocal:true];
-  }
+  NSString* standSoundFilePath = appController.settings.standingSettings.soundFile;
+  [_prefWindowStandAlertSystemSoundPopUp selectItemWithTitle:standSoundFilePath];
+  standSound = [self updateSoundFile:standSoundFilePath];
   [_prefWindowStandVolume setFloatValue:appController.settings.standingSettings.volume];
 
   // Sit
   NSString* sitSoundFilePath = appController.settings.sittingSettings.soundFile;
-  NSArray* sitSoundFileComps = [sitSoundFilePath pathComponents];
-  if (sitSoundFileComps.count > 1) { // custom sound
-    [self updateField:_prefWindowSitAlertCustomSoundTextField withPath:sitSoundFilePath];
-    [_prefWindowSitAlertSystemSoundPopUp selectItemAtIndex:0];
-    sitSound = [self updateSoundFile:sitSoundFilePath isLocal:false];
-  } else if (sitSoundFileComps.count == 1) { // system sound
-    [_prefWindowSitAlertSystemSoundPopUp selectItemWithTitle:sitSoundFilePath];
-    [self updateField:self.prefWindowSitAlertCustomSoundTextField withPath:@""];
-    sitSound = [self updateSoundFile:sitSoundFilePath isLocal:true];
-  }
+  [_prefWindowSitAlertSystemSoundPopUp selectItemWithTitle:sitSoundFilePath];
+  sitSound = [self updateSoundFile:sitSoundFilePath];
   [_prefWindowSitVolume setFloatValue:appController.settings.sittingSettings.volume];
 }
 
@@ -336,21 +294,11 @@ NSSound *standSound;
 
   // Preferences->Alerts
   //// Stand
-  if (![[_prefWindowStandAlertCustomSoundTextField stringValue] isEqualToString:@""])
-  {
-    appController.settings.standingSettings.soundFile = [_prefWindowStandAlertCustomSoundTextField stringValue];
-  } else {
-    appController.settings.standingSettings.soundFile = [[_prefWindowStandAlertSystemSoundPopUp selectedItem] title];
-  }
+  appController.settings.standingSettings.soundFile = [[_prefWindowStandAlertSystemSoundPopUp selectedItem] title];
   appController.settings.standingSettings.volume = [_prefWindowStandVolume floatValue];
 
   //// Sit
-  if (![[_prefWindowSitAlertCustomSoundTextField stringValue] isEqualToString:@""])
-  {
-    appController.settings.sittingSettings.soundFile = [_prefWindowSitAlertCustomSoundTextField stringValue];
-  } else {
-    appController.settings.sittingSettings.soundFile = [[_prefWindowSitAlertSystemSoundPopUp selectedItem] title];
-  }
+  appController.settings.sittingSettings.soundFile = [[_prefWindowSitAlertSystemSoundPopUp selectedItem] title];
   appController.settings.sittingSettings.volume = [_prefWindowSitVolume floatValue];
 }
 
@@ -402,7 +350,7 @@ NSSound *standSound;
             return;
     }
 
-  [self sendNotificationWithTitle:NOTIFY_USER_TITLE msg:[NSString stringWithFormat:NOTIFY_USER_FORMAT, action] soundFile:soundName iconFile:iconName];
+  [self sendNotificationWithTitle:[NSString stringWithFormat:NOTIFY_USER_TITLE, action] msg:[NSString stringWithFormat:NOTIFY_USER_FORMAT, [action lowercaseString]] soundFile:soundName iconFile:iconName];
 }
 
 -(void)sendNotificationWithTitle:(NSString*)title msg:(NSString*)msg soundFile:(NSString*)soundFile iconFile:(NSString*)iconName {
@@ -491,53 +439,15 @@ NSSound *standSound;
     }
 }
 
-#pragma mark - Audio-Grabbing Methods
--(NSURL*)getAudioFilePathFromDialog {
-  NSInteger result;
-  NSOpenPanel *oPanel = [NSOpenPanel openPanel];
-  NSArray *filesToOpen;
-  NSURL *theNewFilePath;
-  NSMutableArray *fileTypes = [NSMutableArray arrayWithArray:[NSSound soundUnfilteredTypes]];
-
-  [oPanel setAllowsMultipleSelection:NO];
-  [oPanel setDirectoryURL:[NSURL URLWithString:NSHomeDirectory()]];
-  oPanel.allowedFileTypes = fileTypes;
-
-  result = [oPanel runModal];
-
-  if (result == NSOKButton) {
-    filesToOpen = [oPanel URLs];
-    theNewFilePath = [filesToOpen objectAtIndex:0];
-    return theNewFilePath;
-  } else {
-    theNewFilePath = nil;
-    return theNewFilePath;
-  };
-}
-
--(NSSound*)updateSoundFile:(NSString*)audioFilePath isLocal:(bool)isLocal {
+-(NSSound*)updateSoundFile:(NSString*)audioFilePath {
   NSSound* audioFile;
   if (audioFilePath) {
-    if (isLocal) {
-      audioFile = [NSSound soundNamed:audioFilePath];
-    } else {
-      if([audioFilePath isKindOfClass:[NSURL class]]) {
-        audioFile = [[NSSound alloc] initWithContentsOfURL:(NSURL*) audioFilePath byReference:YES];
-      } else {
-        if(audioFilePath.length > 0) {
-          audioFile = [[NSSound alloc] initWithContentsOfFile:audioFilePath byReference:YES];
-        }
-      }
-    }
+    audioFile = [NSSound soundNamed:audioFilePath];
     return audioFile;
   } else {
     NSLog(@"audioFilePath is nil or blank");
     return nil;
   }
-}
-
--(void)updateField:(NSTextField*)textField withPath:(NSString*)path {
-  [textField setStringValue:path];
 }
 
 @end

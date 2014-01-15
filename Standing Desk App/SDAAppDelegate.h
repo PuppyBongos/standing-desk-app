@@ -21,10 +21,10 @@
 #define ERROR_STATUS_TEXT @"Error"
 
 #define RESUME_TEXT_TITLE  @"Welcome back!"
-#define RESUME_TEXT_FORMAT @"Continuing %@."
+#define RESUME_TEXT_FORMAT @"Continuing %@"
 
 #define NOTIFY_USER_TITLE   @"%@!"
-#define NOTIFY_USER_FORMAT  @"Time to start %@."
+#define NOTIFY_USER_FORMAT  @"Time to start %@"
 
 @interface SDAAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate, SDAApplicationDelegate>
 
@@ -56,14 +56,10 @@
 
 #pragma mark - Preferences->Alerts tab
 @property (weak) IBOutlet NSPopUpButton *prefWindowSitAlertSystemSoundPopUp;
-@property (weak) IBOutlet NSTextField *prefWindowSitAlertCustomSoundTextField;
-@property (weak) IBOutlet NSButton *prefWindowSitAlertCustomSoundBrowseBtn;
 @property (weak) IBOutlet NSSlider *prefWindowSitVolume;
 
 
 @property (weak) IBOutlet NSPopUpButton *prefWindowStandAlertSystemSoundPopUp;
-@property (weak) IBOutlet NSTextField *prefWindowStandAlertCustomSoundTextField;
-@property (weak) IBOutlet NSButton *prefWindowStandAlertCustomSoundBrowseBtn;
 @property (weak) IBOutlet NSSlider *prefWindowStandVolume;
 
 #pragma mark - Preferences->Login tab
