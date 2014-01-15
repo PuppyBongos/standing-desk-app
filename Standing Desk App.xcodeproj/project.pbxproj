@@ -140,9 +140,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0872E87E18824EDC0028586C /* Logo Images */ = {
+		0872E87E18824EDC0028586C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				080021C91882320F008E11D1 /* icon_sitting.png */,
+				080021CA1882320F008E11D1 /* icon_standing.png */,
 				0872E8A7188252470028586C /* desk_logo_sit_16_1x.png */,
 				0872E8A8188252470028586C /* desk_logo_sit_16_2x.png */,
 				0872E8A9188252470028586C /* desk_logo_sit_32_1x.png */,
@@ -164,15 +166,13 @@
 				0872E89B1882507F0028586C /* desk_logo_512_1x.png */,
 				0872E89C1882507F0028586C /* desk_logo_512_2x.png */,
 			);
-			name = "Logo Images";
+			name = Images;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		27F1D9AC186174B10087FC3A = {
 			isa = PBXGroup;
 			children = (
-				0872E87E18824EDC0028586C /* Logo Images */,
-				080021C91882320F008E11D1 /* icon_sitting.png */,
-				080021CA1882320F008E11D1 /* icon_standing.png */,
 				27F1D9BE186174B10087FC3A /* Standing Desk App */,
 				27F1D9DC186174B10087FC3A /* Standing Desk AppTests */,
 				27F1D9B7186174B10087FC3A /* Frameworks */,
@@ -213,23 +213,24 @@
 		27F1D9BE186174B10087FC3A /* Standing Desk App */ = {
 			isa = PBXGroup;
 			children = (
+				0872E87E18824EDC0028586C /* Images */,
 				55B5A958187A091100C7CDCD /* SDAAppCategories */,
+				27F1D9BF186174B10087FC3A /* Supporting Files */,
 				27F1D9CA186174B10087FC3A /* SDAAppDelegate.h */,
 				27F1D9CB186174B10087FC3A /* SDAAppDelegate.m */,
-				27652E6B187548C600BD3DC5 /* SystemSounds.h */,
-				27652E6C187548C600BD3DC5 /* SystemSounds.m */,
 				27F1D9CD186174B10087FC3A /* MainMenu.xib */,
 				27F1D9D0186174B10087FC3A /* Images.xcassets */,
-				27F1D9BF186174B10087FC3A /* Supporting Files */,
 				553F9587186F9FF300BD36BB /* SDAAppController.h */,
 				553F9588186F9FF300BD36BB /* SDAAppController.m */,
 				553F958A186FA0B800BD36BB /* SDAAppSettings.h */,
 				553F958B186FA0B800BD36BB /* SDAAppSettings.m */,
 				553F958D186FA19D00BD36BB /* SDAAlertSetting.h */,
 				553F958E186FA19D00BD36BB /* SDAAlertSetting.m */,
-				553F9590186FD3B700BD36BB /* sda_config.plist */,
 				55A149D6187DF1AC00EFA8A3 /* SDAIdleDetector.h */,
 				55A149D7187DF1AC00EFA8A3 /* SDAIdleDetector.m */,
+				553F9590186FD3B700BD36BB /* sda_config.plist */,
+				27652E6B187548C600BD3DC5 /* SystemSounds.h */,
+				27652E6C187548C600BD3DC5 /* SystemSounds.m */,
 			);
 			path = "Standing Desk App";
 			sourceTree = "<group>";
