@@ -20,7 +20,7 @@ There is one particular company (WHO SHALL REMAIN NAMELESS (FOR NOW)) that makes
 
 ### Installation
 ---
-Download [Standing Desk App](https://github.com/michaelchadwick/standing-desk-app/standing-desk-app.dmg) and double-click the DMG file that appears on your local hard drive.
+Download [Standing Desk App](https://github.com/michaelchadwick/standing-desk-app/releases/download/v0.1.0/standing-desk-app.dmg) and double-click the DMG file that appears on your local hard drive.
 
 A folder will appear where you can drag the Standing Desk App.app file to your /Applications directory.
 
