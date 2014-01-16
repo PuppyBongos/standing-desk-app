@@ -26,7 +26,7 @@ A folder will appear where you can drag the Standing Desk App.app file to your /
 ### Usage
 ---
 
-Double-click the .app file once it's in there and the preferences window will pop up on initial load so you can change the default settings, if need be. If you want, there is an option in the Preferences window to run the app on login, so you won't need to be clicking on the app anymore.
+Double-click the .app file once it's installed. If it's your first time running the application, the Preferences window will appear, giving you a chance to peruse default settings and change them, if need be. Check the box that's labeled "Start application at login?" if you wish to never have to double-click the app ever again.
 
 ### Configuration
 ---
@@ -40,8 +40,8 @@ The Preferences window (which can be accessed from the main menubar icon) allows
 * Start on login option
 
 **Alerts**
-* Stand Alert Sound, and its volume
-* Sit Alert Sound, and its volume
+* Stand alert sound, and its volume
+* Sit alert sound, and its volume
 
 ### Questions, Feedback, Suggestions
 * [puppybongos@gmail.com](mailto:puppybongos@gmail.com)
