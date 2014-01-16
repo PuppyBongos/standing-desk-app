@@ -19,14 +19,14 @@
 		<key>Volume</key>
 		<integer>1</integer>
 		<key>SoundFile</key>
-		<string>Hero</string>
+		<string>Stand</string>
 	</dict>
 	<key>SitAlert</key>
 	<dict>
 		<key>Volume</key>
 		<integer>1</integer>
 		<key>SoundFile</key>
-		<string>Submarine</string>
+		<string>Sit</string>
 	</dict>
 </dict>
 </plist>
