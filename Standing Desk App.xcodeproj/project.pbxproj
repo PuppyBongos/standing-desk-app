@@ -169,8 +169,7 @@
 				0872E89B1882507F0028586C /* desk_logo_512_1x.png */,
 				0872E89C1882507F0028586C /* desk_logo_512_2x.png */,
 			);
-			name = Images;
-			path = Resources/Images;
+			path = Images;
 			sourceTree = "<group>";
 		};
 		27A44DF71886882B00342C82 /* Audio */ = {
@@ -186,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				27A44DF71886882B00342C82 /* Audio */,
+				0872E87E18824EDC0028586C /* Images */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -234,7 +234,6 @@
 			isa = PBXGroup;
 			children = (
 				27A44DFC18868BBF00342C82 /* Resources */,
-				0872E87E18824EDC0028586C /* Images */,
 				55B5A958187A091100C7CDCD /* SDAAppCategories */,
 				27F1D9BF186174B10087FC3A /* Supporting Files */,
 				27F1D9D0186174B10087FC3A /* Images.xcassets */,
