@@ -1,11 +1,12 @@
-## Standing Desk App
+# Standing Desk App
 
 **Standing Desk App** is a small utility by **Puppy Bongos** created to time how long you sit and stand while using a standing desk (or even just to remind you to stand up from sitting at a normal desk), all so you don't die from *butt death*.
 
 *Butt death* is the worst kind of death.
 
-### Why Standing Desk App?
+### Why Make This App?
 ---
+
 There is one particular company (WHO SHALL REMAIN NAMELESS (FOR NOW)) that makes a swell application for Windows that provides similar capability. Their OS X version, however, is buggy and difficult to install, so Standing Desk App was created to fix those issues and make it even better.
 
 ### Features
@@ -19,7 +20,7 @@ There is one particular company (WHO SHALL REMAIN NAMELESS (FOR NOW)) that makes
 
 ### Installation
 ---
-Download [Standing Desk App](https://github.com/michaelchadwick/standing-desk-app/sda.dmg) and double-click the DMG file that appears on your local hard drive.
+Download [Standing Desk App](https://github.com/michaelchadwick/standing-desk-app/standing-desk-app.dmg) and double-click the DMG file that appears on your local hard drive.
 
 A folder will appear where you can drag the Standing Desk App.app file to your /Applications directory.
 
