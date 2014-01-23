@@ -33,16 +33,18 @@ Double-click the .app file once it's installed. If it's your first time running 
 ---
 The Preferences window (which can be accessed from the main menubar icon) allows you to change the following settings:
 
-**General**  
-* Standing time
-* Sitting time
-* Pause after idle time
-* Snooze time
+**General**    
+* Standing time  
+* Sitting time  
+* Pause after idle time  
+* Snooze time  
 * Start on login option
 
-**Alerts**
-* Stand alert sound, and its volume
-* Sit alert sound, and its volume
+**Alerts**  
+* Stand alert sound, and its volume  
+* Sit alert sound, and its volume  
+
+_Note_: Custom sounds can be added to the program by putting them in your ~/Library/Sounds directory. Any format (WAV, AIF, MP3, etc.) that OS X supports will work.
 
 ### Questions, Feedback, Suggestions
 * [puppybongos@gmail.com](mailto:puppybongos@gmail.com)
