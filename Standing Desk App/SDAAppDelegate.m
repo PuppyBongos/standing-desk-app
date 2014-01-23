@@ -298,9 +298,7 @@ NSSound *standSound;
   appController.settings.sittingSettings.volume = [_prefWindowSitVolume floatValue];
 }
 
-/**
- *  Plays a sound for the current action state.
- */
+/* Plays a sound for the current action state. */
 - (void)playSounds {
   //NSSound *sitSound = [NSSound soundNamed:appController.settings.sittingSettings.soundFile];
   //NSSound *standSound = [NSSound soundNamed:appController.settings.standingSettings.soundFile];
@@ -320,9 +318,8 @@ NSSound *standSound;
   }
 }
 
-/** 
- * Sends a notification alert to the OSX Notification indicating the current status and action a user should take.
- */
+/* Sends a notification alert to the OSX Notification
+   indicating the current status and action a user should take. */
 - (void)sendSitStandNotification {
 
     NSString *action = nil;
@@ -348,7 +345,6 @@ NSSound *standSound;
 
   [self sendNotificationWithTitle:[NSString stringWithFormat:NOTIFY_USER_TITLE, action] msg:[NSString stringWithFormat:NOTIFY_USER_FORMAT, [action lowercaseString]] soundFile:soundName iconFile:iconName];
 }
-
 - (void)sendNotificationWithTitle:(NSString*)title msg:(NSString*)msg soundFile:(NSString*)soundFile iconFile:(NSString*)iconName {
   NSUserNotification *alert = [[NSUserNotification alloc]init];
   alert.title = title;
@@ -361,10 +357,8 @@ NSSound *standSound;
   [self playSounds];
 }
 
-/**
- *  Adds and removes app from current user's
-    Login Items depending on app setting checkbox
- */
+/* Adds and removes app from current user's
+   Login Items depending on app setting checkbox */
 - (void)addAppAsLoginItem {
 	NSString * appPath = [[NSBundle mainBundle] bundlePath];
 
@@ -421,8 +415,8 @@ NSSound *standSound;
 	}
 }
 
-/** Checks to see if the application has been run before. If not,
- opens the preferences window to allow user to set initial settings. */
+/* Checks to see if the application has been run before. If not,
+   opens the preferences window to allow user to set initial settings. */
 - (void)checkIfFirstTime {
     
     if(appController.settings.isFirstTimeRunning) {
