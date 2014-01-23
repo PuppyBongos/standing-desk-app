@@ -53,17 +53,13 @@
 @property (weak) IBOutlet NSTextField *prefWindowSitTime;
 @property (weak) IBOutlet NSTextField *prefWindowIdleTime;
 @property (weak) IBOutlet NSTextField *prefWindowSnoozeTime;
+@property (weak) IBOutlet NSButton *prefWindowLoginToggle;
 
 #pragma mark - Preferences->Alerts tab
 @property (weak) IBOutlet NSPopUpButton *prefWindowSitAlertSystemSoundPopUp;
 @property (weak) IBOutlet NSSlider *prefWindowSitVolume;
-
-
 @property (weak) IBOutlet NSPopUpButton *prefWindowStandAlertSystemSoundPopUp;
 @property (weak) IBOutlet NSSlider *prefWindowStandVolume;
-
-#pragma mark - Preferences->Login tab
-@property (weak) IBOutlet NSButton *prefWindowLoginToggle;
 
 - (void)addAppAsLoginItem;
 - (void)deleteAppFromLoginItem;
