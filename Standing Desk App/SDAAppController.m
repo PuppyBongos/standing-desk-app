@@ -10,6 +10,7 @@
 #import "SDAIdleDetector.h"
 
 #define SDA_TIMER_INTERVAL      1.0
+#define SDA_EVENT_WAIT_INTERVAL 5.0
 
 @implementation SDAAppController
 
@@ -226,6 +227,14 @@
         // Fire the event to any listeners
         [self.delegate appDidResumeFromIdle:self];
     }
+}
+
+-(void)fireStatusActionHasStarted {
+    if([self.delegate conformsToProtocol:@protocol(SDAApplicationDelegate)]) {
+
+    // Fire the event to any listeners
+    [self.delegate actionPeriodHasStarted:self actionState:_actionState];
+  }
 }
 
 -(void)fireStatusIntervalElapsed {

@@ -44,6 +44,12 @@ enum SDAActionState {
  */
 -(void)appDidResumeFromIdle:(SDAAppController*)sender;
 
+/**
+ *  Occurs when the interval for an action state
+    (sitting or standing) has started.
+ */
+-(void)actionPeriodHasStarted:(SDAAppController*)sender actionState:(SDAActionState)status;
+
 @required
 /**
   * Occurs when the interval for an action state (sitting or standing) has elapsed.
