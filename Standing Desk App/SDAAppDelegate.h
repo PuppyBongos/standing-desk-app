@@ -42,6 +42,7 @@
 @property (weak) IBOutlet NSMenuItem *skipMenuItem;
 @property (weak) IBOutlet NSMenuItem *prefMenuItem;
 @property (weak) IBOutlet NSMenuItem *quitMenuItem;
+@property (weak) IBOutlet NSMenuItem *restartMenuItem;
 
 #pragma mark - Preferences Window
 @property (assign) IBOutlet NSWindow *prefWindow;
