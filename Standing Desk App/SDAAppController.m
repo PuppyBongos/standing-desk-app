@@ -10,11 +10,13 @@
 #import "SDAIdleDetector.h"
 
 #define SDA_TIMER_INTERVAL      1.0
+#define SDA_EVENT_WAIT_INTERVAL 10.0
 
 @implementation SDAAppController
 
 @synthesize settings;
 @synthesize delegate;
+@synthesize lastCompletedActionState = _lastCompletedActionState;
 @synthesize currentActionState = _actionState;
 @synthesize currentStatus = _currentStatus;
 @synthesize currentTimeLeft = _currentTimeLeft;
@@ -25,7 +27,8 @@
         
         // Start with empty settings
         self.settings = [SDAAppSettings defaultSettings];
-        
+
+        _lastCompletedActionState = SDAActionStateNone;
         _actionState = SDAActionStateNone;
         _currentTimeLeft = 0;
         _lastUpdateTime = 0;
@@ -69,7 +72,18 @@
     NSLog(@"Setting state to: STANDING for %d seconds", settings.standingInterval);
 }
 
+-(void)scheduleTransition {
+    _actionState = SDAActionStateTransitioning;
+    _currentTimeLeft = SDA_EVENT_WAIT_INTERVAL;
+    _lastUpdateTime = [self now];
+
+    _currentStatus = SDAStatusRunning;
+    NSLog(@"Setting state to: TRANSITIONING for %f seconds", SDA_EVENT_WAIT_INTERVAL);
+}
+
 -(void)snooze {
+    if(_actionState == SDAActionStateTransitioning)
+       _actionState = _lastCompletedActionState;
     _currentTimeLeft += settings.snoozeTime;
     _currentStatus = SDAStatusRunning;
     
@@ -77,30 +91,18 @@
 }
 
 -(void)skipToNext {
-    
-    NSLog(@"SKIPPING ...");
-    if(_currentStatus == SDAStatusWaiting) {
-        // Period has ended, app is waiting for user response
-        // User has pressed 'sKip'
-        
-        // Assume user wants to skip the next event, so in essence,
-        // repeat the current event
-        if(_actionState == SDAActionStateSitting) {
-            [self scheduleSit];
-        } else {
-            [self scheduleStand];
-        }
-    }
-    else if(_currentStatus == SDAStatusRunning) {
-        // Assume user wants to skip to the next event if
-        // timer is already running
-        // So, switch to opposite action state
-        if(_actionState == SDAActionStateSitting) {
-            [self scheduleStand];
-        } else {
-            [self scheduleSit];
-        }
-    }
+
+  SDAActionState state = _actionState;
+  if(_actionState == SDAActionStateTransitioning)
+    state = _lastCompletedActionState;
+
+  NSLog(@"SKIPPING ...");
+  if (state == SDAActionStateSitting) {
+    [self scheduleStand];
+  } else {
+    [self scheduleSit];
+  }
+  
 }
 
 -(void)pauseTimer {
@@ -177,10 +179,15 @@
     // Check if we've crossed the time threshold and
     // we're not already running
     if(_currentTimeLeft <= 0) {
-        _currentStatus = SDAStatusWaiting;
+        _currentStatus = SDAStatusStopped;
         
         // Only fire event once.
-        [self fireStatusIntervalElapsed];
+      if (_actionState == SDAActionStateTransitioning) {
+        [self fireActionPeriodHasStarted];
+      } else {
+        _lastCompletedActionState = _actionState;
+        [self fireActionPeriodDidComplete];
+      }
     }
     
     _lastUpdateTime = now;
@@ -214,15 +221,23 @@
     }
 }
 
--(void)fireStatusIntervalElapsed {
+-(void)fireActionPeriodDidComplete {
     
     NSLog(@"Firing event: actionPeriodDidComplete");
     // Ensure that whoever subscribes to this also conforms to it
     if([self.delegate conformsToProtocol:@protocol(SDAApplicationDelegate)]) {
 
         // Fire the event to any listeners
-        [self.delegate actionPeriodDidComplete:self actionState:_actionState];
+        [self.delegate actionPeriodDidComplete:self actionCompleted:_lastCompletedActionState];
     }
+}
+
+-(void)fireActionPeriodHasStarted {
+  if([self.delegate conformsToProtocol:@protocol(SDAApplicationDelegate)]) {
+
+    // Fire the event to any listeners
+    [self.delegate actionPeriodHasStarted:self];
+  }
 }
 
 #pragma mark - Utility methods

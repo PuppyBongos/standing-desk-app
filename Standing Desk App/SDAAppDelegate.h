@@ -21,6 +21,8 @@
 #define PAUSED_MENU_ICON @"icon_pausing.png"
 #define ERROR_STATUS_TEXT @"Error"
 
+#define TRANSITIONING_ACTION_TEXT @"Transitioning"
+
 #define RESUME_TEXT_TITLE  @"Welcome back!"
 #define RESUME_TEXT_FORMAT @"Continuing %@"
 
@@ -65,5 +67,7 @@
 
 - (void)addAppAsLoginItem;
 - (void)deleteAppFromLoginItem;
+
+- (void)openEventOptionsWindow;
 
 @end

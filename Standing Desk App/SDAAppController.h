@@ -14,13 +14,14 @@ enum SDAStatus {
     SDAStatusPaused     = 0,
     SDAStatusIdle       = 1,
     SDAStatusRunning    = 2,
-    SDAStatusWaiting    = 3,
+    SDAStatusStopped    = 3,
 } typedef SDAStatus;
 
 enum SDAActionState {
-    SDAActionStateNone      = 0,
-    SDAActionStateStanding  = 1,
-    SDAActionStateSitting   = 2
+    SDAActionStateNone          = 0,
+    SDAActionStateStanding      = 1,
+    SDAActionStateSitting       = 2,
+    SDAActionStateTransitioning = 3,
 } typedef SDAActionState;
 
 @class SDAAppController;
@@ -48,7 +49,13 @@ enum SDAActionState {
 /**
   * Occurs when the interval for an action state (sitting or standing) has elapsed.
  */
--(void)actionPeriodDidComplete:(SDAAppController*)sender actionState:(SDAActionState)status;
+-(void)actionPeriodDidComplete:(SDAAppController*)sender actionCompleted:(SDAActionState)state;
+
+/**
+ *  Occurs when the interval for an action state
+ (sitting or standing) has started.
+ */
+-(void)actionPeriodHasStarted:(SDAAppController*)sender;
 
 @end
 
@@ -66,7 +73,11 @@ enum SDAActionState {
 
 #pragma mark - Properties
 
-/** Gets the current action state (standing/sitting) of the app
+/** Gets the last completed state (standing/sitting) of the app
+ */
+@property (readonly) SDAActionState lastCompletedActionState;
+
+/** Gets the current action state (standing/sitting/transitioning) of the app
  */
 @property (readonly) SDAActionState currentActionState;
 
@@ -110,6 +121,11 @@ enum SDAActionState {
  * Starts a period of standing
  */
 -(void)scheduleStand;
+
+/**
+ * Starts a period of transitioning
+ */
+-(void)scheduleTransition;
 
 /**
   * Adds a snooze period to the current period's time and resumes the current action period. 
