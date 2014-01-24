@@ -196,6 +196,18 @@ NSSound *standSound;
 }
 
 #pragma mark - Menu Items
+- (IBAction)onMenuRestart:(id)sender {
+  SDAActionState state = appController.currentActionState;
+  if (state == SDAActionStateTransitioning) state = appController.lastCompletedActionState;
+  if (state == SDAActionStateStanding) {
+    [appController scheduleStand];
+  } else if (state == SDAActionStateSitting){
+    [appController scheduleSit];
+  }
+  [self updateActionMenuItem];
+  [self updateTimerMenuItem];
+  [self updateResumePauseMenuItem];
+}
 - (IBAction)onMenuPause:(id)sender {
   if (appController.currentStatus == SDAStatusRunning) {
     [appController pauseTimer];
