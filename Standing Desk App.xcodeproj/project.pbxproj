@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0805A67E18921BE6000C32EE /* icon_pausing.png in Resources */ = {isa = PBXBuildFile; fileRef = 0805A67B18921BE6000C32EE /* icon_pausing.png */; };
 		0805A67F18921BE6000C32EE /* icon_sitting.png in Resources */ = {isa = PBXBuildFile; fileRef = 0805A67C18921BE6000C32EE /* icon_sitting.png */; };
 		0805A68018921BE6000C32EE /* icon_standing.png in Resources */ = {isa = PBXBuildFile; fileRef = 0805A67D18921BE6000C32EE /* icon_standing.png */; };
 		0872E89D1882507F0028586C /* desk_logo_16_1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0872E8931882507F0028586C /* desk_logo_16_1x.png */; };
@@ -30,6 +29,7 @@
 		0872E8B8188252470028586C /* desk_logo_sit_256_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0872E8AE188252470028586C /* desk_logo_sit_256_2x.png */; };
 		0872E8B9188252470028586C /* desk_logo_sit_512_1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0872E8AF188252470028586C /* desk_logo_sit_512_1x.png */; };
 		0872E8BA188252470028586C /* desk_logo_sit_512_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0872E8B0188252470028586C /* desk_logo_sit_512_2x.png */; };
+		08AFD5AE189228C800B10813 /* icon_pausing.png in Resources */ = {isa = PBXBuildFile; fileRef = 08AFD5AD189228C800B10813 /* icon_pausing.png */; };
 		27652E6D187548C600BD3DC5 /* SystemSounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 27652E6C187548C600BD3DC5 /* SystemSounds.m */; };
 		2774735F1887CBBF00F27C77 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2774735E1887CBBF00F27C77 /* README.md */; };
 		27A44DFA1886885C00342C82 /* Sit.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 27A44DF81886885C00342C82 /* Sit.m4a */; };
@@ -65,7 +65,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0805A67B18921BE6000C32EE /* icon_pausing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_pausing.png; sourceTree = "<group>"; };
 		0805A67C18921BE6000C32EE /* icon_sitting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_sitting.png; sourceTree = "<group>"; };
 		0805A67D18921BE6000C32EE /* icon_standing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_standing.png; sourceTree = "<group>"; };
 		0872E8931882507F0028586C /* desk_logo_16_1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = desk_logo_16_1x.png; sourceTree = "<group>"; };
@@ -88,6 +87,7 @@
 		0872E8AE188252470028586C /* desk_logo_sit_256_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = desk_logo_sit_256_2x.png; sourceTree = "<group>"; };
 		0872E8AF188252470028586C /* desk_logo_sit_512_1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = desk_logo_sit_512_1x.png; sourceTree = "<group>"; };
 		0872E8B0188252470028586C /* desk_logo_sit_512_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = desk_logo_sit_512_2x.png; sourceTree = "<group>"; };
+		08AFD5AD189228C800B10813 /* icon_pausing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_pausing.png; sourceTree = "<group>"; };
 		27652E6B187548C600BD3DC5 /* SystemSounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemSounds.h; sourceTree = "<group>"; };
 		27652E6C187548C600BD3DC5 /* SystemSounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemSounds.m; sourceTree = "<group>"; };
 		2774735E1887CBBF00F27C77 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -151,7 +151,7 @@
 		0872E87E18824EDC0028586C /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				0805A67B18921BE6000C32EE /* icon_pausing.png */,
+				08AFD5AD189228C800B10813 /* icon_pausing.png */,
 				0805A67C18921BE6000C32EE /* icon_sitting.png */,
 				0805A67D18921BE6000C32EE /* icon_standing.png */,
 				0872E8A7188252470028586C /* desk_logo_sit_16_1x.png */,
@@ -381,10 +381,10 @@
 				27F1D9C3186174B10087FC3A /* InfoPlist.strings in Resources */,
 				0872E8B5188252470028586C /* desk_logo_sit_128_1x.png in Resources */,
 				0872E8B9188252470028586C /* desk_logo_sit_512_1x.png in Resources */,
+				08AFD5AE189228C800B10813 /* icon_pausing.png in Resources */,
 				27F1D9D1186174B10087FC3A /* Images.xcassets in Resources */,
 				0872E89E1882507F0028586C /* desk_logo_16_2x.png in Resources */,
 				0872E8B2188252470028586C /* desk_logo_sit_16_2x.png in Resources */,
-				0805A67E18921BE6000C32EE /* icon_pausing.png in Resources */,
 				0872E8B7188252470028586C /* desk_logo_sit_256_1x.png in Resources */,
 				0872E89F1882507F0028586C /* desk_logo_32_1x.png in Resources */,
 				0872E8B1188252470028586C /* desk_logo_sit_16_1x.png in Resources */,
