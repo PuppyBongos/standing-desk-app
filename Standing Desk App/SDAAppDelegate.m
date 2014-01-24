@@ -70,9 +70,9 @@ NSSound *standSound;
     [appController scheduleStand];
   }
     
-    [self updateActionMenuItem];
-    [self updateTimerMenuItem];
-    [self sendSitStandNotification];
+  [self updateActionMenuItem];
+  [self updateTimerMenuItem];
+  [self sendSitStandNotification];
 }
 
 - (void)runningTickDidOccur:(SDAAppController *)sender {
