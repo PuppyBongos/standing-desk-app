@@ -13,6 +13,7 @@
 @implementation SDAAppDelegate
 
 SDAAppController* appController;
+SDAActionState completedState;
 NSString *appName;
 NSSound *sitSound;
 NSSound *standSound;
@@ -61,18 +62,36 @@ NSSound *standSound;
   [self checkIfFirstTime];
 }
 
-- (void)actionPeriodDidComplete:(SDAAppController *)sender actionState:(SDAActionState)status {
-  
-  if (appController.currentActionState == SDAActionStateStanding) {
+- (void)actionPeriodHasStarted:(SDAAppController *)sender {
+  /* check the last completed state */
+  /* if it's sitting, then we schedule a stand */
+  /* else we schedule a sit */
+  if (completedState == SDAActionStateStanding) {
     [appController scheduleSit];
   }
   else {
     [appController scheduleStand];
   }
-    
+
+  /* update menu text */
+  /* send a notification */
   [self updateActionMenuItem];
   [self updateTimerMenuItem];
   [self sendSitStandNotification];
+}
+
+- (void)actionPeriodDidComplete:(SDAAppController *)sender actionCompleted:(SDAActionState)state {
+
+  /* record the completed state */
+  completedState = state;
+  /* set application to new transitioning state */
+  [appController scheduleTransition];
+  /* notify the user that a new event is about to start */
+  [self sendNotificationForTransitioning];
+  /* user can click notification to get modal dialog that allows for the change of the app's flow */
+
+  /* unless user changes flow, start new event */
+
 }
 
 - (void)runningTickDidOccur:(SDAAppController *)sender {
@@ -176,20 +195,22 @@ NSSound *standSound;
 - (IBAction)onMenuPause:(id)sender {
   if (appController.currentStatus == SDAStatusRunning) {
     [appController pauseTimer];
-    [sender setTitle:@"Resume"];
   }
   else if (appController.currentStatus == SDAStatusPaused) {
     [appController resumeTimer];
-    [sender setTitle:@"Pause"];
   }
+  [self updateResumePauseMenuItem];
   [self updateActionMenuItem];
 }
 - (IBAction)onMenuSnooze:(id)sender {
   [appController snooze];
+  [self updateResumePauseMenuItem];
+  [self updateActionMenuItem];
 }
 - (IBAction)onMenuSkip:(id)sender {
   [appController skipToNext];
   [self sendSitStandNotification];
+  [self updateResumePauseMenuItem];
   [self updateActionMenuItem];
 }
 - (IBAction)onMenuPref:(id)sender {
@@ -246,6 +267,14 @@ NSSound *standSound;
 }
 - (void)updateTimerMenuItem {
   self.timerMenuItem.title = appController.stringFromTimeLeft;
+}
+- (void)updateResumePauseMenuItem {
+  if (appController.currentStatus == SDAStatusRunning) {
+    [_pauseMenuItem setTitle:@"Pause"];
+  }
+  else if (appController.currentStatus == SDAStatusPaused) {
+    [_pauseMenuItem setTitle:@"Resume"];
+  }
 }
 
 /* Load local appsettings values
@@ -326,7 +355,7 @@ NSSound *standSound;
     NSString *action = nil;
     NSString *iconName = nil;
     NSString *soundName = nil;
-    
+
     switch (appController.currentActionState) {
         case SDAActionStateSitting:
             action = SITTING_ACTION_TEXT;
@@ -337,6 +366,11 @@ NSSound *standSound;
             action = STANDING_ACTION_TEXT;
             iconName = STANDING_NOTIFICATION_ICON;
             soundName = appController.settings.standingSettings.soundFile;
+            break;
+        case SDAActionStateTransitioning:
+            action = TRANSITIONING_ACTION_TEXT;
+            iconName = completedState == SDAActionStateSitting ? SITTING_NOTIFICATION_ICON : STANDING_NOTIFICATION_ICON;
+            soundName = @"Funk";
             break;
         default:
             // If this is an unexpected state, do not
@@ -357,6 +391,10 @@ NSSound *standSound;
   [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:alert];
   [self playSounds];
 }
+- (void)sendNotificationForTransitioning {
+  [self sendNotificationWithTitle:TRANSITIONING_ACTION_TEXT msg:[NSString stringWithFormat:@"Time to get ready to %@!", appController.lastCompletedActionState == SDAActionStateSitting ? @"stand" : @"sit"] soundFile:nil iconFile:nil];
+}
+
 
 /* Adds and removes app from current user's
    Login Items depending on app setting checkbox */
@@ -445,6 +483,7 @@ NSSound *standSound;
 
 /* Window that gets displayed when an event elapsed notification is shown */
 - (void)openEventOptionsWindow {
+  [appController pauseTimer];
   
   NSLog(@"notification clicked");
 }
