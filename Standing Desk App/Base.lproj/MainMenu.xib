@@ -64,82 +64,22 @@
         <window title="Standing Desk App Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" appearanceType="aqua" animationBehavior="default" id="371">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="316"/>
+            <rect key="contentRect" x="335" y="390" width="375" height="316"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
             <view key="contentView" id="372">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="316"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="316"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <tabView appearanceType="lightContent" fixedFrame="YES" initialItem="aOY-2h-lJo" translatesAutoresizingMaskIntoConstraints="NO" id="NgU-pb-nfT">
-                        <rect key="frame" x="-8" y="31" width="496" height="279"/>
+                        <rect key="frame" x="-8" y="31" width="391" height="279"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="General" identifier="1" id="aOY-2h-lJo">
                                 <view key="view" ambiguous="YES" id="6nP-Vf-iX1">
-                                    <rect key="frame" x="10" y="33" width="476" height="233"/>
+                                    <rect key="frame" x="10" y="33" width="371" height="233"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GXO-jE-keb">
-                                            <rect key="frame" x="123" y="195" width="99" height="26"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="blR-fA-lh0">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                <objectValues>
-                                                    <string>10</string>
-                                                    <string>20</string>
-                                                    <string>30</string>
-                                                    <string>45</string>
-                                                    <string>60</string>
-                                                    <string>90</string>
-                                                    <string>120</string>
-                                                </objectValues>
-                                            </comboBoxCell>
-                                            <connections>
-                                                <action selector="onStandTimeComboBoxChange:" target="494" id="b8C-J4-zbr"/>
-                                            </connections>
-                                        </comboBox>
-                                        <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ntd-S2-Ozl">
-                                            <rect key="frame" x="123" y="149" width="99" height="26"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="EVx-WN-BJX">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                <objectValues>
-                                                    <string>10</string>
-                                                    <string>20</string>
-                                                    <string>30</string>
-                                                    <string>45</string>
-                                                    <string>60</string>
-                                                    <string>90</string>
-                                                    <string>120</string>
-                                                </objectValues>
-                                            </comboBoxCell>
-                                            <connections>
-                                                <action selector="onSitTimeComboBoxChange:" target="494" id="DaW-9h-vdg"/>
-                                            </connections>
-                                        </comboBox>
-                                        <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HwS-Il-yRU">
-                                            <rect key="frame" x="123" y="106" width="99" height="26"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="hhy-Gg-57x">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                <objectValues>
-                                                    <string>5</string>
-                                                    <string>10</string>
-                                                    <string>15</string>
-                                                    <string>20</string>
-                                                </objectValues>
-                                            </comboBoxCell>
-                                            <connections>
-                                                <action selector="onIdleTimeComboBoxChange:" target="494" id="LNd-tA-83Z"/>
-                                            </connections>
-                                        </comboBox>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WYd-dC-dMo">
                                             <rect key="frame" x="15" y="199" width="62" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -176,27 +116,8 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <comboBox appearanceType="lightContent" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Vy-R5-gAr">
-                                            <rect key="frame" x="121" y="60" width="99" height="26"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="QjJ-Y1-Czk">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                <objectValues>
-                                                    <string>1</string>
-                                                    <string>2</string>
-                                                    <string>3</string>
-                                                    <string>4</string>
-                                                    <string>5</string>
-                                                </objectValues>
-                                            </comboBoxCell>
-                                            <connections>
-                                                <action selector="onSnoozeTimeComboBoxChange:" target="494" id="n8V-XG-JGq"/>
-                                            </connections>
-                                        </comboBox>
                                         <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uLb-Lh-J2R">
-                                            <rect key="frame" x="230" y="199" width="69" height="17"/>
+                                            <rect key="frame" x="248" y="199" width="69" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="minute(s)" id="Vdp-SL-e1b">
                                                 <font key="font" metaFont="system"/>
@@ -205,7 +126,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AV6-Ve-fom">
-                                            <rect key="frame" x="230" y="153" width="69" height="17"/>
+                                            <rect key="frame" x="248" y="153" width="69" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="minute(s)" id="mLf-cX-hnu">
                                                 <font key="font" metaFont="system"/>
@@ -214,7 +135,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0x8-a5-e49">
-                                            <rect key="frame" x="230" y="110" width="69" height="17"/>
+                                            <rect key="frame" x="248" y="110" width="69" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="minute(s)" id="pny-ks-0eO">
                                                 <font key="font" metaFont="system"/>
@@ -223,7 +144,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WKC-EL-sqM">
-                                            <rect key="frame" x="230" y="66" width="69" height="17"/>
+                                            <rect key="frame" x="248" y="66" width="69" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="minute(s)" id="Et2-Ra-XU8">
                                                 <font key="font" metaFont="system"/>
@@ -232,50 +153,71 @@
                                             </textFieldCell>
                                         </textField>
                                         <button appearanceType="lightContent" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="anF-9Y-xZd">
-                                            <rect key="frame" x="15" y="15" width="233" height="18"/>
+                                            <rect key="frame" x="15" y="15" width="183" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="check" title="Start Standing Desk App at login?" bezelStyle="regularSquare" imagePosition="left" inset="2" id="6Y3-G2-fKY">
+                                            <buttonCell key="cell" type="check" title="Start application at login?" bezelStyle="regularSquare" imagePosition="left" inset="2" id="6Y3-G2-fKY">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
-                                            <connections>
-                                                <action selector="onLoginToggleChange:" target="494" id="yxV-Wd-aVw"/>
-                                            </connections>
                                         </button>
+                                        <textField appearanceType="aqua" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QTJ-Mb-4hm">
+                                            <rect key="frame" x="138" y="196" width="96" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="30" drawsBackground="YES" id="Tyf-M9-eBh">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <action selector="onStandTimeTextFieldChange:" target="494" id="Lv1-6g-teX"/>
+                                            </connections>
+                                        </textField>
+                                        <textField appearanceType="aqua" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZIB-Vr-cAy">
+                                            <rect key="frame" x="138" y="150" width="96" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="60" drawsBackground="YES" id="w6P-qd-cju">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <action selector="onSitTimeTextFieldChange:" target="494" id="dfA-e2-Cje"/>
+                                            </connections>
+                                        </textField>
+                                        <textField appearanceType="aqua" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OIg-I2-WWX">
+                                            <rect key="frame" x="138" y="107" width="96" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="5" drawsBackground="YES" id="cdR-Kq-Y99">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <action selector="onIdleTimeTextFieldChange:" target="494" id="rso-zA-lY7"/>
+                                            </connections>
+                                        </textField>
+                                        <textField appearanceType="aqua" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ybp-AP-Iv3">
+                                            <rect key="frame" x="138" y="63" width="96" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="9" drawsBackground="YES" id="Okq-qY-FsE">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <action selector="onSnoozeTimeTextFieldChange:" target="494" id="ohT-wL-c0f"/>
+                                            </connections>
+                                        </textField>
                                     </subviews>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Alerts" identifier="2" id="W2h-1r-XMY">
                                 <view key="view" id="Pjd-BB-gBS">
-                                    <rect key="frame" x="10" y="33" width="476" height="233"/>
+                                    <rect key="frame" x="10" y="33" width="371" height="233"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VPe-WK-mA8">
-                                            <rect key="frame" x="121" y="163" width="144" height="26"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" completes="NO" numberOfVisibleItems="5" id="Yk4-0b-wbP">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </comboBoxCell>
-                                            <connections>
-                                                <action selector="onSitAlertComboBoxChange:" target="494" id="mNm-fG-IoJ"/>
-                                            </connections>
-                                        </comboBox>
-                                        <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VL3-3b-yWG">
-                                            <rect key="frame" x="121" y="56" width="144" height="26"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" completes="NO" numberOfVisibleItems="5" id="RU2-Pl-HWT">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </comboBoxCell>
-                                            <connections>
-                                                <action selector="onStandAlertComboBoxChange:" target="494" id="6oU-7E-d7X"/>
-                                            </connections>
-                                        </comboBox>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gBi-er-w3J">
-                                            <rect key="frame" x="15" y="169" width="94" height="17"/>
+                                            <rect key="frame" x="50" y="99" width="94" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Sit Down Alert" id="cib-HV-0W4">
                                                 <font key="font" metaFont="system"/>
@@ -284,7 +226,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mBA-rt-9Id">
-                                            <rect key="frame" x="15" y="62" width="95" height="17"/>
+                                            <rect key="frame" x="50" y="196" width="95" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Stand Up Alert" id="b87-1v-q6v">
                                                 <font key="font" metaFont="system"/>
@@ -293,7 +235,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YPN-u4-Xh1">
-                                            <rect key="frame" x="280" y="132" width="21" height="96"/>
+                                            <rect key="frame" x="232" y="44" width="21" height="85"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <sliderCell key="cell" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="right" sliderType="linear" id="zr5-9y-wud"/>
                                             <connections>
@@ -301,15 +243,15 @@
                                             </connections>
                                         </slider>
                                         <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CIK-Yp-pWm">
-                                            <rect key="frame" x="280" y="18" width="21" height="96"/>
+                                            <rect key="frame" x="232" y="147" width="21" height="85"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <sliderCell key="cell" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="right" sliderType="linear" id="8WN-Ov-kNE"/>
+                                            <sliderCell key="cell" state="on" alignment="left" maxValue="1" doubleValue="0.2852783203125" tickMarkPosition="right" sliderType="linear" id="8WN-Ov-kNE"/>
                                             <connections>
                                                 <action selector="onStandAlertVolumeChange:" target="494" id="X0T-BE-dFM"/>
                                             </connections>
                                         </slider>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qv3-0c-QzK">
-                                            <rect key="frame" x="305" y="203" width="52" height="17"/>
+                                            <rect key="frame" x="264" y="182" width="52" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Volume" id="xFy-Lq-p7U">
                                                 <font key="font" metaFont="system"/>
@@ -318,10 +260,43 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Maf-LN-rRn">
-                                            <rect key="frame" x="305" y="90" width="52" height="17"/>
+                                            <rect key="frame" x="264" y="79" width="52" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Volume" id="Bua-kz-BAx">
                                                 <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <popUpButton appearanceType="aqua" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8qb-1Q-9LQ">
+                                            <rect key="frame" x="50" y="67" width="165" height="26"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="RQp-Gn-BdV">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="menu"/>
+                                                <menu key="menu" title="OtherViews" id="nxk-fW-6js"/>
+                                            </popUpButtonCell>
+                                            <connections>
+                                                <action selector="onSitAlertSystemSoundPopUpChange:" target="494" id="b4u-hj-ZwJ"/>
+                                            </connections>
+                                        </popUpButton>
+                                        <popUpButton appearanceType="aqua" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1vK-JV-4RY">
+                                            <rect key="frame" x="50" y="164" width="165" height="26"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="mrh-Ke-piA">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="menu"/>
+                                                <menu key="menu" title="OtherViews" id="ysH-jj-efX"/>
+                                            </popUpButtonCell>
+                                            <connections>
+                                                <action selector="onStandAlertSystemSoundPopUpChange:" target="494" id="983-WV-QUQ"/>
+                                            </connections>
+                                        </popUpButton>
+                                        <textField appearanceType="aqua" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rOd-jf-feO">
+                                            <rect key="frame" x="15" y="3" width="348" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Note: Custom sounds can be added to ~/Library/Sounds." id="TrP-qR-dKv">
+                                                <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -332,7 +307,7 @@
                         </tabViewItems>
                     </tabView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n8w-wA-Pwg">
-                        <rect key="frame" x="324" y="3" width="74" height="32"/>
+                        <rect key="frame" x="230" y="3" width="74" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Oi7-7p-gRH">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -346,7 +321,7 @@ Gw
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N0M-WZ-c4w">
-                        <rect key="frame" x="409" y="3" width="57" height="32"/>
+                        <rect key="frame" x="304" y="3" width="57" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zDW-DK-scl">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -370,21 +345,18 @@ DQ
                 <outlet property="prefView" destination="372" id="Ogj-k8-hWo"/>
                 <outlet property="prefWindow" destination="371" id="9Ow-fG-qRV"/>
                 <outlet property="prefWindowCancelBtn" destination="n8w-wA-Pwg" id="ZQt-Lq-A6X"/>
-                <outlet property="prefWindowIdleTime" destination="HwS-Il-yRU" id="cQo-u9-otq"/>
+                <outlet property="prefWindowIdleTime" destination="OIg-I2-WWX" id="otR-6d-Ihs"/>
                 <outlet property="prefWindowLoginToggle" destination="anF-9Y-xZd" id="CNm-Bs-6DG"/>
                 <outlet property="prefWindowSaveBtn" destination="N0M-WZ-c4w" id="Myf-NX-RVD"/>
                 <outlet property="prefWindowSitAlert" destination="Pjd-BB-gBS" id="fR1-9p-7YW"/>
-                <outlet property="prefWindowSitAlertComboBox" destination="VPe-WK-mA8" id="Voe-YA-xmM"/>
-                <outlet property="prefWindowSitAlertFile" destination="VPe-WK-mA8" id="cGD-Ju-GyW"/>
-                <outlet property="prefWindowSitTime" destination="ntd-S2-Ozl" id="h85-76-NDR"/>
+                <outlet property="prefWindowSitAlertSystemSoundPopUp" destination="8qb-1Q-9LQ" id="GkT-AJ-sGH"/>
+                <outlet property="prefWindowSitTime" destination="ZIB-Vr-cAy" id="17R-g0-O2M"/>
                 <outlet property="prefWindowSitVolume" destination="YPN-u4-Xh1" id="3Qb-rF-lTR"/>
-                <outlet property="prefWindowSnoozeTime" destination="7Vy-R5-gAr" id="q8i-s3-oZY"/>
-                <outlet property="prefWindowStandAlert" destination="VL3-3b-yWG" id="FUN-HH-Y9I"/>
-                <outlet property="prefWindowStandAlertComboBox" destination="VL3-3b-yWG" id="DcK-kL-aWB"/>
-                <outlet property="prefWindowStandAlertFile" destination="VL3-3b-yWG" id="G27-aW-k49"/>
-                <outlet property="prefWindowStandMins" destination="GXO-jE-keb" id="3Wt-SP-bQK"/>
-                <outlet property="prefWindowStandTime" destination="GXO-jE-keb" id="cL9-AP-a7b"/>
+                <outlet property="prefWindowSnoozeTime" destination="Ybp-AP-Iv3" id="w3a-Vy-MF7"/>
+                <outlet property="prefWindowStandAlertSystemSoundPopUp" destination="1vK-JV-4RY" id="ewR-Jh-VSq"/>
+                <outlet property="prefWindowStandTime" destination="QTJ-Mb-4hm" id="bNr-T4-Nvz"/>
                 <outlet property="prefWindowStandVolume" destination="CIK-Yp-pWm" id="5qC-y7-a7s"/>
+                <outlet property="prefWindowSystemSoundPopUpButton" destination="8qb-1Q-9LQ" id="meu-NK-JMk"/>
                 <outlet property="quitMenuItem" destination="QMk-XI-lMF" id="KR9-wQ-tQG"/>
                 <outlet property="skipMenuItem" destination="1YL-ho-WMI" id="jUS-WZ-aMD"/>
                 <outlet property="snoozeMenuItem" destination="qJP-eb-RWy" id="MNb-Cy-HLf"/>

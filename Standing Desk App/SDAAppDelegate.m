@@ -42,11 +42,11 @@ NSSound *standSound;
   [self updateActionMenuItem];
   [_timerMenuItem setEnabled:false];
 
-  /* Load alert comboboxes with system sounds */
-  [_prefWindowSitAlertComboBox addItemsWithObjectValues:[NSSound systemSounds]];
-  [_prefWindowSitAlertComboBox insertItemWithObjectValue:@"" atIndex:0];
-  [_prefWindowStandAlertComboBox addItemsWithObjectValues:[NSSound systemSounds]];
-  [_prefWindowStandAlertComboBox insertItemWithObjectValue:@"" atIndex:0];
+  /* Load alert popups with system sounds */
+  [_prefWindowSitAlertSystemSoundPopUp addItemsWithTitles:[NSSound systemSounds]];
+  [_prefWindowSitAlertSystemSoundPopUp insertItemWithTitle:@"" atIndex:0];
+  [_prefWindowStandAlertSystemSoundPopUp addItemsWithTitles:[NSSound systemSounds]];
+  [_prefWindowStandAlertSystemSoundPopUp insertItemWithTitle:@"" atIndex:0];
 
   [_prefWindow setDelegate:self];
 
@@ -54,6 +54,8 @@ NSSound *standSound;
   [_prefWindowCancelBtn setBezelStyle:NSRoundedBezelStyle];
   [_prefWindow setDefaultButtonCell:[_prefWindowSaveBtn cell]];
   [_prefWindowSaveBtn setBezelStyle:NSRoundedBezelStyle];
+
+  [self loadAppSettingsToUI];
 
     // Perform first-time actions, if necessary
   [self checkIfFirstTime];
@@ -81,7 +83,7 @@ NSSound *standSound;
     // Actions to occur when system idle threshold is met
 }
 
--(void)appDidResumeFromIdle:(SDAAppController *)sender {
+- (void)appDidResumeFromIdle:(SDAAppController *)sender {
     
     // Actions to occur when user breaks system idle state
     NSString *action = nil;
@@ -113,49 +115,49 @@ NSSound *standSound;
     [_prefWindowSaveBtn setKeyEquivalent:@"\r"];
     [_prefWindowSaveBtn setNeedsDisplay:YES];
    */
-
-  [self loadAppSettingsToUI];
 }
 
 #pragma mark - Preferences->General
-- (IBAction)onStandTimeComboBoxChange:(id)sender {
-
+- (IBAction)onStandTimeTextFieldChange:(id)sender {
 }
-- (IBAction)onSitTimeComboBoxChange:(id)sender {
-
+- (IBAction)onSitTimeTextFieldChange:(id)sender {
 }
-- (IBAction)onIdleTimeComboBoxChange:(id)sender {
-
+- (IBAction)onIdleTimeTextFieldChange:(id)sender {
 }
-- (IBAction)onSnoozeTimeComboBoxChange:(id)sender {
-  }
+- (IBAction)onSnoozeTimeTextFieldChange:(id)sender {
+}
 
 #pragma mark - Preferences->Alerts
-- (IBAction)onSitAlertComboBoxChange:(id)sender {
-  sitSound = [NSSound soundNamed:[_prefWindowSitAlertComboBox stringValue]];
-  [sitSound setVolume:appController.settings.sittingSettings.volume];
-  [sitSound stop];
-  [sitSound play];
-}
-- (IBAction)onSitAlertVolumeChange:(id)sender {
-  sitSound = [NSSound soundNamed:[_prefWindowSitAlertComboBox stringValue]];
-  appController.settings.sittingSettings.volume = [_prefWindowSitVolume floatValue];
-  [sitSound setVolume:appController.settings.sittingSettings.volume];
-  [sitSound stop];
-  [sitSound play];
-}
-- (IBAction)onStandAlertComboBoxChange:(id)sender {
-  standSound = [NSSound soundNamed:[_prefWindowStandAlertComboBox stringValue]];
+// Stand
+- (IBAction)onStandAlertSystemSoundPopUpChange:(id)sender {
+  NSString* newAudioFilePath = [[_prefWindowStandAlertSystemSoundPopUp selectedItem] title];
+  standSound = [self updateSoundFile:newAudioFilePath];
+  appController.settings.standingSettings.soundFile = newAudioFilePath;
   [standSound setVolume:appController.settings.standingSettings.volume];
   [standSound stop];
   [standSound play];
 }
 - (IBAction)onStandAlertVolumeChange:(id)sender {
-  standSound = [NSSound soundNamed:[_prefWindowStandAlertComboBox stringValue]];
   appController.settings.standingSettings.volume = [_prefWindowStandVolume floatValue];
   [standSound setVolume:appController.settings.standingSettings.volume];
   [standSound stop];
   [standSound play];
+}
+
+// Sit
+- (IBAction)onSitAlertSystemSoundPopUpChange:(id)sender {
+  NSString* newAudioFilePath = [[_prefWindowSitAlertSystemSoundPopUp selectedItem] title];
+  sitSound = [self updateSoundFile:newAudioFilePath];
+  appController.settings.sittingSettings.soundFile = newAudioFilePath;
+  [sitSound setVolume:appController.settings.sittingSettings.volume];
+  [sitSound stop];
+  [sitSound play];
+}
+- (IBAction)onSitAlertVolumeChange:(id)sender {
+  appController.settings.sittingSettings.volume = [_prefWindowSitVolume floatValue];
+  [sitSound setVolume:appController.settings.sittingSettings.volume];
+  [sitSound stop];
+  [sitSound play];
 }
 
 #pragma mark - Preferences->Buttons
@@ -187,6 +189,7 @@ NSSound *standSound;
 }
 - (IBAction)onMenuSkip:(id)sender {
   [appController skipToNext];
+  [self sendSitStandNotification];
   [self updateActionMenuItem];
 }
 - (IBAction)onMenuPref:(id)sender {
@@ -198,35 +201,26 @@ NSSound *standSound;
 }
 
 #pragma mark - Menu Item private methods
-
-/**
- * Opens the Preferences window over all other windows.
- */
--(void)openPrefsWindow {
+/* Opens the Preferences window over all other windows. */
+- (void)openPrefsWindow {
     
     [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
     [_prefWindow makeKeyAndOrderFront:self];
 }
 
-/** 
- * Convenience method that converts seconds to minutes 
- * as a string to place into UI text fields.
- */
+/* Convenience method that converts seconds to minutes
+   as a string to place into UI text fields. */
 - (NSString*)stringSecToMin:(int)seconds {
   return [NSString stringWithFormat:@"%d", seconds / 60];
 }
 
-/**
- * Convenience method that converts minutes to seconds
- * to add to app settings.
- */
+/* Convenience method that converts minutes to seconds
+   to add to app settings. */
 - (int)intMinToSec:(int)minutes {
   return minutes * 60;
 }
 
-/**
- * Updates the main menu status and timer
- */
+/* Updates the main menu status and timer */
 - (void)updateActionMenuItem {
   switch (appController.currentActionState) {
     case SDAActionStateSitting:
@@ -253,42 +247,38 @@ NSSound *standSound;
   self.timerMenuItem.title = appController.stringFromTimeLeft;
 }
 
-/** Load local appsettings values
-    into UI preference values
- */
+/* Load local appsettings values
+   into UI preference values */
 - (void)loadAppSettingsToUI {
   // Preferences->General
   [_prefWindowStandTime setStringValue:[self stringSecToMin:appController.settings.standingInterval]];
   [_prefWindowSitTime setStringValue:[self stringSecToMin:appController.settings.sittingInterval]];
   [_prefWindowIdleTime setStringValue:[self stringSecToMin:appController.settings.idlePauseTime]];
   [_prefWindowSnoozeTime setStringValue:[self stringSecToMin:appController.settings.snoozeTime]];
-
-  // Preferences->Alerts
-  [_prefWindowSitAlertComboBox setStringValue:appController.settings.sittingSettings.soundFile];
-  [_prefWindowSitVolume setFloatValue:appController.settings.sittingSettings.volume];
-  [_prefWindowStandAlertComboBox setStringValue:appController.settings.standingSettings.soundFile];
-  [_prefWindowStandVolume setFloatValue:appController.settings.standingSettings.volume];
-
-  // Preferences->Login
   _prefWindowLoginToggle.state = appController.settings.isLoginItem ? NSOnState : NSOffState;
 
+  // Preferences->Alerts
+  // Stand
+  NSString* standSoundFilePath = appController.settings.standingSettings.soundFile;
+  [_prefWindowStandAlertSystemSoundPopUp selectItemWithTitle:standSoundFilePath];
+  standSound = [self updateSoundFile:standSoundFilePath];
+  [_prefWindowStandVolume setFloatValue:appController.settings.standingSettings.volume];
+
+  // Sit
+  NSString* sitSoundFilePath = appController.settings.sittingSettings.soundFile;
+  [_prefWindowSitAlertSystemSoundPopUp selectItemWithTitle:sitSoundFilePath];
+  sitSound = [self updateSoundFile:sitSoundFilePath];
+  [_prefWindowSitVolume setFloatValue:appController.settings.sittingSettings.volume];
 }
 
-/**
- *  Saves UI preference values to
-    local appsettings values
- */
+/* Saves UI preference values to
+   local appsettings values */
 - (void)saveUIToAppSettings {
+  // Preferences->General
   appController.settings.standingInterval = [self intMinToSec:_prefWindowStandTime.integerValue];
   appController.settings.sittingInterval = [self intMinToSec:_prefWindowSitTime.integerValue];
   appController.settings.idlePauseTime = [self intMinToSec:_prefWindowIdleTime.integerValue];
   appController.settings.snoozeTime = [self intMinToSec:_prefWindowSnoozeTime.integerValue];
-
-  appController.settings.sittingSettings.soundFile = [_prefWindowSitAlertComboBox stringValue];
-  appController.settings.sittingSettings.volume = [_prefWindowSitVolume floatValue];
-  appController.settings.standingSettings.soundFile = [_prefWindowStandAlertComboBox stringValue];
-  appController.settings.standingSettings.volume = [_prefWindowStandVolume floatValue];
-
   if ([_prefWindowLoginToggle state] == NSOnState)
   {
     appController.settings.isLoginItem = true;
@@ -297,14 +287,21 @@ NSSound *standSound;
     appController.settings.isLoginItem = false;
     [self deleteAppFromLoginItem];
   }
+
+  // Preferences->Alerts
+  //// Stand
+  appController.settings.standingSettings.soundFile = [[_prefWindowStandAlertSystemSoundPopUp selectedItem] title];
+  appController.settings.standingSettings.volume = [_prefWindowStandVolume floatValue];
+
+  //// Sit
+  appController.settings.sittingSettings.soundFile = [[_prefWindowSitAlertSystemSoundPopUp selectedItem] title];
+  appController.settings.sittingSettings.volume = [_prefWindowSitVolume floatValue];
 }
 
-/**
- *  Plays a sound for the current action state.
- */
+/* Plays a sound for the current action state. */
 - (void)playSounds {
-  NSSound *sitSound = [NSSound soundNamed:appController.settings.sittingSettings.soundFile];
-  NSSound *standSound = [NSSound soundNamed:appController.settings.standingSettings.soundFile];
+  //NSSound *sitSound = [NSSound soundNamed:appController.settings.sittingSettings.soundFile];
+  //NSSound *standSound = [NSSound soundNamed:appController.settings.standingSettings.soundFile];
 
   [sitSound setVolume:appController.settings.sittingSettings.volume];
   [standSound setVolume:appController.settings.standingSettings.volume];
@@ -321,10 +318,9 @@ NSSound *standSound;
   }
 }
 
-/** 
- * Sends a notification alert to the OSX Notification indicating the current status and action a user should take.
- */
--(void)sendSitStandNotification {
+/* Sends a notification alert to the OSX Notification
+   indicating the current status and action a user should take. */
+- (void)sendSitStandNotification {
 
     NSString *action = nil;
     NSString *iconName = nil;
@@ -347,24 +343,23 @@ NSSound *standSound;
             return;
     }
 
-  [self sendNotificationWithTitle:NOTIFY_USER_TITLE msg:[NSString stringWithFormat:NOTIFY_USER_FORMAT, action] soundFile:soundName iconFile:iconName];
+  [self sendNotificationWithTitle:[NSString stringWithFormat:NOTIFY_USER_TITLE, action] msg:[NSString stringWithFormat:NOTIFY_USER_FORMAT, [action lowercaseString]] soundFile:soundName iconFile:iconName];
 }
-
--(void)sendNotificationWithTitle:(NSString*)title msg:(NSString*)msg soundFile:(NSString*)soundFile iconFile:(NSString*)iconName {
+- (void)sendNotificationWithTitle:(NSString*)title msg:(NSString*)msg soundFile:(NSString*)soundFile iconFile:(NSString*)iconName {
   NSUserNotification *alert = [[NSUserNotification alloc]init];
   alert.title = title;
   alert.subtitle = msg;
-  alert.soundName = soundFile;
+  // NSUserNotification won't play custom sounds in bundle and/or not in system sounds directories,
+  // so we play a sound after the notification is displayed, getting around that
+  //alert.soundName = soundFile;
   alert.contentImage = [NSImage imageNamed:iconName];
   [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:alert];
-
+  [self playSounds];
 }
 
-/**
- *  Adds and removes app from current user's
-    Login Items depending on app setting checkbox
- */
--(void)addAppAsLoginItem {
+/* Adds and removes app from current user's
+   Login Items depending on app setting checkbox */
+- (void)addAppAsLoginItem {
 	NSString * appPath = [[NSBundle mainBundle] bundlePath];
 
 	// This will retrieve the path for the application
@@ -390,7 +385,7 @@ NSSound *standSound;
 
 	CFRelease(loginItems);
 }
--(void)deleteAppFromLoginItem {
+- (void)deleteAppFromLoginItem {
 	NSString * appPath = [[NSBundle mainBundle] bundlePath];
 
 	// This will retrieve the path for the application
@@ -420,9 +415,9 @@ NSSound *standSound;
 	}
 }
 
-/** Checks to see if the application has been run before. If not,
- opens the preferences window to allow user to set initial settings. */
--(void)checkIfFirstTime {
+/* Checks to see if the application has been run before. If not,
+   opens the preferences window to allow user to set initial settings. */
+- (void)checkIfFirstTime {
     
     if(appController.settings.isFirstTimeRunning) {
         appController.settings.isFirstTimeRunning = NO;
@@ -435,4 +430,16 @@ NSSound *standSound;
         [self openPrefsWindow];
     }
 }
+
+- (NSSound*)updateSoundFile:(NSString*)audioFilePath {
+  NSSound* audioFile;
+  if (audioFilePath) {
+    audioFile = [NSSound soundNamed:audioFilePath];
+    return audioFile;
+  } else {
+    NSLog(@"audioFilePath is nil or blank");
+    return nil;
+  }
+}
+
 @end

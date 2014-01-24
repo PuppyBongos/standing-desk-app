@@ -30,6 +30,8 @@
 		0872E8B9188252470028586C /* desk_logo_sit_512_1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0872E8AF188252470028586C /* desk_logo_sit_512_1x.png */; };
 		0872E8BA188252470028586C /* desk_logo_sit_512_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0872E8B0188252470028586C /* desk_logo_sit_512_2x.png */; };
 		27652E6D187548C600BD3DC5 /* SystemSounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 27652E6C187548C600BD3DC5 /* SystemSounds.m */; };
+		2774735F1887CBBF00F27C77 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2774735E1887CBBF00F27C77 /* README.md */; };
+		27A44DFA1886885C00342C82 /* Sit.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 27A44DF81886885C00342C82 /* Sit.m4a */; };
 		27F1D9B9186174B10087FC3A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F1D9B8186174B10087FC3A /* Cocoa.framework */; };
 		27F1D9C3186174B10087FC3A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27F1D9C1186174B10087FC3A /* InfoPlist.strings */; };
 		27F1D9C5186174B10087FC3A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F1D9C4186174B10087FC3A /* main.m */; };
@@ -85,6 +87,9 @@
 		0872E8B0188252470028586C /* desk_logo_sit_512_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = desk_logo_sit_512_2x.png; sourceTree = "<group>"; };
 		27652E6B187548C600BD3DC5 /* SystemSounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemSounds.h; sourceTree = "<group>"; };
 		27652E6C187548C600BD3DC5 /* SystemSounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemSounds.m; sourceTree = "<group>"; };
+		2774735E1887CBBF00F27C77 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		27969CFE1887C87900D3D2DF /* Stand.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Stand.m4a; sourceTree = "<group>"; };
+		27A44DF81886885C00342C82 /* Sit.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sit.m4a; sourceTree = "<group>"; };
 		27F1D9B5186174B10087FC3A /* Standing Desk App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Standing Desk App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27F1D9B8186174B10087FC3A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		27F1D9BB186174B10087FC3A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -140,9 +145,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0872E87E18824EDC0028586C /* Logo Images */ = {
+		0872E87E18824EDC0028586C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				080021C91882320F008E11D1 /* icon_sitting.png */,
+				080021CA1882320F008E11D1 /* icon_standing.png */,
 				0872E8A7188252470028586C /* desk_logo_sit_16_1x.png */,
 				0872E8A8188252470028586C /* desk_logo_sit_16_2x.png */,
 				0872E8A9188252470028586C /* desk_logo_sit_32_1x.png */,
@@ -164,15 +171,30 @@
 				0872E89B1882507F0028586C /* desk_logo_512_1x.png */,
 				0872E89C1882507F0028586C /* desk_logo_512_2x.png */,
 			);
-			name = "Logo Images";
+			path = Images;
+			sourceTree = "<group>";
+		};
+		27A44DF71886882B00342C82 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				27A44DF81886885C00342C82 /* Sit.m4a */,
+				27969CFE1887C87900D3D2DF /* Stand.m4a */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		27A44DFC18868BBF00342C82 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				27A44DF71886882B00342C82 /* Audio */,
+				0872E87E18824EDC0028586C /* Images */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		27F1D9AC186174B10087FC3A = {
 			isa = PBXGroup;
 			children = (
-				0872E87E18824EDC0028586C /* Logo Images */,
-				080021C91882320F008E11D1 /* icon_sitting.png */,
-				080021CA1882320F008E11D1 /* icon_standing.png */,
 				27F1D9BE186174B10087FC3A /* Standing Desk App */,
 				27F1D9DC186174B10087FC3A /* Standing Desk AppTests */,
 				27F1D9B7186174B10087FC3A /* Frameworks */,
@@ -213,23 +235,25 @@
 		27F1D9BE186174B10087FC3A /* Standing Desk App */ = {
 			isa = PBXGroup;
 			children = (
+				27A44DFC18868BBF00342C82 /* Resources */,
 				55B5A958187A091100C7CDCD /* SDAAppCategories */,
+				27F1D9BF186174B10087FC3A /* Supporting Files */,
+				27F1D9D0186174B10087FC3A /* Images.xcassets */,
+				27F1D9CD186174B10087FC3A /* MainMenu.xib */,
+				2774735E1887CBBF00F27C77 /* README.md */,
 				27F1D9CA186174B10087FC3A /* SDAAppDelegate.h */,
 				27F1D9CB186174B10087FC3A /* SDAAppDelegate.m */,
-				27652E6B187548C600BD3DC5 /* SystemSounds.h */,
-				27652E6C187548C600BD3DC5 /* SystemSounds.m */,
-				27F1D9CD186174B10087FC3A /* MainMenu.xib */,
-				27F1D9D0186174B10087FC3A /* Images.xcassets */,
-				27F1D9BF186174B10087FC3A /* Supporting Files */,
 				553F9587186F9FF300BD36BB /* SDAAppController.h */,
 				553F9588186F9FF300BD36BB /* SDAAppController.m */,
 				553F958A186FA0B800BD36BB /* SDAAppSettings.h */,
 				553F958B186FA0B800BD36BB /* SDAAppSettings.m */,
 				553F958D186FA19D00BD36BB /* SDAAlertSetting.h */,
 				553F958E186FA19D00BD36BB /* SDAAlertSetting.m */,
-				553F9590186FD3B700BD36BB /* sda_config.plist */,
 				55A149D6187DF1AC00EFA8A3 /* SDAIdleDetector.h */,
 				55A149D7187DF1AC00EFA8A3 /* SDAIdleDetector.m */,
+				553F9590186FD3B700BD36BB /* sda_config.plist */,
+				27652E6B187548C600BD3DC5 /* SystemSounds.h */,
+				27652E6C187548C600BD3DC5 /* SystemSounds.m */,
 			);
 			path = "Standing Desk App";
 			sourceTree = "<group>";
@@ -363,8 +387,10 @@
 				0872E8A41882507F0028586C /* desk_logo_256_2x.png in Resources */,
 				0872E8A11882507F0028586C /* desk_logo_128_1x.png in Resources */,
 				27F1D9C9186174B10087FC3A /* Credits.rtf in Resources */,
+				2774735F1887CBBF00F27C77 /* README.md in Resources */,
 				0872E89D1882507F0028586C /* desk_logo_16_1x.png in Resources */,
 				0872E8A61882507F0028586C /* desk_logo_512_2x.png in Resources */,
+				27A44DFA1886885C00342C82 /* Sit.m4a in Resources */,
 				0872E8B8188252470028586C /* desk_logo_sit_256_2x.png in Resources */,
 				0872E8BA188252470028586C /* desk_logo_sit_512_2x.png in Resources */,
 				0872E8B3188252470028586C /* desk_logo_sit_32_1x.png in Resources */,

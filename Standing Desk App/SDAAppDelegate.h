@@ -21,10 +21,10 @@
 #define ERROR_STATUS_TEXT @"Error"
 
 #define RESUME_TEXT_TITLE  @"Welcome back!"
-#define RESUME_TEXT_FORMAT @"Let's continue %@."
+#define RESUME_TEXT_FORMAT @"Continuing %@"
 
-#define NOTIFY_USER_TITLE   @"Alright!"
-#define NOTIFY_USER_FORMAT  @"Let's switch it up. Begin %@."
+#define NOTIFY_USER_TITLE   @"%@!"
+#define NOTIFY_USER_FORMAT  @"Time to start %@"
 
 @interface SDAAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate, SDAApplicationDelegate>
 
@@ -49,19 +49,17 @@
 @property (weak) IBOutlet NSButton *prefWindowSaveBtn;
 
 #pragma mark - Preferences->General tab
-@property (weak) IBOutlet NSComboBox *prefWindowStandTime;
-@property (weak) IBOutlet NSComboBox *prefWindowSitTime;
-@property (weak) IBOutlet NSComboBox *prefWindowIdleTime;
-@property (weak) IBOutlet NSComboBox *prefWindowSnoozeTime;
+@property (weak) IBOutlet NSTextField *prefWindowStandTime;
+@property (weak) IBOutlet NSTextField *prefWindowSitTime;
+@property (weak) IBOutlet NSTextField *prefWindowIdleTime;
+@property (weak) IBOutlet NSTextField *prefWindowSnoozeTime;
+@property (weak) IBOutlet NSButton *prefWindowLoginToggle;
 
 #pragma mark - Preferences->Alerts tab
-@property (weak) IBOutlet NSComboBox *prefWindowSitAlertComboBox;
+@property (weak) IBOutlet NSPopUpButton *prefWindowSitAlertSystemSoundPopUp;
 @property (weak) IBOutlet NSSlider *prefWindowSitVolume;
-@property (weak) IBOutlet NSComboBox *prefWindowStandAlertComboBox;
+@property (weak) IBOutlet NSPopUpButton *prefWindowStandAlertSystemSoundPopUp;
 @property (weak) IBOutlet NSSlider *prefWindowStandVolume;
-
-#pragma mark - Preferences->Login tab
-@property (weak) IBOutlet NSButton *prefWindowLoginToggle;
 
 - (void)addAppAsLoginItem;
 - (void)deleteAppFromLoginItem;
