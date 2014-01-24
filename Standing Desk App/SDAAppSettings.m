@@ -40,6 +40,9 @@
     settings.idlePauseTime = SDA_DEFAULT_IDLE_TIME;
     settings.snoozeTime = SDA_DEFAULT_SNOOZE_TIME;
     settings.isLoginItem = false;
+    
+    settings.sittingSettings.soundFile = @"Sit";
+    settings.sittingSettings.soundFile = @"Stand";
 
     return settings;
 }
@@ -67,46 +70,45 @@
     return dict;
 }
 
-+(SDAAppSettings*)settingsFromFile:(NSString*)filePath {
+-(void)writeSettings {
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     
-    NSString* error = nil;
-    NSPropertyListFormat plistFormat;
+    [ud setBool:isFirstTimeRunning forKey:@"FirstTimeRunning"];
+    [ud setInteger:sittingInterval forKey:@"SitStateInterval"];
+    [ud setInteger:standingInterval forKey:@"StandStateInterval"];
+    [ud setInteger:idlePauseTime forKey:@"IdlePauseTime"];
+    [ud setInteger:snoozeTime forKey:@"SnoozeTime"];
+    [ud setBool:isLoginItem forKey:@"LoginItemStatus"];
+    [ud setValue:[self.sittingSettings toDictionary] forKey:@"SitAlert"];
+    [ud setValue:[self.standingSettings toDictionary] forKey:@"StandAlert"];
+}
+
++(SDAAppSettings*)settings {
     
-    // Read in the file, parsing into a plist dictionary
-    NSData *fileContents = [[NSFileManager defaultManager] contentsAtPath:filePath];
-    
-    NSDictionary *plistContents = [NSPropertyListSerialization
-                                   propertyListFromData:fileContents
-                                   mutabilityOption:NSPropertyListMutableContainersAndLeaves
-                                   format:&plistFormat
-                                   errorDescription:&error];
+    NSUserDefaults *userPreferences = [NSUserDefaults standardUserDefaults];
     
     SDAAppSettings* settings = [SDAAppSettings defaultSettings];
-    if(plistContents) {
+    
+    settings.isFirstTimeRunning = [[userPreferences objectForKey:@"FirstTimeRunning"] boolValue];
         
-        settings.isFirstTimeRunning = [[plistContents objectForKey:@"FirstTimeRunning"] boolValue];
+    settings.standingSettings = [SDAAlertSetting settingFromDictionary:
+                                 [userPreferences objectForKey:@"StandAlert"]];
+    settings.sittingSettings = [SDAAlertSetting settingFromDictionary:
+                                [userPreferences objectForKey:@"SitAlert"]];
         
-        settings.standingSettings = [SDAAlertSetting settingFromDictionary:
-                                 [plistContents objectForKey:@"StandAlert"]];
-        settings.sittingSettings = [SDAAlertSetting settingFromDictionary:
-                                [plistContents objectForKey:@"SitAlert"]];
-        
-        settings.standingInterval = [[plistContents
+    settings.standingInterval = [[userPreferences
                                   objectForKey:@"StandStateInterval"] intValue];
         
-        settings.sittingInterval = [[plistContents
+    settings.sittingInterval = [[userPreferences
                                  objectForKey:@"SitStateInterval"] intValue];
         
-        settings.idlePauseTime = [[plistContents
+    settings.idlePauseTime = [[userPreferences
                                objectForKey:@"IdlePauseTime"] intValue];
         
-        settings.snoozeTime = [[plistContents objectForKey:@"SnoozeTime"] intValue];
+    settings.snoozeTime = [[userPreferences objectForKey:@"SnoozeTime"] intValue];
 
-        settings.isLoginItem = [[plistContents objectForKey:@"LoginItemStatus"] boolValue];
+    settings.isLoginItem = [[userPreferences objectForKey:@"LoginItemStatus"] boolValue];
 
-    } else {
-        NSLog(@"SDAAppSettings: Could not open file: %@.", error);        
-    }
     return settings;
 }
 @end

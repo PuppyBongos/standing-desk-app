@@ -51,9 +51,12 @@
 /* Transform settings to dictionary */
 -(NSDictionary*)toDictionary;
 
-/* Load settings from the specified file path */
-+(SDAAppSettings*)settingsFromFile:(NSString*)filePath;
+/* Load settings from the UserDefaults */
++(SDAAppSettings*)settings;
 
 /* Create default instance of app settings */
 +(SDAAppSettings*)defaultSettings;
+
+/** Writes settings to UserDefaults */
+-(void)writeSettings;
 @end

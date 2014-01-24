@@ -43,26 +43,12 @@
 
 #pragma mark - Public interface
 -(void)loadSettings {
-    self.settings = [SDAAppSettings settingsFromFile:[self getConfigPath]];
+    self.settings = [SDAAppSettings settings];
 }
 
 -(void)saveSettings {
     
-    NSString* error = nil;
-    
-    NSDictionary* pList = [self.settings toDictionary];
-    
-    // Save our settings into our configuration plist
-    NSData* data = [NSPropertyListSerialization dataFromPropertyList:pList format:NSPropertyListXMLFormat_v1_0 errorDescription:&error];
-    
-    NSString *configPath = [self getConfigPath];
-    if(data) {
-        [data writeToFile:configPath atomically:YES];
-    }
-    
-    if(error) {
-        NSLog(@"SDAAppController: Settings failed to save. %@", error);
-    }
+    [self.settings writeSettings];
 }
 
 -(void)scheduleSit {
