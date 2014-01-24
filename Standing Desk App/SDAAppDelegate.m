@@ -96,7 +96,7 @@ NSSound *standSound;
     if(action) {
         
         NSString *msg = [NSString stringWithFormat:RESUME_TEXT_FORMAT,
-                         action];
+                         [action lowercaseString]];
         [self sendNotificationWithTitle:RESUME_TEXT_TITLE
                                     msg:msg
                               soundFile:nil
