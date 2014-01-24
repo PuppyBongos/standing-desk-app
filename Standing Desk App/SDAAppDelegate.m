@@ -21,7 +21,11 @@ NSSound *standSound;
 #pragma mark - Event Handlers
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
   appName = NSBundle.mainBundle.infoDictionary  [@"CFBundleName"];
-
+    
+    // Setup the basic, basic settings for Preferences on disk
+    SDAAppSettings *defaultSettings = [SDAAppSettings defaultSettings];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:[defaultSettings toDictionary]];
+    
     // Create our brain
   appController = [[SDAAppController alloc]init];
   [appController loadSettings];
