@@ -44,6 +44,7 @@
 		27F1D9D9186174B10087FC3A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F1D9B8186174B10087FC3A /* Cocoa.framework */; };
 		27F1D9E1186174B10087FC3A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27F1D9DF186174B10087FC3A /* InfoPlist.strings */; };
 		27F1D9E3186174B10087FC3A /* Standing_Desk_AppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F1D9E2186174B10087FC3A /* Standing_Desk_AppTests.m */; };
+		5505441E1892214400261B93 /* Stand.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 27969CFE1887C87900D3D2DF /* Stand.m4a */; };
 		553F9589186F9FF300BD36BB /* SDAAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 553F9588186F9FF300BD36BB /* SDAAppController.m */; };
 		553F958C186FA0B800BD36BB /* SDAAppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 553F958B186FA0B800BD36BB /* SDAAppSettings.m */; };
 		553F958F186FA19D00BD36BB /* SDAAlertSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 553F958E186FA19D00BD36BB /* SDAAlertSetting.m */; };
@@ -407,6 +408,7 @@
 				0872E8B6188252470028586C /* desk_logo_sit_128_2x.png in Resources */,
 				0872E8A51882507F0028586C /* desk_logo_512_1x.png in Resources */,
 				0872E8A01882507F0028586C /* desk_logo_32_2x.png in Resources */,
+				5505441E1892214400261B93 /* Stand.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
