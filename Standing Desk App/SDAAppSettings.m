@@ -42,7 +42,7 @@
     settings.isLoginItem = false;
     
     settings.sittingSettings.soundFile = @"Sit";
-    settings.sittingSettings.soundFile = @"Stand";
+    settings.standingSettings.soundFile = @"Stand";
 
     return settings;
 }
