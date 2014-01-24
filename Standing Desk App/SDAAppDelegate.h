@@ -65,4 +65,6 @@
 - (void)addAppAsLoginItem;
 - (void)deleteAppFromLoginItem;
 
+- (void)openEventOptionsWindow;
+
 @end

@@ -443,4 +443,10 @@ NSSound *standSound;
   }
 }
 
+/* Window that gets displayed when an event elapsed notification is shown */
+- (void)openEventOptionsWindow {
+  
+  NSLog(@"notification clicked");
+}
+
 @end
