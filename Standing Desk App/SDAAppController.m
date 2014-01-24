@@ -120,7 +120,7 @@
 -(void)pauseTimer {
     if(_currentStatus == SDAStatusRunning)
         _currentStatus = SDAStatusPaused;
-    
+  
     NSLog(@"Pausing Timer");
 }
 

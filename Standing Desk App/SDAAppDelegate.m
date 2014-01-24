@@ -80,7 +80,7 @@ NSSound *standSound;
 }
 
 - (void)appDidPauseForIdle:(SDAAppController *)sender {
-    // Actions to occur when system idle threshold is met
+  [self updateActionMenuItem];
 }
 
 - (void)appDidResumeFromIdle:(SDAAppController *)sender {
@@ -102,6 +102,7 @@ NSSound *standSound;
                               soundFile:nil
                                iconFile:nil];
     }
+  [self updateActionMenuItem];
 }
 
 - (void)windowDidBecomeKey:(NSNotification *)notification
@@ -175,14 +176,13 @@ NSSound *standSound;
 - (IBAction)onMenuPause:(id)sender {
   if (appController.currentStatus == SDAStatusRunning) {
     [appController pauseTimer];
-    [self updateActionMenuItem];
     [sender setTitle:@"Resume"];
   }
   else if (appController.currentStatus == SDAStatusPaused) {
     [appController resumeTimer];
-    [self updateActionMenuItem];
     [sender setTitle:@"Pause"];
   }
+  [self updateActionMenuItem];
 }
 - (IBAction)onMenuSnooze:(id)sender {
   [appController snooze];
@@ -238,9 +238,10 @@ NSSound *standSound;
       self.actionMenuItem.title = @"";
       break;
   }
-  if (appController.currentStatus == SDAStatusPaused)
+  if (appController.currentStatus == SDAStatusPaused || appController.currentStatus == SDAStatusIdle)
   {
     self.actionMenuItem.title = PAUSED_ACTION_TEXT;
+    [statusItem setImage:[NSImage imageNamed:PAUSED_MENU_ICON]];
   }
 }
 - (void)updateTimerMenuItem {
