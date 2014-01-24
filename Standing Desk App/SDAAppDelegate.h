@@ -18,6 +18,7 @@
 #define SITTING_NOTIFICATION_ICON @"desk_logo_sit_128_2x.png"
 
 #define PAUSED_ACTION_TEXT @"Paused"
+#define PAUSED_MENU_ICON @"icon_pausing.png"
 #define ERROR_STATUS_TEXT @"Error"
 
 #define RESUME_TEXT_TITLE  @"Welcome back!"
