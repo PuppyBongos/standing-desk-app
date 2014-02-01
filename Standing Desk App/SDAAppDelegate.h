@@ -65,9 +65,15 @@
 @property (weak) IBOutlet NSPopUpButton *prefWindowStandAlertSystemSoundPopUp;
 @property (weak) IBOutlet NSSlider *prefWindowStandVolume;
 
-- (void)addAppAsLoginItem;
-- (void)deleteAppFromLoginItem;
+#pragma mark - Transitioning
+@property (assign) IBOutlet NSWindow *transWindow;
+@property (weak) IBOutlet NSTextField *transWindowLastCompletedAction;
+@property (weak) IBOutlet NSTextField *transWindowNextActionToStart;
+@property (weak) IBOutlet NSButton *transWindowContinueBtn;
+@property (weak) IBOutlet NSButton *transWindowRestartBtn;
+@property (weak) IBOutlet NSButton *transWindowSnoozeBtn;
+@property (weak) IBOutlet NSButton *transWindowSkipBtn;
 
-- (void)openEventOptionsWindow;
+- (void)transNotificationClicked;
 
 @end
