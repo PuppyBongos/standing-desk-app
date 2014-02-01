@@ -1,6 +1,6 @@
 # Standing Desk App
 
-**Standing Desk App** is a small utility by **Puppy Bongos** created to time how long you sit and stand while using a standing desk (or even just to remind you to stand up from sitting at a normal desk), all so you don't die from *butt death*.
+[Standing Desk App](http://sda.codana.me) is a small utility by [Puppy Bongos](http://puppybongos.wordpress.com) created to time how long you sit and stand while using a standing desk (or even just to remind you to stand up from sitting at a normal desk), all so you don't die from *butt death*.
 
 *Butt death* is the worst kind of death.
 
