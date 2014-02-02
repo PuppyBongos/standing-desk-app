@@ -465,7 +465,6 @@ NSSound *standSound;
   // NSUserNotification won't play custom sounds in bundle and/or not in system sounds directories,
   // so we play a sound after the notification is displayed, getting around that
   //alert.soundName = soundFile;
-  alert.contentImage = [NSImage imageNamed:iconName];
   [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:alert];
   [self playSounds];
 }
