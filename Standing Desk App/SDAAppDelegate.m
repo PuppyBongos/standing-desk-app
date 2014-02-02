@@ -101,6 +101,8 @@ NSSound *standSound;
   [appController scheduleTransition];
   /* notify the user that a new event is about to start */
   [self sendNotificationForTransitioning];
+  /* update menu item */
+  [self updateActionMenuItem];
   /* user can click notification to get modal dialog that allows for the change of the app's flow */
 
   /* unless user changes flow, start new event */
@@ -310,6 +312,11 @@ NSSound *standSound;
 /* Updates the main menu status and timer */
 - (void)updateActionMenuItem {
   switch (appController.currentActionState) {
+    case SDAActionStateTransitioning:
+      self.actionMenuItem.title = TRANSITIONING_ACTION_TEXT;
+      // TO-DO: Create transitioning menu icon
+      //[statusItem setImage:[NSImage imageNamed:TRANSITIONING_MENU_ICON]];
+      break;
     case SDAActionStateSitting:
       self.actionMenuItem.title = SITTING_ACTION_TEXT;
       [statusItem setImage:[NSImage imageNamed:SITTING_MENU_ICON]];
