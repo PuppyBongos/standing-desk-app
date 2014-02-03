@@ -8,6 +8,20 @@
 
 #import "SDAAppSettings.h"
 
+#define SDA_CONFIG_PRESETS  @"Presets"
+#define SDA_PRESET_CUSTOM   @"Custom"
+
+#define UD_PRESET           @"Preset"
+#define UD_LOGIN            @"LoginItemStatus"
+#define UD_FIRST_TIME       @"FirstTimeRunning"
+#define UD_STAND_INTERVAL   @"StandStateInterval"
+#define UD_SIT_INTERVAL     @"SitStateInterval"
+#define UD_IDLE_TIME        @"IdlePauseTime"
+#define UD_SNOOZE_TIME      @"SnoozeTime"
+
+#define UD_STAND_ALERT      @"StandAlert"
+#define UD_SIT_ALERT        @"SitAlert"
+
 @implementation SDAAppSettings
 @synthesize isFirstTimeRunning;
 
@@ -22,12 +36,16 @@
 @synthesize snoozeTime;
 @synthesize isLoginItem;
 
+NSDictionary* presetListings;
+
 -(id)init {
     self = [super init];
     
     if(self) {
         self.sittingSettings = [[SDAAlertSetting alloc]init];
         self.standingSettings = [[SDAAlertSetting alloc]init];
+        
+        presetListings = [self getPresets];
     }
     
     return self;
@@ -55,22 +73,22 @@
     NSMutableDictionary* dict = [NSMutableDictionary dictionary];
     
     // Create properties list
-    [dict setValue:[NSNumber numberWithBool:isFirstTimeRunning] forKey:@"FirstTimeRunning"];
+    [dict setValue:[NSNumber numberWithBool:isFirstTimeRunning] forKey:UD_FIRST_TIME];
     [dict setValue:[NSNumber numberWithInt:sittingInterval]
-             forKey:@"SitStateInterval"];
+             forKey:UD_SIT_INTERVAL];
     [dict setValue:[NSNumber numberWithInt:standingInterval]
-             forKey:@"StandStateInterval"];
+             forKey:UD_STAND_INTERVAL];
     [dict setValue:[NSNumber numberWithInt:idlePauseTime]
-             forKey:@"IdlePauseTime"];
+             forKey:UD_IDLE_TIME];
     [dict setValue:[NSNumber numberWithInt:snoozeTime]
-            forKey:@"SnoozeTime"];
+            forKey:UD_SNOOZE_TIME];
     [dict setValue:[NSNumber numberWithBool:isLoginItem]
-            forKey:@"LoginItemStatus"];
+            forKey:UD_LOGIN];
 
     // Serialize the internal structures
-    [dict setValue:[self.sittingSettings toDictionary] forKey:@"SitAlert"];
-    [dict setValue:[self.standingSettings toDictionary] forKey:@"StandAlert"];
-    [dict setValue:self.currentPreset forKey:@"Preset"];
+    [dict setValue:[self.sittingSettings toDictionary] forKey:UD_SIT_ALERT];
+    [dict setValue:[self.standingSettings toDictionary] forKey:UD_STAND_ALERT];
+    [dict setValue:self.currentPreset forKey:UD_PRESET];
     
     return dict;
 }
@@ -90,32 +108,32 @@
     if(self.currentPreset) {
         // Try to read from the sda files.
         
-        NSDictionary *presetValues = [self getSettingsForPreset:self.currentPreset];
+        NSDictionary *presetValues = presetListings[self.currentPreset];
         
         // Load the presets into our structure
         if(presetValues) {
-            sittingInterval = [presetValues[@"SitStateInterval"] intValue];
-            standingInterval = [presetValues[@"StandStateInterval"] intValue];
+            sittingInterval = [presetValues[UD_SIT_INTERVAL] intValue];
+            standingInterval = [presetValues[UD_STAND_INTERVAL] intValue];
         } else {
             
-            self.currentPreset = @"Custom";
+            self.currentPreset = SDA_PRESET_CUSTOM;
         }
         
     } else {
         
         // Default to custom
-        self.currentPreset = @"Custom";
+        self.currentPreset = SDA_PRESET_CUSTOM;
     }
     
-    [ud setValue:self.currentPreset forKey:@"Preset"];
-    [ud setBool:isFirstTimeRunning forKey:@"FirstTimeRunning"];
-    [ud setInteger:sittingInterval forKey:@"SitStateInterval"];
-    [ud setInteger:standingInterval forKey:@"StandStateInterval"];
-    [ud setInteger:idlePauseTime forKey:@"IdlePauseTime"];
-    [ud setInteger:snoozeTime forKey:@"SnoozeTime"];
-    [ud setBool:isLoginItem forKey:@"LoginItemStatus"];
-    [ud setValue:[self.sittingSettings toDictionary] forKey:@"SitAlert"];
-    [ud setValue:[self.standingSettings toDictionary] forKey:@"StandAlert"];
+    [ud setValue:self.currentPreset forKey:UD_PRESET];
+    [ud setBool:isFirstTimeRunning forKey:UD_FIRST_TIME];
+    [ud setInteger:sittingInterval forKey:UD_SIT_INTERVAL];
+    [ud setInteger:standingInterval forKey:UD_STAND_INTERVAL];
+    [ud setInteger:idlePauseTime forKey:UD_IDLE_TIME];
+    [ud setInteger:snoozeTime forKey:UD_SNOOZE_TIME];
+    [ud setBool:isLoginItem forKey:UD_LOGIN];
+    [ud setValue:[self.sittingSettings toDictionary] forKey:UD_SIT_ALERT];
+    [ud setValue:[self.standingSettings toDictionary] forKey:UD_STAND_ALERT];
 }
 
 +(SDAAppSettings*)settings {
@@ -124,27 +142,27 @@
     
     SDAAppSettings* settings = [SDAAppSettings defaultSettings];
     
-    settings.isFirstTimeRunning = [[userPreferences objectForKey:@"FirstTimeRunning"] boolValue];
+    settings.isFirstTimeRunning = [[userPreferences objectForKey:UD_FIRST_TIME] boolValue];
         
     settings.standingSettings = [SDAAlertSetting settingFromDictionary:
-                                 [userPreferences objectForKey:@"StandAlert"]];
+                                 [userPreferences objectForKey:UD_STAND_ALERT]];
     settings.sittingSettings = [SDAAlertSetting settingFromDictionary:
-                                [userPreferences objectForKey:@"SitAlert"]];
+                                [userPreferences objectForKey:UD_SIT_ALERT]];
         
     settings.standingInterval = [[userPreferences
-                                  objectForKey:@"StandStateInterval"] intValue];
+                                  objectForKey:UD_STAND_INTERVAL] intValue];
         
     settings.sittingInterval = [[userPreferences
-                                 objectForKey:@"SitStateInterval"] intValue];
+                                 objectForKey:UD_SIT_INTERVAL] intValue];
         
     settings.idlePauseTime = [[userPreferences
-                               objectForKey:@"IdlePauseTime"] intValue];
+                               objectForKey:UD_IDLE_TIME] intValue];
         
-    settings.snoozeTime = [[userPreferences objectForKey:@"SnoozeTime"] intValue];
+    settings.snoozeTime = [[userPreferences objectForKey:UD_SNOOZE_TIME] intValue];
 
-    settings.isLoginItem = [[userPreferences objectForKey:@"LoginItemStatus"] boolValue];
+    settings.isLoginItem = [[userPreferences objectForKey:UD_LOGIN] boolValue];
     
-    NSString *preset = [[userPreferences objectForKey:@"Preset"] stringValue];
+    NSString *preset = [[userPreferences objectForKey:UD_PRESET] stringValue];
     
     // Overwrite if valid
     if(preset) settings.currentPreset = preset;
@@ -152,18 +170,34 @@
     return settings;
 }
 
--(NSDictionary*)getSettingsForPreset:(NSString*)preset {
-    NSDictionary* presets = [NSDictionary dictionaryWithContentsOfFile:[self getConfigPath]];
+-(NSDictionary*)getPresets {
+    NSDictionary* configPlist = [NSDictionary dictionaryWithContentsOfFile:[self getConfigPath]];
     
     
-    if(!presets) {
-        return nil;
+    if(!configPlist) {
+        // Return a blank dictionary if no presets defined
+        return [[NSDictionary alloc]init];
     }
-    else if(!presets[@"Presets"]) {
-        return nil;
+    
+    NSDictionary *presets = configPlist[SDA_CONFIG_PRESETS];
+    if(!presets)
+        presets = [[NSDictionary alloc]init];
+
+    return presets;
+}
+
+-(int)sitIntervalForPreset:(NSString*)preset {
+    if(presetListings[preset]) {
+        return (int)[presetListings[preset][UD_SIT_INTERVAL] intValue];
     }
-        
-    return presets[@"Presets"][preset];
+    return -1;
+}
+
+-(int)standIntervalForPreset:(NSString*)preset {
+    if(presetListings[preset]) {
+        return (int)[presetListings[preset][UD_STAND_INTERVAL] intValue];
+    }
+    return -1;
 }
 
 /** Retrieves the file path of the SDA App's configuration file */

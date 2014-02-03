@@ -55,6 +55,12 @@
 /* Transform settings to dictionary */
 -(NSDictionary*)toDictionary;
 
+/** Returns the sitting interval in seconds for the given preset. (-1 if preset doesn't exist) */
+-(int)sitIntervalForPreset:(NSString*)preset;
+
+/** Returns the standing interval in seconds for the given preset. (-1 if preset doesn't exist) */
+-(int)standIntervalForPreset:(NSString *)preset;
+
 /* Load settings from the UserDefaults */
 +(SDAAppSettings*)settings;
 
