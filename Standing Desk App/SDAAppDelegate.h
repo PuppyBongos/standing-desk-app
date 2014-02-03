@@ -54,6 +54,7 @@
 @property (weak) IBOutlet NSButton *prefWindowSaveBtn;
 
 #pragma mark - Preferences->General tab
+@property (weak) IBOutlet NSPopUpButton *prefWindowPresetPopUp;
 @property (weak) IBOutlet NSTextField *prefWindowStandTime;
 @property (weak) IBOutlet NSTextField *prefWindowSitTime;
 @property (weak) IBOutlet NSTextField *prefWindowIdleTime;
