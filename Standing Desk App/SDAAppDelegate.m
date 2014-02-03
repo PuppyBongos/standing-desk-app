@@ -200,8 +200,17 @@ NSSound *standSound;
 - (IBAction)onSitTimeTextFieldChange:(id)sender {
 }
 - (IBAction)onIdleTimeTextFieldChange:(id)sender {
+    appController.settings.idlePauseTime = [self intMinToSec:[sender intValue]];
+    [appController saveSettings];
 }
+
 - (IBAction)onSnoozeTimeTextFieldChange:(id)sender {
+    appController.settings.snoozeTime = [self intMinToSec:[sender intValue]];
+    [appController saveSettings];
+}
+
+-(IBAction)onStartAtLoginChange:(id)sender {
+    
 }
 
 #pragma mark - Preferences->Alerts Actions
