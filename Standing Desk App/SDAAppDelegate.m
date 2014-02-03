@@ -324,7 +324,7 @@ NSSound *standSound;
     case SDAActionStateTransitioning:
       self.actionMenuItem.title = TRANSITIONING_ACTION_TEXT;
       // TO-DO: Create transitioning menu icon
-      //[statusItem setImage:[NSImage imageNamed:TRANSITIONING_MENU_ICON]];
+      [statusItem setImage:[NSImage imageNamed:TRANSITIONING_MENU_ICON]];
       break;
     case SDAActionStateSitting:
       self.actionMenuItem.title = SITTING_ACTION_TEXT;
