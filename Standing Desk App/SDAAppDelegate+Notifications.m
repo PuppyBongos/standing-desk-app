@@ -13,7 +13,7 @@
 /* NSUserNotificationCenterDelegate: Occurs when user notification has been clicked by user. */
 - (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification {
     
-  [self openEventOptionsWindow];
+  [self transNotificationClicked];
 }
 
 /* NSUserNotificationCenterDelegate: Occurs when notification

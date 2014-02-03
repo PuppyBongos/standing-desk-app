@@ -22,6 +22,7 @@
 #define ERROR_STATUS_TEXT @"Error"
 
 #define TRANSITIONING_ACTION_TEXT @"Transitioning"
+#define TRANSITIONING_MENU_ICON @"icon_transitioning.png"
 
 #define RESUME_TEXT_TITLE  @"Welcome back!"
 #define RESUME_TEXT_FORMAT @"Continuing %@"
@@ -65,9 +66,15 @@
 @property (weak) IBOutlet NSPopUpButton *prefWindowStandAlertSystemSoundPopUp;
 @property (weak) IBOutlet NSSlider *prefWindowStandVolume;
 
-- (void)addAppAsLoginItem;
-- (void)deleteAppFromLoginItem;
+#pragma mark - Transitioning
+@property (assign) IBOutlet NSWindow *transWindow;
+@property (weak) IBOutlet NSTextField *transWindowLastCompletedAction;
+@property (weak) IBOutlet NSTextField *transWindowNextActionToStart;
+@property (weak) IBOutlet NSButton *transWindowContinueBtn;
+@property (weak) IBOutlet NSButton *transWindowRestartBtn;
+@property (weak) IBOutlet NSButton *transWindowSnoozeBtn;
+@property (weak) IBOutlet NSButton *transWindowSkipBtn;
 
-- (void)openEventOptionsWindow;
+- (void)transNotificationClicked;
 
 @end
