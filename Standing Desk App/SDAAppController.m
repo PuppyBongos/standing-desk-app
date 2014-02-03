@@ -52,6 +52,10 @@
 -(void)saveSettings {
     
     [self.settings writeSettings];
+    
+    // If timer change matches current state,
+    // Timer should restart to changed value.
+    // Else, do nothing.
 }
 
 -(void)scheduleSit {
@@ -102,7 +106,6 @@
   } else {
     [self scheduleSit];
   }
-  
 }
 
 -(void)pauseTimer {
