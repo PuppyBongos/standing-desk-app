@@ -162,7 +162,8 @@ NSDictionary* presetListings;
 
     settings.isLoginItem = [[userPreferences objectForKey:UD_LOGIN] boolValue];
     
-    NSString *preset = [[userPreferences objectForKey:UD_PRESET] stringValue];
+    id value = [userPreferences objectForKey:UD_PRESET];
+    NSString *preset = value ? value : @"Custom";
     
     // Overwrite if valid
     if(preset) settings.currentPreset = preset;
