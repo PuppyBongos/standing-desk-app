@@ -70,15 +70,44 @@
     // Serialize the internal structures
     [dict setValue:[self.sittingSettings toDictionary] forKey:@"SitAlert"];
     [dict setValue:[self.standingSettings toDictionary] forKey:@"StandAlert"];
+    [dict setValue:self.currentPreset forKey:@"Preset"];
     
     return dict;
 }
 
 -(void)writeSettings {
+    
+    // Writes the settings to the userDefaults plist. Presets
+    // are checked to see if the Sit/Stand interval are to be
+    // assigned from the sda_config preset listing. If
+    // no preset matches, the preset "Custom" is assigned and
+    // whichever settings are currently applied will be written
+    // to the file.
+    
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     
-    [ud setValue:self.currentPreset forKey:@"Preset"];
+    // Check for presets available
+    if(self.currentPreset) {
+        // Try to read from the sda files.
+        
+        NSDictionary *presetValues = [self getSettingsForPreset:self.currentPreset];
+        
+        // Load the presets into our structure
+        if(presetValues) {
+            sittingInterval = [presetValues[@"SitStateInterval"] intValue];
+            standingInterval = [presetValues[@"StandStateInterval"] intValue];
+        } else {
+            
+            self.currentPreset = @"Custom";
+        }
+        
+    } else {
+        
+        // Default to custom
+        self.currentPreset = @"Custom";
+    }
     
+    [ud setValue:self.currentPreset forKey:@"Preset"];
     [ud setBool:isFirstTimeRunning forKey:@"FirstTimeRunning"];
     [ud setInteger:sittingInterval forKey:@"SitStateInterval"];
     [ud setInteger:standingInterval forKey:@"StandStateInterval"];
@@ -121,5 +150,37 @@
     if(preset) settings.currentPreset = preset;
 
     return settings;
+}
+
+-(NSDictionary*)getSettingsForPreset:(NSString*)preset {
+    NSDictionary* presets = [NSDictionary dictionaryWithContentsOfFile:[self getConfigPath]];
+    
+    
+    if(!presets) {
+        return nil;
+    }
+    else if(!presets[@"Presets"]) {
+        return nil;
+    }
+        
+    return presets[@"Presets"][preset];
+}
+
+/** Retrieves the file path of the SDA App's configuration file */
+-(NSString*) getConfigPath {
+    NSString* appPath = [NSSearchPathForDirectoriesInDomains
+                         (NSDocumentDirectory, NSUserDomainMask, YES)
+                         objectAtIndex:0];
+    
+    // Get a full path to the application configuration file
+    NSString* configPath = [appPath stringByAppendingPathComponent:@"sda_config.plist"];
+    
+    // Check if this exists locally. If not, try the bundle path
+    if(![[NSFileManager defaultManager] fileExistsAtPath:configPath]) {
+        configPath = [[NSBundle mainBundle] pathForResource:@"sda_config"
+                                                     ofType:@"plist"];
+    }
+    
+    return configPath;
 }
 @end
