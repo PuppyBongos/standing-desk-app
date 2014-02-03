@@ -14,6 +14,8 @@
 @synthesize sittingSettings;
 @synthesize standingSettings;
 
+@synthesize currentPreset;
+
 @synthesize sittingInterval;
 @synthesize standingInterval;
 @synthesize idlePauseTime;
@@ -40,6 +42,8 @@
     settings.idlePauseTime = SDA_DEFAULT_IDLE_TIME;
     settings.snoozeTime = SDA_DEFAULT_SNOOZE_TIME;
     settings.isLoginItem = false;
+    
+    settings.currentPreset = SDA_DEFAULT_PRESET;
     
     settings.sittingSettings.soundFile = @"Sit";
     settings.standingSettings.soundFile = @"Stand";
@@ -72,6 +76,8 @@
 
 -(void)writeSettings {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    
+    [ud setValue:self.currentPreset forKey:@"Preset"];
     
     [ud setBool:isFirstTimeRunning forKey:@"FirstTimeRunning"];
     [ud setInteger:sittingInterval forKey:@"SitStateInterval"];
@@ -108,6 +114,11 @@
     settings.snoozeTime = [[userPreferences objectForKey:@"SnoozeTime"] intValue];
 
     settings.isLoginItem = [[userPreferences objectForKey:@"LoginItemStatus"] boolValue];
+    
+    NSString *preset = [[userPreferences objectForKey:@"Preset"] stringValue];
+    
+    // Overwrite if valid
+    if(preset) settings.currentPreset = preset;
 
     return settings;
 }

@@ -22,6 +22,7 @@
 #define ERROR_STATUS_TEXT @"Error"
 
 #define TRANSITIONING_ACTION_TEXT @"Transitioning"
+#define TRANSITIONING_MENU_ICON @"icon_transitioning.png"
 
 #define RESUME_TEXT_TITLE  @"Welcome back!"
 #define RESUME_TEXT_FORMAT @"Continuing %@"

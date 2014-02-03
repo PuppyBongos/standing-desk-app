@@ -14,6 +14,7 @@
 #define SDA_DEFAULT_SIT_INTERVAL    1800 // 30 minutes
 #define SDA_DEFAULT_IDLE_TIME       600  // 10 minutes
 #define SDA_DEFAULT_SNOOZE_TIME     300  // 5 minutes
+#define SDA_DEFAULT_PRESET          @"Custom"
 
 /*
     Represents application user configuration settings for
@@ -47,6 +48,9 @@
 
 /* Settings for Sit Alerts */
 @property (strong) SDAAlertSetting* sittingSettings;
+
+/** Preset name currently in use */
+@property (strong) NSString* currentPreset;
 
 /* Transform settings to dictionary */
 -(NSDictionary*)toDictionary;
