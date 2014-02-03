@@ -40,30 +40,30 @@
 		<key>Intermediate</key>
 		<dict>
 			<key>StandStateInterval</key>
-			<integer>60</integer>
+			<real>3600</real>
 			<key>SitStateInterval</key>
-			<integer>60</integer>
+			<real>3600</real>
 		</dict>
 		<key>Hard</key>
 		<dict>
 			<key>StandStateInterval</key>
-			<integer>120</integer>
+			<real>7200</real>
 			<key>SitStateInterval</key>
-			<integer>30</integer>
+			<real>1800</real>
 		</dict>
 		<key>Expert</key>
 		<dict>
 			<key>StandStateInterval</key>
-			<integer>180</integer>
+			<real>10800</real>
 			<key>SitStateInterval</key>
-			<integer>30</integer>
+			<real>1800</real>
 		</dict>
 		<key>All Day</key>
 		<dict>
 			<key>StandStateInterval</key>
-			<integer>240</integer>
+			<real>14440</real>
 			<key>SitStateInterval</key>
-			<integer>30</integer>
+			<real>1800</real>
 		</dict>
 	</dict>
 </dict>
