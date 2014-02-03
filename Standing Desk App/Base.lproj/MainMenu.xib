@@ -462,10 +462,12 @@ DQ
                 <outlet property="pauseMenuItem" destination="xZR-6f-Zke" id="0cq-dV-Q2n"/>
                 <outlet property="prefMenuItem" destination="Ut9-Ag-hcn" id="Ptp-9S-efr"/>
                 <outlet property="prefView" destination="372" id="Ogj-k8-hWo"/>
+                <outlet property="prefWIndowPresetPopUp" destination="1uU-jh-Vr2" id="Kin-XM-5xz"/>
                 <outlet property="prefWindow" destination="371" id="9Ow-fG-qRV"/>
                 <outlet property="prefWindowCancelBtn" destination="n8w-wA-Pwg" id="ZQt-Lq-A6X"/>
                 <outlet property="prefWindowIdleTime" destination="OIg-I2-WWX" id="otR-6d-Ihs"/>
                 <outlet property="prefWindowLoginToggle" destination="anF-9Y-xZd" id="CNm-Bs-6DG"/>
+                <outlet property="prefWindowPresetPopUp" destination="1uU-jh-Vr2" id="nBb-pP-gKX"/>
                 <outlet property="prefWindowSaveBtn" destination="N0M-WZ-c4w" id="Myf-NX-RVD"/>
                 <outlet property="prefWindowSitAlert" destination="Pjd-BB-gBS" id="fR1-9p-7YW"/>
                 <outlet property="prefWindowSitAlertSystemSoundPopUp" destination="8qb-1Q-9LQ" id="GkT-AJ-sGH"/>

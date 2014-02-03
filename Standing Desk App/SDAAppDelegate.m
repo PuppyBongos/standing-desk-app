@@ -363,6 +363,7 @@ NSSound *standSound;
    into Preferences Window UI */
 - (void)loadAppSettingsToPrefUI {
   // Preferences->General
+  [_prefWindowPresetPopUp setStringValue:appController.settings.currentPreset];
   [_prefWindowStandTime setStringValue:[self stringSecToMin:appController.settings.standingInterval]];
   [_prefWindowSitTime setStringValue:[self stringSecToMin:appController.settings.sittingInterval]];
   [_prefWindowIdleTime setStringValue:[self stringSecToMin:appController.settings.idlePauseTime]];
@@ -387,6 +388,7 @@ NSSound *standSound;
    to local appsettings values */
 - (void)savePrefUIToAppSettings {
   // Preferences->General
+  appController.settings.currentPreset = [[_prefWindowPresetPopUp selectedItem] title];
   appController.settings.standingInterval = [self intMinToSec:_prefWindowStandTime.integerValue];
   appController.settings.sittingInterval = [self intMinToSec:_prefWindowSitTime.integerValue];
   appController.settings.idlePauseTime = [self intMinToSec:_prefWindowIdleTime.integerValue];
