@@ -186,6 +186,10 @@ NSSound *standSound;
   [self updateResumePauseMenuItem];
   [self updateActionMenuItem];
 }
+- (IBAction)onMenuAbout:(id)sender {
+  [[NSApplication sharedApplication] orderFrontStandardAboutPanel:nil];
+  [NSApp activateIgnoringOtherApps:true];
+}
 - (IBAction)onMenuPref:(id)sender {
   [self openPrefsWindow];
 }
