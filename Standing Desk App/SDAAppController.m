@@ -21,9 +21,13 @@
 @synthesize currentStatus = _currentStatus;
 @synthesize currentTimeLeft = _currentTimeLeft;
 
+SDAPresetTable *_presetTable;
+
 -(id)init {
     self = [super init];
     if(self) {
+        
+        [self loadPresets];
         
         // Start with empty settings
         self.settings = [SDAAppSettings defaultSettings];
@@ -247,6 +251,13 @@
 /** Shortcut for NSDate's retrieval of current time */
 -(NSTimeInterval) now {
    return [[NSDate dateWithTimeIntervalSinceNow:0] timeIntervalSinceReferenceDate];
+}
+
+/** Loads subsetting presets from disk. */
+-(void)loadPresets {
+    NSDictionary *configPList = [NSDictionary dictionaryWithContentsOfFile:[self getConfigPath]];
+    
+    _presetTable = [SDAPresetTable tableFromDictionary:[configPList objectForKey:UD_PRESET]];
 }
 
 /** Retrieves the file path of the SDA App's configuration file */

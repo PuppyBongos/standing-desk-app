@@ -37,6 +37,13 @@
 			<key>SitStateInterval</key>
 			<real>3600</real>
 		</dict>
+		<key>Custom</key>
+		<dict>
+			<key>StandStateInterval</key>
+			<real>1800</real>
+			<key>SitStateInterval</key>
+			<real>3600</real>
+		</dict>
 		<key>Intermediate</key>
 		<dict>
 			<key>StandStateInterval</key>
