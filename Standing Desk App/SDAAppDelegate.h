@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <Carbon/Carbon.h>
 #import "SDAAppController.h"
 
 #define STANDING_ACTION_TEXT @"Standing"
@@ -29,6 +30,8 @@
 
 #define NOTIFY_USER_TITLE   @"%@!"
 #define NOTIFY_USER_FORMAT  @"Time to start %@"
+
+@class MASShortcutView;
 
 @interface SDAAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate, SDAApplicationDelegate>
 
@@ -67,6 +70,10 @@
 @property (weak) IBOutlet NSSlider *prefWindowSitVolume;
 @property (weak) IBOutlet NSPopUpButton *prefWindowStandAlertSystemSoundPopUp;
 @property (weak) IBOutlet NSSlider *prefWindowStandVolume;
+
+#pragma mark - Preferences->Shortcuts tab
+@property (nonatomic, weak) IBOutlet MASShortcutView *shortcutViewPause;
+@property (nonatomic, weak) IBOutlet MASShortcutView *shortcutViewSkip;
 
 #pragma mark - Transitioning
 @property (assign) IBOutlet NSWindow *transWindow;

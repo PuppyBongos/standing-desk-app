@@ -9,6 +9,10 @@
 #import "SDAAppDelegate.h"
 #import "SDAAppController.h"
 #import "SystemSounds.h"
+#import "MASShortcutView.h"
+#import "MASShortcutView+UserDefaults.h"
+#import "MASShortcut+UserDefaults.h"
+#import "MASShortcut+Monitoring.h"
 
 @implementation SDAAppDelegate
 
@@ -17,9 +21,15 @@ SDAActionState completedState;
 NSString *appName;
 NSSound *sitSound;
 NSSound *standSound;
+NSString *const globalKeyShortcutPause = @"KeyShortcutPause";
+NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
 
 #pragma mark - Event Handlers
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+
+  // initialize global shortcut keys
+  [self initKeyboardShortcutKeys];
+
   appName = NSBundle.mainBundle.infoDictionary  [@"CFBundleName"];
     
   // Setup the basic, basic settings for Preferences on disk
@@ -576,6 +586,33 @@ NSSound *standSound;
     [self openTransWindow];
   }
   NSLog(@"notification clicked");
+}
+
+/* Global Keyboard Shortcut Init */
+- (void)initKeyboardShortcutKeys {
+  // Assign the preference key and the shortcut view will take care of persistence
+  self.shortcutViewPause.associatedUserDefaultsKey = globalKeyShortcutPause;
+  self.shortcutViewSkip.associatedUserDefaultsKey = globalKeyShortcutSkip;
+
+  // pause/resume
+  [MASShortcut registerGlobalShortcutWithUserDefaultsKey:globalKeyShortcutPause handler:^{
+    if (appController.currentStatus == SDAStatusRunning) {
+      [appController pauseTimer];
+    }
+    else if (appController.currentStatus == SDAStatusPaused) {
+      [appController resumeTimer];
+    }
+    [self updateResumePauseMenuItem];
+    [self updateActionMenuItem];
+  }];
+
+  // skip
+  [MASShortcut registerGlobalShortcutWithUserDefaultsKey:globalKeyShortcutSkip handler:^{
+    [appController skipToNext];
+    [self sendSitStandNotification];
+    [self updateResumePauseMenuItem];
+    [self updateActionMenuItem];
+  }];
 }
 
 @end
