@@ -285,6 +285,7 @@
 		27F1D9BE186174B10087FC3A /* Standing Desk App */ = {
 			isa = PBXGroup;
 			children = (
+				27DA939618CBEA4F00890D8B /* MASShortcut */,
 				5512DEE018CBCE840044BC2E /* Presets */,
 				27A44DFC18868BBF00342C82 /* Resources */,
 				55B5A958187A091100C7CDCD /* SDAAppCategories */,
@@ -489,6 +490,8 @@
 			files = (
 				27652E6D187548C600BD3DC5 /* SystemSounds.m in Sources */,
 				553F958F186FA19D00BD36BB /* SDAAlertSetting.m in Sources */,
+				27DA93A118CBEA4F00890D8B /* MASShortcut+Monitoring.m in Sources */,
+				27DA93A418CBEA4F00890D8B /* MASShortcutView+UserDefaults.m in Sources */,
 				5512DEDF18CBCD0D0044BC2E /* SDASettingPreset.m in Sources */,
 				55B5A957187A067500C7CDCD /* SDAAppDelegate+Notifications.m in Sources */,
 				27F1D9C5186174B10087FC3A /* main.m in Sources */,
@@ -496,6 +499,8 @@
 				27DA93A318CBEA4F00890D8B /* MASShortcut.m in Sources */,
 				553F958C186FA0B800BD36BB /* SDAAppSettings.m in Sources */,
 				553F9589186F9FF300BD36BB /* SDAAppController.m in Sources */,
+				27DA93A218CBEA4F00890D8B /* MASShortcut+UserDefaults.m in Sources */,
+				27DA93A518CBEA4F00890D8B /* MASShortcutView.m in Sources */,
 				5512DEE318CBCEA50044BC2E /* SDAPresetTable.m in Sources */,
 				27F1D9CC186174B10087FC3A /* SDAAppDelegate.m in Sources */,
 			);
