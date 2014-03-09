@@ -8,28 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 #import <Carbon/Carbon.h>
+#import "SDAConstants.h"
 #import "SDAAppController.h"
-
-#define STANDING_ACTION_TEXT @"Standing"
-#define STANDING_MENU_ICON @"icon_standing.png"
-#define STANDING_NOTIFICATION_ICON @"desk_logo_128_2x.png"
-
-#define SITTING_ACTION_TEXT @"Sitting"
-#define SITTING_MENU_ICON @"icon_sitting.png"
-#define SITTING_NOTIFICATION_ICON @"desk_logo_sit_128_2x.png"
-
-#define PAUSED_ACTION_TEXT @"Paused"
-#define PAUSED_MENU_ICON @"icon_pausing.png"
-#define ERROR_STATUS_TEXT @"Error"
-
-#define TRANSITIONING_ACTION_TEXT @"Transitioning"
-#define TRANSITIONING_MENU_ICON @"icon_transitioning.png"
-
-#define RESUME_TEXT_TITLE  @"Welcome back!"
-#define RESUME_TEXT_FORMAT @"Continuing %@"
-
-#define NOTIFY_USER_TITLE   @"%@!"
-#define NOTIFY_USER_FORMAT  @"Time to start %@"
 
 @class MASShortcutView;
 
