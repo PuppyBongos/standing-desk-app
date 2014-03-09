@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0805A67F18921BE6000C32EE /* icon_sitting.png in Resources */ = {isa = PBXBuildFile; fileRef = 0805A67C18921BE6000C32EE /* icon_sitting.png */; };
 		0805A68018921BE6000C32EE /* icon_standing.png in Resources */ = {isa = PBXBuildFile; fileRef = 0805A67D18921BE6000C32EE /* icon_standing.png */; };
+		080CDB35189F2467002A3D39 /* icon_transitioning.png in Resources */ = {isa = PBXBuildFile; fileRef = 080CDB34189F2467002A3D39 /* icon_transitioning.png */; };
+		080CDB37189F24CA002A3D39 /* icon_pausing.png in Resources */ = {isa = PBXBuildFile; fileRef = 080CDB36189F24CA002A3D39 /* icon_pausing.png */; };
 		0872E89D1882507F0028586C /* desk_logo_16_1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0872E8931882507F0028586C /* desk_logo_16_1x.png */; };
 		0872E89E1882507F0028586C /* desk_logo_16_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0872E8941882507F0028586C /* desk_logo_16_2x.png */; };
 		0872E89F1882507F0028586C /* desk_logo_32_1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0872E8951882507F0028586C /* desk_logo_32_1x.png */; };
@@ -29,10 +31,15 @@
 		0872E8B8188252470028586C /* desk_logo_sit_256_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0872E8AE188252470028586C /* desk_logo_sit_256_2x.png */; };
 		0872E8B9188252470028586C /* desk_logo_sit_512_1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0872E8AF188252470028586C /* desk_logo_sit_512_1x.png */; };
 		0872E8BA188252470028586C /* desk_logo_sit_512_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0872E8B0188252470028586C /* desk_logo_sit_512_2x.png */; };
-		08AFD5B01892291C00B10813 /* icon_pausing.png in Resources */ = {isa = PBXBuildFile; fileRef = 08AFD5AF1892291C00B10813 /* icon_pausing.png */; };
 		27652E6D187548C600BD3DC5 /* SystemSounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 27652E6C187548C600BD3DC5 /* SystemSounds.m */; };
 		2774735F1887CBBF00F27C77 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2774735E1887CBBF00F27C77 /* README.md */; };
 		27A44DFA1886885C00342C82 /* Sit.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 27A44DF81886885C00342C82 /* Sit.m4a */; };
+		27DA93A118CBEA4F00890D8B /* MASShortcut+Monitoring.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DA939818CBEA4F00890D8B /* MASShortcut+Monitoring.m */; };
+		27DA93A218CBEA4F00890D8B /* MASShortcut+UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DA939A18CBEA4F00890D8B /* MASShortcut+UserDefaults.m */; };
+		27DA93A318CBEA4F00890D8B /* MASShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DA939C18CBEA4F00890D8B /* MASShortcut.m */; };
+		27DA93A418CBEA4F00890D8B /* MASShortcutView+UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DA939E18CBEA4F00890D8B /* MASShortcutView+UserDefaults.m */; };
+		27DA93A518CBEA4F00890D8B /* MASShortcutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DA93A018CBEA4F00890D8B /* MASShortcutView.m */; };
+		27DA93A718CC308000890D8B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27DA93A618CC308000890D8B /* Carbon.framework */; };
 		27F1D9B9186174B10087FC3A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F1D9B8186174B10087FC3A /* Cocoa.framework */; };
 		27F1D9C3186174B10087FC3A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27F1D9C1186174B10087FC3A /* InfoPlist.strings */; };
 		27F1D9C5186174B10087FC3A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F1D9C4186174B10087FC3A /* main.m */; };
@@ -45,6 +52,8 @@
 		27F1D9E1186174B10087FC3A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27F1D9DF186174B10087FC3A /* InfoPlist.strings */; };
 		27F1D9E3186174B10087FC3A /* Standing_Desk_AppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F1D9E2186174B10087FC3A /* Standing_Desk_AppTests.m */; };
 		5505441E1892214400261B93 /* Stand.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 27969CFE1887C87900D3D2DF /* Stand.m4a */; };
+		5512DEDF18CBCD0D0044BC2E /* SDASettingPreset.m in Sources */ = {isa = PBXBuildFile; fileRef = 5512DEDE18CBCD0D0044BC2E /* SDASettingPreset.m */; };
+		5512DEE318CBCEA50044BC2E /* SDAPresetTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 5512DEE218CBCEA50044BC2E /* SDAPresetTable.m */; };
 		553F9589186F9FF300BD36BB /* SDAAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 553F9588186F9FF300BD36BB /* SDAAppController.m */; };
 		553F958C186FA0B800BD36BB /* SDAAppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 553F958B186FA0B800BD36BB /* SDAAppSettings.m */; };
 		553F958F186FA19D00BD36BB /* SDAAlertSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 553F958E186FA19D00BD36BB /* SDAAlertSetting.m */; };
@@ -67,6 +76,8 @@
 /* Begin PBXFileReference section */
 		0805A67C18921BE6000C32EE /* icon_sitting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_sitting.png; sourceTree = "<group>"; };
 		0805A67D18921BE6000C32EE /* icon_standing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_standing.png; sourceTree = "<group>"; };
+		080CDB34189F2467002A3D39 /* icon_transitioning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_transitioning.png; sourceTree = "<group>"; };
+		080CDB36189F24CA002A3D39 /* icon_pausing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_pausing.png; sourceTree = "<group>"; };
 		0872E8931882507F0028586C /* desk_logo_16_1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = desk_logo_16_1x.png; sourceTree = "<group>"; };
 		0872E8941882507F0028586C /* desk_logo_16_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = desk_logo_16_2x.png; sourceTree = "<group>"; };
 		0872E8951882507F0028586C /* desk_logo_32_1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = desk_logo_32_1x.png; sourceTree = "<group>"; };
@@ -87,12 +98,22 @@
 		0872E8AE188252470028586C /* desk_logo_sit_256_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = desk_logo_sit_256_2x.png; sourceTree = "<group>"; };
 		0872E8AF188252470028586C /* desk_logo_sit_512_1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = desk_logo_sit_512_1x.png; sourceTree = "<group>"; };
 		0872E8B0188252470028586C /* desk_logo_sit_512_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = desk_logo_sit_512_2x.png; sourceTree = "<group>"; };
-		08AFD5AF1892291C00B10813 /* icon_pausing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_pausing.png; sourceTree = "<group>"; };
 		27652E6B187548C600BD3DC5 /* SystemSounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemSounds.h; sourceTree = "<group>"; };
 		27652E6C187548C600BD3DC5 /* SystemSounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemSounds.m; sourceTree = "<group>"; };
 		2774735E1887CBBF00F27C77 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		27969CFE1887C87900D3D2DF /* Stand.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Stand.m4a; sourceTree = "<group>"; };
 		27A44DF81886885C00342C82 /* Sit.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sit.m4a; sourceTree = "<group>"; };
+		27DA939718CBEA4F00890D8B /* MASShortcut+Monitoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASShortcut+Monitoring.h"; sourceTree = "<group>"; };
+		27DA939818CBEA4F00890D8B /* MASShortcut+Monitoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MASShortcut+Monitoring.m"; sourceTree = "<group>"; };
+		27DA939918CBEA4F00890D8B /* MASShortcut+UserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASShortcut+UserDefaults.h"; sourceTree = "<group>"; };
+		27DA939A18CBEA4F00890D8B /* MASShortcut+UserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MASShortcut+UserDefaults.m"; sourceTree = "<group>"; };
+		27DA939B18CBEA4F00890D8B /* MASShortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASShortcut.h; sourceTree = "<group>"; };
+		27DA939C18CBEA4F00890D8B /* MASShortcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASShortcut.m; sourceTree = "<group>"; };
+		27DA939D18CBEA4F00890D8B /* MASShortcutView+UserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASShortcutView+UserDefaults.h"; sourceTree = "<group>"; };
+		27DA939E18CBEA4F00890D8B /* MASShortcutView+UserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MASShortcutView+UserDefaults.m"; sourceTree = "<group>"; };
+		27DA939F18CBEA4F00890D8B /* MASShortcutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASShortcutView.h; sourceTree = "<group>"; };
+		27DA93A018CBEA4F00890D8B /* MASShortcutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASShortcutView.m; sourceTree = "<group>"; };
+		27DA93A618CC308000890D8B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		27F1D9B5186174B10087FC3A /* Standing Desk App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Standing Desk App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27F1D9B8186174B10087FC3A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		27F1D9BB186174B10087FC3A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -112,6 +133,11 @@
 		27F1D9DE186174B10087FC3A /* Standing Desk AppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Standing Desk AppTests-Info.plist"; sourceTree = "<group>"; };
 		27F1D9E0186174B10087FC3A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		27F1D9E2186174B10087FC3A /* Standing_Desk_AppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Standing_Desk_AppTests.m; sourceTree = "<group>"; };
+		5512DEDD18CBCD0D0044BC2E /* SDASettingPreset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDASettingPreset.h; sourceTree = "<group>"; };
+		5512DEDE18CBCD0D0044BC2E /* SDASettingPreset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDASettingPreset.m; sourceTree = "<group>"; };
+		5512DEE118CBCEA50044BC2E /* SDAPresetTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAPresetTable.h; sourceTree = "<group>"; };
+		5512DEE218CBCEA50044BC2E /* SDAPresetTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDAPresetTable.m; sourceTree = "<group>"; };
+		5512DEE418CBEA3E0044BC2E /* SDAConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDAConstants.h; sourceTree = "<group>"; };
 		553F9587186F9FF300BD36BB /* SDAAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAAppController.h; sourceTree = "<group>"; };
 		553F9588186F9FF300BD36BB /* SDAAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDAAppController.m; sourceTree = "<group>"; };
 		553F958A186FA0B800BD36BB /* SDAAppSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAAppSettings.h; sourceTree = "<group>"; };
@@ -131,6 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27DA93A718CC308000890D8B /* Carbon.framework in Frameworks */,
 				55A149D5187DF18800EFA8A3 /* IOKit.framework in Frameworks */,
 				27F1D9B9186174B10087FC3A /* Cocoa.framework in Frameworks */,
 			);
@@ -151,7 +178,8 @@
 		0872E87E18824EDC0028586C /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				08AFD5AF1892291C00B10813 /* icon_pausing.png */,
+				080CDB36189F24CA002A3D39 /* icon_pausing.png */,
+				080CDB34189F2467002A3D39 /* icon_transitioning.png */,
 				0805A67C18921BE6000C32EE /* icon_sitting.png */,
 				0805A67D18921BE6000C32EE /* icon_standing.png */,
 				0872E8A7188252470028586C /* desk_logo_sit_16_1x.png */,
@@ -196,6 +224,23 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		27DA939618CBEA4F00890D8B /* MASShortcut */ = {
+			isa = PBXGroup;
+			children = (
+				27DA939718CBEA4F00890D8B /* MASShortcut+Monitoring.h */,
+				27DA939818CBEA4F00890D8B /* MASShortcut+Monitoring.m */,
+				27DA939918CBEA4F00890D8B /* MASShortcut+UserDefaults.h */,
+				27DA939A18CBEA4F00890D8B /* MASShortcut+UserDefaults.m */,
+				27DA939B18CBEA4F00890D8B /* MASShortcut.h */,
+				27DA939C18CBEA4F00890D8B /* MASShortcut.m */,
+				27DA939D18CBEA4F00890D8B /* MASShortcutView+UserDefaults.h */,
+				27DA939E18CBEA4F00890D8B /* MASShortcutView+UserDefaults.m */,
+				27DA939F18CBEA4F00890D8B /* MASShortcutView.h */,
+				27DA93A018CBEA4F00890D8B /* MASShortcutView.m */,
+			);
+			path = MASShortcut;
+			sourceTree = "<group>";
+		};
 		27F1D9AC186174B10087FC3A = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +263,7 @@
 		27F1D9B7186174B10087FC3A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				27DA93A618CC308000890D8B /* Carbon.framework */,
 				55A149D4187DF18800EFA8A3 /* IOKit.framework */,
 				27F1D9B8186174B10087FC3A /* Cocoa.framework */,
 				27F1D9D7186174B10087FC3A /* XCTest.framework */,
@@ -239,6 +285,8 @@
 		27F1D9BE186174B10087FC3A /* Standing Desk App */ = {
 			isa = PBXGroup;
 			children = (
+				27DA939618CBEA4F00890D8B /* MASShortcut */,
+				5512DEE018CBCE840044BC2E /* Presets */,
 				27A44DFC18868BBF00342C82 /* Resources */,
 				55B5A958187A091100C7CDCD /* SDAAppCategories */,
 				27F1D9BF186174B10087FC3A /* Supporting Files */,
@@ -258,6 +306,7 @@
 				553F9590186FD3B700BD36BB /* sda_config.plist */,
 				27652E6B187548C600BD3DC5 /* SystemSounds.h */,
 				27652E6C187548C600BD3DC5 /* SystemSounds.m */,
+				5512DEE418CBEA3E0044BC2E /* SDAConstants.h */,
 			);
 			path = "Standing Desk App";
 			sourceTree = "<group>";
@@ -290,6 +339,17 @@
 				27F1D9DF186174B10087FC3A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5512DEE018CBCE840044BC2E /* Presets */ = {
+			isa = PBXGroup;
+			children = (
+				5512DEDD18CBCD0D0044BC2E /* SDASettingPreset.h */,
+				5512DEDE18CBCD0D0044BC2E /* SDASettingPreset.m */,
+				5512DEE118CBCEA50044BC2E /* SDAPresetTable.h */,
+				5512DEE218CBCEA50044BC2E /* SDAPresetTable.m */,
+			);
+			name = Presets;
 			sourceTree = "<group>";
 		};
 		55B5A958187A091100C7CDCD /* SDAAppCategories */ = {
@@ -380,8 +440,8 @@
 			files = (
 				27F1D9C3186174B10087FC3A /* InfoPlist.strings in Resources */,
 				0872E8B5188252470028586C /* desk_logo_sit_128_1x.png in Resources */,
+				080CDB37189F24CA002A3D39 /* icon_pausing.png in Resources */,
 				0872E8B9188252470028586C /* desk_logo_sit_512_1x.png in Resources */,
-				08AFD5B01892291C00B10813 /* icon_pausing.png in Resources */,
 				27F1D9D1186174B10087FC3A /* Images.xcassets in Resources */,
 				0872E89E1882507F0028586C /* desk_logo_16_2x.png in Resources */,
 				0872E8B2188252470028586C /* desk_logo_sit_16_2x.png in Resources */,
@@ -404,6 +464,7 @@
 				27F1D9CF186174B10087FC3A /* MainMenu.xib in Resources */,
 				0872E8B4188252470028586C /* desk_logo_sit_32_2x.png in Resources */,
 				0872E8A21882507F0028586C /* desk_logo_128_2x.png in Resources */,
+				080CDB35189F2467002A3D39 /* icon_transitioning.png in Resources */,
 				553F9591186FD3B700BD36BB /* sda_config.plist in Resources */,
 				0872E8B6188252470028586C /* desk_logo_sit_128_2x.png in Resources */,
 				0872E8A51882507F0028586C /* desk_logo_512_1x.png in Resources */,
@@ -429,11 +490,18 @@
 			files = (
 				27652E6D187548C600BD3DC5 /* SystemSounds.m in Sources */,
 				553F958F186FA19D00BD36BB /* SDAAlertSetting.m in Sources */,
+				27DA93A118CBEA4F00890D8B /* MASShortcut+Monitoring.m in Sources */,
+				27DA93A418CBEA4F00890D8B /* MASShortcutView+UserDefaults.m in Sources */,
+				5512DEDF18CBCD0D0044BC2E /* SDASettingPreset.m in Sources */,
 				55B5A957187A067500C7CDCD /* SDAAppDelegate+Notifications.m in Sources */,
 				27F1D9C5186174B10087FC3A /* main.m in Sources */,
 				55A149D8187DF1AC00EFA8A3 /* SDAIdleDetector.m in Sources */,
+				27DA93A318CBEA4F00890D8B /* MASShortcut.m in Sources */,
 				553F958C186FA0B800BD36BB /* SDAAppSettings.m in Sources */,
 				553F9589186F9FF300BD36BB /* SDAAppController.m in Sources */,
+				27DA93A218CBEA4F00890D8B /* MASShortcut+UserDefaults.m in Sources */,
+				27DA93A518CBEA4F00890D8B /* MASShortcutView.m in Sources */,
+				5512DEE318CBCEA50044BC2E /* SDAPresetTable.m in Sources */,
 				27F1D9CC186174B10087FC3A /* SDAAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

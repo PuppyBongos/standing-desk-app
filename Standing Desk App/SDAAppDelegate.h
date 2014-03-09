@@ -7,28 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <Carbon/Carbon.h>
+#import "SDAConstants.h"
 #import "SDAAppController.h"
 
-#define STANDING_ACTION_TEXT @"Standing"
-#define STANDING_MENU_ICON @"icon_standing.png"
-#define STANDING_NOTIFICATION_ICON @"desk_logo_128_2x.png"
-
-#define SITTING_ACTION_TEXT @"Sitting"
-#define SITTING_MENU_ICON @"icon_sitting.png"
-#define SITTING_NOTIFICATION_ICON @"desk_logo_sit_128_2x.png"
-
-#define PAUSED_ACTION_TEXT @"Paused"
-#define PAUSED_MENU_ICON @"icon_pausing.png"
-#define ERROR_STATUS_TEXT @"Error"
-
-#define TRANSITIONING_ACTION_TEXT @"Transitioning"
-#define TRANSITIONING_MENU_ICON @"icon_transitioning.png"
-
-#define RESUME_TEXT_TITLE  @"Welcome back!"
-#define RESUME_TEXT_FORMAT @"Continuing %@"
-
-#define NOTIFY_USER_TITLE   @"%@!"
-#define NOTIFY_USER_FORMAT  @"Time to start %@"
+@class MASShortcutView;
 
 @interface SDAAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate, SDAApplicationDelegate>
 
@@ -41,6 +24,7 @@
 
 @property (weak) IBOutlet NSMenuItem *actionMenuItem;
 @property (weak) IBOutlet NSMenuItem *timerMenuItem;
+@property (weak) IBOutlet NSMenuItem *aboutMenuItem;
 @property (weak) IBOutlet NSMenuItem *restartMenuItem;
 @property (weak) IBOutlet NSMenuItem *pauseMenuItem;
 @property (weak) IBOutlet NSMenuItem *snoozeMenuItem;
@@ -50,10 +34,9 @@
 
 #pragma mark - Preferences Window
 @property (assign) IBOutlet NSWindow *prefWindow;
-@property (weak) IBOutlet NSButton *prefWindowCancelBtn;
-@property (weak) IBOutlet NSButton *prefWindowSaveBtn;
 
 #pragma mark - Preferences->General tab
+@property (weak) IBOutlet NSPopUpButton *prefWindowPresetPopUp;
 @property (weak) IBOutlet NSTextField *prefWindowStandTime;
 @property (weak) IBOutlet NSTextField *prefWindowSitTime;
 @property (weak) IBOutlet NSTextField *prefWindowIdleTime;
@@ -65,6 +48,10 @@
 @property (weak) IBOutlet NSSlider *prefWindowSitVolume;
 @property (weak) IBOutlet NSPopUpButton *prefWindowStandAlertSystemSoundPopUp;
 @property (weak) IBOutlet NSSlider *prefWindowStandVolume;
+
+#pragma mark - Preferences->Shortcuts tab
+@property (nonatomic, weak) IBOutlet MASShortcutView *shortcutViewPause;
+@property (nonatomic, weak) IBOutlet MASShortcutView *shortcutViewSkip;
 
 #pragma mark - Transitioning
 @property (assign) IBOutlet NSWindow *transWindow;

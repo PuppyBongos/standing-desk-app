@@ -7,15 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SDAConstants.h"
 #import "SDAAlertSetting.h"
+#import "SDAPresetTable.h"
 
-#define SDA_DEFAULT_FIRST_TIME      YES
-#define SDA_DEFAULT_STAND_INTERVAL  1800 // 30 minutes
-#define SDA_DEFAULT_SIT_INTERVAL    1800 // 30 minutes
-#define SDA_DEFAULT_IDLE_TIME       600  // 10 minutes
-#define SDA_DEFAULT_SNOOZE_TIME     300  // 5 minutes
 
-/*
+/**
     Represents application user configuration settings for
  Standing Desk App.
 */
@@ -24,37 +21,48 @@
 /** Indicator that the application is currently set in an initial state and never before run. */
 @property BOOL isFirstTimeRunning;
 
-/* Default state of the application: (Standing/Sitting) */
+/** Default state of the application: (Standing/Sitting) */
 @property (copy) NSString* defaultState;
 
-/* Time, in seconds, of standing state */
+/** Time, in seconds, of standing state */
 @property int standingInterval;
 
-/* Time, in seconds, of sitting state */
+/** Time, in seconds, of sitting state */
 @property int sittingInterval;
 
-/* Amount of time, in seconds, to allow machine idling prior to pausing timer. */
+/** Amount of time, in seconds, to allow machine idling prior to pausing timer. */
 @property int idlePauseTime;
 
-/* Amount of time, in seconds, to add to a timer if a user chooses to snooze during a state. */
+/** Amount of time, in seconds, to add to a timer if a user chooses to snooze during a state. */
 @property int snoozeTime;
 
-/* Whether the app should register itself as a Login Item for the current user. */
+/** Whether the app should register itself as a Login Item for the current user. */
 @property bool isLoginItem;
 
-/* Settings for Stand Alerts */
+/** Settings for Stand Alerts */
 @property (strong) SDAAlertSetting* standingSettings;
 
-/* Settings for Sit Alerts */
+/** Settings for Sit Alerts */
 @property (strong) SDAAlertSetting* sittingSettings;
 
-/* Transform settings to dictionary */
+/** Preset name currently in use */
+@property (strong) NSString* currentPreset;
+
+@property (strong) SDAPresetTable *presetTable;
+
+/** Transform settings to dictionary */
 -(NSDictionary*)toDictionary;
 
-/* Load settings from the UserDefaults */
+/** Returns the sitting interval in seconds for the given preset. (-1 if preset doesn't exist) */
+-(int)sitIntervalForPreset:(NSString*)presetName;
+
+/** Returns the standing interval in seconds for the given preset. (-1 if preset doesn't exist) */
+-(int)standIntervalForPreset:(NSString *)presetName;
+
+/** Load settings from the UserDefaults */
 +(SDAAppSettings*)settings;
 
-/* Create default instance of app settings */
+/** Create default instance of app settings */
 +(SDAAppSettings*)defaultSettings;
 
 /** Writes settings to UserDefaults */

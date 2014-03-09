@@ -9,6 +9,10 @@
 #import "SDAAppDelegate.h"
 #import "SDAAppController.h"
 #import "SystemSounds.h"
+#import "MASShortcutView.h"
+#import "MASShortcutView+UserDefaults.h"
+#import "MASShortcut+UserDefaults.h"
+#import "MASShortcut+Monitoring.h"
 
 @implementation SDAAppDelegate
 
@@ -17,9 +21,15 @@ SDAActionState completedState;
 NSString *appName;
 NSSound *sitSound;
 NSSound *standSound;
+NSString *const globalKeyShortcutPause = @"KeyShortcutPause";
+NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
 
 #pragma mark - Event Handlers
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+
+  // initialize global shortcut keys
+  [self initKeyboardShortcutKeys];
+
   appName = NSBundle.mainBundle.infoDictionary  [@"CFBundleName"];
     
   // Setup the basic, basic settings for Preferences on disk
@@ -57,11 +67,6 @@ NSSound *standSound;
   [_prefWindow setDelegate:self];
   [_transWindow setDelegate:self];
 
-  // Preferences Window Buttons
-  [_prefWindowCancelBtn setBezelStyle:NSRoundedBezelStyle];
-  [_prefWindow setDefaultButtonCell:[_prefWindowSaveBtn cell]];
-  [_prefWindowSaveBtn setBezelStyle:NSRoundedBezelStyle];
-
   // Transitioning Window Buttons
   [_transWindow setDefaultButtonCell:[_transWindowContinueBtn cell]];
   [_transWindowContinueBtn setBezelStyle:NSRoundedBezelStyle];
@@ -74,7 +79,6 @@ NSSound *standSound;
   // Perform first-time actions, if necessary
   [self checkIfFirstTime];
 }
-
 - (void)actionPeriodHasStarted:(SDAAppController *)sender {
   /* check the last completed state */
   /* if it's sitting, then we schedule a stand */
@@ -92,7 +96,6 @@ NSSound *standSound;
   [self updateTimerMenuItem];
   [self sendSitStandNotification];
 }
-
 - (void)actionPeriodDidComplete:(SDAAppController *)sender actionCompleted:(SDAActionState)state {
 
   /* record the completed state */
@@ -108,15 +111,12 @@ NSSound *standSound;
   /* unless user changes flow, start new event */
 
 }
-
 - (void)runningTickDidOccur:(SDAAppController *)sender {
   [self updateTimerMenuItem];
 }
-
 - (void)appDidPauseForIdle:(SDAAppController *)sender {
   [self updateActionMenuItem];
 }
-
 - (void)appDidResumeFromIdle:(SDAAppController *)sender {
     
     // Actions to occur when user breaks system idle state
@@ -137,19 +137,6 @@ NSSound *standSound;
                                iconFile:nil];
     }
   [self updateActionMenuItem];
-}
-
-- (void)windowDidBecomeKey:(NSNotification *)notification
-{
-    // Preferences Buttons
-    // Meant to force 'Save' button to behave as
-    // default. Fixed in xib.
-    /*
-    [_prefWindowSaveBtn setBezelStyle:NSRoundedBezelStyle];
-    [_prefWindow setDefaultButtonCell:[_prefWindowSaveBtn cell]];
-    [_prefWindowSaveBtn setKeyEquivalent:@"\r"];
-    [_prefWindowSaveBtn setNeedsDisplay:YES];
-   */
 }
 
 #pragma mark - Menu Item Actions
@@ -186,6 +173,10 @@ NSSound *standSound;
   [self updateResumePauseMenuItem];
   [self updateActionMenuItem];
 }
+- (IBAction)onMenuAbout:(id)sender {
+  [[NSApplication sharedApplication] orderFrontStandardAboutPanel:nil];
+  [NSApp activateIgnoringOtherApps:true];
+}
 - (IBAction)onMenuPref:(id)sender {
   [self openPrefsWindow];
 }
@@ -195,13 +186,63 @@ NSSound *standSound;
 }
 
 #pragma mark - Preferences->General Actions
-- (IBAction)onStandTimeTextFieldChange:(id)sender {
+- (IBAction)onStandIntervalChange:(id)sender {
+  [_prefWindowPresetPopUp setTitle:@"Custom"];
+  NSString *preset = [[_prefWindowPresetPopUp selectedItem] title];
+  appController.settings.currentPreset = preset;
+
+  appController.settings.standingInterval = [self intMinToSec:_prefWindowStandTime.integerValue];
+
+  [appController saveSettings];
 }
-- (IBAction)onSitTimeTextFieldChange:(id)sender {
+- (IBAction)onSitIntervalChange:(id)sender {
+  [_prefWindowPresetPopUp setTitle:@"Custom"];
+  NSString *preset = [[_prefWindowPresetPopUp selectedItem] title];
+  appController.settings.currentPreset = preset;
+
+  appController.settings.sittingInterval = [self intMinToSec:_prefWindowSitTime.integerValue];
+
+  [appController saveSettings];
+}
+- (IBAction)onApplyPressed:(id)sender {
+  SDAActionState state = appController.currentActionState;
+  if (state == SDAActionStateTransitioning) state = appController.lastCompletedActionState;
+  if (state == SDAActionStateStanding) {
+    [appController scheduleStand];
+  } else if (state == SDAActionStateSitting){
+    [appController scheduleSit];
+  }
+  [self updateActionMenuItem];
+  [self updateTimerMenuItem];
+  [self updateResumePauseMenuItem];
+}
+- (IBAction)onPresetChange:(id)sender {
+  NSString *preset = [[_prefWindowPresetPopUp selectedItem] title];
+
+  appController.settings.currentPreset = preset;
+  [_prefWindowStandTime setStringValue:[self stringSecToMin:[appController.settings standIntervalForPreset:preset]]];
+  [_prefWindowSitTime setStringValue:[self stringSecToMin:[appController.settings sitIntervalForPreset:preset]]];
+
+  [appController saveSettings];
 }
 - (IBAction)onIdleTimeTextFieldChange:(id)sender {
+    appController.settings.idlePauseTime = [self intMinToSec:[sender intValue]];
+    [appController saveSettings];
 }
 - (IBAction)onSnoozeTimeTextFieldChange:(id)sender {
+    appController.settings.snoozeTime = [self intMinToSec:[sender intValue]];
+    [appController saveSettings];
+}
+- (IBAction)onLoginToggleChange:(id)sender {
+  if ([_prefWindowLoginToggle state] == NSOnState)
+  {
+    appController.settings.isLoginItem = true;
+    [self addAppAsLoginItem];
+  } else if ([_prefWindowLoginToggle state] == NSOffState) {
+    appController.settings.isLoginItem = false;
+    [self deleteAppFromLoginItem];
+  }
+  [appController saveSettings];
 }
 
 #pragma mark - Preferences->Alerts Actions
@@ -213,12 +254,14 @@ NSSound *standSound;
   [standSound setVolume:appController.settings.standingSettings.volume];
   [standSound stop];
   [standSound play];
+  [appController saveSettings];
 }
 - (IBAction)onStandAlertVolumeChange:(id)sender {
   appController.settings.standingSettings.volume = [_prefWindowStandVolume floatValue];
   [standSound setVolume:appController.settings.standingSettings.volume];
   [standSound stop];
   [standSound play];
+  [appController saveSettings];
 }
 
 // Sit
@@ -229,23 +272,14 @@ NSSound *standSound;
   [sitSound setVolume:appController.settings.sittingSettings.volume];
   [sitSound stop];
   [sitSound play];
+  [appController saveSettings];
 }
 - (IBAction)onSitAlertVolumeChange:(id)sender {
   appController.settings.sittingSettings.volume = [_prefWindowSitVolume floatValue];
   [sitSound setVolume:appController.settings.sittingSettings.volume];
   [sitSound stop];
   [sitSound play];
-}
-
-#pragma mark - Preferences->Buttons Actions
-- (IBAction)onPrefCancel:(id)sender {
-  [appController loadSettings];
-  [_prefWindow performClose:self];
-}
-- (IBAction)onPrefSave:(id)sender {
-  [self savePrefUIToAppSettings];
   [appController saveSettings];
-  [_prefWindow performClose:self];
 }
 
 #pragma mark - Transitioning Window Actions
@@ -280,15 +314,12 @@ NSSound *standSound;
   [_transWindow performClose:self];
 }
 
-
 #pragma mark - Private methods
-/* Opens the Preferences window over all other windows. */
 - (void)openPrefsWindow {
     
     [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
     [_prefWindow makeKeyAndOrderFront:self];
 }
-/* Opens the Transitioning window over all other windows. */
 - (void)openTransWindow {
   [_transWindowLastCompletedAction setStringValue:appController.lastCompletedActionState == SDAActionStateStanding ? @"Standing" : @"Sitting"];
   [_transWindowNextActionToStart setStringValue:appController.lastCompletedActionState == SDAActionStateStanding ? @"Sitting" : @"Standing"];
@@ -297,14 +328,12 @@ NSSound *standSound;
   [_transWindow makeKeyAndOrderFront:self];
 }
 
-/* Convenience method that converts seconds to minutes
-   as a string to place into UI text fields. */
+/* Converts seconds to minutes as a string to place into UI text fields. */
 - (NSString*)stringSecToMin:(int)seconds {
   return [NSString stringWithFormat:@"%d", seconds / 60];
 }
 
-/* Convenience method that converts minutes to seconds
-   to add to app settings. */
+/* Converts minutes to seconds to add to app settings. */
 - (int)intMinToSec:(int)minutes {
   return minutes * 60;
 }
@@ -315,7 +344,7 @@ NSSound *standSound;
     case SDAActionStateTransitioning:
       self.actionMenuItem.title = TRANSITIONING_ACTION_TEXT;
       // TO-DO: Create transitioning menu icon
-      //[statusItem setImage:[NSImage imageNamed:TRANSITIONING_MENU_ICON]];
+      [statusItem setImage:[NSImage imageNamed:TRANSITIONING_MENU_ICON]];
       break;
     case SDAActionStateSitting:
       self.actionMenuItem.title = SITTING_ACTION_TEXT;
@@ -354,6 +383,7 @@ NSSound *standSound;
    into Preferences Window UI */
 - (void)loadAppSettingsToPrefUI {
   // Preferences->General
+  [_prefWindowPresetPopUp setTitle:appController.settings.currentPreset];
   [_prefWindowStandTime setStringValue:[self stringSecToMin:appController.settings.standingInterval]];
   [_prefWindowSitTime setStringValue:[self stringSecToMin:appController.settings.sittingInterval]];
   [_prefWindowIdleTime setStringValue:[self stringSecToMin:appController.settings.idlePauseTime]];
@@ -372,33 +402,6 @@ NSSound *standSound;
   [_prefWindowSitAlertSystemSoundPopUp selectItemWithTitle:sitSoundFilePath];
   sitSound = [self updateSoundFile:sitSoundFilePath];
   [_prefWindowSitVolume setFloatValue:appController.settings.sittingSettings.volume];
-}
-
-/* Saves Preferences Window UI values
-   to local appsettings values */
-- (void)savePrefUIToAppSettings {
-  // Preferences->General
-  appController.settings.standingInterval = [self intMinToSec:_prefWindowStandTime.integerValue];
-  appController.settings.sittingInterval = [self intMinToSec:_prefWindowSitTime.integerValue];
-  appController.settings.idlePauseTime = [self intMinToSec:_prefWindowIdleTime.integerValue];
-  appController.settings.snoozeTime = [self intMinToSec:_prefWindowSnoozeTime.integerValue];
-  if ([_prefWindowLoginToggle state] == NSOnState)
-  {
-    appController.settings.isLoginItem = true;
-    [self addAppAsLoginItem];
-  } else if ([_prefWindowLoginToggle state] == NSOffState) {
-    appController.settings.isLoginItem = false;
-    [self deleteAppFromLoginItem];
-  }
-
-  // Preferences->Alerts
-  //// Stand
-  appController.settings.standingSettings.soundFile = [[_prefWindowStandAlertSystemSoundPopUp selectedItem] title];
-  appController.settings.standingSettings.volume = [_prefWindowStandVolume floatValue];
-
-  //// Sit
-  appController.settings.sittingSettings.soundFile = [[_prefWindowSitAlertSystemSoundPopUp selectedItem] title];
-  appController.settings.sittingSettings.volume = [_prefWindowSitVolume floatValue];
 }
 
 /* Plays a sound for the current action state. */
@@ -537,8 +540,9 @@ NSSound *standSound;
 	}
 }
 
-/* Checks to see if the application has been run before. If not,
-   opens the preferences window to allow user to set initial settings. */
+/* Checks to see if the application has been run before.
+   If not, opens the preferences window to allow user to 
+   set initial settings. */
 - (void)checkIfFirstTime {
     
     if(appController.settings.isFirstTimeRunning) {
@@ -553,7 +557,7 @@ NSSound *standSound;
     }
 }
 
-/* Method that gets run when event elapsed notification is clicked */
+/* Event Elapsed Notification is Clicked */
 - (void)transNotificationClicked {
   SDAActionState state = appController.currentActionState;
   if (state == SDAActionStateTransitioning) {
@@ -561,6 +565,33 @@ NSSound *standSound;
     [self openTransWindow];
   }
   NSLog(@"notification clicked");
+}
+
+/* Global Keyboard Shortcut Init */
+- (void)initKeyboardShortcutKeys {
+  // Assign the preference key and the shortcut view will take care of persistence
+  self.shortcutViewPause.associatedUserDefaultsKey = globalKeyShortcutPause;
+  self.shortcutViewSkip.associatedUserDefaultsKey = globalKeyShortcutSkip;
+
+  // pause/resume
+  [MASShortcut registerGlobalShortcutWithUserDefaultsKey:globalKeyShortcutPause handler:^{
+    if (appController.currentStatus == SDAStatusRunning) {
+      [appController pauseTimer];
+    }
+    else if (appController.currentStatus == SDAStatusPaused) {
+      [appController resumeTimer];
+    }
+    [self updateResumePauseMenuItem];
+    [self updateActionMenuItem];
+  }];
+
+  // skip
+  [MASShortcut registerGlobalShortcutWithUserDefaultsKey:globalKeyShortcutSkip handler:^{
+    [appController skipToNext];
+    [self sendSitStandNotification];
+    [self updateResumePauseMenuItem];
+    [self updateActionMenuItem];
+  }];
 }
 
 @end

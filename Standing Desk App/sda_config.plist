@@ -28,5 +28,43 @@
 		<key>SoundFile</key>
 		<string>Sit</string>
 	</dict>
+	<key>Presets</key>
+	<dict>
+		<key>Beginner</key>
+		<dict>
+			<key>StandStateInterval</key>
+			<real>1800</real>
+			<key>SitStateInterval</key>
+			<real>3600</real>
+		</dict>
+		<key>Intermediate</key>
+		<dict>
+			<key>StandStateInterval</key>
+			<real>3600</real>
+			<key>SitStateInterval</key>
+			<real>3600</real>
+		</dict>
+		<key>Hard</key>
+		<dict>
+			<key>StandStateInterval</key>
+			<real>7200</real>
+			<key>SitStateInterval</key>
+			<real>1800</real>
+		</dict>
+		<key>Expert</key>
+		<dict>
+			<key>StandStateInterval</key>
+			<real>10800</real>
+			<key>SitStateInterval</key>
+			<real>1800</real>
+		</dict>
+		<key>All Day</key>
+		<dict>
+			<key>StandStateInterval</key>
+			<real>14440</real>
+			<key>SitStateInterval</key>
+			<real>1800</real>
+		</dict>
+	</dict>
 </dict>
 </plist>

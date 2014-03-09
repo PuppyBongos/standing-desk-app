@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SDAAppSettings.h"
+#import "SDAPresetTable.h"
 
 #pragma mark - Type definitions
 enum SDAStatus {
@@ -151,4 +152,5 @@ enum SDAActionState {
  * Returns a formatted string of the amount of time left til the next stand/sit event.
  */
 -(NSString*)stringFromTimeLeft;
+
 @end

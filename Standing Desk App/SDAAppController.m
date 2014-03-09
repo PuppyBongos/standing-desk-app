@@ -21,12 +21,17 @@
 @synthesize currentStatus = _currentStatus;
 @synthesize currentTimeLeft = _currentTimeLeft;
 
+SDAPresetTable *_presetTable;
+
 -(id)init {
     self = [super init];
     if(self) {
         
+        [self loadPresets];
+        
         // Start with empty settings
         self.settings = [SDAAppSettings defaultSettings];
+        self.settings.presetTable = _presetTable;
 
         _lastCompletedActionState = SDAActionStateNone;
         _actionState = SDAActionStateNone;
@@ -47,11 +52,16 @@
 #pragma mark - Public interface
 -(void)loadSettings {
     self.settings = [SDAAppSettings settings];
+    self.settings.presetTable = _presetTable;
 }
 
 -(void)saveSettings {
     
     [self.settings writeSettings];
+    
+    // If timer change matches current state,
+    // Timer should restart to changed value.
+    // Else, do nothing.
 }
 
 -(void)scheduleSit {
@@ -102,7 +112,6 @@
   } else {
     [self scheduleSit];
   }
-  
 }
 
 -(void)pauseTimer {
@@ -244,6 +253,13 @@
 /** Shortcut for NSDate's retrieval of current time */
 -(NSTimeInterval) now {
    return [[NSDate dateWithTimeIntervalSinceNow:0] timeIntervalSinceReferenceDate];
+}
+
+/** Loads subsetting presets from disk. */
+-(void)loadPresets {
+    NSDictionary *configPList = [NSDictionary dictionaryWithContentsOfFile:[self getConfigPath]];
+    
+    _presetTable = [SDAPresetTable tableFromDictionary:[configPList objectForKey:SDA_CONFIG_PRESETS]];
 }
 
 /** Retrieves the file path of the SDA App's configuration file */
