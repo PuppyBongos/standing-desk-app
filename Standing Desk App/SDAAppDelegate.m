@@ -84,7 +84,6 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
   // Perform first-time actions, if necessary
   [self checkIfFirstTime];
 }
-
 - (void)actionPeriodHasStarted:(SDAAppController *)sender {
   /* check the last completed state */
   /* if it's sitting, then we schedule a stand */
@@ -102,7 +101,6 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
   [self updateTimerMenuItem];
   [self sendSitStandNotification];
 }
-
 - (void)actionPeriodDidComplete:(SDAAppController *)sender actionCompleted:(SDAActionState)state {
 
   /* record the completed state */
@@ -118,15 +116,12 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
   /* unless user changes flow, start new event */
 
 }
-
 - (void)runningTickDidOccur:(SDAAppController *)sender {
   [self updateTimerMenuItem];
 }
-
 - (void)appDidPauseForIdle:(SDAAppController *)sender {
   [self updateActionMenuItem];
 }
-
 - (void)appDidResumeFromIdle:(SDAAppController *)sender {
     
     // Actions to occur when user breaks system idle state
@@ -147,19 +142,6 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
                                iconFile:nil];
     }
   [self updateActionMenuItem];
-}
-
-- (void)windowDidBecomeKey:(NSNotification *)notification
-{
-    // Preferences Buttons
-    // Meant to force 'Save' button to behave as
-    // default. Fixed in xib.
-    /*
-    [_prefWindowSaveBtn setBezelStyle:NSRoundedBezelStyle];
-    [_prefWindow setDefaultButtonCell:[_prefWindowSaveBtn cell]];
-    [_prefWindowSaveBtn setKeyEquivalent:@"\r"];
-    [_prefWindowSaveBtn setNeedsDisplay:YES];
-   */
 }
 
 #pragma mark - Menu Item Actions
@@ -215,9 +197,7 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
 - (IBAction)onSitStandIntervalChange:(id)sender {
     [_prefWindowPresetPopUp setTitle:@"Custom"];
 }
-
-
--(IBAction)onApplyPressed:(id)sender {
+- (IBAction)onApplyPressed:(id)sender {
     NSString *preset = [[_prefWindowPresetPopUp selectedItem] title];
     
     appController.settings.currentPreset = preset;
@@ -226,30 +206,19 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
 
     [appController.settings writeSettings];
 }
-
--(IBAction)onPresetChange:(id)sender {
+- (IBAction)onPresetChange:(id)sender {
    NSString *preset = [[_prefWindowPresetPopUp selectedItem] title];
     
     [_prefWindowStandTime setStringValue:[self stringSecToMin:[appController.settings standIntervalForPreset:preset]]];
     [_prefWindowSitTime setStringValue:[self stringSecToMin:[appController.settings sitIntervalForPreset:preset]]];
 }
-
-- (IBAction)onStandTimeTextFieldChange:(id)sender {
-}
-- (IBAction)onSitTimeTextFieldChange:(id)sender {
-}
 - (IBAction)onIdleTimeTextFieldChange:(id)sender {
     appController.settings.idlePauseTime = [self intMinToSec:[sender intValue]];
     [appController saveSettings];
 }
-
 - (IBAction)onSnoozeTimeTextFieldChange:(id)sender {
     appController.settings.snoozeTime = [self intMinToSec:[sender intValue]];
     [appController saveSettings];
-}
-
--(IBAction)onStartAtLoginChange:(id)sender {
-    
 }
 
 #pragma mark - Preferences->Alerts Actions
@@ -328,15 +297,12 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
   [_transWindow performClose:self];
 }
 
-
 #pragma mark - Private methods
-/* Opens the Preferences window over all other windows. */
 - (void)openPrefsWindow {
     
     [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
     [_prefWindow makeKeyAndOrderFront:self];
 }
-/* Opens the Transitioning window over all other windows. */
 - (void)openTransWindow {
   [_transWindowLastCompletedAction setStringValue:appController.lastCompletedActionState == SDAActionStateStanding ? @"Standing" : @"Sitting"];
   [_transWindowNextActionToStart setStringValue:appController.lastCompletedActionState == SDAActionStateStanding ? @"Sitting" : @"Standing"];
@@ -345,14 +311,12 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
   [_transWindow makeKeyAndOrderFront:self];
 }
 
-/* Convenience method that converts seconds to minutes
-   as a string to place into UI text fields. */
+/* Converts seconds to minutes as a string to place into UI text fields. */
 - (NSString*)stringSecToMin:(int)seconds {
   return [NSString stringWithFormat:@"%d", seconds / 60];
 }
 
-/* Convenience method that converts minutes to seconds
-   to add to app settings. */
+/* Converts minutes to seconds to add to app settings. */
 - (int)intMinToSec:(int)minutes {
   return minutes * 60;
 }
@@ -587,8 +551,9 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
 	}
 }
 
-/* Checks to see if the application has been run before. If not,
-   opens the preferences window to allow user to set initial settings. */
+/* Checks to see if the application has been run before.
+   If not, opens the preferences window to allow user to 
+   set initial settings. */
 - (void)checkIfFirstTime {
     
     if(appController.settings.isFirstTimeRunning) {
@@ -603,7 +568,7 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
     }
 }
 
-/* Method that gets run when event elapsed notification is clicked */
+/* Event Elapsed Notification is Clicked */
 - (void)transNotificationClicked {
   SDAActionState state = appController.currentActionState;
   if (state == SDAActionStateTransitioning) {

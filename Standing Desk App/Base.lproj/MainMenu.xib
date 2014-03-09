@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1080" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
@@ -72,7 +72,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="475" height="332"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1600" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
             <view key="contentView" id="372">
                 <rect key="frame" x="0.0" y="0.0" width="475" height="332"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -83,7 +83,7 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="General" identifier="1" id="aOY-2h-lJo">
-                                <view key="view" id="6nP-Vf-iX1">
+                                <view key="view" ambiguous="YES" id="6nP-Vf-iX1">
                                     <rect key="frame" x="10" y="33" width="471" height="250"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -270,7 +270,7 @@
                                         <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YPN-u4-Xh1">
                                             <rect key="frame" x="284" y="46" width="21" height="85"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <sliderCell key="cell" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="right" sliderType="linear" id="zr5-9y-wud"/>
+                                            <sliderCell key="cell" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="left" sliderType="linear" id="zr5-9y-wud"/>
                                             <connections>
                                                 <action selector="onSitAlertVolumeChange:" target="494" id="m8c-z8-kGF"/>
                                             </connections>
@@ -278,7 +278,7 @@
                                         <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CIK-Yp-pWm">
                                             <rect key="frame" x="284" y="149" width="21" height="85"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <sliderCell key="cell" state="on" alignment="left" maxValue="1" doubleValue="0.2852783203125" tickMarkPosition="right" sliderType="linear" id="8WN-Ov-kNE"/>
+                                            <sliderCell key="cell" state="on" alignment="left" maxValue="1" doubleValue="0.2852783203125" tickMarkPosition="left" sliderType="linear" id="8WN-Ov-kNE"/>
                                             <connections>
                                                 <action selector="onStandAlertVolumeChange:" target="494" id="X0T-BE-dFM"/>
                                             </connections>
@@ -338,7 +338,7 @@
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Shortcuts" identifier="" id="WJ1-RF-ip6">
-                                <view key="view" ambiguous="YES" id="YUP-TI-Zhs">
+                                <view key="view" id="YUP-TI-Zhs">
                                     <rect key="frame" x="10" y="33" width="471" height="250"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -417,7 +417,7 @@ DQ
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="163" y="199" width="301" height="169"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1600" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
             <view key="contentView" id="HQI-yO-kAT">
                 <rect key="frame" x="0.0" y="0.0" width="301" height="169"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
