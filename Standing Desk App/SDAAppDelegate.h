@@ -34,8 +34,6 @@
 
 #pragma mark - Preferences Window
 @property (assign) IBOutlet NSWindow *prefWindow;
-@property (weak) IBOutlet NSButton *prefWindowCancelBtn;
-@property (weak) IBOutlet NSButton *prefWindowSaveBtn;
 
 #pragma mark - Preferences->General tab
 @property (weak) IBOutlet NSPopUpButton *prefWindowPresetPopUp;
