@@ -34,6 +34,12 @@
 		27652E6D187548C600BD3DC5 /* SystemSounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 27652E6C187548C600BD3DC5 /* SystemSounds.m */; };
 		2774735F1887CBBF00F27C77 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2774735E1887CBBF00F27C77 /* README.md */; };
 		27A44DFA1886885C00342C82 /* Sit.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 27A44DF81886885C00342C82 /* Sit.m4a */; };
+		27DA93A118CBEA4F00890D8B /* MASShortcut+Monitoring.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DA939818CBEA4F00890D8B /* MASShortcut+Monitoring.m */; };
+		27DA93A218CBEA4F00890D8B /* MASShortcut+UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DA939A18CBEA4F00890D8B /* MASShortcut+UserDefaults.m */; };
+		27DA93A318CBEA4F00890D8B /* MASShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DA939C18CBEA4F00890D8B /* MASShortcut.m */; };
+		27DA93A418CBEA4F00890D8B /* MASShortcutView+UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DA939E18CBEA4F00890D8B /* MASShortcutView+UserDefaults.m */; };
+		27DA93A518CBEA4F00890D8B /* MASShortcutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DA93A018CBEA4F00890D8B /* MASShortcutView.m */; };
+		27DA93A718CC308000890D8B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27DA93A618CC308000890D8B /* Carbon.framework */; };
 		27F1D9B9186174B10087FC3A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F1D9B8186174B10087FC3A /* Cocoa.framework */; };
 		27F1D9C3186174B10087FC3A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27F1D9C1186174B10087FC3A /* InfoPlist.strings */; };
 		27F1D9C5186174B10087FC3A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F1D9C4186174B10087FC3A /* main.m */; };
@@ -97,6 +103,17 @@
 		2774735E1887CBBF00F27C77 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		27969CFE1887C87900D3D2DF /* Stand.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Stand.m4a; sourceTree = "<group>"; };
 		27A44DF81886885C00342C82 /* Sit.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sit.m4a; sourceTree = "<group>"; };
+		27DA939718CBEA4F00890D8B /* MASShortcut+Monitoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASShortcut+Monitoring.h"; sourceTree = "<group>"; };
+		27DA939818CBEA4F00890D8B /* MASShortcut+Monitoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MASShortcut+Monitoring.m"; sourceTree = "<group>"; };
+		27DA939918CBEA4F00890D8B /* MASShortcut+UserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASShortcut+UserDefaults.h"; sourceTree = "<group>"; };
+		27DA939A18CBEA4F00890D8B /* MASShortcut+UserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MASShortcut+UserDefaults.m"; sourceTree = "<group>"; };
+		27DA939B18CBEA4F00890D8B /* MASShortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASShortcut.h; sourceTree = "<group>"; };
+		27DA939C18CBEA4F00890D8B /* MASShortcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASShortcut.m; sourceTree = "<group>"; };
+		27DA939D18CBEA4F00890D8B /* MASShortcutView+UserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASShortcutView+UserDefaults.h"; sourceTree = "<group>"; };
+		27DA939E18CBEA4F00890D8B /* MASShortcutView+UserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MASShortcutView+UserDefaults.m"; sourceTree = "<group>"; };
+		27DA939F18CBEA4F00890D8B /* MASShortcutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASShortcutView.h; sourceTree = "<group>"; };
+		27DA93A018CBEA4F00890D8B /* MASShortcutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASShortcutView.m; sourceTree = "<group>"; };
+		27DA93A618CC308000890D8B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		27F1D9B5186174B10087FC3A /* Standing Desk App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Standing Desk App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27F1D9B8186174B10087FC3A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		27F1D9BB186174B10087FC3A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -140,6 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27DA93A718CC308000890D8B /* Carbon.framework in Frameworks */,
 				55A149D5187DF18800EFA8A3 /* IOKit.framework in Frameworks */,
 				27F1D9B9186174B10087FC3A /* Cocoa.framework in Frameworks */,
 			);
@@ -206,6 +224,23 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		27DA939618CBEA4F00890D8B /* MASShortcut */ = {
+			isa = PBXGroup;
+			children = (
+				27DA939718CBEA4F00890D8B /* MASShortcut+Monitoring.h */,
+				27DA939818CBEA4F00890D8B /* MASShortcut+Monitoring.m */,
+				27DA939918CBEA4F00890D8B /* MASShortcut+UserDefaults.h */,
+				27DA939A18CBEA4F00890D8B /* MASShortcut+UserDefaults.m */,
+				27DA939B18CBEA4F00890D8B /* MASShortcut.h */,
+				27DA939C18CBEA4F00890D8B /* MASShortcut.m */,
+				27DA939D18CBEA4F00890D8B /* MASShortcutView+UserDefaults.h */,
+				27DA939E18CBEA4F00890D8B /* MASShortcutView+UserDefaults.m */,
+				27DA939F18CBEA4F00890D8B /* MASShortcutView.h */,
+				27DA93A018CBEA4F00890D8B /* MASShortcutView.m */,
+			);
+			path = MASShortcut;
+			sourceTree = "<group>";
+		};
 		27F1D9AC186174B10087FC3A = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +263,7 @@
 		27F1D9B7186174B10087FC3A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				27DA93A618CC308000890D8B /* Carbon.framework */,
 				55A149D4187DF18800EFA8A3 /* IOKit.framework */,
 				27F1D9B8186174B10087FC3A /* Cocoa.framework */,
 				27F1D9D7186174B10087FC3A /* XCTest.framework */,
@@ -457,6 +493,7 @@
 				55B5A957187A067500C7CDCD /* SDAAppDelegate+Notifications.m in Sources */,
 				27F1D9C5186174B10087FC3A /* main.m in Sources */,
 				55A149D8187DF1AC00EFA8A3 /* SDAIdleDetector.m in Sources */,
+				27DA93A318CBEA4F00890D8B /* MASShortcut.m in Sources */,
 				553F958C186FA0B800BD36BB /* SDAAppSettings.m in Sources */,
 				553F9589186F9FF300BD36BB /* SDAAppController.m in Sources */,
 				5512DEE318CBCEA50044BC2E /* SDAPresetTable.m in Sources */,

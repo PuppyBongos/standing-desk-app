@@ -83,7 +83,7 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="General" identifier="1" id="aOY-2h-lJo">
-                                <view key="view" ambiguous="YES" id="6nP-Vf-iX1">
+                                <view key="view" id="6nP-Vf-iX1">
                                     <rect key="frame" x="10" y="33" width="471" height="250"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -337,6 +337,49 @@
                                     </subviews>
                                 </view>
                             </tabViewItem>
+                            <tabViewItem label="Shortcuts" identifier="" id="WJ1-RF-ip6">
+                                <view key="view" ambiguous="YES" id="YUP-TI-Zhs">
+                                    <rect key="frame" x="10" y="33" width="471" height="250"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <customView appearanceType="aqua" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Je8-Pq-EtT" customClass="MASShortcutView">
+                                            <rect key="frame" x="167" y="171" width="176" height="19"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        </customView>
+                                        <textField appearanceType="aqua" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ru1-gp-m8N">
+                                            <rect key="frame" x="47" y="209" width="180" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Global Keyboard Shortcuts" id="hTH-Nq-V2P">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField appearanceType="aqua" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0lf-gO-U8x">
+                                            <rect key="frame" x="59" y="172" width="96" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Pause/Resume" id="Plf-6s-Txf">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField appearanceType="aqua" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f1m-eX-XRZ">
+                                            <rect key="frame" x="59" y="146" width="31" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Skip" id="RSM-o9-1gO">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <customView appearanceType="aqua" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NJR-CM-Wvi" customClass="MASShortcutView">
+                                            <rect key="frame" x="167" y="145" width="176" height="19"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        </customView>
+                                    </subviews>
+                                </view>
+                            </tabViewItem>
                         </tabViewItems>
                     </tabView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n8w-wA-Pwg">
@@ -487,6 +530,8 @@ DQ
                 <outlet property="prefWindowSystemSoundPopUpButton" destination="8qb-1Q-9LQ" id="meu-NK-JMk"/>
                 <outlet property="quitMenuItem" destination="QMk-XI-lMF" id="KR9-wQ-tQG"/>
                 <outlet property="restartMenuItem" destination="WWO-Xo-unU" id="zLh-QV-3Go"/>
+                <outlet property="shortcutViewPause" destination="Je8-Pq-EtT" id="b65-WP-e57"/>
+                <outlet property="shortcutViewSkip" destination="NJR-CM-Wvi" id="sF0-5d-wQV"/>
                 <outlet property="skipMenuItem" destination="1YL-ho-WMI" id="jUS-WZ-aMD"/>
                 <outlet property="snoozeMenuItem" destination="qJP-eb-RWy" id="MNb-Cy-HLf"/>
                 <outlet property="statusMenu" destination="BiC-t7-sFC" id="FtW-Hq-DNM"/>
