@@ -199,6 +199,31 @@ NSSound *standSound;
 }
 
 #pragma mark - Preferences->General Actions
+- (IBAction)onStandIntervalChange:(id)sender {
+    [_prefWindowPresetPopUp setTitle:@"Custom"];
+}
+- (IBAction)onSitStandIntervalChange:(id)sender {
+    [_prefWindowPresetPopUp setTitle:@"Custom"];
+}
+
+
+-(IBAction)onApplyPressed:(id)sender {
+    NSString *preset = [[_prefWindowPresetPopUp selectedItem] title];
+    
+    appController.settings.currentPreset = preset;
+    appController.settings.standingInterval = [self intMinToSec:_prefWindowStandTime.integerValue];
+    appController.settings.sittingInterval = [self intMinToSec:_prefWindowSitTime.integerValue];
+
+    [appController.settings writeSettings];
+}
+
+-(IBAction)onPresetChange:(id)sender {
+   NSString *preset = [[_prefWindowPresetPopUp selectedItem] title];
+    
+    [_prefWindowStandTime setStringValue:[self stringSecToMin:[appController.settings standIntervalForPreset:preset]]];
+    [_prefWindowSitTime setStringValue:[self stringSecToMin:[appController.settings sitIntervalForPreset:preset]]];
+}
+
 - (IBAction)onStandTimeTextFieldChange:(id)sender {
 }
 - (IBAction)onSitTimeTextFieldChange:(id)sender {

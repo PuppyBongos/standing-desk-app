@@ -100,6 +100,8 @@ int _standingInterval;
     [ud setBool:isLoginItem forKey:UD_LOGIN];
     [ud setValue:[self.sittingSettings toDictionary] forKey:UD_SIT_ALERT];
     [ud setValue:[self.standingSettings toDictionary] forKey:UD_STAND_ALERT];
+    
+    [ud synchronize];
 }
 
 -(void)setStandingInterval:(int)standingInterval {
@@ -204,6 +206,10 @@ int _standingInterval;
     if(!self.presetTable)
         return -1;
     
+    if([presetName isEqualToString:@"Custom"]) {
+        return _sittingInterval;
+    }
+    
     SDASettingPreset *preset = [self.presetTable presetByName:presetName];
     
     if(preset) {
@@ -216,6 +222,10 @@ int _standingInterval;
     
     if(!self.presetTable)
         return -1;
+    
+    if([presetName isEqualToString:@"Custom"]) {
+        return _standingInterval;
+    }
     
     SDASettingPreset *preset = [self.presetTable presetByName:presetName];
     
