@@ -13,7 +13,7 @@
     NSDictionary *presetTable;
 }
 
--(SDASettingPreset *)presetByName:(NSString*)presetName;
+-(SDASettingPreset*)presetByName:(NSString*)presetName;
 
 +(SDAPresetTable*)tableFromDictionary:(NSDictionary*)dict;
 @end

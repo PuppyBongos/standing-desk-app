@@ -16,13 +16,14 @@
 
 @synthesize currentPreset;
 
-@synthesize sittingInterval;
-@synthesize standingInterval;
+@synthesize sittingInterval = _sittingInterval;
+@synthesize standingInterval = _standingInterval;
 @synthesize idlePauseTime;
 @synthesize snoozeTime;
 @synthesize isLoginItem;
 
-NSDictionary* presetListings;
+int _sittingInterval;
+int _standingInterval;
 
 -(id)init {
     self = [super init];
@@ -30,8 +31,6 @@ NSDictionary* presetListings;
     if(self) {
         self.sittingSettings = [[SDAAlertSetting alloc]init];
         self.standingSettings = [[SDAAlertSetting alloc]init];
-        
-        presetListings = [self getPresets];
     }
     
     return self;
@@ -60,9 +59,9 @@ NSDictionary* presetListings;
     
     // Create properties list
     [dict setValue:[NSNumber numberWithBool:isFirstTimeRunning] forKey:UD_FIRST_TIME];
-    [dict setValue:[NSNumber numberWithInt:sittingInterval]
+    [dict setValue:[NSNumber numberWithInt:[self sittingInterval]]
              forKey:UD_SIT_INTERVAL];
-    [dict setValue:[NSNumber numberWithInt:standingInterval]
+    [dict setValue:[NSNumber numberWithInt:[self standingInterval]]
              forKey:UD_STAND_INTERVAL];
     [dict setValue:[NSNumber numberWithInt:idlePauseTime]
              forKey:UD_IDLE_TIME];
@@ -90,36 +89,63 @@ NSDictionary* presetListings;
     
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     
-    // Check for presets available
-    if(self.currentPreset) {
-        // Try to read from the sda files.
-        
-        NSDictionary *presetValues = presetListings[self.currentPreset];
-        
-        // Load the presets into our structure
-        if(presetValues) {
-            sittingInterval = [presetValues[UD_SIT_INTERVAL] intValue];
-            standingInterval = [presetValues[UD_STAND_INTERVAL] intValue];
-        } else {
-            
-            self.currentPreset = SDA_PRESET_CUSTOM;
-        }
-        
-    } else {
-        
-        // Default to custom
-        self.currentPreset = SDA_PRESET_CUSTOM;
-    }
-    
     [ud setValue:self.currentPreset forKey:UD_PRESET];
     [ud setBool:isFirstTimeRunning forKey:UD_FIRST_TIME];
-    [ud setInteger:sittingInterval forKey:UD_SIT_INTERVAL];
-    [ud setInteger:standingInterval forKey:UD_STAND_INTERVAL];
+    
+    // Save the interval *members* and not the preset versions.
+    [ud setInteger:_sittingInterval forKey:UD_SIT_INTERVAL];
+    [ud setInteger:_standingInterval forKey:UD_STAND_INTERVAL];
     [ud setInteger:idlePauseTime forKey:UD_IDLE_TIME];
     [ud setInteger:snoozeTime forKey:UD_SNOOZE_TIME];
     [ud setBool:isLoginItem forKey:UD_LOGIN];
     [ud setValue:[self.sittingSettings toDictionary] forKey:UD_SIT_ALERT];
     [ud setValue:[self.standingSettings toDictionary] forKey:UD_STAND_ALERT];
+}
+
+-(void)setStandingInterval:(int)standingInterval {
+    _standingInterval = standingInterval;
+}
+
+-(void)setSittingInterval:(int)sittingInterval {
+    _sittingInterval = sittingInterval;
+}
+
+-(int)sittingInterval {
+    if(!currentPreset ||
+       [self.currentPreset isEqualToString:@""] ||
+       [self.currentPreset isEqualToString:@"Custom"]) {
+        return _sittingInterval;
+    } else {
+        
+        // Presets weren't provided, error out.
+        if(!self.presetTable)
+            return -1;
+        
+        // Try to pull it out
+        SDASettingPreset *preset = [self.presetTable presetByName:self.currentPreset];
+        if(preset) return preset.sittingInterval;
+        else
+            return -1;
+    }
+}
+
+-(int)standingInterval {
+    if(!currentPreset ||
+       [self.currentPreset isEqualToString:@""] ||
+       [self.currentPreset isEqualToString:@"Custom"]) {
+        return _standingInterval;
+    } else {
+        
+        // Presets weren't provided, error out.
+        if(!self.presetTable)
+            return -1;
+        
+        // Try to pull it out
+        SDASettingPreset *preset = [self.presetTable presetByName:self.currentPreset];
+        if(preset) return preset.standingInterval;
+        else
+            return -1;
+    }
 }
 
 +(SDAAppSettings*)settings {
@@ -173,16 +199,28 @@ NSDictionary* presetListings;
     return presets;
 }
 
--(int)sitIntervalForPreset:(NSString*)preset {
-    if(presetListings[preset]) {
-        return (int)[presetListings[preset][UD_SIT_INTERVAL] intValue];
+-(int)sitIntervalForPreset:(NSString*)presetName {
+    
+    if(!self.presetTable)
+        return -1;
+    
+    SDASettingPreset *preset = [self.presetTable presetByName:presetName];
+    
+    if(preset) {
+        return preset.sittingInterval;
     }
     return -1;
 }
 
--(int)standIntervalForPreset:(NSString*)preset {
-    if(presetListings[preset]) {
-        return (int)[presetListings[preset][UD_STAND_INTERVAL] intValue];
+-(int)standIntervalForPreset:(NSString*)presetName {
+    
+    if(!self.presetTable)
+        return -1;
+    
+    SDASettingPreset *preset = [self.presetTable presetByName:presetName];
+    
+    if(preset) {
+        return preset.standingInterval;
     }
     return -1;
 }

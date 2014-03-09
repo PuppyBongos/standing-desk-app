@@ -7,11 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SDAAppSettings.h"
-
-
-#define SDA_CONFIG_PRESETS  @"Presets"
-#define SDA_PRESET_CUSTOM   @"Custom"
+#import "SDAConstants.h"
 
 @interface SDASettingPreset : NSObject
 

@@ -27,9 +27,8 @@
     if(dict) {
         SDASettingPreset *preset = [[SDASettingPreset alloc]init];
         
-        self.standingInterval = [[dict objectForKey:UD_STAND_INTERVAL] integerValue];
-        
-        self.sittingInterval = [[dict objectForKey:UD_SIT_INTERVAL] integerValue];
+        preset.standingInterval = [[dict objectForKey:UD_STAND_INTERVAL] intValue];
+        preset.sittingInterval = [[dict objectForKey:UD_SIT_INTERVAL] intValue];
         return preset;
     }
     return nil;

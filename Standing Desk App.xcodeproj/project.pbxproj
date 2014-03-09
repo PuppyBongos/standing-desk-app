@@ -120,6 +120,7 @@
 		5512DEDE18CBCD0D0044BC2E /* SDASettingPreset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDASettingPreset.m; sourceTree = "<group>"; };
 		5512DEE118CBCEA50044BC2E /* SDAPresetTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAPresetTable.h; sourceTree = "<group>"; };
 		5512DEE218CBCEA50044BC2E /* SDAPresetTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDAPresetTable.m; sourceTree = "<group>"; };
+		5512DEE418CBEA3E0044BC2E /* SDAConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDAConstants.h; sourceTree = "<group>"; };
 		553F9587186F9FF300BD36BB /* SDAAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAAppController.h; sourceTree = "<group>"; };
 		553F9588186F9FF300BD36BB /* SDAAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDAAppController.m; sourceTree = "<group>"; };
 		553F958A186FA0B800BD36BB /* SDAAppSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAAppSettings.h; sourceTree = "<group>"; };
@@ -268,6 +269,7 @@
 				553F9590186FD3B700BD36BB /* sda_config.plist */,
 				27652E6B187548C600BD3DC5 /* SystemSounds.h */,
 				27652E6C187548C600BD3DC5 /* SystemSounds.m */,
+				5512DEE418CBEA3E0044BC2E /* SDAConstants.h */,
 			);
 			path = "Standing Desk App";
 			sourceTree = "<group>";

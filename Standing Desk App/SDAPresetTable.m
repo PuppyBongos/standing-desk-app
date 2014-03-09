@@ -32,10 +32,10 @@
     // Create explicit setting preset objects as entries
     // of our preset table.
     for(id key in dict) {
-        SDASettingPreset *preset = [[SDASettingPreset presetFromDictionary:[dict objectForKey:key]];
+        SDASettingPreset *preset = [SDASettingPreset presetFromDictionary:[dict objectForKey:key]];
                                     
         if(preset) {
-            [newEntries setObject:preset forKey:[key stringValue]];
+            [newEntries setObject:preset forKey:key];
         }
     }
     
