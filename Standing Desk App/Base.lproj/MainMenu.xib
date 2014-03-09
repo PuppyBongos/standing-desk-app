@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1080" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
@@ -21,17 +21,17 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="VfK-f9-Nuh"/>
-                <menuItem title="Restart" id="WWO-Xo-unU">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="onMenuRestart:" target="494" id="UwN-fs-8j5"/>
-                    </connections>
-                </menuItem>
-                <menuItem isSeparatorItem="YES" id="BrX-Do-Owc"/>
                 <menuItem title="Pause" id="xZR-6f-Zke">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="onMenuPause:" target="494" id="KM6-ti-WL4"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="BrX-Do-Owc"/>
+                <menuItem title="Restart" id="WWO-Xo-unU">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="onMenuRestart:" target="494" id="UwN-fs-8j5"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Snooze" id="qJP-eb-RWy">
@@ -50,7 +50,7 @@
                 <menuItem title="About..." tag="5" id="OeG-m5-NzR">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="orderFrontStandardAboutPanel:" target="-2" id="ieh-uk-hXe"/>
+                        <action selector="onMenuAbout:" target="494" id="aeK-Hx-pC6"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Preferences..." id="Ut9-Ag-hcn">
@@ -210,7 +210,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="h1a-Oo-SLb">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="menu"/>
                                                 <menu key="menu" title="OtherViews" id="mH9-cb-o5y">
                                                     <items>
                                                         <menuItem title="Beginner" id="8vz-hk-YPf"/>
@@ -458,6 +458,7 @@ DQ
         </window>
         <customObject id="494" customClass="SDAAppDelegate">
             <connections>
+                <outlet property="aboutMenuItem" destination="OeG-m5-NzR" id="h6s-bn-rOW"/>
                 <outlet property="actionMenuItem" destination="0aW-wa-CrI" id="ARj-mr-IPI"/>
                 <outlet property="pauseMenuItem" destination="xZR-6f-Zke" id="0cq-dV-Q2n"/>
                 <outlet property="prefMenuItem" destination="Ut9-Ag-hcn" id="Ptp-9S-efr"/>

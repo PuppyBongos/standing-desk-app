@@ -41,6 +41,7 @@
 
 @property (weak) IBOutlet NSMenuItem *actionMenuItem;
 @property (weak) IBOutlet NSMenuItem *timerMenuItem;
+@property (weak) IBOutlet NSMenuItem *aboutMenuItem;
 @property (weak) IBOutlet NSMenuItem *restartMenuItem;
 @property (weak) IBOutlet NSMenuItem *pauseMenuItem;
 @property (weak) IBOutlet NSMenuItem *snoozeMenuItem;
