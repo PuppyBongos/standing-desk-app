@@ -39,6 +39,7 @@
 @property (weak) IBOutlet NSPopUpButton *prefWindowPresetPopUp;
 @property (weak) IBOutlet NSTextField *prefWindowStandTime;
 @property (weak) IBOutlet NSTextField *prefWindowSitTime;
+@property (unsafe_unretained) IBOutlet NSButton *prefWindowIntervalApply;
 @property (weak) IBOutlet NSTextField *prefWindowIdleTime;
 @property (weak) IBOutlet NSTextField *prefWindowSnoozeTime;
 @property (weak) IBOutlet NSButton *prefWindowLoginToggle;

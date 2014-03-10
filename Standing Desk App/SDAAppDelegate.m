@@ -204,7 +204,7 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
 
   [appController saveSettings];
 }
-- (IBAction)onApplyPressed:(id)sender {
+- (IBAction)onIntervalApplyPressed:(id)sender {
   SDAActionState state = appController.currentActionState;
   if (state == SDAActionStateTransitioning) state = appController.lastCompletedActionState;
   if (state == SDAActionStateStanding) {
