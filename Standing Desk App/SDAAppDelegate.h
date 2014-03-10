@@ -13,7 +13,7 @@
 
 @class MASShortcutView;
 
-@interface SDAAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate, SDAApplicationDelegate>
+@interface SDAAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate, NSTextFieldDelegate, SDAApplicationDelegate>
 
 {
   NSStatusItem* statusItem;

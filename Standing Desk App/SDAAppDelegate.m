@@ -65,6 +65,10 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
 
   [_prefWindow setDelegate:self];
   [_transWindow setDelegate:self];
+  [_prefWindowStandTime setDelegate:self];
+  [_prefWindowSitTime setDelegate:self];
+  [_prefWindowIdleTime setDelegate:self];
+  [_prefWindowSnoozeTime setDelegate:self];
 
   // Transitioning Window Buttons
   [_transWindow setDefaultButtonCell:[_transWindowContinueBtn cell]];
@@ -128,6 +132,12 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
                            iconFile:nil];
   }
   [self updateActionMenuItem];
+}
+- (void)controlTextDidEndEditing:(NSNotification *)obj {
+  NSTextField* textField = (NSTextField *)[obj object];
+  if ([[textField stringValue] isEqualToString:@""]) {
+    [textField setStringValue:@"1"];
+  }
 }
 
 #pragma mark - Menu Item Actions
