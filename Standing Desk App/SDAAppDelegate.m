@@ -26,7 +26,6 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
 
 #pragma mark - Event Handlers
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-
   // initialize global shortcut keys
   [self initKeyboardShortcutKeys];
 
@@ -58,7 +57,7 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
   [_timerMenuItem setEnabled:false];
   [self updateActionMenuItem];
 
-  /* Load alert popups with system sounds */
+  // Load alert popups with system sounds
   [_prefWindowSitAlertSystemSoundPopUp addItemsWithTitles:[NSSound systemSounds]];
   [_prefWindowSitAlertSystemSoundPopUp insertItemWithTitle:@"" atIndex:0];
   [_prefWindowStandAlertSystemSoundPopUp addItemsWithTitles:[NSSound systemSounds]];
@@ -97,7 +96,6 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
   [self sendSitStandNotification];
 }
 - (void)actionPeriodDidComplete:(SDAAppController *)sender actionCompleted:(SDAActionState)state {
-
   /* record the completed state */
   completedState = state;
   /* set application to new transitioning state */
@@ -106,10 +104,6 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
   [self sendNotificationForTransitioning];
   /* update menu item */
   [self updateActionMenuItem];
-  /* user can click notification to get modal dialog that allows for the change of the app's flow */
-
-  /* unless user changes flow, start new event */
-
 }
 - (void)runningTickDidOccur:(SDAAppController *)sender {
   [self updateTimerMenuItem];
@@ -118,24 +112,21 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
   [self updateActionMenuItem];
 }
 - (void)appDidResumeFromIdle:(SDAAppController *)sender {
+  // Actions to occur when user breaks system idle state
+  NSString *action = nil;
+  if(appController.currentActionState == SDAActionStateSitting) {
+      action = SITTING_ACTION_TEXT;
+  } else if (appController.currentActionState == SDAActionStateStanding) {
+      action = STANDING_ACTION_TEXT;
+  }
     
-    // Actions to occur when user breaks system idle state
-    NSString *action = nil;
-    if(appController.currentActionState == SDAActionStateSitting) {
-        action = SITTING_ACTION_TEXT;
-    } else if (appController.currentActionState == SDAActionStateStanding) {
-        action = STANDING_ACTION_TEXT;
-    }
-    
-    if(action) {
-        
-        NSString *msg = [NSString stringWithFormat:RESUME_TEXT_FORMAT,
-                         [action lowercaseString]];
-        [self sendNotificationWithTitle:RESUME_TEXT_TITLE
-                                    msg:msg
-                              soundFile:nil
-                               iconFile:nil];
-    }
+  if(action) {
+    NSString *msg = [NSString stringWithFormat:RESUME_TEXT_FORMAT, [action lowercaseString]];
+    [self sendNotificationWithTitle:RESUME_TEXT_TITLE
+                                msg:msg
+                          soundFile:nil
+                           iconFile:nil];
+  }
   [self updateActionMenuItem];
 }
 
@@ -226,12 +217,12 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
   [appController saveSettings];
 }
 - (IBAction)onIdleTimeTextFieldChange:(id)sender {
-    appController.settings.idlePauseTime = [self intMinToSec:[sender intValue]];
-    [appController saveSettings];
+  appController.settings.idlePauseTime = [self intMinToSec:[sender intValue]];
+  [appController saveSettings];
 }
 - (IBAction)onSnoozeTimeTextFieldChange:(id)sender {
-    appController.settings.snoozeTime = [self intMinToSec:[sender intValue]];
-    [appController saveSettings];
+  appController.settings.snoozeTime = [self intMinToSec:[sender intValue]];
+  [appController saveSettings];
 }
 - (IBAction)onLoginToggleChange:(id)sender {
   if ([_prefWindowLoginToggle state] == NSOnState)
@@ -316,9 +307,8 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
 
 #pragma mark - Private methods
 - (void)openPrefsWindow {
-    
-    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
-    [_prefWindow makeKeyAndOrderFront:self];
+  [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+  [_prefWindow makeKeyAndOrderFront:self];
 }
 - (void)openTransWindow {
   [_transWindowLastCompletedAction setStringValue:appController.lastCompletedActionState == SDAActionStateStanding ? @"Standing" : @"Sitting"];
@@ -406,9 +396,6 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
 
 /* Plays a sound for the current action state. */
 - (void)playSounds {
-  //NSSound *sitSound = [NSSound soundNamed:appController.settings.sittingSettings.soundFile];
-  //NSSound *standSound = [NSSound soundNamed:appController.settings.standingSettings.soundFile];
-
   [sitSound setVolume:appController.settings.sittingSettings.volume];
   [standSound setVolume:appController.settings.standingSettings.volume];
 
@@ -439,32 +426,31 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
 /* Sends a notification alert to the OSX Notification
    indicating the current status and action a user should take. */
 - (void)sendSitStandNotification {
+  NSString *action = nil;
+  NSString *iconName = nil;
+  NSString *soundName = nil;
 
-    NSString *action = nil;
-    NSString *iconName = nil;
-    NSString *soundName = nil;
-
-    switch (appController.currentActionState) {
-        case SDAActionStateSitting:
-            action = SITTING_ACTION_TEXT;
-            iconName = SITTING_NOTIFICATION_ICON;
-            soundName = appController.settings.sittingSettings.soundFile;
-            break;
-        case SDAActionStateStanding:
-            action = STANDING_ACTION_TEXT;
-            iconName = STANDING_NOTIFICATION_ICON;
-            soundName = appController.settings.standingSettings.soundFile;
-            break;
-        case SDAActionStateTransitioning:
-            action = TRANSITIONING_ACTION_TEXT;
-            iconName = completedState == SDAActionStateSitting ? SITTING_NOTIFICATION_ICON : STANDING_NOTIFICATION_ICON;
-            soundName = @"Funk";
-            break;
-        default:
-            // If this is an unexpected state, do not
-            // send any message
-            return;
-    }
+  switch (appController.currentActionState) {
+    case SDAActionStateSitting:
+      action = SITTING_ACTION_TEXT;
+      iconName = SITTING_NOTIFICATION_ICON;
+      soundName = appController.settings.sittingSettings.soundFile;
+      break;
+    case SDAActionStateStanding:
+      action = STANDING_ACTION_TEXT;
+      iconName = STANDING_NOTIFICATION_ICON;
+      soundName = appController.settings.standingSettings.soundFile;
+      break;
+    case SDAActionStateTransitioning:
+      action = TRANSITIONING_ACTION_TEXT;
+      iconName = completedState == SDAActionStateSitting ? SITTING_NOTIFICATION_ICON : STANDING_NOTIFICATION_ICON;
+      soundName = @"Funk";
+      break;
+    default:
+      // If this is an unexpected state, do not
+      // send any message
+      return;
+  }
 
   [self sendNotificationWithTitle:[NSString stringWithFormat:NOTIFY_USER_TITLE, action] msg:[NSString stringWithFormat:NOTIFY_USER_FORMAT, [action lowercaseString]] soundFile:soundName iconFile:iconName];
 }
@@ -474,7 +460,6 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
   alert.subtitle = msg;
   // NSUserNotification won't play custom sounds in bundle and/or not in system sounds directories,
   // so we play a sound after the notification is displayed, getting around that
-  //alert.soundName = soundFile;
   [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:alert];
   [self playSounds];
 }
@@ -495,7 +480,7 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
   // We are adding it to the current user only.
   // If we want to add it all users, use
   // kLSSharedFileListGlobalLoginItems instead of
-  //kLSSharedFileListSessionLoginItems
+  //  kLSSharedFileListSessionLoginItems
 	LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL,
                                                           kLSSharedFileListSessionLoginItems, NULL);
 	if (loginItems) {
@@ -503,7 +488,7 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
 		LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(loginItems,
                                                                  kLSSharedFileListItemLast, NULL, NULL,
                                                                  url, NULL, NULL);
-		if (item){
+		if (item) {
 			CFRelease(item);
     }
 	}
@@ -544,17 +529,16 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
    If not, opens the preferences window to allow user to 
    set initial settings. */
 - (void)checkIfFirstTime {
-    
-    if(appController.settings.isFirstTimeRunning) {
-        appController.settings.isFirstTimeRunning = NO;
+  if(appController.settings.isFirstTimeRunning) {
+    appController.settings.isFirstTimeRunning = NO;
         
-        // Okay to save settings, this should be called first, and only once ever.
-        [appController saveSettings];
+    // Okay to save settings, this should be called first, and only once ever.
+    [appController saveSettings];
         
-        // Then bring up the preferences window to allow the
-        // user to modify initial states
-        [self openPrefsWindow];
-    }
+    // Then bring up the preferences window to allow the
+    // user to modify initial states
+    [self openPrefsWindow];
+  }
 }
 
 /* Event Elapsed Notification is Clicked */
