@@ -63,7 +63,7 @@
 			<key>StandStateInterval</key>
 			<real>14440</real>
 			<key>SitStateInterval</key>
-			<real>1800</real>
+			<integer>0</integer>
 		</dict>
 	</dict>
 </dict>
