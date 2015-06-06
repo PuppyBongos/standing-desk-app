@@ -192,7 +192,7 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
   NSString *preset = [[_prefWindowPresetPopUp selectedItem] title];
   appController.settings.currentPreset = preset;
 
-  appController.settings.standingInterval = [self intMinToSec:_prefWindowStandTime.integerValue];
+  appController.settings.standingInterval = [self intMinToSec:(int)_prefWindowStandTime.integerValue];
 
   [appController saveSettings];
 }
@@ -201,7 +201,7 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
   NSString *preset = [[_prefWindowPresetPopUp selectedItem] title];
   appController.settings.currentPreset = preset;
 
-  appController.settings.sittingInterval = [self intMinToSec:_prefWindowSitTime.integerValue];
+  appController.settings.sittingInterval = [self intMinToSec:(int)_prefWindowSitTime.integerValue];
 
   [appController saveSettings];
 }
