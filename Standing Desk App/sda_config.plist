@@ -61,7 +61,7 @@
 		<key>All Day</key>
 		<dict>
 			<key>StandStateInterval</key>
-			<real>14440</real>
+			<real>14400</real>
 			<key>SitStateInterval</key>
 			<integer>0</integer>
 		</dict>
