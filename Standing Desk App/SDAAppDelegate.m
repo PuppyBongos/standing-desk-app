@@ -9,10 +9,7 @@
 #import "SDAAppDelegate.h"
 #import "SDAAppController.h"
 #import "SystemSounds.h"
-#import "MASShortcutView.h"
-#import "MASShortcutView+UserDefaults.h"
-#import "MASShortcut+UserDefaults.h"
-#import "MASShortcut+Monitoring.h"
+#import <MASShortcut/Shortcut.h>
 
 @implementation SDAAppDelegate
 
@@ -568,7 +565,9 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
   self.shortcutViewSkip.associatedUserDefaultsKey = globalKeyShortcutSkip;
 
   // pause/resume
-  [MASShortcut registerGlobalShortcutWithUserDefaultsKey:globalKeyShortcutPause handler:^{
+  [[MASShortcutBinder sharedBinder]
+    bindShortcutWithDefaultsKey:globalKeyShortcutPause
+    toAction:^{
     if (appController.currentStatus == SDAStatusRunning) {
       [appController pauseTimer];
     }
@@ -580,7 +579,9 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
   }];
 
   // skip
-  [MASShortcut registerGlobalShortcutWithUserDefaultsKey:globalKeyShortcutSkip handler:^{
+  [[MASShortcutBinder sharedBinder]
+    bindShortcutWithDefaultsKey:globalKeyShortcutSkip
+    toAction:^{
     [appController skipToNext];
     [self sendSitStandNotification];
     [self updateResumePauseMenuItem];

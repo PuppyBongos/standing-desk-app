@@ -31,14 +31,10 @@
 		0872E8B8188252470028586C /* desk_logo_sit_256_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0872E8AE188252470028586C /* desk_logo_sit_256_2x.png */; };
 		0872E8B9188252470028586C /* desk_logo_sit_512_1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0872E8AF188252470028586C /* desk_logo_sit_512_1x.png */; };
 		0872E8BA188252470028586C /* desk_logo_sit_512_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0872E8B0188252470028586C /* desk_logo_sit_512_2x.png */; };
+		1AD9BA994DD2CB2CDC156CF4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A94F263ADFF2043AB5EDE36C /* libPods.a */; };
 		27652E6D187548C600BD3DC5 /* SystemSounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 27652E6C187548C600BD3DC5 /* SystemSounds.m */; };
 		2774735F1887CBBF00F27C77 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2774735E1887CBBF00F27C77 /* README.md */; };
 		27A44DFA1886885C00342C82 /* Sit.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 27A44DF81886885C00342C82 /* Sit.m4a */; };
-		27DA93A118CBEA4F00890D8B /* MASShortcut+Monitoring.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DA939818CBEA4F00890D8B /* MASShortcut+Monitoring.m */; };
-		27DA93A218CBEA4F00890D8B /* MASShortcut+UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DA939A18CBEA4F00890D8B /* MASShortcut+UserDefaults.m */; };
-		27DA93A318CBEA4F00890D8B /* MASShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DA939C18CBEA4F00890D8B /* MASShortcut.m */; };
-		27DA93A418CBEA4F00890D8B /* MASShortcutView+UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DA939E18CBEA4F00890D8B /* MASShortcutView+UserDefaults.m */; };
-		27DA93A518CBEA4F00890D8B /* MASShortcutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DA93A018CBEA4F00890D8B /* MASShortcutView.m */; };
 		27DA93A718CC308000890D8B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27DA93A618CC308000890D8B /* Carbon.framework */; };
 		27F1D9B9186174B10087FC3A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F1D9B8186174B10087FC3A /* Cocoa.framework */; };
 		27F1D9C3186174B10087FC3A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27F1D9C1186174B10087FC3A /* InfoPlist.strings */; };
@@ -103,16 +99,6 @@
 		2774735E1887CBBF00F27C77 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		27969CFE1887C87900D3D2DF /* Stand.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Stand.m4a; sourceTree = "<group>"; };
 		27A44DF81886885C00342C82 /* Sit.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sit.m4a; sourceTree = "<group>"; };
-		27DA939718CBEA4F00890D8B /* MASShortcut+Monitoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASShortcut+Monitoring.h"; sourceTree = "<group>"; };
-		27DA939818CBEA4F00890D8B /* MASShortcut+Monitoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MASShortcut+Monitoring.m"; sourceTree = "<group>"; };
-		27DA939918CBEA4F00890D8B /* MASShortcut+UserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASShortcut+UserDefaults.h"; sourceTree = "<group>"; };
-		27DA939A18CBEA4F00890D8B /* MASShortcut+UserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MASShortcut+UserDefaults.m"; sourceTree = "<group>"; };
-		27DA939B18CBEA4F00890D8B /* MASShortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASShortcut.h; sourceTree = "<group>"; };
-		27DA939C18CBEA4F00890D8B /* MASShortcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASShortcut.m; sourceTree = "<group>"; };
-		27DA939D18CBEA4F00890D8B /* MASShortcutView+UserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASShortcutView+UserDefaults.h"; sourceTree = "<group>"; };
-		27DA939E18CBEA4F00890D8B /* MASShortcutView+UserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MASShortcutView+UserDefaults.m"; sourceTree = "<group>"; };
-		27DA939F18CBEA4F00890D8B /* MASShortcutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASShortcutView.h; sourceTree = "<group>"; };
-		27DA93A018CBEA4F00890D8B /* MASShortcutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASShortcutView.m; sourceTree = "<group>"; };
 		27DA93A618CC308000890D8B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		27F1D9B5186174B10087FC3A /* Standing Desk App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Standing Desk App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27F1D9B8186174B10087FC3A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -133,6 +119,8 @@
 		27F1D9DE186174B10087FC3A /* Standing Desk AppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Standing Desk AppTests-Info.plist"; sourceTree = "<group>"; };
 		27F1D9E0186174B10087FC3A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		27F1D9E2186174B10087FC3A /* Standing_Desk_AppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Standing_Desk_AppTests.m; sourceTree = "<group>"; };
+		448EA7F6125A904A0CF87E72 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		46F962E361165E5E5CDEBA0A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		5512DEDD18CBCD0D0044BC2E /* SDASettingPreset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDASettingPreset.h; sourceTree = "<group>"; };
 		5512DEDE18CBCD0D0044BC2E /* SDASettingPreset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDASettingPreset.m; sourceTree = "<group>"; };
 		5512DEE118CBCEA50044BC2E /* SDAPresetTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAPresetTable.h; sourceTree = "<group>"; };
@@ -150,6 +138,7 @@
 		55A149D7187DF1AC00EFA8A3 /* SDAIdleDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDAIdleDetector.m; sourceTree = "<group>"; };
 		55B5A955187A067500C7CDCD /* SDAAppDelegate+Notifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDAAppDelegate+Notifications.h"; sourceTree = "<group>"; };
 		55B5A956187A067500C7CDCD /* SDAAppDelegate+Notifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDAAppDelegate+Notifications.m"; sourceTree = "<group>"; };
+		A94F263ADFF2043AB5EDE36C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +149,7 @@
 				27DA93A718CC308000890D8B /* Carbon.framework in Frameworks */,
 				55A149D5187DF18800EFA8A3 /* IOKit.framework in Frameworks */,
 				27F1D9B9186174B10087FC3A /* Cocoa.framework in Frameworks */,
+				1AD9BA994DD2CB2CDC156CF4 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,23 +214,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		27DA939618CBEA4F00890D8B /* MASShortcut */ = {
-			isa = PBXGroup;
-			children = (
-				27DA939718CBEA4F00890D8B /* MASShortcut+Monitoring.h */,
-				27DA939818CBEA4F00890D8B /* MASShortcut+Monitoring.m */,
-				27DA939918CBEA4F00890D8B /* MASShortcut+UserDefaults.h */,
-				27DA939A18CBEA4F00890D8B /* MASShortcut+UserDefaults.m */,
-				27DA939B18CBEA4F00890D8B /* MASShortcut.h */,
-				27DA939C18CBEA4F00890D8B /* MASShortcut.m */,
-				27DA939D18CBEA4F00890D8B /* MASShortcutView+UserDefaults.h */,
-				27DA939E18CBEA4F00890D8B /* MASShortcutView+UserDefaults.m */,
-				27DA939F18CBEA4F00890D8B /* MASShortcutView.h */,
-				27DA93A018CBEA4F00890D8B /* MASShortcutView.m */,
-			);
-			path = MASShortcut;
-			sourceTree = "<group>";
-		};
 		27F1D9AC186174B10087FC3A = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +221,7 @@
 				27F1D9DC186174B10087FC3A /* Standing Desk AppTests */,
 				27F1D9B7186174B10087FC3A /* Frameworks */,
 				27F1D9B6186174B10087FC3A /* Products */,
+				E1D26EAC2DEDC29928020695 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -268,6 +242,7 @@
 				27F1D9B8186174B10087FC3A /* Cocoa.framework */,
 				27F1D9D7186174B10087FC3A /* XCTest.framework */,
 				27F1D9BA186174B10087FC3A /* Other Frameworks */,
+				A94F263ADFF2043AB5EDE36C /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -285,7 +260,6 @@
 		27F1D9BE186174B10087FC3A /* Standing Desk App */ = {
 			isa = PBXGroup;
 			children = (
-				27DA939618CBEA4F00890D8B /* MASShortcut */,
 				5512DEE018CBCE840044BC2E /* Presets */,
 				27A44DFC18868BBF00342C82 /* Resources */,
 				55B5A958187A091100C7CDCD /* SDAAppCategories */,
@@ -361,6 +335,15 @@
 			name = SDAAppCategories;
 			sourceTree = "<group>";
 		};
+		E1D26EAC2DEDC29928020695 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				448EA7F6125A904A0CF87E72 /* Pods.debug.xcconfig */,
+				46F962E361165E5E5CDEBA0A /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -368,9 +351,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27F1D9E6186174B10087FC3A /* Build configuration list for PBXNativeTarget "Standing Desk App" */;
 			buildPhases = (
+				3B14E868DA3B3625BD8E0E21 /* Check Pods Manifest.lock */,
 				27F1D9B1186174B10087FC3A /* Sources */,
 				27F1D9B2186174B10087FC3A /* Frameworks */,
 				27F1D9B3186174B10087FC3A /* Resources */,
+				E4049E38C3ADCC809A4CB41C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -483,6 +468,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3B14E868DA3B3625BD8E0E21 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E4049E38C3ADCC809A4CB41C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		27F1D9B1186174B10087FC3A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -490,17 +508,12 @@
 			files = (
 				27652E6D187548C600BD3DC5 /* SystemSounds.m in Sources */,
 				553F958F186FA19D00BD36BB /* SDAAlertSetting.m in Sources */,
-				27DA93A118CBEA4F00890D8B /* MASShortcut+Monitoring.m in Sources */,
-				27DA93A418CBEA4F00890D8B /* MASShortcutView+UserDefaults.m in Sources */,
 				5512DEDF18CBCD0D0044BC2E /* SDASettingPreset.m in Sources */,
 				55B5A957187A067500C7CDCD /* SDAAppDelegate+Notifications.m in Sources */,
 				27F1D9C5186174B10087FC3A /* main.m in Sources */,
 				55A149D8187DF1AC00EFA8A3 /* SDAIdleDetector.m in Sources */,
-				27DA93A318CBEA4F00890D8B /* MASShortcut.m in Sources */,
 				553F958C186FA0B800BD36BB /* SDAAppSettings.m in Sources */,
 				553F9589186F9FF300BD36BB /* SDAAppController.m in Sources */,
-				27DA93A218CBEA4F00890D8B /* MASShortcut+UserDefaults.m in Sources */,
-				27DA93A518CBEA4F00890D8B /* MASShortcutView.m in Sources */,
 				5512DEE318CBCEA50044BC2E /* SDAPresetTable.m in Sources */,
 				27F1D9CC186174B10087FC3A /* SDAAppDelegate.m in Sources */,
 			);
@@ -630,6 +643,7 @@
 		};
 		27F1D9E7186174B10087FC3A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 448EA7F6125A904A0CF87E72 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -644,6 +658,7 @@
 		};
 		27F1D9E8186174B10087FC3A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46F962E361165E5E5CDEBA0A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
