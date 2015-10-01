@@ -44,7 +44,11 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
   // Set up main menu
   statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
   [statusItem setMenu:_statusMenu];
-  [statusItem setImage:[NSImage imageNamed:SITTING_MENU_ICON]];
+
+  NSImage *sitting_menu_icon = [NSImage imageNamed:SITTING_MENU_ICON];
+  sitting_menu_icon.template = YES;
+
+  [statusItem setImage:sitting_menu_icon];
   [statusItem setHighlightMode:YES];
   [statusItem setToolTip:appName];
   [_statusMenu setAutoenablesItems:NO];
@@ -337,19 +341,27 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
 
 /* Updates the main menu status and timer */
 - (void)updateActionMenuItem {
+  NSImage *sitting_menu_icon = [NSImage imageNamed:SITTING_MENU_ICON];
+  sitting_menu_icon.template = YES;
+  NSImage *standing_menu_icon = [NSImage imageNamed:STANDING_MENU_ICON];
+  standing_menu_icon.template = YES;
+  NSImage *transitioning_menu_icon = [NSImage imageNamed:TRANSITIONING_MENU_ICON];
+  transitioning_menu_icon.template = YES;
+  NSImage *paused_menu_icon = [NSImage imageNamed:PAUSED_MENU_ICON];
+  //paused_menu_icon.template = YES;
+
   switch (appController.currentActionState) {
     case SDAActionStateTransitioning:
       self.actionMenuItem.title = TRANSITIONING_ACTION_TEXT;
-      // TO-DO: Create transitioning menu icon
-      [statusItem setImage:[NSImage imageNamed:TRANSITIONING_MENU_ICON]];
+      [statusItem setImage:transitioning_menu_icon];
       break;
     case SDAActionStateSitting:
       self.actionMenuItem.title = SITTING_ACTION_TEXT;
-      [statusItem setImage:[NSImage imageNamed:SITTING_MENU_ICON]];
+      [statusItem setImage:sitting_menu_icon];
       break;
     case SDAActionStateStanding:
       self.actionMenuItem.title = STANDING_ACTION_TEXT;
-      [statusItem setImage:[NSImage imageNamed:STANDING_MENU_ICON]];
+      [statusItem setImage:standing_menu_icon];
       break;
     case SDAActionStateNone:
       self.actionMenuItem.title = ERROR_STATUS_TEXT;
@@ -361,7 +373,7 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
   if (appController.currentStatus == SDAStatusPaused || appController.currentStatus == SDAStatusIdle)
   {
     self.actionMenuItem.title = PAUSED_ACTION_TEXT;
-    [statusItem setImage:[NSImage imageNamed:PAUSED_MENU_ICON]];
+    [statusItem setImage:paused_menu_icon];
   }
 }
 - (void)updateTimerMenuItem {

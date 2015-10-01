@@ -391,7 +391,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = SDA;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Puppy Bongos";
 				TargetAttributes = {
 					27F1D9D5186174B10087FC3A = {
@@ -589,6 +589,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -650,7 +651,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Standing Desk App/Standing Desk App-Prefix.pch";
 				INFOPLIST_FILE = "Standing Desk App/Standing Desk App-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "Puppy-Bongos.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -665,7 +667,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Standing Desk App/Standing Desk App-Prefix.pch";
 				INFOPLIST_FILE = "Standing Desk App/Standing Desk App-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "Puppy-Bongos.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -687,6 +690,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Standing Desk AppTests/Standing Desk AppTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "Puppy-Bongos.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -705,6 +709,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Standing Desk App/Standing Desk App-Prefix.pch";
 				INFOPLIST_FILE = "Standing Desk AppTests/Standing Desk AppTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "Puppy-Bongos.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
