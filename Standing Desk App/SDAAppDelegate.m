@@ -23,6 +23,9 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
 
 #pragma mark - Event Handlers
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+  // hook into sleep/wake events
+  [self registerSleepWakeNotifications];
+
   // initialize global shortcut keys
   [self initKeyboardShortcutKeys];
 
@@ -139,6 +142,30 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
   if ([[textField stringValue] isEqualToString:@""]) {
     [textField setStringValue:@"1"];
   }
+}
+- (void)receiveSleepNote:(NSNotification*)note {
+  NSLog(@"receiveSleepNote: %@", [note name]);
+  [appController pauseTimer];
+  [self updateActionMenuItem];
+  [self updateTimerMenuItem];
+}
+- (void)receiveWakeNote:(NSNotification*)note {
+  NSLog(@"receiveWakeNote: %@", [note name]);
+  [appController resumeTimer];
+  [self updateActionMenuItem];
+  [self updateTimerMenuItem];
+}
+- (void)registerSleepWakeNotifications {
+  //These notifications are filed on NSWorkspace's notification center, not the default
+  // notification center. You will not receive sleep/wake notifications if you file
+  //with the default notification center.
+  [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver: self
+                                                         selector: @selector(receiveSleepNote:)
+                                                             name: NSWorkspaceWillSleepNotification object: NULL];
+
+  [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver: self
+                                                         selector: @selector(receiveWakeNote:)
+                                                             name: NSWorkspaceDidWakeNotification object: NULL];
 }
 
 #pragma mark - Menu Item Actions
@@ -477,6 +504,7 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
   NSUserNotification *alert = [[NSUserNotification alloc]init];
   alert.title = title;
   alert.subtitle = msg;
+
   // NSUserNotification won't play custom sounds in bundle and/or not in system sounds directories,
   // so we play a sound after the notification is displayed, getting around that
   [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:alert];

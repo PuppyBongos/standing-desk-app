@@ -48,13 +48,11 @@ SDAPresetTable *_presetTable;
     return self;
 }
 
-
 #pragma mark - Public interface
 -(void)loadSettings {
     self.settings = [SDAAppSettings settings];
     self.settings.presetTable = _presetTable;
 }
-
 -(void)saveSettings {
     
     [self.settings writeSettings];
@@ -63,7 +61,6 @@ SDAPresetTable *_presetTable;
     // Timer should restart to changed value.
     // Else, do nothing.
 }
-
 -(void)scheduleSit {
     _actionState = SDAActionStateSitting;
     _currentTimeLeft = settings.sittingInterval;
@@ -72,7 +69,6 @@ SDAPresetTable *_presetTable;
     _currentStatus = SDAStatusRunning;
     NSLog(@"Setting state to: SITTING for %d seconds", settings.sittingInterval);
 }
-
 -(void)scheduleStand {
     _actionState = SDAActionStateStanding;
     _currentTimeLeft = settings.standingInterval;
@@ -81,7 +77,6 @@ SDAPresetTable *_presetTable;
     _currentStatus = SDAStatusRunning;
     NSLog(@"Setting state to: STANDING for %d seconds", settings.standingInterval);
 }
-
 -(void)scheduleTransition {
     _actionState = SDAActionStateTransitioning;
     _currentTimeLeft = SDA_EVENT_WAIT_INTERVAL;
@@ -90,7 +85,6 @@ SDAPresetTable *_presetTable;
     _currentStatus = SDAStatusRunning;
     NSLog(@"Setting state to: TRANSITIONING for %f seconds", SDA_EVENT_WAIT_INTERVAL);
 }
-
 -(void)snooze {
     if(_actionState == SDAActionStateTransitioning)
        _actionState = _lastCompletedActionState;
@@ -99,7 +93,6 @@ SDAPresetTable *_presetTable;
     
     NSLog(@"Snoozing: Adding %d seconds", settings.snoozeTime);
 }
-
 -(void)skipToNext {
 
   SDAActionState state = _actionState;
@@ -113,21 +106,18 @@ SDAPresetTable *_presetTable;
     [self scheduleSit];
   }
 }
-
 -(void)pauseTimer {
     if(_currentStatus == SDAStatusRunning)
         _currentStatus = SDAStatusPaused;
   
     NSLog(@"Pausing Timer");
 }
-
 -(void)resumeTimer {
     if((_currentStatus == SDAStatusPaused) && _currentTimeLeft > 0)
         _currentStatus = SDAStatusRunning;
     
     NSLog(@"Resuming Timer");
 }
-
 -(NSString*)stringFromTimeLeft {
     NSInteger seconds = (NSInteger)round(_currentTimeLeft >= 0 ? _currentTimeLeft : 0);
     
@@ -156,7 +146,6 @@ SDAPresetTable *_presetTable;
         [self firePauseForIdleEvent];
     }
 }
-
 
 // Fires every second
 -(void)updateTime {
@@ -212,8 +201,6 @@ SDAPresetTable *_presetTable;
         [self.delegate runningTickDidOccur:self];
     }
 }
-
-
 -(void)firePauseForIdleEvent {
     if([self.delegate conformsToProtocol:@protocol(SDAApplicationDelegate)]) {
         
@@ -221,7 +208,6 @@ SDAPresetTable *_presetTable;
         [self.delegate appDidPauseForIdle:self];
     }
 }
-
 -(void)fireResumeFromIdleEvent {
     if([self.delegate conformsToProtocol:@protocol(SDAApplicationDelegate)]) {
         
@@ -229,7 +215,6 @@ SDAPresetTable *_presetTable;
         [self.delegate appDidResumeFromIdle:self];
     }
 }
-
 -(void)fireActionPeriodDidComplete {
     
     NSLog(@"Firing event: actionPeriodDidComplete");
@@ -240,7 +225,6 @@ SDAPresetTable *_presetTable;
         [self.delegate actionPeriodDidComplete:self actionCompleted:_lastCompletedActionState];
     }
 }
-
 -(void)fireActionPeriodHasStarted {
   if([self.delegate conformsToProtocol:@protocol(SDAApplicationDelegate)]) {
 
