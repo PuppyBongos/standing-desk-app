@@ -562,7 +562,7 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
 			LSSharedFileListItemRef itemRef = (LSSharedFileListItemRef)CFBridgingRetain([loginItemsArray
                                                                   objectAtIndex:i]);
 			//Resolve the item with URL
-			if (LSSharedFileListItemResolve(itemRef, 0, (CFURLRef*) &url, NULL) == noErr) {
+			if (LSSharedFileListItemCopyResolvedURL(itemRef, 0, NULL) == noErr) {
 				NSString * urlPath = [(NSURL*)CFBridgingRelease(url) path];
 				if ([urlPath compare:appPath] == NSOrderedSame){
 					LSSharedFileListItemRemove(loginItems,itemRef);

@@ -1,10 +1,10 @@
 PODS:
-  - MASShortcut (2.1.2)
+  - MASShortcut (2.3.1)
 
 DEPENDENCIES:
   - MASShortcut
 
 SPEC CHECKSUMS:
-  MASShortcut: ef92b912469f9f6744dba5f0a906665c26de760c
+  MASShortcut: 865f14caa35979ded96ca3863dc073c109982db8
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.38.2

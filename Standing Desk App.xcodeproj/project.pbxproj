@@ -394,6 +394,9 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Puppy Bongos";
 				TargetAttributes = {
+					27F1D9B4186174B10087FC3A = {
+						DevelopmentTeam = 9YM4Z8E88H;
+					};
 					27F1D9D5186174B10087FC3A = {
 						TestTargetID = 27F1D9B4186174B10087FC3A;
 					};
@@ -647,6 +650,8 @@
 			baseConfigurationReference = 448EA7F6125A904A0CF87E72 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Standing Desk App/Standing Desk App-Prefix.pch";
@@ -654,6 +659,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "Puppy-Bongos.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -663,6 +669,8 @@
 			baseConfigurationReference = 46F962E361165E5E5CDEBA0A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Standing Desk App/Standing Desk App-Prefix.pch";
@@ -670,6 +678,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "Puppy-Bongos.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
