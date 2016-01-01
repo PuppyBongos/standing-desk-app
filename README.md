@@ -20,14 +20,12 @@ There is one particular company (WHO SHALL REMAIN NAMELESS (FOR NOW)) that makes
 
 ### Installation
 ---
-Download the latest release of [Standing Desk App](https://github.com/michaelchadwick/standing-desk-app/releases) and double-click the DMG file that appears on your local hard drive.
-
-A folder will appear where you can drag the Standing Desk App.app file to your /Applications directory.
+Download the latest release of [Standing Desk App](https://github.com/michaelchadwick/standing-desk-app/releases), double-click on the ZIP file, move the resulting .app file into your /Applications directory, and then double-click it.
 
 ### Usage
 ---
 
-Double-click the .app file once it's installed. If it's your first time running the application, the Preferences window will appear, giving you a chance to peruse default settings and change them, if need be. Check the box that's labeled "Start application at login?" if you wish to never have to double-click the app ever again.
+If it's your first time running the application, the Preferences window will appear, giving you a chance to peruse default settings and change them, if need be. Check the box that's labeled "Start application at login?" if you wish to never have to double-click the app ever again.
 
 ### Configuration
 ---
