@@ -323,20 +323,15 @@ Full-Width Styles
   background: url('../images/icon_download.png') no-repeat 40% 95%;
 }
 
-.dmg_download_link {
+.download_link {
   display: block;
   float: right;
   width: 100px;
   height:100px;
   text-indent: -5000px;
   overflow: hidden;
-  background: url(../images/dmg_folder.png) no-repeat;
+  background: url(../images/zip-icon.jpg) no-repeat;
 }
-
-.dmg_download_link:hover {
-  background: url(../images/dmg_folder.png) no-repeat;
-}
-
 
 #main_content_wrap {
   background: #f2f2f2;
