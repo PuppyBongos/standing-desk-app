@@ -1,0 +1,147 @@
+
+/* Class = "NSWindow"; title = "Standing Desk App Preferences"; ObjectID = "371"; */
+"371.title" = "Ayakta Masa Uygulama Tercihleri";
+
+/* Class = "NSMenuItem"; title = "Sitting"; ObjectID = "0aW-wa-CrI"; */
+"0aW-wa-CrI.title" = "Oturun";
+
+/* Class = "NSMenuItem"; title = "Skip"; ObjectID = "1YL-ho-WMI"; */
+"1YL-ho-WMI.title" = "Gecmek";
+
+/* Class = "NSTextFieldCell"; title = "Next Action To Start:"; ObjectID = "3xy-F4-0QM"; */
+"3xy-F4-0QM.title" = "Sonraki Eylem Başlatmak Için:";
+
+/* Class = "NSButtonCell"; title = "Continue"; ObjectID = "4At-Ee-EvW"; */
+"4At-Ee-EvW.title" = "Devam Etmek";
+
+/* Class = "NSTextFieldCell"; title = "Snooze time"; ObjectID = "6H0-8z-5c1"; */
+"6H0-8z-5c1.title" = "Erteleme";
+
+/* Class = "NSButtonCell"; title = "Start application at login?"; ObjectID = "6Y3-G2-fKY"; */
+"6Y3-G2-fKY.title" = "Oturum açmak için başlama uygulaması?";
+
+/* Class = "NSTextFieldCell"; title = "and Sit for"; ObjectID = "899-o6-oOK"; */
+"899-o6-oOK.title" = "Otur";
+
+/* Class = "NSMenuItem"; title = "Beginner"; ObjectID = "8vz-hk-YPf"; */
+"8vz-hk-YPf.title" = "Yeni Başlayan";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "BiC-t7-sFC"; */
+"BiC-t7-sFC.title" = "Ana Menü";
+
+/* Class = "NSTextFieldCell"; title = "Volume"; ObjectID = "Bua-kz-BAx"; */
+"Bua-kz-BAx.title" = "Ses";
+
+/* Class = "NSTextFieldCell"; title = "Pause if idle for"; ObjectID = "Fhj-L2-FL2"; */
+"Fhj-L2-FL2.title" = "Rölantiye alma için duraklama";
+
+/* Class = "NSMenuItem"; title = "00:00:00"; ObjectID = "Hhb-0G-k7c"; */
+"Hhb-0G-k7c.title" = "00:00:00";
+
+/* Class = "NSTextFieldCell"; title = "Options (minutes):"; ObjectID = "Jgw-3y-ONO"; */
+"Jgw-3y-ONO.title" = "Opsiyonlar (dakika):";
+
+/* Class = "NSTextFieldCell"; title = "Stand for"; ObjectID = "Kbn-Dz-djk"; */
+"Kbn-Dz-djk.title" = "Kalk";
+
+/* Class = "NSButtonCell"; title = "Apply"; ObjectID = "KuC-Bq-zjn"; */
+"KuC-Bq-zjn.title" = "Uygulamak";
+
+/* Class = "NSMenuItem"; title = "Intermediate"; ObjectID = "LFB-MQ-bks"; */
+"LFB-MQ-bks.title" = "Orta Seviye";
+
+/* Class = "NSTextFieldCell"; title = "Interval (minutes): "; ObjectID = "OcH-Ca-lbR"; */
+"OcH-Ca-lbR.title" = "Aralıklar (dakika): ";
+
+/* Class = "NSMenuItem"; title = "About..."; ObjectID = "OeG-m5-NzR"; */
+"OeG-m5-NzR.title" = "Hakkında...";
+
+/* Class = "NSWindow"; title = "Transitioning..."; ObjectID = "PeM-Ai-kiM"; */
+"PeM-Ai-kiM.title" = "Geçiş Yapan...";
+
+/* Class = "NSTextFieldCell"; title = "Pause/Resume"; ObjectID = "Plf-6s-Txf"; */
+"Plf-6s-Txf.title" = "Duraklatın/Yeniden Baslatmak";
+
+/* Class = "NSMenuItem"; title = "Quit"; ObjectID = "QMk-XI-lMF"; */
+"QMk-XI-lMF.title" = "Çıkmak";
+
+/* Class = "NSMenuItem"; title = "All Day"; ObjectID = "QrD-od-jYK"; */
+"QrD-od-jYK.title" = "Tüm Gün";
+
+/* Class = "NSButtonCell"; title = "Skip"; ObjectID = "RMI-b7-1Fn"; */
+"RMI-b7-1Fn.title" = "Gecmek";
+
+/* Class = "NSTextFieldCell"; title = "Skip"; ObjectID = "RSM-o9-1gO"; */
+"RSM-o9-1gO.title" = "Gecmek";
+
+/* Class = "NSTextFieldCell"; placeholderString = "Last Action"; ObjectID = "T8h-7t-B1w"; */
+"T8h-7t-B1w.placeholderString" = "Son Işlem";
+
+/* Class = "NSTextFieldCell"; title = "Sit/Stand Presets:"; ObjectID = "TPq-aO-DkT"; */
+"TPq-aO-DkT.title" = "Oturma/Kalkma Sunumları:";
+
+/* Class = "NSTextFieldCell"; title = "Note: Custom sounds can be added to ~/Library/Sounds."; ObjectID = "TrP-qR-dKv"; */
+"TrP-qR-dKv.title" = "Not: özel sesler eklenebilir ~/Library/Sounds.";
+
+/* Class = "NSMenuItem"; title = "Preferences..."; ObjectID = "Ut9-Ag-hcn"; */
+"Ut9-Ag-hcn.title" = "Tercihler...";
+
+/* Class = "NSTabViewItem"; label = "Alerts"; ObjectID = "W2h-1r-XMY"; */
+"W2h-1r-XMY.label" = "Uyarılar";
+
+/* Class = "NSTabViewItem"; label = "Shortcuts"; ObjectID = "WJ1-RF-ip6"; */
+"WJ1-RF-ip6.label" = "Kısayol";
+
+/* Class = "NSMenuItem"; title = "Restart"; ObjectID = "WWO-Xo-unU"; */
+"WWO-Xo-unU.title" = "Tekrar Baslatmak";
+
+/* Class = "NSMenuItem"; title = "Expert"; ObjectID = "Y5R-Ye-TNc"; */
+"Y5R-Ye-TNc.title" = "Uzman";
+
+/* Class = "NSTabViewItem"; label = "General"; ObjectID = "aOY-2h-lJo"; */
+"aOY-2h-lJo.label" = "Genel";
+
+/* Class = "NSTextFieldCell"; title = "Stand Up Alert"; ObjectID = "b87-1v-q6v"; */
+"b87-1v-q6v.title" = "Ayaka Kalk Uyarısı";
+
+/* Class = "NSTextFieldCell"; title = "Last Completed Action:"; ObjectID = "bfd-5B-GAR"; */
+"bfd-5B-GAR.title" = "Son Tamamlanan Eylem:";
+
+/* Class = "NSButtonCell"; title = "Restart"; ObjectID = "cWv-4q-u2H"; */
+"cWv-4q-u2H.title" = "Tekrar Baslatmak";
+
+/* Class = "NSMenuItem"; title = "Custom"; ObjectID = "cb8-Ss-sld"; */
+"cb8-Ss-sld.title" = "Özel ayarlar";
+
+/* Class = "NSTextFieldCell"; title = "Sit Down Alert"; ObjectID = "cib-HV-0W4"; */
+"cib-HV-0W4.title" = "Otur Uyarısı";
+
+/* Class = "NSMenuItem"; title = "Hard"; ObjectID = "fTu-ug-XYh"; */
+"fTu-ug-XYh.title" = "Zor";
+
+/* Class = "NSButtonCell"; title = "Snooze"; ObjectID = "gbB-hw-bak"; */
+"gbB-hw-bak.title" = "Ertelemek";
+
+/* Class = "NSTextFieldCell"; title = "Global Keyboard Shortcuts"; ObjectID = "hTH-Nq-V2P"; */
+"hTH-Nq-V2P.title" = "Global Klavye Kısayolları";
+
+/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "mH9-cb-o5y"; */
+"mH9-cb-o5y.title" = "OtherViews";
+
+/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "nxk-fW-6js"; */
+"nxk-fW-6js.title" = "OtherViews";
+
+/* Class = "NSMenuItem"; title = "Snooze"; ObjectID = "qJP-eb-RWy"; */
+"qJP-eb-RWy.title" = "Ertelemek";
+
+/* Class = "NSTextFieldCell"; placeholderString = "Next Action"; ObjectID = "tv4-4w-RKe"; */
+"tv4-4w-RKe.placeholderString" = "Bir Sonraki Eylem";
+
+/* Class = "NSTextFieldCell"; title = "Volume"; ObjectID = "xFy-Lq-p7U"; */
+"xFy-Lq-p7U.title" = "Ses";
+
+/* Class = "NSMenuItem"; title = "Pause"; ObjectID = "xZR-6f-Zke"; */
+"xZR-6f-Zke.title" = "Duraklatın";
+
+/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "ysH-jj-efX"; */
+"ysH-jj-efX.title" = "OtherViews";

@@ -14,7 +14,7 @@
 #define SDA_DEFAULT_SIT_INTERVAL    1800 // 30 minutes
 #define SDA_DEFAULT_IDLE_TIME       600  // 10 minutes
 #define SDA_DEFAULT_SNOOZE_TIME     300  // 5 minutes
-#define SDA_DEFAULT_PRESET          @"Custom"
+#define SDA_DEFAULT_PRESET          @"Beginner"
 
 #define UD_PRESET           @"Preset"
 #define UD_LOGIN            @"LoginItemStatus"
@@ -30,25 +30,25 @@
 #define SDA_CONFIG_PRESETS  @"Presets"
 #define SDA_PRESET_CUSTOM   @"Custom"
 
-#define STANDING_ACTION_TEXT        @"Standing"
+#define STANDING_ACTION_TEXT        NSLocalizedString(@"Standing", nil)
 #define STANDING_MENU_ICON          @"icon_standing.png"
 #define STANDING_NOTIFICATION_ICON  @"desk_logo_128_2x.png"
 
-#define SITTING_ACTION_TEXT         @"Sitting"
+#define SITTING_ACTION_TEXT         NSLocalizedString(@"Sitting", nil)
 #define SITTING_MENU_ICON           @"icon_sitting.png"
 #define SITTING_NOTIFICATION_ICON   @"desk_logo_sit_128_2x.png"
 
-#define PAUSED_ACTION_TEXT          @"Paused"
+#define PAUSED_ACTION_TEXT          NSLocalizedString(@"Paused", nil)
 #define PAUSED_MENU_ICON            @"icon_pausing.png"
-#define ERROR_STATUS_TEXT           @"Error"
+#define ERROR_STATUS_TEXT           NSLocalizedString(@"Error", nil)
 
-#define TRANSITIONING_ACTION_TEXT   @"Transitioning"
+#define TRANSITIONING_ACTION_TEXT   NSLocalizedString(@"Transitioning", nil)
 #define TRANSITIONING_MENU_ICON     @"icon_transitioning.png"
 
-#define RESUME_TEXT_TITLE           @"Welcome back!"
-#define RESUME_TEXT_FORMAT          @"Continuing %@"
+#define RESUME_TEXT_TITLE           NSLocalizedString(@"Welcome back!", nil)
+#define RESUME_TEXT_FORMAT          NSLocalizedString(@"Continuing %@", nil)
 
 #define NOTIFY_USER_TITLE           @"%@!"
-#define NOTIFY_USER_FORMAT          @"Time to start %@"
+#define NOTIFY_USER_FORMAT          NSLocalizedString(@"Time to start %@", nil)
 
 #endif

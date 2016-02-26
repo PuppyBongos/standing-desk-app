@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  Standing Desk App
+
+  Created by Michael Chadwick on 1/30/16.
+  Copyright © 2016 Puppy Bongos. All rights reserved.
+*/
+
+"Presets" = "Presets";
+"Standing" = "Standing";
+"Sitting" = "Sitting";
+"Paused" = "Paused";
+"Error" = "Error";
+"Pause" = "Pause";
+"Resume" = "Resume";
+"Pausing Timer" = "Pausing Timer";
+"Resuming Timer" = "Resuming Timer";
+"Transitioning" = "Transitioning";
+"Welcome back!" = "Welcome back!";
+"Continuing %@" = "Continuing %@";
+"Time to start %@" = "Time to start %@";
+"Time to get ready to %@!" = "Time to get ready to %@!";
+"sit" = "sit";
+"stand" = "stand";
+"notification clicked" = "notification clicked";

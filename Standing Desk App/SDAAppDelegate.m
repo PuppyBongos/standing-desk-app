@@ -408,10 +408,10 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
 }
 - (void)updateResumePauseMenuItem {
   if (appController.currentStatus == SDAStatusRunning) {
-    [_pauseMenuItem setTitle:@"Pause"];
+    [_pauseMenuItem setTitle:NSLocalizedString(@"Pause", nil)];
   }
   else if (appController.currentStatus == SDAStatusPaused) {
-    [_pauseMenuItem setTitle:@"Resume"];
+    [_pauseMenuItem setTitle:NSLocalizedString(@"Resume", nil)];
   }
 }
 
@@ -464,7 +464,7 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
     audioFile = [NSSound soundNamed:audioFilePath];
     return audioFile;
   } else {
-    NSLog(@"audioFilePath is nil or blank");
+    NSLog(@"audioFilePath nil or blank");
     return nil;
   }
 }
@@ -511,7 +511,7 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
   [self playSounds];
 }
 - (void)sendNotificationForTransitioning {
-  [self sendNotificationWithTitle:TRANSITIONING_ACTION_TEXT msg:[NSString stringWithFormat:@"Time to get ready to %@!", appController.lastCompletedActionState == SDAActionStateSitting ? @"stand" : @"sit"] soundFile:nil iconFile:nil];
+  [self sendNotificationWithTitle:TRANSITIONING_ACTION_TEXT msg:[NSString stringWithFormat:NSLocalizedString(@"Time to get ready to %@!", nil), appController.lastCompletedActionState == SDAActionStateSitting ? NSLocalizedString(@"stand", nil) : NSLocalizedString(@"sit", nil)] soundFile:nil iconFile:nil];
 }
 
 /* Adds and removes app from current user's

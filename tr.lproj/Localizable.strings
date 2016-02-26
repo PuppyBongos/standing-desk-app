@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings (Turkish)
+  Standing Desk App
+
+  Created by Michael Chadwick on 1/30/16.
+  Copyright © 2016 Puppy Bongos. All rights reserved.
+*/
+
+"Presets" = "Sunumları";
+"Standing" = "Kalkın";
+"Sitting" = "Oturun";
+"Paused" = "Duraklatıldı";
+"Error" = "Hata";
+"Pause" = "Duraklatın";
+"Resume" = "Yeniden Baslatmak";
+"Pausing Timer" = "Duraklatma Zamanlayıcı";
+"Resuming Timer" = "Sürdürme Zamanlayıcı";
+"Transitioning" = "Geçiş Yapan";
+"Welcome back!" = "Tekrar Hoşgeldiniz!";
+"Continuing %@" = "Devam Eden %@";
+"Time to start %@" = "Zaman başlatmak için %@";
+"Time to get ready to %@!" = "Zaman hazır olsun %@!";
+"sit" = "oturma";
+"stand" = "kalkma";
+"notification clicked" = "bildirim tıklandığında";

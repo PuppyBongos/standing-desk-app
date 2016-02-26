@@ -36,6 +36,7 @@
 		2774735F1887CBBF00F27C77 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2774735E1887CBBF00F27C77 /* README.md */; };
 		27A44DFA1886885C00342C82 /* Sit.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 27A44DF81886885C00342C82 /* Sit.m4a */; };
 		27DA93A718CC308000890D8B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27DA93A618CC308000890D8B /* Carbon.framework */; };
+		27E76EE11C686FEA0006FD10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27E76EE31C686FEA0006FD10 /* Localizable.strings */; };
 		27F1D9B9186174B10087FC3A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F1D9B8186174B10087FC3A /* Cocoa.framework */; };
 		27F1D9C3186174B10087FC3A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27F1D9C1186174B10087FC3A /* InfoPlist.strings */; };
 		27F1D9C5186174B10087FC3A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F1D9C4186174B10087FC3A /* main.m */; };
@@ -100,6 +101,17 @@
 		27969CFE1887C87900D3D2DF /* Stand.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Stand.m4a; sourceTree = "<group>"; };
 		27A44DF81886885C00342C82 /* Sit.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sit.m4a; sourceTree = "<group>"; };
 		27DA93A618CC308000890D8B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		27E76ED91C6863FF0006FD10 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		27E76EDA1C6863FF0006FD10 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		27E76EDB1C6863FF0006FD10 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = tr; path = tr.lproj/Credits.rtf; sourceTree = "<group>"; };
+		27E76EDC1C6863FF0006FD10 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		27E76EDD1C68640A0006FD10 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		27E76EDE1C68640A0006FD10 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		27E76EDF1C68640A0006FD10 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = fr; path = fr.lproj/Credits.rtf; sourceTree = "<group>"; };
+		27E76EE01C68640A0006FD10 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		27E76EE41C6870CC0006FD10 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		27E76EE61C6870E20006FD10 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		27E76EE71C6870E50006FD10 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		27F1D9B5186174B10087FC3A /* Standing Desk App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Standing Desk App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27F1D9B8186174B10087FC3A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		27F1D9BB186174B10087FC3A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -265,6 +277,7 @@
 				55B5A958187A091100C7CDCD /* SDAAppCategories */,
 				27F1D9BF186174B10087FC3A /* Supporting Files */,
 				27F1D9D0186174B10087FC3A /* Images.xcassets */,
+				27E76EE31C686FEA0006FD10 /* Localizable.strings */,
 				27F1D9CD186174B10087FC3A /* MainMenu.xib */,
 				2774735E1887CBBF00F27C77 /* README.md */,
 				27F1D9CA186174B10087FC3A /* SDAAppDelegate.h */,
@@ -409,6 +422,8 @@
 			knownRegions = (
 				en,
 				Base,
+				tr,
+				fr,
 			);
 			mainGroup = 27F1D9AC186174B10087FC3A;
 			productRefGroup = 27F1D9B6186174B10087FC3A /* Products */;
@@ -439,6 +454,7 @@
 				0805A68018921BE6000C32EE /* icon_standing.png in Resources */,
 				0872E8A31882507F0028586C /* desk_logo_256_1x.png in Resources */,
 				0805A67F18921BE6000C32EE /* icon_sitting.png in Resources */,
+				27E76EE11C686FEA0006FD10 /* Localizable.strings in Resources */,
 				0872E8A41882507F0028586C /* desk_logo_256_2x.png in Resources */,
 				0872E8A11882507F0028586C /* desk_logo_128_1x.png in Resources */,
 				27F1D9C9186174B10087FC3A /* Credits.rtf in Resources */,
@@ -541,10 +557,23 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		27E76EE31C686FEA0006FD10 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27E76EE41C6870CC0006FD10 /* en */,
+				27E76EE61C6870E20006FD10 /* tr */,
+				27E76EE71C6870E50006FD10 /* fr */,
+			);
+			name = Localizable.strings;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		27F1D9C1186174B10087FC3A /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				27F1D9C2186174B10087FC3A /* en */,
+				27E76EDA1C6863FF0006FD10 /* tr */,
+				27E76EDE1C68640A0006FD10 /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -553,6 +582,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				27F1D9C8186174B10087FC3A /* en */,
+				27E76EDB1C6863FF0006FD10 /* tr */,
+				27E76EDF1C68640A0006FD10 /* fr */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
@@ -561,6 +592,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				27F1D9CE186174B10087FC3A /* Base */,
+				27E76ED91C6863FF0006FD10 /* tr */,
+				27E76EDD1C68640A0006FD10 /* fr */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -569,6 +602,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				27F1D9E0186174B10087FC3A /* en */,
+				27E76EDC1C6863FF0006FD10 /* tr */,
+				27E76EE01C68640A0006FD10 /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
