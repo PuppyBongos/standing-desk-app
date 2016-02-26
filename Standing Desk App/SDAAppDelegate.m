@@ -507,7 +507,9 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
 
   // NSUserNotification won't play custom sounds in bundle and/or not in system sounds directories,
   // so we play a sound after the notification is displayed, getting around that
-  [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:alert];
+  NSUserNotificationCenter *userNotificationCenter = [NSUserNotificationCenter defaultUserNotificationCenter];
+  [userNotificationCenter removeAllDeliveredNotifications];
+  [userNotificationCenter deliverNotification:alert];
   [self playSounds];
 }
 - (void)sendNotificationForTransitioning {
