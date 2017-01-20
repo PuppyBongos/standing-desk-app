@@ -44,5 +44,6 @@ The Preferences window (which can be accessed from the main menubar icon) allows
 
 _Note_: Custom sounds can be added to the program by putting them in your ~/Library/Sounds directory. Any format (WAV, AIF, MP3, etc.) that OS X supports will work.
 
-### Questions, Feedback, Suggestions
-* [puppybongos@gmail.com](mailto:puppybongos@gmail.com)
+### Something about SDA to say?
+* **Issues**: Please [add any issues](https://github.com/PuppyBongos/standing-desk-app/issues) you find so we can keep track of things to fix/augment!
+* **General feedback**: [puppybongos@gmail.com](mailto:puppybongos@gmail.com)
