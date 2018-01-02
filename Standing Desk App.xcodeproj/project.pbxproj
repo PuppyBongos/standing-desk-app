@@ -213,6 +213,13 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		277567D81FFC4A6E006F4148 /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Docs;
+			sourceTree = "<group>";
+		};
 		27A44DF71886882B00342C82 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				27A44DF71886882B00342C82 /* Audio */,
+				277567D81FFC4A6E006F4148 /* Docs */,
 				0872E87E18824EDC0028586C /* Images */,
 			);
 			path = Resources;
