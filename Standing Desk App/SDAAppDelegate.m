@@ -144,13 +144,13 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
   }
 }
 - (void)receiveSleepNote:(NSNotification*)note {
-  NSLog(@"receiveSleepNote: %@", [note name]);
+  //NSLog(@"receiveSleepNote: %@", [note name]);
   [appController pauseTimer];
   [self updateActionMenuItem];
   [self updateTimerMenuItem];
 }
 - (void)receiveWakeNote:(NSNotification*)note {
-  NSLog(@"receiveWakeNote: %@", [note name]);
+  //NSLog(@"receiveWakeNote: %@", [note name]);
   [appController resumeTimer];
   [self updateActionMenuItem];
   [self updateTimerMenuItem];
@@ -210,7 +210,7 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
   [self openPrefsWindow];
 }
 - (IBAction)onMenuQuit:(id)sender {
-  NSLog(@"%@ quit", appName);
+  //NSLog(@"%@ quit", appName);
   [[NSApplication sharedApplication] terminate:self];
 }
 
@@ -464,7 +464,7 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
     audioFile = [NSSound soundNamed:audioFilePath];
     return audioFile;
   } else {
-    NSLog(@"audioFilePath nil or blank");
+    //NSLog(@"audioFilePath nil or blank");
     return nil;
   }
 }
@@ -597,7 +597,7 @@ NSString *const globalKeyShortcutSkip = @"KeyShortcutSkip";
     [appController pauseTimer];
     [self openTransWindow];
   }
-  NSLog(@"notification clicked");
+  //NSLog(@"notification clicked");
 }
 
 /* Global Keyboard Shortcut Init */

@@ -31,7 +31,7 @@
 
 +(SDAAlertSetting*) settingFromDictionary:(NSDictionary*)dict {
     if(!dict) {
-        NSLog(@"SDAAlertSettings: Dictionary is nil.");
+        //NSLog(@"SDAAlertSettings: Dictionary is nil.");
         return nil;
     }
     
