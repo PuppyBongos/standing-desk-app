@@ -20,7 +20,7 @@ There is one particular company (WHO SHALL REMAIN NAMELESS (FOR NOW)) that makes
 
 ### Installation
 ---
-Download the latest release of [Standing Desk App](https://github.com/michaelchadwick/standing-desk-app/releases), double-click on the ZIP file, move the resulting .app file into your /Applications directory, and then double-click it.
+Download the latest release of [Standing Desk App](https://github.com/puppybongos/standing-desk-app/releases), double-click on the ZIP file, move the resulting .app file into your /Applications directory, and then double-click it.
 
 ### Usage
 ---
